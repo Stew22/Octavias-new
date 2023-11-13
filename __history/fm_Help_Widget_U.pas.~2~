@@ -1,0 +1,35 @@
+unit fm_Help_Widget_U;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+
+type
+  Tfrmhelp = class(TForm)
+    pnl1: TPanel;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmhelp: Tfrmhelp;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tfrmhelp.FormCreate(Sender: TObject);
+var
+  R: HRGN;
+begin
+  // Set the form's shape to a rounded rectangle
+  R := CreateRoundRectRgn(0, 0, Width, Height, 20, 20); // Adjust the roundness by changing the last two parameters
+  SetWindowRgn(Handle, R, True);
+end;
+
+end.

@@ -1,0 +1,44 @@
+unit frm_Vendors_Service_U;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Menus,
+  System.ImageList, Vcl.ImgList;
+
+type
+  TForm1 = class(TForm)
+    il1: TImageList;
+    mm1: TMainMenu;
+    Fiel1: TMenuItem;
+    AddVendor1: TMenuItem;
+    AddVendor2: TMenuItem;
+    DeleteVendor1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    Help1: TMenuItem;
+    pnl1: TPanel;
+    pnl2: TPanel;
+    edtvendorname: TEdit;
+    edtvscode: TEdit;
+    edtvcname: TEdit;
+    edtvsaddress: TEdit;
+    edtvsemail: TEdit;
+    cbbvservicet: TComboBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+end.

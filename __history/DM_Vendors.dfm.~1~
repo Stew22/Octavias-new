@@ -1,0 +1,16 @@
+object DataModule1: TDataModule1
+  Height = 157
+  Width = 222
+  object convendor: TADOConnection
+    Left = 32
+    Top = 8
+  end
+  object tblvendor: TADOTable
+    Left = 104
+    Top = 48
+  end
+  object dsvendor: TDataSource
+    Left = 32
+    Top = 72
+  end
+end
