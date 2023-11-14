@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.ComCtrls,
   System.ImageList, Vcl.ImgList, Data.DB, Vcl.Grids, Vcl.DBGrids,ExcelXP,ComObj ,frm_Vendors_U ,frm_Stock_managment_U,
   Vcl.StdCtrls ,frmregister_U,frmremoveuser_U,frm_Bookings_U,fm_Help_Widget_U,
-  frm_Vendors_Service_U,DM_Vendors,DM_Order;
+  frm_Vendors_Service_U,DM_Vendors,DM_Order,frm_Report_Bug_U,Winapi.ShellAPI;
 
 type
   Tfrmmain = class(TForm)
@@ -222,6 +222,8 @@ begin
  if cbbcatogories.Text = 'Cleaning' then
  begin
   cbbsubcatagories.Clear;
+  cbbsubcatagories.Items.Add('Implements');
+  cbbsubcatagories.Items.Add('Detergents');
  end else
  if cbbcatogories.Text = 'Consumables' then
  begin
@@ -232,16 +234,29 @@ begin
  if cbbcatogories.Text = 'Food & Beverage' then
  begin
   cbbsubcatagories.Clear;
+  cbbsubcatagories.Items.Add('Cutlery');
+  cbbsubcatagories.Items.Add('Crockery');
+  cbbsubcatagories.Items.Add('Utensils');
+  cbbsubcatagories.Items.Add('Fruit');
+  cbbsubcatagories.Items.Add('Vegtables');
+  cbbtertiarycatagory.Clear;
  end else
  if cbbcatogories.Text = 'Packaging' then
  begin
   cbbsubcatagories.Clear;
+  cbbsubcatagories.Items.Add('Retail Bags');
+  cbbsubcatagories.Items.Add('Boxes');
+  cbbsubcatagories.Items.Add('Ribbons');
+  cbbsubcatagories.Items.Add('Courier Bags');
+  cbbsubcatagories.Items.Add('Courier Stickers');
+  cbbtertiarycatagory.Clear;
  end else
  if cbbcatogories.Text = 'Stationery' then
  begin
   cbbsubcatagories.Clear;
   cbbsubcatagories.Items.Add('Guest');
   cbbsubcatagories.Items.Add('Office');
+  cbbtertiarycatagory.Clear;
  end;
 end;
 
@@ -332,20 +347,27 @@ begin
  end else
  if cbbsubcatagories.Text = 'Linen' then
  begin
-  cbbtertiarycatagory.Clear;
-  cbbtertiarycatagory.Items.Add('Professional');
+   if cbbsubcatagories.Text = 'Professional' then
+   begin
+    cbbtertiarycatagory.Clear;
+    cbbtertiarycatagory.Items.Add('Sheets');
+    cbbtertiarycatagory.Items.Add('Towels');
+    cbbtertiarycatagory.Items.Add('Bath Mats');
+   end;
  end else
  if cbbsubcatagories.Text = 'Gowns' then
  begin
-  cbbtertiarycatagory.Clear;
-  cbbtertiarycatagory.Items.Add('Professional');
-  cbbtertiarycatagory.Items.Add('Retail');
+   if (cbbsubcatagories.Text = 'Professional') or (cbbsubcatagories.Text = 'Retail') then
+   begin
+    cbbtertiarycatagory.Clear;
+   end;
  end else
  if cbbsubcatagories.Text = 'Footwear' then
  begin
-  cbbtertiarycatagory.Clear;
-  cbbtertiarycatagory.Items.Add('Professional');
-  cbbtertiarycatagory.Items.Add('Retail');
+  if (cbbsubcatagories.Text = 'Professional') or (cbbsubcatagories.Text = 'Retail') then
+  begin
+   cbbtertiarycatagory.Clear;
+  end;
  end else
  if cbbsubcatagories.Text = 'Maintenance Services' then
  begin
@@ -357,9 +379,11 @@ begin
  end else
  if cbbsubcatagories.Text = 'Consumables' then
  begin
-  cbbtertiarycatagory.Clear;
-  cbbtertiarycatagory.Items.Add('Treatment Rooms');
-  cbbtertiarycatagory.Items.Add('Guest Area');
+  if (cbbsubcatagories.Text = 'Treatment Rooms') or (cbbtertiarycatagory.Text = 'Guest Area') then
+  begin
+   cbbtertiarycatagory.Clear;
+   cbbtertiarycatagory.Items.Add('Refils');
+  end;
  end else
  if cbbsubcatagories.Text = 'Food & Beverage' then
  begin
@@ -372,8 +396,6 @@ begin
  if cbbsubcatagories.Text = 'Stationery' then
  begin
   cbbtertiarycatagory.Clear;
-  cbbtertiarycatagory.Items.Add('Guest');
-  cbbtertiarycatagory.Items.Add('Office');
  end;
 end;
 
@@ -500,7 +522,7 @@ end;
 procedure Tfrmmain.ReportABug1Click(Sender: TObject);
 begin
 //here we will allow the users to report a bug
-frmhelp.ShowModal;
+ frmeportbug.ShowModal;
 end;
 
 procedure Tfrmmain.RequestSupport1Click(Sender: TObject);
@@ -520,8 +542,12 @@ begin
 end;
 
 procedure Tfrmmain.UserManual1Click(Sender: TObject);
+var
+PDFFilename:String;
 begin
- //here we will shellexecute the user manual
-end;
+ //here we will shell execute the pdf to open
+ PDFFileName := 'C:\Path\To\YourPDFFile.pdf'; //replace this with the help file
+ ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
 
+end;
 end.

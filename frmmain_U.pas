@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.ComCtrls,
   System.ImageList, Vcl.ImgList, Data.DB, Vcl.Grids, Vcl.DBGrids,ExcelXP,ComObj ,frm_Vendors_U ,frm_Stock_managment_U,
   Vcl.StdCtrls ,frmregister_U,frmremoveuser_U,frm_Bookings_U,fm_Help_Widget_U,
-  frm_Vendors_Service_U,DM_Vendors,DM_Order,frm_Report_Bug_U,Winapi.ShellAPI;
+  frm_Vendors_Service_U,DM_Vendors,DM_Order,frm_Report_Bug_U,Winapi.ShellAPI,
+  frm_Select_Vendor_For_Order_U;
 
 type
   Tfrmmain = class(TForm)
@@ -97,6 +98,7 @@ type
     procedure dbgrd1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure cbbsubcatagoriesChange(Sender: TObject);
+    procedure PlaceOrder1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -510,6 +512,12 @@ begin
   end;
   for J := 0 to dbgrd1.Columns.Count - 1 do
    dbgrd1.Columns[J].Width := 5 + dbgrd1.Canvas.TextWidth(dbgrd1.Columns[J].title.caption);
+end;
+
+procedure Tfrmmain.PlaceOrder1Click(Sender: TObject);
+begin
+ frmselectvendorfororder.ShowModal; //here we will ask the user to select
+ //the vendor that they will generate the order for
 end;
 
 procedure Tfrmmain.RefreshList1Click(Sender: TObject);

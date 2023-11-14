@@ -71,6 +71,7 @@ object frmeportbug: Tfrmeportbug
       Width = 279
       Height = 21
       TabOrder = 0
+      OnChange = edtnameChange
     end
     object edtphone: TEdit
       Left = 90
@@ -78,6 +79,7 @@ object frmeportbug: Tfrmeportbug
       Width = 279
       Height = 21
       TabOrder = 1
+      OnChange = edtphoneChange
     end
     object edtemail: TEdit
       Left = 90
@@ -85,6 +87,7 @@ object frmeportbug: Tfrmeportbug
       Width = 279
       Height = 21
       TabOrder = 2
+      OnChange = edtemailChange
     end
     object mmoinput: TMemo
       Left = 8
@@ -96,6 +99,7 @@ object frmeportbug: Tfrmeportbug
       BorderStyle = bsNone
       ScrollBars = ssVertical
       TabOrder = 3
+      OnChange = mmoinputChange
     end
   end
   object pnl3: TPanel
@@ -125,13 +129,14 @@ object frmeportbug: Tfrmeportbug
       ImageIndex = 1
       Images = il1
       TabOrder = 1
+      OnClick = btncancelClick
     end
   end
   object il1: TImageList
     Left = 344
     Top = 16
     Bitmap = {
-      494C010102000800040010001000FFFFFFFFFF00FFFFFFFFFFFFFFFF424D3600
+      494C010102000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       00000000000000000000000000000000000000000000D2D2D200B3B3B3000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -267,6 +272,7 @@ object frmeportbug: Tfrmeportbug
       C003FFFF00000000E007E7E700000000E007E3C7000000000000F18F00000000
       0000F81F000000008001FC3F00000000E007FC3F00000000C003F81F00000000
       8001F18F000000008001E3C7000000001008E7E700000000F00FFFFF00000000
-      F81FFFFF00000000FC1FFFFF00000000}
+      F81FFFFF00000000FC1FFFFF0000000000000000000000000000000000000000
+      000000000000}
   end
 end

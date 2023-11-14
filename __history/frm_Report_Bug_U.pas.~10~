@@ -65,6 +65,7 @@ begin
   mmoinput.SetFocus;
  end else
  begin
+  //here we will compile the email to send to me using the shellexecte function
 
  end;
 end;

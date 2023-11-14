@@ -21,7 +21,8 @@ uses
   frm_Vendors_Service_U in 'frm_Vendors_Service_U.pas' {frmaddservice},
   fm_Help_Widget_U in 'fm_Help_Widget_U.pas' {frmhelp},
   DM_Vendors in 'DM_Vendors.pas' {Datamodulevendor: TDataModule},
-  frm_Report_Bug_U in 'frm_Report_Bug_U.pas' {frmeportbug};
+  frm_Report_Bug_U in 'frm_Report_Bug_U.pas' {frmeportbug},
+  frm_Select_Vendor_For_Order_U in 'frm_Select_Vendor_For_Order_U.pas' {frmselectvendorfororder};
 
 {$R *.res}
 
@@ -53,5 +54,6 @@ begin
   Application.CreateForm(Tfrmhelp, frmhelp);
   Application.CreateForm(TDatamodulevendor, Datamodulevendor);
   Application.CreateForm(Tfrmeportbug, frmeportbug);
+  Application.CreateForm(Tfrmselectvendorfororder, frmselectvendorfororder);
   Application.Run;
 end.

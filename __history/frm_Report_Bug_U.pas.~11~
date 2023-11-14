@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.ImageList,
-  Vcl.ImgList, Vcl.ExtCtrls;
+  Vcl.ImgList, Vcl.ExtCtrls, ShellAPI;
 
 type
   Tfrmeportbug = class(TForm)
@@ -40,6 +40,8 @@ implementation
 {$R *.dfm}
 
 procedure Tfrmeportbug.btnsendbugClick(Sender: TObject);
+var
+  EmailAddress, Subject, BodyText: string;
 begin
  // first we will check if all the fields have been enetered
  // then we can send it through
@@ -66,7 +68,20 @@ begin
  end else
  begin
   //here we will compile the email to send to me using the shellexecte function
+    // Set the email address, subject, and body text
+  EmailAddress := 'dantu.domonique@gmail.com';
+  Subject := 'Bug Report For Octavias StockMate , TicketID : ' + IntToStr( Random(1000));
+  //
+  //here we will also just add in the contact information into the email body
+  BodyText := 'Name : ' + edtname.Text ;
+  BodyText := 'Contact Number : ' + edtphone.Text;
+  BodyText := 'Email Address : ' + edtemail.Text;
+  //
+  BodyText := BodyText + 'You Have Reported The Following Bugs : ' + mmoinput.Text;
 
+  // Use ShellExecute to open the default email client with pre-filled values
+  ShellExecute(0, 'open', 'mailto:' + EmailAddress +
+    '?subject=' + Subject + '&body=' + BodyText , nil, nil, SW_SHOWNORMAL);
 
  end;
 end;
