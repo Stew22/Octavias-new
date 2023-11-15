@@ -12,10 +12,8 @@ object frmlogin: Tfrmlogin
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = True
   Position = poScreenCenter
   OnActivate = FormActivate
-  PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
     Left = 8

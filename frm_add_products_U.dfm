@@ -13,9 +13,10 @@ object frmaddproducts: Tfrmaddproducts
   Font.Name = 'Tahoma'
   Font.Style = []
   Menu = mm1
+  OldCreateOrder = True
   Position = poScreenCenter
-  RoundedCorners = rcOn
   OnActivate = FormActivate
+  PixelsPerInch = 96
   TextHeight = 13
   object pnl1: TPanel
     Left = 8
