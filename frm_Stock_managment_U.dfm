@@ -13,9 +13,7 @@ object frmstockmanagement: Tfrmstockmanagement
   Font.Name = 'Tahoma'
   Font.Style = []
   Menu = mm1
-  OldCreateOrder = False
   Position = poScreenCenter
-  PixelsPerInch = 96
   TextHeight = 13
   object pnl1: TPanel
     Left = 8

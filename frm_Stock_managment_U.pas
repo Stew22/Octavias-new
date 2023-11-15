@@ -53,7 +53,7 @@ implementation
 
 procedure Tfrmstockmanagement.AddProducts1Click(Sender: TObject);
 begin
- frmaddproducts.ShowModal;
+ frmaddproducts.Show;
 end;
 
 procedure Tfrmstockmanagement.Exit1Click(Sender: TObject);

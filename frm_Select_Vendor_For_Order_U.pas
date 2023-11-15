@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
-  Vcl.StdCtrls, Vcl.ExtCtrls;
+  Vcl.StdCtrls, Vcl.ExtCtrls,Winapi.ShellAPI;
 
 type
   Tfrmselectvendorfororder = class(TForm)
@@ -65,8 +65,13 @@ begin
 end;
 
 procedure Tfrmselectvendorfororder.btnhelpClick(Sender: TObject);
+var
+PDFFileName:string;
 begin
 //here we will shell execute the manual for the following form
+ PDFFileName := 'C:\Path\To\YourPDFFile.pdf'; //replace this with the help file
+ ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+ //
 end;
 
 procedure Tfrmselectvendorfororder.FormActivate(Sender: TObject);
