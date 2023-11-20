@@ -48,7 +48,7 @@ var
 PDFFilename:String;
 begin
  //here we will shell execute the pdf to open
- PDFFileName := 'C:\Path\To\YourPDFFile.pdf'; //replace this with the help file
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_User_Login.pdf'; //replace this with the help file
  ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
  //
 end;

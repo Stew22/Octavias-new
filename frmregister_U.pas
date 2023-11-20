@@ -39,8 +39,6 @@ type
     Label1: TLabel;
     btnhelp: TButton;
     procedure FormActivate(Sender: TObject);
-    procedure btndeleteuserClick(Sender: TObject);
-    procedure btnedituserClick(Sender: TObject);
     procedure btncancellClick(Sender: TObject);
     procedure btnaduserClick(Sender: TObject);
     procedure edtcpasswordChange(Sender: TObject);
@@ -169,23 +167,12 @@ begin
  cbbuserprem.Clear;
 end;
 
-procedure Tfrmadduser.btndeleteuserClick(Sender: TObject);
-begin
- //here we will disable all other fields and only leave the username field
- // this will only be availible if the user is an admin
-end;
-
-procedure Tfrmadduser.btnedituserClick(Sender: TObject);
-begin
- //here we will allow the user loged into there own profile to edit there details
-end;
-
 procedure Tfrmadduser.btnhelpClick(Sender: TObject);
 var
 PDFFilename:String;
 begin
  //here we will shell execute the pdf to open
- PDFFileName := 'C:\Path\To\YourPDFFile.pdf'; //replace this with the help file
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_User_Registration.pdf'; //replace this with the help file
  ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
 end;
 
