@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  System.ImageList, Vcl.ImgList,DM_Users;
+  System.ImageList, Vcl.ImgList,DM_Users,Winapi.ShellAPI;
 
 type
   Tfrmremoveuser = class(TForm)
@@ -20,11 +20,13 @@ type
     btnremoveuser: TButton;
     il1: TImageList;
     lbl1: TLabel;
+    btnhelp: TButton;
     procedure btncancellClick(Sender: TObject);
     procedure cbbunameChange(Sender: TObject);
     procedure btnremoveuserClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure cbbnameChange(Sender: TObject);
+    procedure btnhelpClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,6 +48,15 @@ begin
  cbbemail.Clear;
  frmremoveuser.close;
  //here we will cancell
+end;
+
+procedure Tfrmremoveuser.btnhelpClick(Sender: TObject);
+var
+PDFFilename:String;
+begin
+ //here we will shell execute the pdf to open
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_User_Remove.pdf'; //replace this with the help file
+ ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
 end;
 
 procedure Tfrmremoveuser.btnremoveuserClick(Sender: TObject);

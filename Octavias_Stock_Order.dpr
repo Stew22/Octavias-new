@@ -22,7 +22,9 @@ uses
   fm_Help_Widget_U in 'fm_Help_Widget_U.pas' {frmhelp},
   DM_Vendors in 'DM_Vendors.pas' {Datamodulevendor: TDataModule},
   frm_Report_Bug_U in 'frm_Report_Bug_U.pas' {frmeportbug},
-  frm_Select_Vendor_For_Order_U in 'frm_Select_Vendor_For_Order_U.pas' {frmselectvendorfororder};
+  frm_Select_Vendor_For_Order_U in 'frm_Select_Vendor_For_Order_U.pas' {frmselectvendorfororder},
+  Sync_DB_U in 'Sync_DB_U.pas',
+  DM_Products in 'DM_Products.pas' {DataModuleProducts: TDataModule};
 
 {$R *.res}
 
@@ -55,5 +57,6 @@ begin
   Application.CreateForm(TDatamodulevendor, Datamodulevendor);
   Application.CreateForm(Tfrmeportbug, frmeportbug);
   Application.CreateForm(Tfrmselectvendorfororder, frmselectvendorfororder);
+  Application.CreateForm(TDataModuleProducts, DataModuleProducts);
   Application.Run;
 end.

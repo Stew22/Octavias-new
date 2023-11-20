@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
-  System.ImageList, Vcl.ImgList, Vcl.StdCtrls;
+  System.ImageList, Vcl.ImgList, Vcl.StdCtrls,DM_Products,Winapi.ShellAPI;
 
 type
   Tfrmaddproducts = class(TForm)
@@ -39,12 +39,37 @@ type
     lbl6: TLabel;
     lbl7: TLabel;
     lbl8: TLabel;
+    lbl9: TLabel;
+    btnhelp: TButton;
+    N3: TMenuItem;
+    ClearFields1: TMenuItem;
+    BulkAdd1: TMenuItem;
+    lbl10: TLabel;
+    edtpriceinc: TEdit;
+    lbl11: TLabel;
+    edtminorder: TEdit;
+    lbl12: TLabel;
+    edtrrp: TEdit;
+    lbl13: TLabel;
+    edtleadtimedays: TEdit;
+    N4: TMenuItem;
+    N5: TMenuItem;
+    N6: TMenuItem;
+    AddProduct2: TMenuItem;
+    N7: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure btnclearClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnaddproductClick(Sender: TObject);
     procedure cbbseccatChange(Sender: TObject);
     procedure cbbmaincatChange(Sender: TObject);
+    procedure btnhelpClick(Sender: TObject);
+    procedure File2Click(Sender: TObject);
+    procedure ClearFields1Click(Sender: TObject);
+    procedure edtbpriceChange(Sender: TObject);
+    procedure edtdefqtyChange(Sender: TObject);
+    procedure AddProduct2Click(Sender: TObject);
+    procedure btncancelClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -58,18 +83,82 @@ implementation
 
 {$R *.dfm}
 
+procedure Tfrmaddproducts.AddProduct2Click(Sender: TObject);
+begin
+ btnaddproduct.Click; // to avoid having to duplicate the code
+end;
+
 procedure Tfrmaddproducts.btnaddproductClick(Sender: TObject);
 begin
  //here we will check if all the fields have values before enabling the button
+ //here we will also need to check first if the products database is connected , if it isnt
+ //then we will connect it then we will add the fields to the database provided that they meet the requirements
+ //
+ with DataModuleProducts do
+ begin
+  //first we will make sure that the database is connected
+  if conproducts.Connected = True then
+  begin
+   //here the database is connected now we can perform our operations
+   if (edtpcode.Text = '') or (edtpdisc.Text ='') or (edtbprice.Text = '') or
+    (edtdefqty.Text  = '') or (cbbvendor.Text = '') or (cbbmaincat.Text = '')
+    or (cbbseccat.Text = '') or (edtleadtimedays.Text = '')then
+   begin
+    // above we are checking to make sure that all the relevant fields have the data in them // we will just need to check how we are going to check for the tertiary cat
+    ShowMessage('One Or More Of The Fields Have Been Left Empty ! , Please Try Again !');
+    //see if we must set the colors ?
+    cbbvendor.SetFocus;
+   end else
+   begin
+    //here all the fields have values
+    tblproducts.Insert;
+    tblproducts['Item_Number']:=edtpcode.Text;
+    tblproducts['Item_Discription']:=edtpdisc.Text;
+    tblproducts['Size']:=edtdefqty.Text;
+    tblproducts['Min_Order_Qty']:=edtminorder.Text;
+    tblproducts['Most_Recent_Cost_Excl_Vat']:=edtbprice.Text;
+    tblproducts['Most_Recent_Cost_Inc_Vat']:=edtpriceinc.Text;
+    tblproducts['RRP']:=edtrrp.Text;
+    //add leadtime days
+    tblproducts['Vendor_Name']:=cbbvendor.Text;
+    tblproducts['Main_Category']:=cbbvendor.Text;
+    tblproducts['Secondary_Category']:=cbbvendor.Text;
+    tblproducts['Tertiary_Category']:=cbbvendor.Text;
+    tblproducts['Lead_Time_Days']:=edtleadtimedays.Text;
+    //
+    //post the data to the database now
+    tblproducts.Post;
+   end;
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Administrator ');
+  end;
+ end;
+end;
+
+procedure Tfrmaddproducts.btncancelClick(Sender: TObject);
+begin
+ Exit1.Click; // so we dont have to duplicate the code
 end;
 
 procedure Tfrmaddproducts.btnclearClick(Sender: TObject);
 begin
  edtpcode.Clear;
  edtpdisc.Clear;
- edtbprice.Clear;
+ edtbprice.Text := '0';
  edtdefqty.Clear;
+ //we need to add in the rest of the fields
  btnaddproduct.Enabled:=False;
+end;
+
+procedure Tfrmaddproducts.btnhelpClick(Sender: TObject);
+var
+PDFFilename:String;
+begin
+ //here we will shell execute the pdf to open
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Add_Product.pdf'; //replace this with the help file
+ ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+ //
 end;
 
 procedure Tfrmaddproducts.cbbmaincatChange(Sender: TObject);
@@ -316,9 +405,38 @@ begin
  end;
 end;
 
+procedure Tfrmaddproducts.ClearFields1Click(Sender: TObject);
+begin
+ btnclear.Click; // so we dont have to duplicate the code
+end;
+
+procedure Tfrmaddproducts.edtbpriceChange(Sender: TObject);
+Var
+CalcValue : Double;
+begin
+ CalcValue := StrToFloat(edtbprice.Text) + (StrToFloat(edtbprice.Text) * 0.15);
+ //here we will show the value to the user
+ edtpriceinc.Text :=FloatToStr(CalcValue);
+end;
+
+procedure Tfrmaddproducts.edtdefqtyChange(Sender: TObject);
+begin
+ //set the other field as a reference
+ edtminorder.Text:= edtdefqty.Text;
+end;
+
 procedure Tfrmaddproducts.Exit1Click(Sender: TObject);
 begin
-frmaddproducts.Close; //closes the form
+ //here we will clear all the fields
+ //
+ btnclear.Click; // so we dont have to write all the code over
+ //
+ frmaddproducts.Close; //closes the form
+end;
+
+procedure Tfrmaddproducts.File2Click(Sender: TObject);
+begin
+ btnhelp.Click; //here we will just click the button instead of duplicating the code
 end;
 
 procedure Tfrmaddproducts.FormActivate(Sender: TObject);
