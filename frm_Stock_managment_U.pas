@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls , frm_Stock_Settings_U,frm_add_products_U;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls , frm_Stock_Settings_U,frm_add_products_U,
+  Data.DB, Vcl.Grids, Vcl.DBGrids;
 
 type
   Tfrmstockmanagement = class(TForm)
@@ -31,6 +32,7 @@ type
     N7: TMenuItem;
     N8: TMenuItem;
     N4: TMenuItem;
+    dbgrdproducts: TDBGrid;
     procedure Settings1Click(Sender: TObject);
     procedure Exit1Click(Sender: TObject);
     procedure UpdateList1Click(Sender: TObject);

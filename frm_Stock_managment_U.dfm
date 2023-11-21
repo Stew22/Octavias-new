@@ -23,6 +23,18 @@ object frmstockmanagement: Tfrmstockmanagement
     BevelInner = bvLowered
     TabOrder = 0
   end
+  object dbgrdproducts: TDBGrid
+    Left = 8
+    Top = 71
+    Width = 1091
+    Height = 402
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
   object mm1: TMainMenu
     Left = 384
     Top = 376

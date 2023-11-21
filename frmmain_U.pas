@@ -76,6 +76,9 @@ type
     N24: TMenuItem;
     RequestSupport1: TMenuItem;
     cbbtertiarycatagory: TComboBox;
+    N25: TMenuItem;
+    N26: TMenuItem;
+    img1: TImage;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -99,6 +102,8 @@ type
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure cbbsubcatagoriesChange(Sender: TObject);
     procedure PlaceOrder1Click(Sender: TObject);
+    procedure cbbvendorChange(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
   private
     { Private declarations }
   public
@@ -144,11 +149,26 @@ begin
  //then move the panel
  dbgrd1.Top:= 131 ;
  pnl2.Height:=70;
+ //
+ cbbtertiarycatagory.Show;
 end;
 
 procedure Tfrmmain.btnsearchClick(Sender: TObject);
 begin
  // here we will filter the dataset with SQL Like and unique operator
+ //here we are going to add in the filter per vendorname
+ with Datamoduleorder do
+ begin
+   if conorder.Connected = True then
+   begin
+    tblorder.Filtered:=False;
+    //tblorder.Filter:='Vendor_Name = ' + QuotedStr(cbbvendor.Text);
+    //tblorder.Filtered:=True;
+   end else
+   begin
+    ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
+   end;
+ end;
 end;
 
 procedure Tfrmmain.cbbcatogoriesChange(Sender: TObject);
@@ -259,6 +279,22 @@ begin
   cbbsubcatagories.Items.Add('Guest');
   cbbsubcatagories.Items.Add('Office');
   cbbtertiarycatagory.Clear;
+ end;
+ //here we are going to clear all other filters then apply the new one
+  //here we are going to add in the filter per vendorname
+ with Datamoduleorder do
+ begin
+   if conorder.Connected = True then
+   begin
+    tblorder.Filtered:=False;
+    tblorder.Filter:='Vendor_Name = ' + QuotedStr(cbbvendor.Text); //here we need to check
+    //how are going to only show some of the fields in the dbgrid for the database
+    //so that we can search by catagory aswell
+    //tblorder.Filtered:=True;
+   end else
+   begin
+    ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
+   end;
  end;
 end;
 
@@ -399,6 +435,38 @@ begin
  begin
   cbbtertiarycatagory.Clear;
  end;
+ //apply the new filter
+  //here we are going to add in the filter per vendorname
+ with Datamoduleorder do
+ begin
+   if conorder.Connected = True then
+   begin
+    tblorder.Filtered:=False;
+    //tblorder.Filter:='Vendor_Name = ' + QuotedStr(cbbvendor.Text);
+    //tblorder.Filtered:=True;
+    //this will be a combination of the main filter and the secondary filter
+   end else
+   begin
+    ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
+   end;
+ end;
+end;
+
+procedure Tfrmmain.cbbvendorChange(Sender: TObject);
+begin
+ //here we are going to add in the filter per vendorname
+ with Datamoduleorder do
+ begin
+   if conorder.Connected = True then
+   begin
+    tblorder.Filtered:=False;
+    tblorder.Filter:='Vendor_Name = ' + QuotedStr(cbbvendor.Text);
+    tblorder.Filtered:=True;
+   end else
+   begin
+    ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
+   end;
+ end;
 end;
 
 procedure Tfrmmain.dbgrd1DrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -467,6 +535,8 @@ begin
  dbgrd1.Height:=608;
  pnl2.Height:=45;
  //
+ cbbtertiarycatagory.Hide;
+ //
   with Datamodulevendor do
  begin
    if convendor.Connected = True then
@@ -500,10 +570,10 @@ begin
     begin
       // Connect to the database
       conorder.ConnectionString := 'Provider=Microsoft.ACE.OLEDB.12.0;' +
-        'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Product_Database.accdb' +
+        'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Order_Database.accdb' +
         ';Mode=ReadWrite;Persist Security Info=False';
 
-      tblorder.TableName := 'tblproducts';
+      tblorder.TableName := 'tblorder';
       conorder.Connected := True;
       tblorder.Active := True;
       tblorder.First;
@@ -512,6 +582,14 @@ begin
   end;
   for J := 0 to dbgrd1.Columns.Count - 1 do
    dbgrd1.Columns[J].Width := 5 + dbgrd1.Canvas.TextWidth(dbgrd1.Columns[J].title.caption);
+end;
+
+procedure Tfrmmain.FormPaint(Sender: TObject);
+var
+  Rect: TRect;
+  DestRect: TRect;
+begin
+
 end;
 
 procedure Tfrmmain.PlaceOrder1Click(Sender: TObject);

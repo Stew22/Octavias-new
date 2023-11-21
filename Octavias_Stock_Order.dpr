@@ -24,7 +24,8 @@ uses
   frm_Report_Bug_U in 'frm_Report_Bug_U.pas' {frmeportbug},
   frm_Select_Vendor_For_Order_U in 'frm_Select_Vendor_For_Order_U.pas' {frmselectvendorfororder},
   Sync_DB_U in 'Sync_DB_U.pas',
-  DM_Products in 'DM_Products.pas' {DataModuleProducts: TDataModule};
+  DM_Products in 'DM_Products.pas' {DataModuleProducts: TDataModule},
+  DB_Backup_U in 'DB_Backup_U.pas';
 
 {$R *.res}
 
