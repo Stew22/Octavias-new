@@ -8,7 +8,7 @@ uses
   System.ImageList, Vcl.ImgList, Data.DB, Vcl.Grids, Vcl.DBGrids,ExcelXP,ComObj ,frm_Vendors_U ,frm_Stock_managment_U,
   Vcl.StdCtrls ,frmregister_U,frmremoveuser_U,frm_Bookings_U,fm_Help_Widget_U,
   frm_Vendors_Service_U,DM_Vendors,DM_Order,frm_Report_Bug_U,Winapi.ShellAPI,
-  frm_Select_Vendor_For_Order_U;
+  frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U;
 
 type
   Tfrmmain = class(TForm)
@@ -104,6 +104,7 @@ type
     procedure PlaceOrder1Click(Sender: TObject);
     procedure cbbvendorChange(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure AddVendor4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -136,6 +137,11 @@ end;
 procedure Tfrmmain.AddVendor3Click(Sender: TObject);
 begin
  frmaddservice.Showmodal;
+end;
+
+procedure Tfrmmain.AddVendor4Click(Sender: TObject);
+begin
+ frmeditservicevendor.ShowModal;
 end;
 
 procedure Tfrmmain.Bookings1Click(Sender: TObject);

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Menus,
-  System.ImageList, Vcl.ImgList,DM_Vendors;
+  System.ImageList, Vcl.ImgList,DM_Vendors,frm_edit_Vendors_U;
 
 type
   Tfrmaddservice = class(TForm)
@@ -40,9 +40,14 @@ type
     btnclear: TButton;
     btncancel: TButton;
     lbl8: TLabel;
+    btnhrlp: TButton;
     procedure btncancelClick(Sender: TObject);
     procedure btnaddvendorClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure Help1Click(Sender: TObject);
+    procedure btnhrlpClick(Sender: TObject);
+    procedure DeleteVendor1Click(Sender: TObject);
+    procedure AddVendor2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,6 +60,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure Tfrmaddservice.AddVendor2Click(Sender: TObject);
+begin
+ frmaddservice.Show;
+end;
 
 procedure Tfrmaddservice.btnaddvendorClick(Sender: TObject);
 var
@@ -121,6 +131,18 @@ begin
  frmaddservice.Close;
 end;
 
+procedure Tfrmaddservice.btnhrlpClick(Sender: TObject);
+begin
+ Help1.Click; // to avoid duplcaiting the code
+end;
+
+procedure Tfrmaddservice.DeleteVendor1Click(Sender: TObject);
+begin
+ //here we are going to code a form that will allow the user to search by
+ //vendor name or vendor code to delete them
+
+end;
+
 procedure Tfrmaddservice.FormActivate(Sender: TObject);
 begin
   with Datamodulevendor do
@@ -139,6 +161,11 @@ begin
       // Populate user fields or any other necessary initializations
     end;
   end;
+end;
+
+procedure Tfrmaddservice.Help1Click(Sender: TObject);
+begin
+ //here we will open the help
 end;
 
 end.

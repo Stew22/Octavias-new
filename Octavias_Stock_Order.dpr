@@ -25,7 +25,8 @@ uses
   frm_Select_Vendor_For_Order_U in 'frm_Select_Vendor_For_Order_U.pas' {frmselectvendorfororder},
   Sync_DB_U in 'Sync_DB_U.pas',
   DM_Products in 'DM_Products.pas' {DataModuleProducts: TDataModule},
-  DB_Backup_U in 'DB_Backup_U.pas';
+  DB_Backup_U in 'DB_Backup_U.pas',
+  frm_edit_Vendors_U in 'frm_edit_Vendors_U.pas' {frmeditservicevendor};
 
 {$R *.res}
 
@@ -59,5 +60,6 @@ begin
   Application.CreateForm(Tfrmeportbug, frmeportbug);
   Application.CreateForm(Tfrmselectvendorfororder, frmselectvendorfororder);
   Application.CreateForm(TDataModuleProducts, DataModuleProducts);
+  Application.CreateForm(Tfrmeditservicevendor, frmeditservicevendor);
   Application.Run;
 end.

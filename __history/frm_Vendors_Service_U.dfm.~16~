@@ -2,7 +2,7 @@ object frmaddservice: Tfrmaddservice
   Left = 0
   Top = 0
   Caption = 'Add A Service Vendor'
-  ClientHeight = 346
+  ClientHeight = 307
   ClientWidth = 349
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,18 +11,29 @@ object frmaddservice: Tfrmaddservice
   Font.Name = 'Tahoma'
   Font.Style = []
   Menu = mm1
+  OldCreateOrder = True
+  Position = poScreenCenter
+  OnActivate = FormActivate
+  PixelsPerInch = 96
   TextHeight = 13
   object pnl1: TPanel
     Left = 8
     Top = 8
     Width = 329
-    Height = 65
+    Height = 33
     BevelInner = bvLowered
     TabOrder = 0
+    object lbl8: TLabel
+      Left = 24
+      Top = 8
+      Width = 272
+      Height = 13
+      Caption = 'Please Use The Following Form To Add A Service Vendor '
+    end
   end
   object pnl2: TPanel
     Left = 8
-    Top = 88
+    Top = 47
     Width = 329
     Height = 249
     BevelInner = bvLowered
@@ -123,6 +134,12 @@ object frmaddservice: Tfrmaddservice
       Height = 21
       TabOrder = 5
       TextHint = '-- Select A Service --'
+      Items.Strings = (
+        'Consumables'
+        'Profesional'
+        'Retail'
+        'Cleaning '
+        'Packaging')
     end
     object edtvsphone: TEdit
       Left = 130
@@ -141,6 +158,7 @@ object frmaddservice: Tfrmaddservice
       ImageIndex = 1
       Images = il1
       TabOrder = 7
+      OnClick = btnaddvendorClick
     end
     object btnclear: TButton
       Left = 122
@@ -161,11 +179,12 @@ object frmaddservice: Tfrmaddservice
       ImageIndex = 2
       Images = il1
       TabOrder = 9
+      OnClick = btncancelClick
     end
   end
   object il1: TImageList
-    Left = 256
-    Top = 24
+    Left = 144
+    Top = 48
     Bitmap = {
       494C010103000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
@@ -307,8 +326,8 @@ object frmaddservice: Tfrmaddservice
       000000000000}
   end
   object mm1: TMainMenu
-    Left = 296
-    Top = 24
+    Left = 184
+    Top = 56
     object Fiel1: TMenuItem
       Caption = 'File'
       object N4: TMenuItem
@@ -335,6 +354,7 @@ object frmaddservice: Tfrmaddservice
     end
     object Help1: TMenuItem
       Caption = 'Help'
+      OnClick = Help1Click
     end
   end
 end
