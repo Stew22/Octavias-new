@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Menus,
-  System.ImageList, Vcl.ImgList,DM_Vendors,frm_edit_Vendors_U;
+  System.ImageList, Vcl.ImgList,DM_Vendors,frm_edit_Vendors_U,Winapi.ShellAPI,
+  frm_Delete_Service_Vendor;
 
 type
   Tfrmaddservice = class(TForm)
@@ -41,6 +42,7 @@ type
     btncancel: TButton;
     lbl8: TLabel;
     btnhrlp: TButton;
+    Exit1: TMenuItem;
     procedure btncancelClick(Sender: TObject);
     procedure btnaddvendorClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -48,6 +50,7 @@ type
     procedure btnhrlpClick(Sender: TObject);
     procedure DeleteVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
+    procedure Exit1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,7 +66,7 @@ implementation
 
 procedure Tfrmaddservice.AddVendor2Click(Sender: TObject);
 begin
- frmaddservice.Show;
+ frmeditservicevendor.Show;
 end;
 
 procedure Tfrmaddservice.btnaddvendorClick(Sender: TObject);
@@ -107,12 +110,13 @@ begin
         tblvendor['Vendor_Contact_Number'] := edtvsphone.Text;
         tblvendor['Vendor_Address'] := edtvsaddress.Text;
         tblvendor['Vendor_Type'] := cbbvservicet.Text;
-
+        tblvendor['Is_Service'] := 'True';
+        //
         tblvendor.Post;
         ShowMessage('Product Vendor Has Been Added Successfully!');
       end
       else
-        ShowMessage('The dataset is not active or closed.');
+      ShowMessage('The dataset is not active or closed.');
     end;
   end;
 end;
@@ -140,7 +144,12 @@ procedure Tfrmaddservice.DeleteVendor1Click(Sender: TObject);
 begin
  //here we are going to code a form that will allow the user to search by
  //vendor name or vendor code to delete them
+ frmdeleteservicevendor.Close;
+end;
 
+procedure Tfrmaddservice.Exit1Click(Sender: TObject);
+begin
+ frmaddservice.Close;
 end;
 
 procedure Tfrmaddservice.FormActivate(Sender: TObject);
@@ -165,7 +174,14 @@ end;
 
 procedure Tfrmaddservice.Help1Click(Sender: TObject);
 begin
- //here we will open the help
+ var
+ PDFFilename:String;
+ begin
+  //here we will shell execute the pdf to open
+  PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Add_Service_Vendor.pdf'; //replace this with the help file
+  ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+  //
+ end;
 end;
 
 end.

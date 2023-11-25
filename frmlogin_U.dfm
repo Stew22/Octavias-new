@@ -12,8 +12,10 @@ object frmlogin: Tfrmlogin
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  OldCreateOrder = True
   Position = poScreenCenter
   OnActivate = FormActivate
+  PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
     Left = 8
@@ -58,7 +60,7 @@ object frmlogin: Tfrmlogin
     end
   end
   object cbbuser: TComboBox
-    Left = 80
+    Left = 82
     Top = 85
     Width = 241
     Height = 21

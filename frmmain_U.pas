@@ -8,7 +8,7 @@ uses
   System.ImageList, Vcl.ImgList, Data.DB, Vcl.Grids, Vcl.DBGrids,ExcelXP,ComObj ,frm_Vendors_U ,frm_Stock_managment_U,
   Vcl.StdCtrls ,frmregister_U,frmremoveuser_U,frm_Bookings_U,fm_Help_Widget_U,
   frm_Vendors_Service_U,DM_Vendors,DM_Order,frm_Report_Bug_U,Winapi.ShellAPI,
-  frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U;
+  frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U,frm_Delete_Service_Vendor,DM_Products;
 
 type
   Tfrmmain = class(TForm)
@@ -79,6 +79,30 @@ type
     N25: TMenuItem;
     N26: TMenuItem;
     img1: TImage;
+    DatabaseManagment1: TMenuItem;
+    DatabaseManagment2: TMenuItem;
+    N27: TMenuItem;
+    N28: TMenuItem;
+    N29: TMenuItem;
+    ResetMyPassword1: TMenuItem;
+    N30: TMenuItem;
+    N31: TMenuItem;
+    N32: TMenuItem;
+    Auto1: TMenuItem;
+    N33: TMenuItem;
+    SetInterval1: TMenuItem;
+    N34: TMenuItem;
+    N35: TMenuItem;
+    Backup1: TMenuItem;
+    AutoDatabaseSyncing1: TMenuItem;
+    N36: TMenuItem;
+    N37: TMenuItem;
+    SetInterval2: TMenuItem;
+    N38: TMenuItem;
+    N39: TMenuItem;
+    BackupDatabases1: TMenuItem;
+    N40: TMenuItem;
+    N41: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -105,6 +129,11 @@ type
     procedure cbbvendorChange(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure AddVendor4Click(Sender: TObject);
+    procedure DeleteVendor2Click(Sender: TObject);
+    procedure DatabaseManagment2Click(Sender: TObject);
+    procedure ResetMyPassword1Click(Sender: TObject);
+    procedure BackupDatabases1Click(Sender: TObject);
+    procedure SetInterval2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -126,12 +155,12 @@ end;
 
 procedure Tfrmmain.AddVendor1Click(Sender: TObject);
 begin
- frmvendors.ShowModal;
+ frmvendors.ShowModal; //show rthe add product vendor form
 end;
 
 procedure Tfrmmain.AddVendor2Click(Sender: TObject);
 begin
- frmvendors.ShowModal;
+ frmvendors.ShowModal; //show the edit product vendor screen
 end;
 
 procedure Tfrmmain.AddVendor3Click(Sender: TObject);
@@ -142,6 +171,11 @@ end;
 procedure Tfrmmain.AddVendor4Click(Sender: TObject);
 begin
  frmeditservicevendor.ShowModal;
+end;
+
+procedure Tfrmmain.BackupDatabases1Click(Sender: TObject);
+begin
+ //here we will manually run the backup of all the sdatabases
 end;
 
 procedure Tfrmmain.Bookings1Click(Sender: TObject);
@@ -475,6 +509,17 @@ begin
  end;
 end;
 
+procedure Tfrmmain.DatabaseManagment2Click(Sender: TObject);
+begin
+ // here we are going sync the products with the orders database , whenever
+ //we are done updating any databases , we first make sure the dataset is closed
+ //then we sync across the two databases
+ // whenever we remove vendors from the relevant database we will also prompt the
+ //user to remove all the products asociated with that vendo
+ //we are going to run it every 1 hour aswell
+
+end;
+
 procedure Tfrmmain.dbgrd1DrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumn; State: TGridDrawState);
 Var
@@ -486,7 +531,12 @@ end;
 
 procedure Tfrmmain.DeleteVendor1Click(Sender: TObject);
 begin
- frmvendors.ShowModal;
+ frmvendors.ShowModal; //show the delete product vendor screen
+end;
+
+procedure Tfrmmain.DeleteVendor2Click(Sender: TObject);
+begin
+ frmdeleteservicevendor.ShowModal;
 end;
 
 procedure Tfrmmain.EditMyDetails1Click(Sender: TObject);
@@ -608,7 +658,26 @@ procedure Tfrmmain.RefreshList1Click(Sender: TObject);
 begin
  //here we will refresh the list from the database and add it to the db grid
  //
+ with DataModuleProducts do
+ begin
+  with Datamoduleorder do
+  begin
+   //here we are going to disconnect the datasource update then reanble
+   if (tblproducts.Active) and (tblorder.Active) then
+   begin
+    //here we are going to need to check 3 diffrent conditions
+    //first one is if there is new products added , this will be done by the product code
+    //second one is there is any product changes using the code as master key
+    //third is if there has been removed products , using the code as the master key
+    //
 
+
+   end else
+   begin
+    //here they are not connected
+   end;
+  end;
+ end;
 end;
 
 procedure Tfrmmain.ReportABug1Click(Sender: TObject);
@@ -620,6 +689,16 @@ end;
 procedure Tfrmmain.RequestSupport1Click(Sender: TObject);
 begin
  frmhelp.ShowModal;
+end;
+
+procedure Tfrmmain.ResetMyPassword1Click(Sender: TObject);
+begin
+ //here we will set a form for the user to reset there password provided that they have the admin logins
+end;
+
+procedure Tfrmmain.SetInterval2Click(Sender: TObject);
+begin
+ //here we will store the automatic backup of the databases in the day hour and minutes intevals
 end;
 
 procedure Tfrmmain.StockManagment1Click(Sender: TObject);

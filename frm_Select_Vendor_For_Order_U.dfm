@@ -12,8 +12,10 @@ object frmselectvendorfororder: Tfrmselectvendorfororder
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  OldCreateOrder = True
   Position = poScreenCenter
   OnActivate = FormActivate
+  PixelsPerInch = 96
   TextHeight = 13
   object pnl1: TPanel
     Left = 8
@@ -105,8 +107,8 @@ object frmselectvendorfororder: Tfrmselectvendorfororder
     end
   end
   object il1: TImageList
-    Left = 264
-    Top = 64
+    Left = 216
+    Top = 24
     Bitmap = {
       494C010104000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
@@ -378,5 +380,9 @@ object frmselectvendorfororder: Tfrmselectvendorfororder
       F18FF001F66FC993E3C7E001F00FCC33E7E7E043F00FE247FFFFE7C3F10FF00F
       FFFF0FC3FC3FFC7FFFFF0FFFFFFFFFFF00000000000000000000000000000000
       000000000000}
+  end
+  object dlgSave1: TSaveDialog
+    Left = 264
+    Top = 24
   end
 end

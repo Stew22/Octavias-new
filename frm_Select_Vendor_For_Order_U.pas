@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
-  Vcl.StdCtrls, Vcl.ExtCtrls,Winapi.ShellAPI;
+  Vcl.StdCtrls, Vcl.ExtCtrls,Winapi.ShellAPI,DM_Order;
 
 type
   Tfrmselectvendorfororder = class(TForm)
@@ -20,6 +20,7 @@ type
     btnbtachorder: TButton;
     lbl2: TLabel;
     btnhelp: TButton;
+    dlgSave1: TSaveDialog;
     procedure FormActivate(Sender: TObject);
     procedure btnbtachorderClick(Sender: TObject);
     procedure btnhelpClick(Sender: TObject);
@@ -52,7 +53,7 @@ begin
 
  end else
  begin
-  //cancel the operation \
+  //cancel the operation
   ShowMessage('Batch Save Has been Cancelled !');
  end;
 end;
@@ -75,10 +76,18 @@ begin
 end;
 
 procedure Tfrmselectvendorfororder.FormActivate(Sender: TObject);
+ var
+ Fname,Sdirec:string;
+ SOrder:TStrings;
 begin
  //here we will need to loop through the orders table for the order to be placed
  //then we will need to populate the vendors combo box
  //with only vendors that there are pending orders for the current order session
+ //
+ Sorder:=TStringList.Create;
+ //
+ dlgSave1.InitialDir := ExtractFileDir(Application.ExeName);
+ dlgSave1.Filter:='';  //here we will only allow text , csv and excell , maybe pdf
  //
  if cbbvendor.Text = '' then
  begin
@@ -88,6 +97,36 @@ begin
   btnplaceorder.Enabled:=True;
  end;
  //
+ with Datamoduleorder do
+ begin
+  if tblorder.Active then
+  begin
+   //here we are going to loop through all the vendors that we have active orders for
+   //populate them into the combobox , then we are going to apply filters to generate the order
+   //we will need to see how we are going to generate the order , use our order form as a example
+   //
+   //apply the filter
+   tblorder.Filtered := False;
+   tblorder.Filter := 'Vendor_Name = ' + QuotedStr(cbbvendor.Text);
+   tblorder.Filtered := True;
+   // now that we have the filtered dataset , now we can generate the order
+   //
+   while not tblorder.Eof do
+   begin
+    //here we will loop through each of the rows that have that vendor name to
+    //generate one order per vendor
+    //here we will save the order to stringgrids to make iteasier to process
+    //the use the save to file command to make it easier to save
+
+
+
+   end;
+   //
+  end else
+  begin
+  ShowMessage('There Was An Error Connecting To The Dataset Please Contact Your Software Developer');
+  end;
+ end;
 end;
 
 end.

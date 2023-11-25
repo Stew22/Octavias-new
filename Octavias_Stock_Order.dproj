@@ -207,6 +207,14 @@
             <Form>frmeditservicevendor</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="frm_Delete_Service_Vendor.pas">
+            <Form>frmdeleteservicevendor</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="frm_View_Vendors_U.pas">
+            <Form>frmViewVendors</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txaPackage"/>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txvpck"/>
         <BuildConfiguration Include="Release">
@@ -238,14 +246,14 @@
                 <DeployFile LocalName="Win64\Debug\Octavias_Stock_Order.rsm" Configuration="Debug" Class="DebugSymbols"/>
                 <DeployFile LocalName="ModelSupport_Octavias_Stock_Order\default.txaPackage" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="Win32\Debug\Octavias_Stock_Order.exe" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="C:\Users\dantu\Desktop\life logo 44.png" Configuration="Debug" Class="UWP_DelphiLogo44"/>
+                <DeployFile LocalName="ModelSupport_Octavias_Stock_Order\default.txvpck" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="ModelSupport_Octavias_Stock_Order\default.txaPackage" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win64">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ModelSupport_Octavias_Stock_Order\default.txvpck" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="C:\Users\dantu\Desktop\life logo 44.png" Configuration="Debug" Class="UWP_DelphiLogo44"/>
                 <DeployFile LocalName="Win64\Debug\Octavias_Stock_Order.rsm" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win64">
                         <RemoteName>Octavias_Stock_Order.rsm</RemoteName>

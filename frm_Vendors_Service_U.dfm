@@ -2,8 +2,8 @@ object frmaddservice: Tfrmaddservice
   Left = 0
   Top = 0
   Caption = 'Add A Service Vendor'
-  ClientHeight = 307
-  ClientWidth = 349
+  ClientHeight = 304
+  ClientWidth = 345
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -495,6 +495,10 @@ object frmaddservice: Tfrmaddservice
       end
       object N2: TMenuItem
         Caption = '-'
+      end
+      object Exit1: TMenuItem
+        Caption = 'Exit'
+        OnClick = Exit1Click
       end
     end
     object Help1: TMenuItem
