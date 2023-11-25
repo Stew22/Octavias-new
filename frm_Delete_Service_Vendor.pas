@@ -75,6 +75,11 @@ begin
      //
      tblvendor.Delete;
      //
+     //remeber here we will also need to remove all the produts correlated to the vendor ,
+     //from both the orders table and the products table
+
+
+     //
      ShowMessage('Vendor Has Been Succesfully Removed');
      //
      tblvendor.Filtered:=False;

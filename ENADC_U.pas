@@ -11,7 +11,7 @@ procedure ChangeFileExtension(const oldPath, newExtension: string);
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils,winapi.Windows;
 
 procedure ChangeFileExtension(const oldPath, newExtension: string);
 var

@@ -13,11 +13,9 @@ object frmmain: Tfrmmain
   Font.Name = 'Tahoma'
   Font.Style = []
   Menu = mm1
-  OldCreateOrder = True
   Position = poScreenCenter
   OnActivate = FormActivate
   OnPaint = FormPaint
-  PixelsPerInch = 96
   TextHeight = 13
   object img1: TImage
     Left = 8

@@ -12,10 +12,8 @@ object frmlogin: Tfrmlogin
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = True
   Position = poScreenCenter
   OnActivate = FormActivate
-  PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
     Left = 8
@@ -78,7 +76,7 @@ object frmlogin: Tfrmlogin
     BevelKind = bkFlat
     TabOrder = 2
     Text = ''
-    TextHint = 'Enter Your Password'
+    TextHint = '-- Enter Your Password --'
   end
   object btnlogin: TButton
     Left = 8

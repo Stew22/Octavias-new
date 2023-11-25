@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls , frm_Stock_Settings_U,frm_add_products_U,
-  Data.DB, Vcl.Grids, Vcl.DBGrids;
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls;
 
 type
   Tfrmstockmanagement = class(TForm)
@@ -33,6 +33,12 @@ type
     N8: TMenuItem;
     N4: TMenuItem;
     dbgrdproducts: TDBGrid;
+    lbl1: TLabel;
+    N9: TMenuItem;
+    N10: TMenuItem;
+    N11: TMenuItem;
+    N12: TMenuItem;
+    N13: TMenuItem;
     procedure Settings1Click(Sender: TObject);
     procedure Exit1Click(Sender: TObject);
     procedure UpdateList1Click(Sender: TObject);
@@ -40,6 +46,8 @@ type
     procedure Reports2Click(Sender: TObject);
     procedure StockDaysCoverReport1Click(Sender: TObject);
     procedure AddProducts1Click(Sender: TObject);
+    procedure AddProducts2Click(Sender: TObject);
+    procedure RemoveProducts1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -58,9 +66,19 @@ begin
  frmaddproducts.Show;
 end;
 
+procedure Tfrmstockmanagement.AddProducts2Click(Sender: TObject);
+begin
+ //here we are going to code a form that we can edit the product details
+end;
+
 procedure Tfrmstockmanagement.Exit1Click(Sender: TObject);
 begin
- frmstockmanagement.Close; //closes the form ss
+ frmstockmanagement.Close; //closes the form
+end;
+
+procedure Tfrmstockmanagement.RemoveProducts1Click(Sender: TObject);
+begin
+//here we are going to add a form to remove products from the listing
 end;
 
 procedure Tfrmstockmanagement.Reports2Click(Sender: TObject);

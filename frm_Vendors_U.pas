@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.ImageList,
-  Vcl.ImgList, Vcl.ExtCtrls,DM_Vendors;
+  Vcl.ImgList, Vcl.ExtCtrls,DM_Vendors,Winapi.ShellAPI;
 
 type
   Tfrmvendors = class(TForm)
@@ -69,7 +69,6 @@ begin
       if tblvendor.Active then
       begin
         tblvendor.First; // Move to the first record
-
         // Check for existing vendors
         while not tblvendor.Eof do
         begin
@@ -81,7 +80,6 @@ begin
           end;
           tblvendor.Next; // Move to the next record
         end;
-
         // After ensuring uniqueness, add a new record
         tblvendor.Append;
         tblvendor['Vendor_Name'] := edtvname.Text;
@@ -91,12 +89,12 @@ begin
         tblvendor['Vendor_Contact_Number'] := edtvcontactphone.Text;
         tblvendor['Vendor_Address'] := edtvaddress.Text;
         tblvendor['Vendor_Type'] := cbbvendortype.Text;
-
+        //
         tblvendor.Post;
         ShowMessage('Product Vendor Has Been Added Successfully!');
       end
       else
-        ShowMessage('The dataset is not active or closed.');
+      ShowMessage('The dataset is not active or closed.');
     end;
   end;
 end;
@@ -127,8 +125,13 @@ begin
 end;
 
 procedure Tfrmvendors.btnhelpClick(Sender: TObject);
+ var
+ PDFFileName:string;
 begin
- //opens the manual
+//here we will shell execute the manual for the following form
+ PDFFileName := ExtractFileDir(Application.ExeName) + '/Bin/M_Product_Vendor_Addition.pdf'; //replace this with the help file
+ ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+ //
 end;
 
 procedure Tfrmvendors.FormActivate(Sender: TObject);

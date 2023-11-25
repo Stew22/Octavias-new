@@ -13,10 +13,8 @@ object frmeditservicevendor: Tfrmeditservicevendor
   Font.Name = 'Tahoma'
   Font.Style = []
   Menu = mm1
-  OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
-  PixelsPerInch = 96
   TextHeight = 13
   object pnl1: TPanel
     Left = 8
@@ -26,7 +24,7 @@ object frmeditservicevendor: Tfrmeditservicevendor
     BevelInner = bvLowered
     TabOrder = 0
     object lblVendor7: TLabel
-      Left = 96
+      Left = 80
       Top = 18
       Width = 405
       Height = 13

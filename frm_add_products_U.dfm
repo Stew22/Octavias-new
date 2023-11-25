@@ -114,14 +114,14 @@ object frmaddproducts: Tfrmaddproducts
     end
     object lbl11: TLabel
       Left = 8
-      Top = 240
+      Top = 242
       Width = 102
       Height = 13
       Caption = 'Minimum Order Qty : '
     end
     object lbl12: TLabel
       Left = 8
-      Top = 174
+      Top = 176
       Width = 30
       Height = 13
       Caption = 'RRP : '
