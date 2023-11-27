@@ -90,15 +90,13 @@ begin
 end;
 
 procedure Tfrmdeleteservicevendor.btnhelpClick(Sender: TObject);
-begin
  var
  PDFFilename:String;
- begin
+begin
   //here we will shell execute the pdf to open
   PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Delete_Service_Vendor.pdf'; //replace this with the help file
   ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
   //
- end;
 end;
 
 procedure Tfrmdeleteservicevendor.btnviewvendorClick(Sender: TObject);

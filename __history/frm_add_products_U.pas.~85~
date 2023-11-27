@@ -5,8 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
-  System.ImageList, Vcl.ImgList, Vcl.StdCtrls,DM_Products,Winapi.ShellAPI,
-  DM_Order;
+  System.ImageList, Vcl.ImgList, Vcl.StdCtrls,DM_Products,Winapi.ShellAPI,DM_Order;
 
 type
   Tfrmaddproducts = class(TForm)
@@ -130,10 +129,21 @@ begin
     //
     //post the data to the database now
     tblproducts.Post;
-    //
-    //here we are going to add the values to the orders database to
+    //with the other datamodule add to the orders page aswell
+    with Datamoduleorder do
+    begin
+     if tblorder.Active = True then
+     begin
+      tblorder['Vendor_Name']:=cbbvendor.Text;
+      tblorder['Item_Number']:=edtpcode.Text;
+      tblorder['Item Discription']:=edtpdisc.Text;
+      tblorder['Price']:=edtpdisc.Text;
+      //
+     end else
+     begin
 
-
+     end;
+    end;
     //
     ShowMessage('The Product Has Been Added To The Catalogue Successfully !');
     btnclear.Click; //here we will clear all fields

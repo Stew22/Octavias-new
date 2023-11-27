@@ -129,8 +129,8 @@ begin
     //
     //post the data to the database now
     tblproducts.Post;
-    //
-    //here we are going to add the values to the orders database to
+    //with the other datamodule add to the orders page aswell
+
 
 
     //
