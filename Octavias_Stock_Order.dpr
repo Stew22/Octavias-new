@@ -28,7 +28,8 @@ uses
   DB_Backup_U in 'DB_Backup_U.pas',
   frm_edit_Vendors_U in 'frm_edit_Vendors_U.pas' {frmeditservicevendor},
   frm_Delete_Service_Vendor in 'frm_Delete_Service_Vendor.pas' {frmdeleteservicevendor},
-  frm_View_Vendors_U in 'frm_View_Vendors_U.pas' {frmViewVendors};
+  frm_View_Vendors_U in 'frm_View_Vendors_U.pas' {frmViewVendors},
+  frm_Reset_Password_U in 'frm_Reset_Password_U.pas' {frmresetpassword};
 
 {$R *.res}
 
@@ -65,5 +66,6 @@ begin
   Application.CreateForm(Tfrmeditservicevendor, frmeditservicevendor);
   Application.CreateForm(Tfrmdeleteservicevendor, frmdeleteservicevendor);
   Application.CreateForm(TfrmViewVendors, frmViewVendors);
+  Application.CreateForm(Tfrmresetpassword, frmresetpassword);
   Application.Run;
 end.

@@ -8,7 +8,8 @@ uses
   System.ImageList, Vcl.ImgList, Data.DB, Vcl.Grids, Vcl.DBGrids,ExcelXP,ComObj ,frm_Vendors_U ,frm_Stock_managment_U,
   Vcl.StdCtrls ,frmregister_U,frmremoveuser_U,frm_Bookings_U,fm_Help_Widget_U,
   frm_Vendors_Service_U,DM_Vendors,DM_Order,frm_Report_Bug_U,Winapi.ShellAPI,
-  frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U,frm_Delete_Service_Vendor,DM_Products;
+  frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U,frm_Delete_Service_Vendor,DM_Products,
+  frm_Reset_Password_U;
 
 type
   Tfrmmain = class(TForm)
@@ -694,6 +695,7 @@ end;
 procedure Tfrmmain.ResetMyPassword1Click(Sender: TObject);
 begin
  //here we will set a form for the user to reset there password provided that they have the admin logins
+ frmresetpassword.ShowModal;
 end;
 
 procedure Tfrmmain.SetInterval2Click(Sender: TObject);
