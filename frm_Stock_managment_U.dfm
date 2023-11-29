@@ -14,6 +14,7 @@ object frmstockmanagement: Tfrmstockmanagement
   Font.Style = []
   Menu = mm1
   Position = poScreenCenter
+  OnShow = FormShow
   TextHeight = 13
   object pnl1: TPanel
     Left = 8
@@ -43,6 +44,7 @@ object frmstockmanagement: Tfrmstockmanagement
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnDrawColumnCell = dbgrdproductsDrawColumnCell
   end
   object mm1: TMainMenu
     Left = 384

@@ -37,13 +37,13 @@ object frmmain: Tfrmmain
     Width = 1062
     Height = 633
     DataSource = Datamoduleorder.dsorder
-    DefaultDrawing = False
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnColEnter = dbgrd1ColEnter
     OnDrawColumnCell = dbgrd1DrawColumnCell
   end
   object pnl2: TPanel
@@ -91,6 +91,7 @@ object frmmain: Tfrmmain
         Width = 249
         Height = 21
         TabOrder = 0
+        OnChange = edtsearchChange
       end
       object btnsearch: TButton
         Left = 359
@@ -129,6 +130,7 @@ object frmmain: Tfrmmain
       Height = 21
       TabOrder = 5
       TextHint = '-- Tertiary Categories --'
+      OnChange = cbbtertiarycatagoryChange
     end
   end
   object mm1: TMainMenu
@@ -324,7 +326,7 @@ object frmmain: Tfrmmain
           Caption = '-'
         end
         object AutoDatabaseSyncing1: TMenuItem
-          Caption = 'Auto Database Syncing '
+          Caption = 'Auto Database Backup'
           object N38: TMenuItem
             Caption = '-'
           end

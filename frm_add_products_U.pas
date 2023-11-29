@@ -138,7 +138,10 @@ begin
       tblorder['Vendor_Name']:=cbbvendor.Text;
       tblorder['Item_Number']:=edtpcode.Text;
       tblorder['Item Discription']:=edtpdisc.Text;
-      tblorder['Price']:=edtpdisc.Text;
+      tblorder['Price']:=edtpriceinc.Text;
+      tblorder['Main_Category']:=cbbmaincat.Text;
+      tblorder['Secondary_Category']:=cbbseccat.Text;
+      tblorder['Tertiary_Category']:=cbbtercat.Text;
       tblorder.Post;
       //
      end else
@@ -168,6 +171,12 @@ begin
  edtpdisc.Clear;
  edtbprice.Text := '0';
  edtdefqty.Clear;
+ cbbtercat.Text:='';
+ cbbmaincat.Text:='';
+ cbbseccat.Text:='';
+ edtleadtimedays.Clear;
+ edtrrp.Clear;
+ cbbvendor.Text:='';
  //we need to add in the rest of the fields
  btnaddproduct.Enabled:=False;
 end;
@@ -491,23 +500,23 @@ begin
  //
  with DataModuleProducts do
  begin
-   if conproducts.Connected = True then
+   if conproducts.Connected = False then
    begin
-    conproducts.Connected:=False; //disconnect a previous session
+    ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
    end else
    begin
     //here we will connect the database
-    conproducts.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;' +
-    'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Product_Database.accdb' +
-    ';Mode=ReadWrite;Persist Security Info=False';
+    //conproducts.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;' +
+    //'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Product_Database.accdb' +
+    //';Mode=ReadWrite;Persist Security Info=False';
     //
-    tblproducts.TableName:='tblproducts';
+    //tblproducts.TableName:='tblproducts';
     //
-    conproducts.Connected:=True;
-    tblproducts.Active:=True;
+    //conproducts.Connected:=True;
+    //tblproducts.Active:=True;
     tblproducts.First; //here we go to the first value
     //
-    for i := 0 to tblproducts.RecordCount -1 do
+    while not tblproducts.Eof do
     begin
      //here we will need to extract vendor names then check if any duplicates
      VName_Temp:= tblproducts.FieldByName('Vendor_Name').AsString;

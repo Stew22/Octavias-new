@@ -135,6 +135,9 @@ type
     procedure ResetMyPassword1Click(Sender: TObject);
     procedure BackupDatabases1Click(Sender: TObject);
     procedure SetInterval2Click(Sender: TObject);
+    procedure cbbtertiarycatagoryChange(Sender: TObject);
+    procedure edtsearchChange(Sender: TObject);
+    procedure dbgrd1ColEnter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -196,21 +199,44 @@ end;
 
 procedure Tfrmmain.btnsearchClick(Sender: TObject);
 begin
- // here we will filter the dataset with SQL Like and unique operator
- //here we are going to add in the filter per vendorname
- with Datamoduleorder do
- begin
-   if conorder.Connected = True then
-   begin
-    tblorder.Filtered:=False;
-    //tblorder.Filter:='Vendor_Name = ' + QuotedStr(cbbvendor.Text);
-    //tblorder.Filtered:=True;
-   end else
-   begin
-    ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
-   end;
- end;
+  // Here we will filter the dataset with SQL Like and unique operator
+  // Here we are going to add in the filter per vendorname
+  with Datamoduleorder do
+  begin
+    if conorder.Connected then
+    begin
+     if edtsearch.Text <> '' then
+     begin
+      tblorder.Filtered := False;
+      tblorder.Filter :=
+        '[Vendor_Name] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Item_Number] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Item Discription] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Main_Category] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Secondary_Category] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Tertiary_Category] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Price] LIKE ' + QuotedStr('%' + edtsearch.Text + '%');
+      //
+      tblorder.Filtered := True;
+      //
+     end else
+     begin
+      tblorder.Filtered:=False;
+     end;
+     //
+      if tblorder.FieldByName('Vendor_Name').AsString = '' then
+      begin
+       ShowMessage('Oops ! , We Couldnt Find What Your Looking For , Please Try A Diffrent Seacrh Term');
+       tblorder.Filtered:=False;
+      end;
+    end
+    else
+    begin
+      ShowMessage('There Was An Error Connecting To The Database, Please Contact The System Developer');
+    end;
+  end;
 end;
+
 
 procedure Tfrmmain.cbbcatogoriesChange(Sender: TObject);
 begin
@@ -325,17 +351,21 @@ begin
   //here we are going to add in the filter per vendorname
  with Datamoduleorder do
  begin
-   if conorder.Connected = True then
-   begin
-    tblorder.Filtered:=False;
-    tblorder.Filter:='Vendor_Name = ' + QuotedStr(cbbvendor.Text); //here we need to check
-    //how are going to only show some of the fields in the dbgrid for the database
-    //so that we can search by catagory aswell
-    //tblorder.Filtered:=True;
-   end else
-   begin
-    ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
-   end;
+  if tblorder.active then
+  begin
+   if cbbcatogories.Text <> '' then
+    begin
+     tblorder.Filtered:=False;
+     tblorder.Filter:='Main_Category = ' + QuotedStr(cbbcatogories.Text);
+     tblorder.Filtered:=True;
+    end else
+    begin
+     tblorder.Filtered:=False;
+    end;
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
+  end;
  end;
 end;
 
@@ -480,16 +510,43 @@ begin
   //here we are going to add in the filter per vendorname
  with Datamoduleorder do
  begin
-   if conorder.Connected = True then
-   begin
-    tblorder.Filtered:=False;
-    //tblorder.Filter:='Vendor_Name = ' + QuotedStr(cbbvendor.Text);
-    //tblorder.Filtered:=True;
-    //this will be a combination of the main filter and the secondary filter
-   end else
-   begin
-    ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
-   end;
+  if tblorder.active then
+  begin
+   if cbbsubcatagories.Text <> '' then
+    begin
+     tblorder.Filtered:=False;
+     tblorder.Filter:='Secondary_Category = ' + QuotedStr(cbbsubcatagories.Text);
+     tblorder.Filtered:=True;
+    end else
+    begin
+     tblorder.Filtered:=False;
+    end;
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
+  end;
+ end;
+end;
+
+procedure Tfrmmain.cbbtertiarycatagoryChange(Sender: TObject);
+begin
+ with Datamoduleorder do
+ begin
+  if tblorder.active then
+  begin
+   if cbbtertiarycatagory.Text <> '' then
+    begin
+     tblorder.Filtered:=False;
+     tblorder.Filter:='Tertiary_Category = ' + QuotedStr(cbbtertiarycatagory.Text);
+     tblorder.Filtered:=True;
+    end else
+    begin
+     tblorder.Filtered:=False;
+    end;
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
+  end;
  end;
 end;
 
@@ -498,15 +555,21 @@ begin
  //here we are going to add in the filter per vendorname
  with Datamoduleorder do
  begin
-   if conorder.Connected = True then
-   begin
+  if tblorder.active then
+  begin
+   if cbbvendor.Text <> '' then
+    begin
     tblorder.Filtered:=False;
-    tblorder.Filter:='Vendor_Name = ' + QuotedStr(cbbvendor.Text);
-    tblorder.Filtered:=True;
-   end else
-   begin
-    ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
-   end;
+     tblorder.Filter:='Vendor_Name = ' + QuotedStr(cbbvendor.Text);
+     tblorder.Filtered:=True;
+    end else
+    begin
+     tblorder.Filtered:=False;
+    end;
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
+  end;
  end;
 end;
 
@@ -519,6 +582,15 @@ begin
  //user to remove all the products asociated with that vendo
  //we are going to run it every 1 hour aswell
 
+end;
+
+procedure Tfrmmain.dbgrd1ColEnter(Sender: TObject);
+begin
+  // Check if the current column is the 8th column
+  if dbgrd1.SelectedField.Index = 8 then
+    dbgrd1.ReadOnly := False
+  else
+    dbgrd1.ReadOnly := True;
 end;
 
 procedure Tfrmmain.dbgrd1DrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -554,6 +626,44 @@ begin
  frmremoveuser.ShowModal;
 end;
 
+procedure Tfrmmain.edtsearchChange(Sender: TObject);
+begin
+  with Datamoduleorder do
+  begin
+    if conorder.Connected then
+    begin
+     if edtsearch.Text <> '' then
+     begin
+      tblorder.Filtered := False;
+      tblorder.Filter :=
+        '[Vendor_Name] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Item_Number] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Item Discription] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Main_Category] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Secondary_Category] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Tertiary_Category] LIKE ' + QuotedStr('%' + edtsearch.Text + '%') +
+        ' OR [Price] LIKE ' + QuotedStr('%' + edtsearch.Text + '%');
+      //
+      tblorder.Filtered := True;
+      //
+     end else
+     begin
+      tblorder.Filtered:=False;
+     end;
+     //
+      if tblorder.FieldByName('Vendor_Name').AsString = '' then
+      begin
+       ShowMessage('Oops ! , We Couldnt Find What Your Looking For , Please Try A Diffrent Seacrh Term');
+       tblorder.Filtered:=False;
+      end;
+    end
+    else
+    begin
+      ShowMessage('There Was An Error Connecting To The Database, Please Contact The System Developer');
+    end;
+  end;
+end;
+
 procedure Tfrmmain.Exit1Click(Sender: TObject);
 begin
 frmmain.Close;
@@ -562,6 +672,7 @@ end;
 procedure Tfrmmain.FormActivate(Sender: TObject);
 var
 I,J:Integer;
+VName_Temp :string;
 begin
  cbbvendor.Clear;
  cbbcatogories.Clear;
@@ -594,29 +705,40 @@ begin
  //
  cbbtertiarycatagory.Hide;
  //
-  with Datamodulevendor do
+  with Datamoduleorder do
  begin
-   if convendor.Connected = True then
+   if conorder.Connected = True then
    begin
-    convendor.Connected:=False; //disconnect a previous session
+    conorder.Connected:=False; //disconnect a previous session
    end else
    begin
     //here we will connect the database
-    convendor.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;' +
-    'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Vendor_Database.accdb' +
+    conorder.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;' +
+    'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Order_Database.accdb' +
     ';Mode=ReadWrite;Persist Security Info=False';
     //
-    tblvendor.TableName:='tblvendors';
+    tblorder.TableName:='tblorder';
     //
-    convendor.Connected:=True;
-    tblvendor.Active:=True;
-    tblvendor.First; //here we go to the first value
+    conorder.Connected:=True;
+    tblorder.Active:=True;
+    tblorder.First; //here we go to the first value
     //
     //now we loop through the users and populate the users field
-    for I := 0 to tblvendor.RecordCount -1 do
-      begin
-        cbbvendor.Items.Add(tblvendor.FieldByName('Vendor_Name').AsString);
-      end;
+    while not tblorder.Eof do
+    begin
+     //here we will need to extract vendor names then check if any duplicates
+     VName_Temp:= tblorder.FieldByName('Vendor_Name').AsString;
+     //
+     if cbbvendor.Items.IndexOf(VName_Temp) = -1 then
+     begin
+      cbbvendor.Items.Add(VName_Temp);
+      tblorder.Next;
+     end else
+     begin
+      //then it is a duplicate and we will move to the next record
+      tblorder.Next;
+     end;
+    end;
     //
    end;
  end;

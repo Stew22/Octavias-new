@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  System.ImageList, Vcl.ImgList, Vcl.Menus, DM_Vendors , frm_View_Vendors_U,Winapi.ShellAPI;
+  System.ImageList, Vcl.ImgList, Vcl.Menus, DM_Vendors , frm_View_Vendors_U,Winapi.ShellAPI,
+  DM_Products,DM_Order;
 
 type
   Tfrmdeleteservicevendor = class(TForm)
@@ -77,8 +78,36 @@ begin
      //
      //remeber here we will also need to remove all the produts correlated to the vendor ,
      //from both the orders table and the products table
+      with DataModuleProducts do
+      begin
+       with Datamoduleorder do
+       begin
+        if tblproducts.Active = true then
+        begin
+         if tblorder.Active = True then
+         begin
+          //here we will confirm with the user if we can delete the products aswell
+          //
+          //loop through the orders and the product vendors table to delete all associated products with the vendor
+          while not tblorder.Eof do
+          begin
 
+          end;
+          //
+          while not tblproducts.Eof do
+          begin
 
+          end;
+         end else
+         begin
+          ShowMessage('There Was An Error Connecting To The Orders Database , Please Contact Your Software Developer');
+         end;
+        end else
+        begin
+         ShowMessage('There Was An Error Connecting To The Products Database , Please Contact Your Software Developer');
+        end;
+       end;
+      end;
      //
      ShowMessage('Vendor Has Been Succesfully Removed');
      //

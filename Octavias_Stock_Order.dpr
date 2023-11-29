@@ -29,7 +29,9 @@ uses
   frm_edit_Vendors_U in 'frm_edit_Vendors_U.pas' {frmeditservicevendor},
   frm_Delete_Service_Vendor in 'frm_Delete_Service_Vendor.pas' {frmdeleteservicevendor},
   frm_View_Vendors_U in 'frm_View_Vendors_U.pas' {frmViewVendors},
-  frm_Reset_Password_U in 'frm_Reset_Password_U.pas' {frmresetpassword};
+  frm_Reset_Password_U in 'frm_Reset_Password_U.pas' {frmresetpassword},
+  frm_Edit_Poroduct_Details_U in 'frm_Edit_Poroduct_Details_U.pas' {frmeditproductdetails},
+  Logger_U in 'Logger_U.pas';
 
 {$R *.res}
 
@@ -67,5 +69,6 @@ begin
   Application.CreateForm(Tfrmdeleteservicevendor, frmdeleteservicevendor);
   Application.CreateForm(TfrmViewVendors, frmViewVendors);
   Application.CreateForm(Tfrmresetpassword, frmresetpassword);
+  Application.CreateForm(Tfrmeditproductdetails, frmeditproductdetails);
   Application.Run;
 end.

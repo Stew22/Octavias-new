@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls , frm_Stock_Settings_U,frm_add_products_U,
-  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls;
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,frm_Edit_Poroduct_Details_U,DM_Products;
 
 type
   Tfrmstockmanagement = class(TForm)
@@ -48,6 +48,9 @@ type
     procedure AddProducts1Click(Sender: TObject);
     procedure AddProducts2Click(Sender: TObject);
     procedure RemoveProducts1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure dbgrdproductsDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
   public
@@ -69,11 +72,56 @@ end;
 procedure Tfrmstockmanagement.AddProducts2Click(Sender: TObject);
 begin
  //here we are going to code a form that we can edit the product details
+ frmeditproductdetails.ShowModal;
+end;
+
+procedure Tfrmstockmanagement.dbgrdproductsDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+Var
+  w : Integer;
+begin
+   w := 5+dbgrdproducts.Canvas.TextExtent(Column.Field.DisplayText).cx;
+  if w>column.Width then Column.Width := w;
 end;
 
 procedure Tfrmstockmanagement.Exit1Click(Sender: TObject);
 begin
  frmstockmanagement.Close; //closes the form
+end;
+
+procedure Tfrmstockmanagement.FormShow(Sender: TObject);
+var
+ J:Integer;
+begin
+ with DataModuleProducts do
+ begin
+ if conproducts.Connected = False then
+  begin
+   //here we will connect
+    conproducts.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;' +
+    'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Product_Database.accdb' +
+    ';Mode=ReadWrite;Persist Security Info=False';
+     //
+    conproducts.Connected:=True;
+    tblproducts.TableName:='tblproducts';
+    tblproducts.Active:=True;
+    tblproducts.First; //here we go to the first value
+    //
+    dbgrdproducts.DataSource:=dsproducts;
+  end else
+  begin
+   if tblproducts.Active = True then
+   begin
+    //here we will confirm its connected
+   end else
+   begin
+    ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer');
+   end;
+  end;
+ end;
+ //
+ for J := 0 to dbgrdproducts.Columns.Count - 1 do
+   dbgrdproducts.Columns[J].Width := 5 + dbgrdproducts.Canvas.TextWidth(dbgrdproducts.Columns[J].title.caption);
 end;
 
 procedure Tfrmstockmanagement.RemoveProducts1Click(Sender: TObject);
