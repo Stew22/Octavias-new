@@ -14,6 +14,7 @@ object frmselectvendorfororder: Tfrmselectvendorfororder
   Font.Style = []
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnShow = FormShow
   TextHeight = 13
   object pnl1: TPanel
     Left = 8
@@ -62,6 +63,7 @@ object frmselectvendorfororder: Tfrmselectvendorfororder
       Height = 21
       TabOrder = 0
       TextHint = '-- Select Vendor --'
+      OnChange = cbbvendorChange
     end
   end
   object pnl3: TPanel
@@ -80,6 +82,7 @@ object frmselectvendorfororder: Tfrmselectvendorfororder
       ImageIndex = 1
       Images = il1
       TabOrder = 0
+      OnClick = btnplaceorderClick
     end
     object btncancel: TButton
       Left = 270

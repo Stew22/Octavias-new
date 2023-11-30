@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
-  System.ImageList, Vcl.ImgList, Vcl.StdCtrls,DM_Products,Winapi.ShellAPI,DM_Order;
+  System.ImageList, Vcl.ImgList, Vcl.StdCtrls,DM_Products,Winapi.ShellAPI,DM_Order,DM_Vendors;
 
 type
   Tfrmaddproducts = class(TForm)
@@ -498,40 +498,29 @@ begin
  cbbmaincat.Items.Add('Stationery');
  //here we are going t write the logic that connects to the database
  //
- with DataModuleProducts do
+ with Datamodulevendor do
  begin
-   if conproducts.Connected = False then
-   begin
-    ShowMessage('There Was An Error Connecting To The Database , Please Contact The System Developer');
-   end else
-   begin
-    //here we will connect the database
-    //conproducts.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;' +
-    //'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Product_Database.accdb' +
-    //';Mode=ReadWrite;Persist Security Info=False';
-    //
-    //tblproducts.TableName:='tblproducts';
-    //
-    //conproducts.Connected:=True;
-    //tblproducts.Active:=True;
-    tblproducts.First; //here we go to the first value
-    //
-    while not tblproducts.Eof do
+  if tblvendor.Active = True then
+  begin
+  while not tblvendor.Eof do
     begin
      //here we will need to extract vendor names then check if any duplicates
-     VName_Temp:= tblproducts.FieldByName('Vendor_Name').AsString;
+     VName_Temp:= tblvendor.FieldByName('Vendor_Name').AsString;
      //
      if cbbvendor.Items.IndexOf(VName_Temp) = -1 then
      begin
       cbbvendor.Items.Add(VName_Temp);
-      tblproducts.Next;
+      tblvendor.Next;
      end else
      begin
       //then it is a duplicate and we will move to the next record
-      tblproducts.Next;
+      tblvendor.Next;
      end;
     end;
-   end;
+  end else
+  begin
+   ShowMessage('An Error Has Occured Trying To Connect To The Databas , Please Contact Your Software Developer');
+  end;
  end;
 end;
 

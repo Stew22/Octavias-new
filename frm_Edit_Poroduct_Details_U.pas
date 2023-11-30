@@ -57,6 +57,7 @@ type
     procedure btncancelClick(Sender: TObject);
     procedure btnhelpClick(Sender: TObject);
     procedure btnsearchClick(Sender: TObject);
+    procedure btnsaveeditsClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -91,12 +92,68 @@ begin
  cbbeditseccat.Enabled:=False;
  cbbtercat.Enabled:=False;
  //
+ with DataModuleProducts do
+ begin
+   if tblproducts.Active = True then
+   begin
+     tblproducts.Filtered:=False;
+     tblproducts.Filter:='';
+   end;
+ end;
+ //
  frmeditproductdetails.Close;
 end;
 
 procedure Tfrmeditproductdetails.btnhelpClick(Sender: TObject);
 begin
  //here we will open the help pdf
+end;
+
+procedure Tfrmeditproductdetails.btnsaveeditsClick(Sender: TObject);
+begin
+ //here we will check that there is no empty fields
+ //then upblish the edits
+ if (cbbeditvendor.Text = '') or (edtpriceinc.Text = '') or (edteditproductdisc.Text = '') or
+ (edtpriceexc.Text = '') or (edteditrrp.Text = '') or (edteditdeforderqty.Text = '') or
+ (edteditminorderqty.Text = '') or (cbbeditmaincat.Text = '') or (cbbeditseccat.Text = '') then
+ begin
+  ShowMessage('You Can Not Leave Any Of The Fields Blank , Please try Again');
+ end else
+ begin
+  with DataModuleProducts do
+  begin
+    if tblproducts.Active = True then
+    begin
+      //here we will make the edits
+      tblproducts.Filter:='Item_Number = ' + QuotedStr(edteditproductsku.Text);
+      //here we need to check that it exists
+      tblproducts.Filtered:=True;
+      //
+      tblproducts.Edit;
+      //
+      tblproducts['Vendor_Name']:=cbbeditvendor.Text;
+      tblproducts['Item_Code']:=edteditleadtime.Text;
+      tblproducts['Size']:=edteditdeforderqty.Text;
+      tblproducts['Most_Recent_Cost_Inc_Vat']:=edtpriceinc.Text;
+      tblproducts['Item_Discription']:=edteditproductdisc.Text;
+      tblproducts['Most_Recent_Cost_Excl_Vat']:=edtpriceexc.Text;
+      tblproducts['RRP']:=edteditrrp.Text;
+      tblproducts['Min_Order_Qty']:=edteditdeforderqty.Text;
+      tblproducts['Main_Category']:=cbbeditmaincat.Text;
+      tblproducts['Secondary_Category']:=cbbeditseccat.Text;
+      tblproducts['Tertiary_Category']:=cbbtercat.Text;
+      tblproducts['Lead_Time_Days']:=edteditleadtime.Text;
+      //
+      tblproducts.Post;
+      //
+      ShowMessage('Edits Have Been Successfully Saved !');
+      //
+    end else
+    begin
+     ShowMessage('There Was An Error Connecting To The Database , Please Contact Your System Developer');
+    end;
+  end;
+ end;
 end;
 
 procedure Tfrmeditproductdetails.btnsearchClick(Sender: TObject);
@@ -124,6 +181,7 @@ begin
       edteditrrp.Enabled:=True;
       edteditdeforderqty.Enabled:=True;
       edteditminorderqty.Enabled:=True;
+      edteditleadtime.Enabled:=True;
       cbbeditmaincat.Enabled:=true;
       cbbeditseccat.Enabled:=true;
       cbbtercat.Enabled:=True;
@@ -135,6 +193,7 @@ begin
       edteditrrp.Text := tblproducts.FieldByName('RRP').AsString;
       edteditdeforderqty.Text := tblproducts.FieldByName('Min_Order_Qty').AsString;
       edteditminorderqty.Text := tblproducts.FieldByName('Min_Order_Qty').AsString;
+      edteditminorderqty.Text := tblproducts.FieldByName('Lead_Time_Days').AsString;
       cbbeditmaincat.Text := tblproducts.FieldByName('Main_Category').AsString;
       cbbeditseccat.Text := tblproducts.FieldByName('Secondary_Category').AsString;
       cbbtercat.Text := tblproducts.FieldByName('Tertiary_Category').AsString;

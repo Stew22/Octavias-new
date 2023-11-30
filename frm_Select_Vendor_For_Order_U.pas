@@ -25,6 +25,9 @@ type
     procedure btnbtachorderClick(Sender: TObject);
     procedure btnhelpClick(Sender: TObject);
     procedure btncancelClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure cbbvendorChange(Sender: TObject);
+    procedure btnplaceorderClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,6 +66,7 @@ begin
  cbbvendor.Clear;
  btnplaceorder.Enabled:=False;
  btnbtachorder.Enabled:=False;
+ frmselectvendorfororder.Close;
 end;
 
 procedure Tfrmselectvendorfororder.btnhelpClick(Sender: TObject);
@@ -70,9 +74,76 @@ var
 PDFFileName:string;
 begin
 //here we will shell execute the manual for the following form
- PDFFileName := 'C:\Path\To\YourPDFFile.pdf'; //replace this with the help file
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Export_Order.pdf'; //replace this with the help file
  ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
  //
+end;
+
+procedure Tfrmselectvendorfororder.btnplaceorderClick(Sender: TObject);
+Var
+ i,j,k:Integer;
+ TStrings:TStringList;
+ CSVFileName: string;
+begin
+ if dlgSave1.Execute() then
+ begin
+  CSVFileName:=dlgSave1.FileName;
+  //
+  with Datamoduleorder do
+   begin
+     if tblorder.Active = True then
+     begin
+      //
+      try
+       TStrings:=TStringList.Create;
+       //
+       tblorder.First; //go to the first record
+       TStrings.Add('Vendor_Name,Item_Number,Item Discription,Price,Qty,'); //headers
+       while not tblorder.Eof do
+       begin
+         //
+         TStrings.Add(tblorder.FieldByName('Vendor_Name').AsString + ',' + tblorder.FieldByName('Item_Number').AsString + ',' + tblorder.FieldByName('Item Discription').AsString + ',' + tblorder.FieldByName('Price').AsString + ',' + tblorder.FieldByName('Qty').AsString + ',');
+         //
+         tblorder.Next;
+       end;
+       TStrings.SaveToFile(CSVFileName);
+       ShowMessage('File Has Been Exported Successfully !');
+      finally
+       Tstrings.Free;
+      end;
+     end else
+     begin
+      ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer');
+     end;
+   end;
+ end else
+ begin
+  ShowMessage('Save File Operation Has Been Cancelled !');
+ end;
+end;
+
+procedure Tfrmselectvendorfororder.cbbvendorChange(Sender: TObject);
+begin
+ if cbbvendor.Text <> '' then
+ begin
+  btnplaceorder.Enabled:=True;
+  //also filter the dataset
+  with Datamoduleorder do
+  begin
+    if tblorder.Active = True then
+    begin
+     tblorder.Filtered:=False;
+     tblorder.Filter:='Vendor_Name = '+ QuotedStr(cbbvendor.Text);
+     tblorder.Filtered:=True;
+    end else
+    begin
+     ShowMessage('An Error Has Occured Connecting To The Database , Please Contact Your Software Developer');
+    end;
+  end;
+ end else
+ begin
+  btnplaceorder.Enabled:=False;
+ end;
 end;
 
 procedure Tfrmselectvendorfororder.FormActivate(Sender: TObject);
@@ -84,10 +155,10 @@ begin
  //then we will need to populate the vendors combo box
  //with only vendors that there are pending orders for the current order session
  //
- Sorder:=TStringList.Create;
  //
+ dlgSave1.DefaultExt := 'csv';
  dlgSave1.InitialDir := ExtractFileDir(Application.ExeName);
- dlgSave1.Filter:='';  //here we will only allow text , csv and excell , maybe pdf
+ dlgSave1.Filter:='CSV Files (*.csv)|*.csv|All Files (*.*)|*.*';  //here we will only allow text , csv and excell , maybe pdf
  //
  if cbbvendor.Text = '' then
  begin
@@ -97,34 +168,26 @@ begin
   btnplaceorder.Enabled:=True;
  end;
  //
+end;
+
+procedure Tfrmselectvendorfororder.FormShow(Sender: TObject);
+
+begin
  with Datamoduleorder do
  begin
-  if tblorder.Active then
+  if tblorder.Active = True then
   begin
-   //here we are going to loop through all the vendors that we have active orders for
-   //populate them into the combobox , then we are going to apply filters to generate the order
-   //we will need to see how we are going to generate the order , use our order form as a example
-   //
-   //apply the filter
-   tblorder.Filtered := False;
-   tblorder.Filter := 'Vendor_Name = ' + QuotedStr(cbbvendor.Text);
-   tblorder.Filtered := True;
-   // now that we have the filtered dataset , now we can generate the order
-   //
-   while not tblorder.Eof do
+   if tblorder.FieldByName('Qty').AsString > '0' then
    begin
-    //here we will loop through each of the rows that have that vendor name to
-    //generate one order per vendor
-    //here we will save the order to stringgrids to make iteasier to process
-    //the use the save to file command to make it easier to save
-
-
-
+    //here we will add it to the vendor list
+    cbbvendor.Items.Add(tblorder.FieldByName('Vendor_Name').AsString);
+   end else
+   begin
+    //do nothing
    end;
-   //
   end else
   begin
-  ShowMessage('There Was An Error Connecting To The Dataset Please Contact Your Software Developer');
+   ShowMessage('An Error Has Occured Connecting To The Database , Please Contact Your Software Developer');
   end;
  end;
 end;

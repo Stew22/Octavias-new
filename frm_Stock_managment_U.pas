@@ -51,6 +51,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure dbgrdproductsDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -89,6 +91,32 @@ begin
  frmstockmanagement.Close; //closes the form
 end;
 
+procedure Tfrmstockmanagement.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+ with DataModuleProducts do
+ begin
+   if tblproducts.Active = True then
+   begin
+     tblproducts.Filtered:=False;
+     tblproducts.Filter:='';
+   end;
+ end;
+end;
+
+procedure Tfrmstockmanagement.FormCreate(Sender: TObject);
+const
+  ScaleFactor = 0.8; // Adjust this value to set the percentage of the screen size
+begin
+  // Set the form size to a percentage of the screen size
+  Width := Round(Screen.Width * ScaleFactor);
+  Height := Round(Screen.Height * ScaleFactor);
+
+  // Center the form on the screen
+  Left := (Screen.Width - Width) div 2;
+  Top := (Screen.Height - Height) div 2;
+end;
+
 procedure Tfrmstockmanagement.FormShow(Sender: TObject);
 var
  J:Integer;
@@ -121,7 +149,10 @@ begin
  end;
  //
  for J := 0 to dbgrdproducts.Columns.Count - 1 do
+ begin
    dbgrdproducts.Columns[J].Width := 5 + dbgrdproducts.Canvas.TextWidth(dbgrdproducts.Columns[J].title.caption);
+ end;
+ //add in all he other fields for the comboboxes
 end;
 
 procedure Tfrmstockmanagement.RemoveProducts1Click(Sender: TObject);

@@ -14,6 +14,8 @@ object frmstockmanagement: Tfrmstockmanagement
   Font.Style = []
   Menu = mm1
   Position = poScreenCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 13
   object pnl1: TPanel
@@ -37,7 +39,7 @@ object frmstockmanagement: Tfrmstockmanagement
     Left = 8
     Top = 71
     Width = 1091
-    Height = 402
+    Height = 721
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -93,6 +95,7 @@ object frmstockmanagement: Tfrmstockmanagement
       end
       object StockDaysCover1: TMenuItem
         Caption = 'View Stock Days Cover'
+        Enabled = False
         OnClick = StockDaysCover1Click
       end
       object N2: TMenuItem
@@ -100,6 +103,7 @@ object frmstockmanagement: Tfrmstockmanagement
       end
       object Reports1: TMenuItem
         Caption = 'Reports'
+        Enabled = False
         object N11: TMenuItem
           Caption = '-'
         end
@@ -131,6 +135,7 @@ object frmstockmanagement: Tfrmstockmanagement
     end
     object Settings1: TMenuItem
       Caption = 'Settings'
+      Enabled = False
       OnClick = Settings1Click
     end
     object File2: TMenuItem

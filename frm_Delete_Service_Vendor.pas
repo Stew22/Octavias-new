@@ -91,12 +91,12 @@ begin
           //loop through the orders and the product vendors table to delete all associated products with the vendor
           while not tblorder.Eof do
           begin
-
+           //code here
           end;
           //
           while not tblproducts.Eof do
           begin
-
+           //code here
           end;
          end else
          begin
