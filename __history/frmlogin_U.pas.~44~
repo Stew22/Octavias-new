@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.ImageList,
-  Vcl.ImgList, Vcl.Mask, Vcl.ExtCtrls , frmregister_U ,frmmain_U,DM_Users ,frmsplash_U;
+  Vcl.ImgList, Vcl.Mask, Vcl.ExtCtrls , frmregister_U ,frmmain_U,DM_Users ,frmsplash_U,
+  Winapi.ShellAPI;
 
 type
   Tfrmlogin = class(TForm)
@@ -18,10 +19,12 @@ type
     btnlogin: TButton;
     btnregister: TButton;
     lbl3: TLabel;
+    btnhelplogin: TButton;
     procedure btnloginClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnregisterClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
+    procedure btnhelploginClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,6 +41,16 @@ implementation
 procedure Tfrmlogin.btn1Click(Sender: TObject);
 begin
  frmsplash.Show;
+end;
+
+procedure Tfrmlogin.btnhelploginClick(Sender: TObject);
+var
+PDFFilename:String;
+begin
+ //here we will shell execute the pdf to open
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_User_Login.pdf'; //replace this with the help file
+ ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+ //
 end;
 
 procedure Tfrmlogin.btnloginClick(Sender: TObject);
@@ -83,7 +96,11 @@ begin
       //here we will disable certain menu items as per the premissions granted
       frmmain.Vendors1.Enabled:=False;
       frmmain.StockManagment1.Enabled:=False;
+      frmmain.EditMyDetails2.Enabled:=False;
+      frmmain.AddUser1.Enabled:=False;
+      frmmain.Bookings1.Enabled:=False; // this will be for the future
       frmmain.ShowModal;
+      //here we will capture the Orderer that has logged in
      end else
      begin
       ShowMessage('An Error Has Occoured , Please Contact The Program Administrator');

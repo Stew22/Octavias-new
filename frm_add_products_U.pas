@@ -502,6 +502,7 @@ begin
  begin
   if tblvendor.Active = True then
   begin
+  //got to first record
   while not tblvendor.Eof do
     begin
      //here we will need to extract vendor names then check if any duplicates

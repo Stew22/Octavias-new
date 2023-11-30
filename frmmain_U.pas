@@ -739,24 +739,36 @@ begin
     tblorder.First; //here we go to the first value
     //
     //now we loop through the users and populate the users field
-    while not tblorder.Eof do
+
+    //
+   end;
+ end;
+ //
+ with Datamodulevendor do
+ begin
+  if tblvendor.Active = True then
+  begin
+   while not tblvendor.Eof do
     begin
      //here we will need to extract vendor names then check if any duplicates
-     VName_Temp:= tblorder.FieldByName('Vendor_Name').AsString;
+     VName_Temp:= tblvendor.FieldByName('Vendor_Name').AsString;
      //
      if cbbvendor.Items.IndexOf(VName_Temp) = -1 then
      begin
       cbbvendor.Items.Add(VName_Temp);
-      tblorder.Next;
+      tblvendor.Next;
      end else
      begin
       //then it is a duplicate and we will move to the next record
-      tblorder.Next;
+      tblvendor.Next;
      end;
     end;
-    //
-   end;
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer');
+  end;
  end;
+ //
  //here we will connect the DB Grid to the main screen to display the products
   with datamoduleorder do
   begin

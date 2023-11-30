@@ -284,6 +284,7 @@ object frmmain: Tfrmmain
         end
         object EditMyDetails1: TMenuItem
           Caption = 'Edit My Details'
+          Enabled = False
           OnClick = EditMyDetails1Click
         end
         object N8: TMenuItem

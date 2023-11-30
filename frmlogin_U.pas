@@ -90,6 +90,11 @@ begin
       // we leave all the menu items enabled
       //Admin
       frmmain.ShowModal;
+      frmmain.Vendors1.Enabled:=True;
+      frmmain.StockManagment1.Enabled:=True;
+      frmmain.EditMyDetails2.Enabled:=True;
+      frmmain.AddUser1.Enabled:=True;
+      frmmain.Bookings1.Enabled:=True; // this will be for the future
      end else
      if tblusers.FieldByName('Premissions').AsString = 'Orderer' then
      begin
