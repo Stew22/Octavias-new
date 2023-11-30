@@ -756,7 +756,7 @@ begin
     'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Vendor_Database.accdb' +
     ';Mode=ReadWrite;Persist Security Info=False';
     //
-    tblvendor.TableName:='tblvendor';
+    tblvendor.TableName:='tblvendors';
     //
     convendor.Connected:=True;
     tblvendor.Active:=True;

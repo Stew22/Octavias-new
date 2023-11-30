@@ -104,6 +104,8 @@ type
     BackupDatabases1: TMenuItem;
     N40: TMenuItem;
     N41: TMenuItem;
+    lbl2: TLabel;
+    btnhelp: TButton;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -138,6 +140,9 @@ type
     procedure cbbtertiarycatagoryChange(Sender: TObject);
     procedure edtsearchChange(Sender: TObject);
     procedure dbgrd1ColEnter(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnhelpClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -185,6 +190,16 @@ end;
 procedure Tfrmmain.Bookings1Click(Sender: TObject);
 begin
  frmbookings.ShowModal;
+end;
+
+procedure Tfrmmain.btnhelpClick(Sender: TObject);
+var
+PDFFilename:String;
+begin
+ //here we will shell execute the pdf to open
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Main_Screen.pdf'; //replace this with the help file
+ ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+ //
 end;
 
 procedure Tfrmmain.btnmoreClick(Sender: TObject);
@@ -724,24 +739,60 @@ begin
     tblorder.First; //here we go to the first value
     //
     //now we loop through the users and populate the users field
-    while not tblorder.Eof do
+
+    //
+   end;
+ end;
+ //
+ with Datamodulevendor do
+ begin
+   if convendor.Connected = True then
+   begin
+    convendor.Connected:=False; //disconnect a previous session
+   end else
+   begin
+    //here we will connect the database
+    convendor.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;' +
+    'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Vendor_Database.accdb' +
+    ';Mode=ReadWrite;Persist Security Info=False';
+    //
+    tblvendor.TableName:='tblvendor';
+    //
+    convendor.Connected:=True;
+    tblvendor.Active:=True;
+    tblvendor.First; //here we go to the first value
+    //
+    //now we loop through the users and populate the users field
+
+    //
+   end;
+ end;
+ //
+ with Datamodulevendor do
+ begin
+  if tblvendor.Active = True then
+  begin
+   while not tblvendor.Eof do
     begin
      //here we will need to extract vendor names then check if any duplicates
-     VName_Temp:= tblorder.FieldByName('Vendor_Name').AsString;
+     VName_Temp:= tblvendor.FieldByName('Vendor_Name').AsString;
      //
      if cbbvendor.Items.IndexOf(VName_Temp) = -1 then
      begin
       cbbvendor.Items.Add(VName_Temp);
-      tblorder.Next;
+      tblvendor.Next;
      end else
      begin
       //then it is a duplicate and we will move to the next record
-      tblorder.Next;
+      tblvendor.Next;
      end;
     end;
-    //
-   end;
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer');
+  end;
  end;
+ //
  //here we will connect the DB Grid to the main screen to display the products
   with datamoduleorder do
   begin
@@ -763,6 +814,19 @@ begin
    dbgrd1.Columns[J].Width := 5 + dbgrd1.Canvas.TextWidth(dbgrd1.Columns[J].title.caption);
 end;
 
+procedure Tfrmmain.FormCreate(Sender: TObject);
+const
+  ScaleFactor = 0.8; // Adjust this value to set the percentage of the screen size
+begin
+  // Set the form size to a percentage of the screen size
+  Width := Round(Screen.Width * ScaleFactor);
+  Height := Round(Screen.Height * ScaleFactor);
+
+  // Center the form on the screen
+  Left := (Screen.Width - Width) div 2;
+  Top := (Screen.Height - Height) div 2;
+end;
+
 procedure Tfrmmain.FormPaint(Sender: TObject);
 var
   Rect: TRect;
@@ -771,8 +835,48 @@ begin
 
 end;
 
+procedure Tfrmmain.FormShow(Sender: TObject);
+begin
+begin
+  with Datamoduleorder do
+  begin
+    if not conorder.Connected then
+    begin
+      // Connect to the database
+      conorder.ConnectionString := 'Provider=Microsoft.ACE.OLEDB.12.0;' +
+        'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Order_Database.accdb' +
+        ';Mode=ReadWrite;Persist Security Info=False';
+
+      tblorder.TableName := 'tblorder';
+      conorder.Connected := True;
+      tblorder.Active := True;
+      tblorder.First;
+      // Populate user fields or any other necessary initializations
+    end;
+
+    if tblorder.Active then
+    begin
+      if tblorder.State = dsBrowse then
+        tblorder.Edit; // Switch to edit mode if not already in edit mode
+      ShowMessage('Connected and in edit mode');
+    end
+    else
+    begin
+      ShowMessage('Not connected');
+    end;
+  end;
+end;
+end;
+
 procedure Tfrmmain.PlaceOrder1Click(Sender: TObject);
 begin
+ with Datamoduleorder do
+ begin
+  if tblorder.State in [dsEdit, dsInsert] then
+  begin
+    tblorder.Post;
+  end;
+ end;
  frmselectvendorfororder.ShowModal; //here we will ask the user to select
  //the vendor that they will generate the order for
 end;
