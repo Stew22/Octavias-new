@@ -746,6 +746,30 @@ begin
  //
  with Datamodulevendor do
  begin
+   if convendor.Connected = True then
+   begin
+    convendor.Connected:=False; //disconnect a previous session
+   end else
+   begin
+    //here we will connect the database
+    convendor.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;' +
+    'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Vendor_Database.accdb' +
+    ';Mode=ReadWrite;Persist Security Info=False';
+    //
+    tblvendor.TableName:='tblvendor';
+    //
+    convendor.Connected:=True;
+    tblvendor.Active:=True;
+    tblvendor.First; //here we go to the first value
+    //
+    //now we loop through the users and populate the users field
+
+    //
+   end;
+ end;
+ //
+ with Datamodulevendor do
+ begin
   if tblvendor.Active = True then
   begin
    while not tblvendor.Eof do
