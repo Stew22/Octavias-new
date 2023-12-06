@@ -89,14 +89,33 @@ begin
           //here we will confirm with the user if we can delete the products aswell
           //
           //loop through the orders and the product vendors table to delete all associated products with the vendor
+          tblorder.First;
+          //
           while not tblorder.Eof do
           begin
            //code here
+           if tblorder.FieldByName('Vendor_Name').AsString = cbbvdname.Text then
+           begin
+            //here we will want to delete the record
+            tblorder.Delete;
+           end else
+           begin
+             tblorder.Next;
+           end;
           end;
+          //
+          tblproducts.First;
           //
           while not tblproducts.Eof do
           begin
            //code here
+           if tblproducts.FieldByName('Vendor_Name').AsString = cbbvdname.Text then
+           begin
+            tblproducts.Delete; //deletes the record
+           end else
+           begin
+            tblproducts.Next;
+           end;
           end;
          end else
          begin

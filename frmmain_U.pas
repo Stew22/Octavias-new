@@ -79,7 +79,6 @@ type
     cbbtertiarycatagory: TComboBox;
     N25: TMenuItem;
     N26: TMenuItem;
-    img1: TImage;
     DatabaseManagment1: TMenuItem;
     DatabaseManagment2: TMenuItem;
     N27: TMenuItem;
@@ -106,6 +105,10 @@ type
     N41: TMenuItem;
     lbl2: TLabel;
     btnhelp: TButton;
+    pnl4: TPanel;
+    btngenerateorder: TButton;
+    lbltotals: TLabel;
+    lblorderproducts: TLabel;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -143,6 +146,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnhelpClick(Sender: TObject);
+    procedure btngenerateorderClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -190,6 +194,11 @@ end;
 procedure Tfrmmain.Bookings1Click(Sender: TObject);
 begin
  frmbookings.ShowModal;
+end;
+
+procedure Tfrmmain.btngenerateorderClick(Sender: TObject);
+begin
+ frmselectvendorfororder.ShowModal; // shows the order
 end;
 
 procedure Tfrmmain.btnhelpClick(Sender: TObject);
@@ -600,13 +609,49 @@ begin
 end;
 
 procedure Tfrmmain.dbgrd1ColEnter(Sender: TObject);
+var
+  SumOrdered: Integer;
+  SumPrice: Double;
 begin
   // Check if the current column is the 8th column
   if dbgrd1.SelectedField.Index = 8 then
     dbgrd1.ReadOnly := False
   else
     dbgrd1.ReadOnly := True;
+  //
+  // here we are going to update the column totals
+  //
+
+  with Datamoduleorder do
+  begin
+    if tblorder.Active then
+    begin
+      tblorder.First; // Move to the first record
+      SumOrdered := 0; // Initialize the sum to zero
+      SumPrice := 0;
+
+      while not tblorder.Eof do
+      begin
+        // Accumulate the 'Qty' values
+        SumOrdered := SumOrdered + StrToInt(tblorder.FieldByName('Qty').AsString);
+
+        // Accumulate the 'Price' values
+        SumPrice := SumPrice + (StrToFloat(tblorder.FieldByName('Price').AsString) * StrToInt(tblorder.FieldByName('Qty').AsString));
+
+        tblorder.Next; // Move to the next record
+      end;
+
+      // Update the label with the total
+      lblorderproducts.Caption := 'Products Ordered: ' + IntToStr(SumOrdered);
+      lbltotals.Caption := 'Total Cost : R ' + FloatToStr(SumPrice);
+    end
+    else
+    begin
+      ShowMessage('There Was An Error Connecting To The Orders Database, Please Contact Your Software Developer');
+    end;
+  end;
 end;
+
 
 procedure Tfrmmain.dbgrd1DrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumn; State: TGridDrawState);
@@ -739,8 +784,22 @@ begin
     tblorder.First; //here we go to the first value
     //
     //now we loop through the users and populate the users field
-
+   while not tblorder.Eof do
+    begin
+     //here we will need to extract vendor names then check if any duplicates
+     VName_Temp:= tblorder.FieldByName('Vendor_Name').AsString;
+     //
+     if cbbvendor.Items.IndexOf(VName_Temp) = -1 then
+     begin
+      cbbvendor.Items.Add(VName_Temp);
+      tblorder.Next;
+     end else
+     begin
+      //then it is a duplicate and we will move to the next record
+      tblorder.Next;
+     end;
     //
+    end;
    end;
  end;
  //
@@ -858,11 +917,12 @@ begin
     begin
       if tblorder.State = dsBrowse then
         tblorder.Edit; // Switch to edit mode if not already in edit mode
-      ShowMessage('Connected and in edit mode');
+      //ShowMessage('Connected and in edit mode');
     end
     else
     begin
-      ShowMessage('Not connected');
+      //ShowMessage('Not connected');
+      ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer');
     end;
   end;
 end;
@@ -897,8 +957,7 @@ begin
     //second one is there is any product changes using the code as master key
     //third is if there has been removed products , using the code as the master key
     //
-
-
+    dbgrd1.Refresh;
    end else
    begin
     //here they are not connected

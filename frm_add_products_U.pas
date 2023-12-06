@@ -479,6 +479,8 @@ VName_Temp:string;
 begin
  btnaddproduct.Enabled:=False;
  //
+ cbbvendor.Clear;
+ //
  //here we are just going to duplicae the categorys
  cbbmaincat.Items.Add('Body'); //here we will populate main catagories
  cbbmaincat.Items.Add('Skin Care');
@@ -502,8 +504,10 @@ begin
  begin
   if tblvendor.Active = True then
   begin
-  //got to first record
-  while not tblvendor.Eof do
+   //got to first record
+   tblvendor.First;
+   //
+   while not tblvendor.Eof do
     begin
      //here we will need to extract vendor names then check if any duplicates
      VName_Temp:= tblvendor.FieldByName('Vendor_Name').AsString;

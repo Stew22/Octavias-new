@@ -28,6 +28,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure cbbvendorChange(Sender: TObject);
     procedure btnplaceorderClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -170,20 +171,47 @@ begin
  //
 end;
 
-procedure Tfrmselectvendorfororder.FormShow(Sender: TObject);
+procedure Tfrmselectvendorfororder.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+ with Datamoduleorder do
+ begin
+   tblorder.Filtered:=False;
+   tblorder.Filter:='';
+ end;
+end;
 
+procedure Tfrmselectvendorfororder.FormShow(Sender: TObject);
+var
+VName_Temp:string;
 begin
  with Datamoduleorder do
  begin
   if tblorder.Active = True then
   begin
-   if tblorder.FieldByName('Qty').AsString > '0' then
+   tblorder.First;
+   //
+   while not tblorder.Eof do
    begin
-    //here we will add it to the vendor list
-    cbbvendor.Items.Add(tblorder.FieldByName('Vendor_Name').AsString);
-   end else
-   begin
-    //do nothing
+    if tblorder.FieldByName('Qty').AsString > '0' then
+     begin
+       //here we will add it to the vendor list
+       VName_Temp:= tblorder.FieldByName('Vendor_Name').AsString;
+       //
+       if cbbvendor.Items.IndexOf(VName_Temp) = -1 then
+       begin
+        cbbvendor.Items.Add(VName_Temp);
+        tblorder.Next;
+       end else
+       begin
+        //then it is a duplicate and we will move to the next record
+        tblorder.Next;
+       end;
+     end else
+     begin
+      //do nothing
+      tblorder.Next;
+     end;
    end;
   end else
   begin

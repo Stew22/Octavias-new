@@ -95,6 +95,14 @@ begin
           tblusers.Post;
           ShowMessage('User With Admin Rights Has Been Added Successfully!');
         end;
+        edtname.Clear;
+        edtcell.Clear;
+        edtstore.Clear;
+        edtuname.Clear;
+        edtuemail.Clear;
+        edtsurname.Clear;
+        edtpassword.Clear;
+        edtcpassword.Clear;
       end
       else
       begin
