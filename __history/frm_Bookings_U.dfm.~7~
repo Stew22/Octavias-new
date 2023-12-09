@@ -52,13 +52,6 @@ object frmbookings: Tfrmbookings
       object N1: TMenuItem
         Caption = '-'
       end
-      object ViewMySchedule1: TMenuItem
-        Caption = ' // '
-        OnClick = ViewMySchedule1Click
-      end
-      object N5: TMenuItem
-        Caption = '-'
-      end
       object Exit1: TMenuItem
         Caption = 'Exit'
         OnClick = Exit1Click

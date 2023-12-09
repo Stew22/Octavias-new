@@ -20,14 +20,11 @@ type
     N3: TMenuItem;
     N4: TMenuItem;
     Help1: TMenuItem;
-    N5: TMenuItem;
-    ViewMySchedule1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure File2Click(Sender: TObject);
     procedure EditBooking1Click(Sender: TObject);
     procedure EditBooking2Click(Sender: TObject);
     procedure Exit1Click(Sender: TObject);
-    procedure ViewMySchedule1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -90,11 +87,6 @@ begin
     strngrddates.Cells[0, Day] := DayLabel;
     CurrentDate := IncDay(CurrentDate);
   end;
-end;
-
-procedure Tfrmbookings.ViewMySchedule1Click(Sender: TObject);
-begin
- //here we are going to display each of the therapists daily schedule and bookings
 end;
 
 end.

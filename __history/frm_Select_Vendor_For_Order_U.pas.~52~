@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
-  Vcl.StdCtrls, Vcl.ExtCtrls,Winapi.ShellAPI,DM_Order;
+  Vcl.StdCtrls, Vcl.ExtCtrls,Winapi.ShellAPI,DM_Order,DM_Vendors;
 
 type
   Tfrmselectvendorfororder = class(TForm)
@@ -28,6 +28,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure cbbvendorChange(Sender: TObject);
     procedure btnplaceorderClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -74,7 +75,7 @@ var
 PDFFileName:string;
 begin
 //here we will shell execute the manual for the following form
- PDFFileName := 'C:\Path\To\YourPDFFile.pdf'; //replace this with the help file
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Export_Order.pdf'; //replace this with the help file
  ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
  //
 end;
@@ -97,23 +98,32 @@ begin
       try
        TStrings:=TStringList.Create;
        //
-       for j := 0 to tblorder.FieldCount - 1 do
+       tblorder.First; //go to the first record
+       TStrings.Add('Vendor_Name,Item_Number,Item Discription,Price,Qty,'); //headers
+       while not tblorder.Eof do
        begin
-         TStrings.Add(tblorder.Fields[j].FieldName);
-         // Export data rows
-         tblorder.First;
-         while not tblorder.Eof do
+         //
+         TStrings.Add(tblorder.FieldByName('Vendor_Name').AsString + ',' + tblorder.FieldByName('Item_Number').AsString + ',' + tblorder.FieldByName('Item Discription').AsString + ',' + tblorder.FieldByName('Price').AsString + ',' + tblorder.FieldByName('Qty').AsString + ',');
+         //
+         tblorder.Next;
+       end;
+       TStrings.SaveToFile(CSVFileName);
+       ShowMessage('File Has Been Exported Successfully !');
+       //here we are going to then pull the email from the vendors database and then generate the email
+       with Datamodulevendor do
+       begin
+         if tblvendor.Active = True then
          begin
-          for k := 0 to tblorder.FieldCount - 1 do
-          begin
-           TStrings.Add(tblorder.Fields[j].AsString);
-          end;
-          tblorder.Next;
+          //here we will apply a filter to the vendor that is select and extract the email
+          //
+
+         end else
+         begin
+           ShowMessage('There Was An Error Connecting To The Vendors Database , Please Contact Your Software Developer');
          end;
-         TStrings.SaveToFile(CSVFileName);
        end;
       finally
-       ShowMessage('An Error Has Occured');
+       Tstrings.Free;
       end;
      end else
      begin
@@ -131,6 +141,19 @@ begin
  if cbbvendor.Text <> '' then
  begin
   btnplaceorder.Enabled:=True;
+  //also filter the dataset
+  with Datamoduleorder do
+  begin
+    if tblorder.Active = True then
+    begin
+     tblorder.Filtered:=False;
+     tblorder.Filter:='Vendor_Name = '+ QuotedStr(cbbvendor.Text);
+     tblorder.Filtered:=True;
+    end else
+    begin
+     ShowMessage('An Error Has Occured Connecting To The Database , Please Contact Your Software Developer');
+    end;
+  end;
  end else
  begin
   btnplaceorder.Enabled:=False;
@@ -146,10 +169,10 @@ begin
  //then we will need to populate the vendors combo box
  //with only vendors that there are pending orders for the current order session
  //
- Sorder:=TStringList.Create;
  //
+ dlgSave1.DefaultExt := 'csv';
  dlgSave1.InitialDir := ExtractFileDir(Application.ExeName);
- dlgSave1.Filter:='';  //here we will only allow text , csv and excell , maybe pdf
+ dlgSave1.Filter:='CSV Files (*.csv)|*.csv|All Files (*.*)|*.*';  //here we will only allow text , csv and excell , maybe pdf
  //
  if cbbvendor.Text = '' then
  begin
@@ -159,52 +182,49 @@ begin
   btnplaceorder.Enabled:=True;
  end;
  //
+end;
+
+procedure Tfrmselectvendorfororder.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
  with Datamoduleorder do
  begin
-  if tblorder.Active then
-  begin
-   //here we are going to loop through all the vendors that we have active orders for
-   //populate them into the combobox , then we are going to apply filters to generate the order
-   //we will need to see how we are going to generate the order , use our order form as a example
-   //
-   //apply the filter
-   //tblorder.Filtered := False;
-   //tblorder.Filter := 'Vendor_Name = ' + QuotedStr(cbbvendor.Text);
-   //tblorder.Filtered := True;
-   // now that we have the filtered dataset , now we can generate the order
-   //
-   while not tblorder.Eof do
-   begin
-    //here we will loop through each of the rows that have that vendor name to
-    //generate one order per vendor
-    //here we will save the order to stringgrids to make iteasier to process
-    //the use the save to file command to make it easier to save
-
-
-
-   end;
-   //
-  end else
-  begin
-  ShowMessage('There Was An Error Connecting To The Dataset Please Contact Your Software Developer');
-  end;
+   tblorder.Filtered:=False;
+   tblorder.Filter:='';
  end;
 end;
 
 procedure Tfrmselectvendorfororder.FormShow(Sender: TObject);
-
+var
+VName_Temp:string;
 begin
  with Datamoduleorder do
  begin
   if tblorder.Active = True then
   begin
-   if tblorder.FieldByName('Qty').AsString > '0' then
+   tblorder.First;
+   //
+   while not tblorder.Eof do
    begin
-    //here we will add it to the vendor list
-    cbbvendor.Items.Add(tblorder.FieldByName('Vendor_Name').AsString);
-   end else
-   begin
-    //do nothing
+    if tblorder.FieldByName('Qty').AsString > '0' then
+     begin
+       //here we will add it to the vendor list
+       VName_Temp:= tblorder.FieldByName('Vendor_Name').AsString;
+       //
+       if cbbvendor.Items.IndexOf(VName_Temp) = -1 then
+       begin
+        cbbvendor.Items.Add(VName_Temp);
+        tblorder.Next;
+       end else
+       begin
+        //then it is a duplicate and we will move to the next record
+        tblorder.Next;
+       end;
+     end else
+     begin
+      //do nothing
+      tblorder.Next;
+     end;
    end;
   end else
   begin

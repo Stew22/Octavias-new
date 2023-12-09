@@ -90,7 +90,7 @@ begin
       'Contact Number: ' + edtphone.Text + sLineBreak +
       'Email Address: ' + edtemail.Text + sLineBreak +
       'You Have Reported The Following Bugs: ' + sLineBreak + mmoinput.Text;
-     //here we will need to cc in aarti
+
     // Using ShellExecute to open the default email client with pre-filled values
     ShellExecute(0, 'open', PChar('mailto:' + EmailAddress +
       '?subject=' + Subject + '&body=' + StringReplace(BodyText, sLineBreak, '%0D%0A', [rfReplaceAll])), nil, nil, SW_SHOWNORMAL);

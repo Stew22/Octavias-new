@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
-  Vcl.StdCtrls, Vcl.ExtCtrls,Winapi.ShellAPI,DM_Order;
+  Vcl.StdCtrls, Vcl.ExtCtrls,Winapi.ShellAPI,DM_Order,DM_Vendors;
 
 type
   Tfrmselectvendorfororder = class(TForm)
@@ -53,8 +53,19 @@ begin
   //Generate a batch Order
   //here we are going to loop through the database and check for items that
   //have a Qty more then 1 then we will need to compile the order
-
-
+  with Datamoduleorder do
+  begin
+    if tblorder.Active = True then
+    begin
+     //here we will generate orders for all vendors prompting the user to select
+     //the directory once , then just add the vendor name as the file name
+     //we will then loop through the vendors that we have active orders for
+     //generate the email for them
+    end else
+    begin
+      ShowMessage('There Was An Error Connecting To The Orders Database , Please Contact Your Software Developer');
+    end;
+  end;
  end else
  begin
   //cancel the operation
@@ -109,6 +120,19 @@ begin
        end;
        TStrings.SaveToFile(CSVFileName);
        ShowMessage('File Has Been Exported Successfully !');
+       //here we are going to then pull the email from the vendors database and then generate the email
+       with Datamodulevendor do
+       begin
+         if tblvendor.Active = True then
+         begin
+          //here we will apply a filter to the vendor that is select and extract the email
+          //
+
+         end else
+         begin
+           ShowMessage('There Was An Error Connecting To The Vendors Database , Please Contact Your Software Developer');
+         end;
+       end;
       finally
        Tstrings.Free;
       end;
