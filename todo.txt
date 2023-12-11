@@ -1,0 +1,26 @@
+for the login page , change the one activate to on show to ensure once the user has been registered it will show imidiatly --- Completed
+mask the password field  ---- WIP
+if the Qty on the orders field is 0 , then highlight it red
+reset the order form to 0 when the order is placed
+add the suggested order button for later use 
+ask aarti to assign main catagory and secondry and tertiary cat for all products
+when placing orders if the user clicks away set the amount to 0 to avoid not an integer error 
+fix the layout so we have a horizontal scrollbar visible 
+edit service vendor must only show service vendors --- Completed
+link delete service vendor to main menu item ---- Completed
+add the edit product vendor form and link it 
+add delete product vendor form and link it 
+disable the bulk add product for a later stage 
+edit product details exit the form --- Completed 
+edit product details cancel ---- Completed 
+remove product form ,remeber to remove from orders and products database 
+manual backup database button 
+code the automatic backup
+edit the vendors in the vendors database so that they match whats in the products and vice versa 
+request a feature form - remeber to cc in aarti
+report a bug - cc in aarti
+request aupport - cc in aarti
+make the full user manual and link it 
+add reset my password link on the login page -- WIP 
+add in the email function for the place an order pulling the email from the vendors database
+
