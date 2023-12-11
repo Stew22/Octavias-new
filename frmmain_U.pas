@@ -110,6 +110,7 @@ type
     lbltotals: TLabel;
     lblorderproducts: TLabel;
     btnviewsuggestedorder: TButton;
+    btnupdatetotals: TButton;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -143,11 +144,12 @@ type
     procedure SetInterval2Click(Sender: TObject);
     procedure cbbtertiarycatagoryChange(Sender: TObject);
     procedure edtsearchChange(Sender: TObject);
-    procedure dbgrd1ColEnter(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnhelpClick(Sender: TObject);
     procedure btngenerateorderClick(Sender: TObject);
+    procedure dbgrd1ColEnter(Sender: TObject);
+    procedure btnupdatetotalsClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -262,7 +264,61 @@ begin
   end;
 end;
 
+procedure Tfrmmain.btnupdatetotalsClick(Sender: TObject);
+var
+  SumOrdered: Integer;
+  SumPrice: Double;
+  PriceStr: string;
+begin
+  // Dynamically determine the decimal separator used by the system
+  FormatSettings.DecimalSeparator := '.'; // Set a default value
 
+  // here we can update the subtotoals
+  with Datamoduleorder do
+  begin
+    if tblorder.Active then
+    begin
+      tblorder.First; // Move to the first record
+      SumOrdered := 0; // Initialize the sum to zero
+      SumPrice := 0.00;
+
+      while not tblorder.Eof do
+      begin
+        // Accumulate the 'Qty' values
+        SumOrdered := SumOrdered + StrToInt(tblorder.FieldByName('Qty').AsString);
+
+        // Get the 'Price' string
+        PriceStr := tblorder.FieldByName('Price').AsString;
+
+        // Use TryStrToFloat to handle conversion and check if it succeeds
+        if TryStrToFloat(StringReplace(PriceStr, '.', FormatSettings.DecimalSeparator, []),
+          SumPrice) then
+        begin
+          // Accumulate the 'Price' values
+          SumPrice := SumPrice + (StrToFloat(PriceStr) * StrToInt(tblorder.FieldByName('Qty').AsString));
+        end
+        else
+        begin
+          // Handle the case where conversion fails
+          ShowMessage('Invalid floating-point number for Price: ' + PriceStr);
+          Exit; // Exit the loop and update labels
+        end;
+
+        tblorder.Next; // Move to the next record
+      end;
+
+      // Update the label with the total
+      lblorderproducts.Caption := 'Products Ordered: ' + IntToStr(SumOrdered);
+
+      // Update the label with the formatted total cost
+      lbltotals.Caption := 'Total Cost : ' + FloatToStr(SumPrice);
+    end
+    else
+    begin
+      ShowMessage('There Was An Error Connecting To The Orders Database, Please Contact Your Software Developer');
+    end;
+  end;
+end;
 procedure Tfrmmain.cbbcatogoriesChange(Sender: TObject);
 begin
  //here we will check if the main catagory has been chnaged , then we
@@ -610,49 +666,13 @@ begin
 end;
 
 procedure Tfrmmain.dbgrd1ColEnter(Sender: TObject);
-var
-  SumOrdered: Integer;
-  SumPrice: Double;
 begin
   // Check if the current column is the 8th column
   if dbgrd1.SelectedField.Index = 8 then
     dbgrd1.ReadOnly := False
   else
     dbgrd1.ReadOnly := True;
-  //
-  // here we are going to update the column totals
-  //
-
-  with Datamoduleorder do
-  begin
-    if tblorder.Active then
-    begin
-      tblorder.First; // Move to the first record
-      SumOrdered := 0; // Initialize the sum to zero
-      SumPrice := 0;
-
-      while not tblorder.Eof do
-      begin
-        // Accumulate the 'Qty' values
-        SumOrdered := SumOrdered + StrToInt(tblorder.FieldByName('Qty').AsString);
-
-        // Accumulate the 'Price' values
-        SumPrice := SumPrice + (StrToFloat(tblorder.FieldByName('Price').AsString) * StrToInt(tblorder.FieldByName('Qty').AsString));
-
-        tblorder.Next; // Move to the next record
-      end;
-
-      // Update the label with the total
-      lblorderproducts.Caption := 'Products Ordered: ' + IntToStr(SumOrdered);
-      lbltotals.Caption := 'Total Cost : R ' + FloatToStr(SumPrice);
-    end
-    else
-    begin
-      ShowMessage('There Was An Error Connecting To The Orders Database, Please Contact Your Software Developer');
-    end;
-  end;
 end;
-
 
 procedure Tfrmmain.dbgrd1DrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumn; State: TGridDrawState);
@@ -661,6 +681,18 @@ Var
 begin
    w := 5+dbgrd1.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
+  //here we will paint the cell red if the value ordered is 0
+  // Check if the column is column 8 (index 7)
+  if DataCol = 8 then
+  begin
+    if Column.Field.Text = '0' then
+      dbgrd1.Canvas.Brush.Color := clRed  // Set the brush color to red for '0'
+    else
+    dbgrd1.Canvas.Brush.Color := clSkyBlue;  // Set the brush color to light blue for other values
+    //
+    dbgrd1.Canvas.FillRect(Rect);       // Fill the cell with the specified color
+    dbgrd1.DefaultDrawColumnCell(Rect, DataCol, Column, State);  // Draw the cell's content
+  end;
 end;
 
 procedure Tfrmmain.DeleteVendor1Click(Sender: TObject);
@@ -879,7 +911,7 @@ const
   ScaleFactor = 0.8; // Adjust this value to set the percentage of the screen size
 begin
   // Set the form size to a percentage of the screen size
-  Width := Round(Screen.Width * ScaleFactor);
+  Width := Round(Screen.Width * 0.59);
   Height := Round(Screen.Height * ScaleFactor);
 
   // Center the form on the screen
@@ -896,7 +928,8 @@ begin
 end;
 
 procedure Tfrmmain.FormShow(Sender: TObject);
-begin
+var
+  I: Integer;
 begin
   with Datamoduleorder do
   begin
@@ -906,7 +939,7 @@ begin
       conorder.ConnectionString := 'Provider=Microsoft.ACE.OLEDB.12.0;' +
         'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Order_Database.accdb' +
         ';Mode=ReadWrite;Persist Security Info=False';
-
+      //
       tblorder.TableName := 'tblorder';
       conorder.Connected := True;
       tblorder.Active := True;
@@ -916,18 +949,32 @@ begin
 
     if tblorder.Active then
     begin
-      if tblorder.State = dsBrowse then
-        tblorder.Edit; // Switch to edit mode if not already in edit mode
-      //ShowMessage('Connected and in edit mode');
+      tblorder.First; // Move to the first record
+
+      while not tblorder.Eof do
+      begin
+       if tblorder.FieldByName('Qty').AsString <> '0' then
+       begin
+        tblorder.Edit; // Switch to edit mode
+        tblorder['Qty']:='0';
+        tblorder.Post; // Save the changes to the current record
+        tblorder.Next; // Move to the next record
+       end else
+       begin
+        tblorder.Next;
+       end;
+      end;
+      //
+      tblorder.Refresh; // Refresh the dataset to reflect the changes
     end
     else
     begin
-      //ShowMessage('Not connected');
-      ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer');
+      ShowMessage('There Was An Error Connecting To The Database, Please Contact Your Software Developer');
     end;
   end;
 end;
-end;
+
+
 
 procedure Tfrmmain.PlaceOrder1Click(Sender: TObject);
 begin

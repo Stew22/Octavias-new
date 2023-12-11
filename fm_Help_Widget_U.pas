@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  System.ImageList, Vcl.ImgList;
+  System.ImageList, Vcl.ImgList,Winapi.ShellAPI;
 
 type
   Tfrmhelp = class(TForm)
@@ -56,8 +56,39 @@ begin
 end;
 
 procedure Tfrmhelp.btnrequestsClick(Sender: TObject);
+var
+ MailCC,MailTo,Mailbody,MailSubject:string;
 begin
  //here we will email me for support
+ //
+ //
+  if (edthname.Text = '') or (edthphone.Text = '') or (mmohmessage.Text = '')  then
+  begin
+   ShowMessage('You Can Not Leave Any Of The Fields Blank ! , Please Try Again');
+  end else
+  begin
+   MailTo:='dantu.domonique@gmail.com';
+   MailCC := 'aarti@octavias.co.za';
+   MailSubject := 'Support Request Ticket ID : ' + 'SRT' + IntToStr(Random(100));
+   //
+    MailBody := 'Good day' + sLineBreak + sLineBreak +
+   'Name : '+ edthname.Text + sLineBreak + sLineBreak +
+   'Phone : ' + edthphone.Text + sLineBreak + sLineBreak +
+   'Email : ' + mmohmessage.Text + sLineBreak + sLineBreak +
+   'Kind Regards';
+    //here we will need to cc in aarti
+    // Using ShellExecute to open the default email client with pre-filled values
+     ShellExecute(
+     0,
+     'open',
+     PChar('mailto:' + MailTo + '?cc=' + MailCC +
+     '&subject=' + MailSubject + '&body=' + StringReplace(MailBody, sLineBreak, '%0D%0A', [rfReplaceAll])),
+     nil,
+     nil,
+     SW_SHOWNORMAL
+     );
+     //
+  end;
 end;
 
 end.

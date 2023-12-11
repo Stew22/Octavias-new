@@ -103,6 +103,8 @@ begin
         edtsurname.Clear;
         edtpassword.Clear;
         edtcpassword.Clear;
+        edtvendoraddress.Clear;
+        cbbuserprem.Text := '';
       end
       else
       begin
@@ -173,6 +175,8 @@ begin
  edtcpassword.Clear;
  frmadduser.Close;
  cbbuserprem.Clear;
+ edtvendoraddress.Clear;
+ cbbuserprem.Text := '';
 end;
 
 procedure Tfrmadduser.btnhelpClick(Sender: TObject);

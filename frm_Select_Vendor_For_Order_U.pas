@@ -43,35 +43,122 @@ implementation
 {$R *.dfm}
 
 procedure Tfrmselectvendorfororder.btnbtachorderClick(Sender: TObject);
+var
+  I: Integer;
+  Fname, CSVFileName: string;
+  TStrings: TStringList;
+  Vemail:string;
+  //
+  MailTo, MailCC, MailSubject, MailBody: string;
 begin
- //here we will generate batch orders for the vendors
- //but we will need to see if we can open multiple emails
- //otherwise we can just open the folder of the orders
- //
- if InputBox('Place Batch Order','Are You Sure You Want To Generate A Batch Order : ','Yes/No') = 'Yes' then
- begin
-  //Generate a batch Order
-  //here we are going to loop through the database and check for items that
-  //have a Qty more then 1 then we will need to compile the order
-  with Datamoduleorder do
+  if InputBox('Place Batch Order', 'Are You Sure You Want To Generate A Batch Order : ', 'Yes/No') = 'Yes' then
   begin
-    if tblorder.Active = True then
+    // Generate a batch Order
+    with Datamoduleorder do
     begin
-     //here we will generate orders for all vendors prompting the user to select
-     //the directory once , then just add the vendor name as the file name
-     //we will then loop through the vendors that we have active orders for
-     //generate the email for them
-    end else
-    begin
-      ShowMessage('There Was An Error Connecting To The Orders Database , Please Contact Your Software Developer');
+      if tblorder.Active then
+      begin
+        if dlgSave1.Execute then
+        begin
+          Fname := IncludeTrailingPathDelimiter(ExtractFileDir(dlgSave1.FileName));
+          //
+          try
+            TStrings := TStringList.Create;
+            //
+            for I := 0 to cbbvendor.Items.Count - 1 do
+            begin
+              tblorder.Filtered := False;
+              tblorder.Filter := 'Vendor_Name = ' + QuotedStr(cbbvendor.Items[I]);
+              tblorder.Filtered := True;
+              //
+              CSVFileName := Fname + cbbvendor.Items[I] + '.csv'; // Add .csv extension
+              //
+              tblorder.First;
+              TStrings.Add('Vendor_Name,Item_Number,Item_Description,Price,Qty'); // Headers
+              //
+              while not tblorder.Eof do
+              begin
+                TStrings.Add(
+                  Format('%s,%s,%s,%s,%s',
+                  [
+                    tblorder.FieldByName('Vendor_Name').AsString,
+                    tblorder.FieldByName('Item_Number').AsString,
+                    tblorder.FieldByName('Item Discription').AsString,
+                    tblorder.FieldByName('Price').AsString,
+                    tblorder.FieldByName('Qty').AsString
+                  ])
+                );
+                //
+                tblorder.Next;
+              end;
+              //
+              TStrings.SaveToFile(CSVFileName);
+              // Clear the string list for the next vendor
+              TStrings.Clear;
+              //here we will shellexecute the mail to open
+              //
+              with Datamodulevendor do
+              begin
+               if tblvendor.Active = True then
+               begin
+                //
+                Vemail:=tblvendor.FieldByName('Vendor_Email').AsString;
+                //
+                //now we will execute the shellexecute to generate the email
+                //
+                if Vemail = '' then
+                begin
+                 ShowMessage('There Is No Email Address Captured For This Vendor');
+                end else
+                begin
+                 MailTo := Vemail;
+                end;
+                //
+                MailCC := 'aarti@octavias.co.za';
+                MailSubject := 'New Order Sheet';
+                //
+                  MailBody := 'Good day' + sLineBreak + sLineBreak +
+                          'Please see attached order sheet.' + sLineBreak + sLineBreak +
+                          'I look forward to your response :)' + sLineBreak + sLineBreak +
+                          'Kind Regards';
+                  //here we will need to cc in aarti
+                  // Using ShellExecute to open the default email client with pre-filled values
+                ShellExecute(
+                  0,
+                  'open',
+                  PChar('mailto:' + MailTo + '?cc=' + MailCC +
+                    '&subject=' + MailSubject + '&body=' + StringReplace(MailBody, sLineBreak, '%0D%0A', [rfReplaceAll])),
+                  nil,
+                  nil,
+                  SW_SHOWNORMAL
+                );
+               end;
+              end;
+            end;
+          finally
+            TStrings.Free;
+          end;
+          //
+          ShowMessage('Batch Orders Saved Successfully!');
+          //should we prompt the user to open the where they save it
+        end
+        else
+        begin
+          ShowMessage('Batch Order Save Has Been Cancelled!');
+        end;
+      end
+      else
+      begin
+        ShowMessage('There Was An Error Connecting To The Orders Database, Please Contact Your Software Developer');
+      end;
     end;
+  end
+  else
+  begin
+    ShowMessage('Batch Save Has Been Cancelled!');
   end;
- end else
- begin
-  //cancel the operation
-  ShowMessage('Batch Save Has been Cancelled !');
- end;
 end;
+
 
 procedure Tfrmselectvendorfororder.btncancelClick(Sender: TObject);
 begin
@@ -95,7 +182,9 @@ procedure Tfrmselectvendorfororder.btnplaceorderClick(Sender: TObject);
 Var
  i,j,k:Integer;
  TStrings:TStringList;
- CSVFileName: string;
+ CSVFileName,Vmail: string;
+ //
+ MailTo, MailCC, MailSubject, MailBody: string;
 begin
  if dlgSave1.Execute() then
  begin
@@ -127,7 +216,43 @@ begin
          begin
           //here we will apply a filter to the vendor that is select and extract the email
           //
-
+          tblvendor.Filtered:=False;
+          tblvendor.Filter:='Vendor_Name = ' + QuotedStr(cbbvendor.Text);
+          tblvendor.Filtered:=True;
+          //
+          //now we extract the email
+          //
+          Vmail:=tblvendor.FieldByName('Vendor_Email').AsString;
+          //
+          //now we will execute the shellexecute to generate the email
+          //
+          if Vmail = '' then
+          begin
+           ShowMessage('There Is No Email Address Captured For This Vendor');
+          end else
+          begin
+           MailTo := Vmail;
+          end;
+          //
+          MailCC := 'aarti@octavias.co.za';
+          MailSubject := 'New Order Sheet';
+          //
+            MailBody := 'Good day' + sLineBreak + sLineBreak +
+                    'Please see attached order sheet.' + sLineBreak + sLineBreak +
+                    'I look forward to your response :)' + sLineBreak + sLineBreak +
+                    'Kind Regards';
+            //here we will need to cc in aarti
+            // Using ShellExecute to open the default email client with pre-filled values
+          ShellExecute(
+            0,
+            'open',
+            PChar('mailto:' + MailTo + '?cc=' + MailCC +
+              '&subject=' + MailSubject + '&body=' + StringReplace(MailBody, sLineBreak, '%0D%0A', [rfReplaceAll])),
+            nil,
+            nil,
+            SW_SHOWNORMAL
+          );
+          //
          end else
          begin
            ShowMessage('There Was An Error Connecting To The Vendors Database , Please Contact Your Software Developer');
