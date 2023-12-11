@@ -109,6 +109,7 @@ type
     btngenerateorder: TButton;
     lbltotals: TLabel;
     lblorderproducts: TLabel;
+    btnviewsuggestedorder: TButton;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -173,7 +174,7 @@ end;
 
 procedure Tfrmmain.AddVendor2Click(Sender: TObject);
 begin
- frmvendors.ShowModal; //show the edit product vendor screen
+ //
 end;
 
 procedure Tfrmmain.AddVendor3Click(Sender: TObject);
@@ -664,7 +665,7 @@ end;
 
 procedure Tfrmmain.DeleteVendor1Click(Sender: TObject);
 begin
- frmvendors.ShowModal; //show the delete product vendor screen
+ //
 end;
 
 procedure Tfrmmain.DeleteVendor2Click(Sender: TObject);

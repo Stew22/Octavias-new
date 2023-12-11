@@ -144,7 +144,7 @@ procedure Tfrmaddservice.DeleteVendor1Click(Sender: TObject);
 begin
  //here we are going to code a form that will allow the user to search by
  //vendor name or vendor code to delete them
- frmdeleteservicevendor.Close;
+ frmdeleteservicevendor.ShowModal;
 end;
 
 procedure Tfrmaddservice.Exit1Click(Sender: TObject);

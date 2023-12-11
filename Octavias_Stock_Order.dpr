@@ -31,7 +31,8 @@ uses
   frm_View_Vendors_U in 'frm_View_Vendors_U.pas' {frmViewVendors},
   frm_Reset_Password_U in 'frm_Reset_Password_U.pas' {frmresetpassword},
   frm_Edit_Poroduct_Details_U in 'frm_Edit_Poroduct_Details_U.pas' {frmeditproductdetails},
-  Logger_U in 'Logger_U.pas';
+  Logger_U in 'Logger_U.pas',
+  DM_Logger in 'DM_Logger.pas' {DataModuleLogger: TDataModule};
 
 {$R *.res}
 
@@ -70,5 +71,6 @@ begin
   Application.CreateForm(TfrmViewVendors, frmViewVendors);
   Application.CreateForm(Tfrmresetpassword, frmresetpassword);
   Application.CreateForm(Tfrmeditproductdetails, frmeditproductdetails);
+  Application.CreateForm(TDataModuleLogger, DataModuleLogger);
   Application.Run;
 end.

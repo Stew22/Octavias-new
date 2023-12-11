@@ -567,18 +567,21 @@ object frmeditproductdetails: Tfrmeditproductdetails
       end
       object File2: TMenuItem
         Caption = 'Save Edits'
+        OnClick = File2Click
       end
       object N2: TMenuItem
         Caption = '-'
       end
       object Cancel1: TMenuItem
         Caption = 'Cancel'
+        OnClick = Cancel1Click
       end
       object N1: TMenuItem
         Caption = '-'
       end
       object Cancel2: TMenuItem
         Caption = 'Exit'
+        OnClick = Cancel2Click
       end
     end
     object Help1: TMenuItem

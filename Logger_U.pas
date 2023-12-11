@@ -3,7 +3,7 @@ unit Logger_U;
 interface
 
 uses
-  SysUtils, Classes, ADODB; // Add your data module unit here
+  SysUtils, Classes, ADODB,DM_Logger; // Add your data module unit here
 
 type
   TDataAccess = class
@@ -18,10 +18,10 @@ implementation
 class procedure TDataAccess.WriteToAccessDB(const DatabaseFile, MessageText: string);
 begin
   try
-    //YourDataModuleUnit.ADOConnection1.Connected := True;
-    //YourDataModuleUnit.ADOQuery1.SQL.Text := 'INSERT INTO TableName (MessageColumn) VALUES (:Message)';
-    //YourDataModuleUnit.ADOQuery1.Parameters.ParamByName('Message').Value := MessageText;
-   // YourDataModuleUnit.ADOQuery1.ExecSQL;
+   //here we will call the database connect to it write the data then close it
+   //
+
+
   except
     on E: Exception do
       Writeln('Error: ' + E.Message);

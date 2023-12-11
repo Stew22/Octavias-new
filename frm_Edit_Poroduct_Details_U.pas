@@ -58,6 +58,9 @@ type
     procedure btnhelpClick(Sender: TObject);
     procedure btnsearchClick(Sender: TObject);
     procedure btnsaveeditsClick(Sender: TObject);
+    procedure File2Click(Sender: TObject);
+    procedure Cancel1Click(Sender: TObject);
+    procedure Cancel2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -204,6 +207,21 @@ begin
     ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer ');
    end;
  end;
+end;
+
+procedure Tfrmeditproductdetails.Cancel1Click(Sender: TObject);
+begin
+ btncancel.Click;
+end;
+
+procedure Tfrmeditproductdetails.Cancel2Click(Sender: TObject);
+begin
+ btnexit.Click;
+end;
+
+procedure Tfrmeditproductdetails.File2Click(Sender: TObject);
+begin
+ btnsaveedits.Click;
 end;
 
 procedure Tfrmeditproductdetails.FormActivate(Sender: TObject);

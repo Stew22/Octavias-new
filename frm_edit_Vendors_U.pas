@@ -228,7 +228,7 @@ begin
          //here we are going to pupulate the combo boxes for the vendor name and code
          //
          Vname_Temp:=tblvendor.FieldByName('Vendor_Name').AsString;
-          if cbbevname.Items.IndexOf(VName_Temp) = -1 then
+          if (cbbevname.Items.IndexOf(VName_Temp) = -1) and (tblvendor.FieldByName('Is_Service').AsString = 'True') then
            begin
             cbbevname.Items.Add(VName_Temp);
             tblvendor.Next;

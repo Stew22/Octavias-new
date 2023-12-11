@@ -21,10 +21,10 @@ type
     lbl3: TLabel;
     btnhelplogin: TButton;
     procedure btnloginClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure btnregisterClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnhelploginClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -134,7 +134,7 @@ begin
  frmadduser.ShowModal;
 end;
 
-procedure Tfrmlogin.FormActivate(Sender: TObject);
+procedure Tfrmlogin.FormShow(Sender: TObject);
 var
  I:Integer;
 begin
@@ -167,7 +167,6 @@ begin
       end;
    end;
  end;
-
 end;
 
 end.

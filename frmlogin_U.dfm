@@ -3,7 +3,7 @@ object frmlogin: Tfrmlogin
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Octavia'#39's StockMate'
+  Caption = 'Life Day Spa StockMate'
   ClientHeight = 202
   ClientWidth = 331
   Color = clBtnFace
@@ -13,7 +13,7 @@ object frmlogin: Tfrmlogin
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
-  OnActivate = FormActivate
+  OnShow = FormShow
   TextHeight = 13
   object lbl1: TLabel
     Left = 8
