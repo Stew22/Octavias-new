@@ -108,8 +108,13 @@ begin
 end;
 
 procedure Tfrmeditproductdetails.btnhelpClick(Sender: TObject);
+ var
+ PDFFilename:String;
 begin
- //here we will open the help pdf
+  //here we will shell execute the pdf to open
+  PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Edit_Product_Details.pdf'; //replace this with the help file
+  ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+  //
 end;
 
 procedure Tfrmeditproductdetails.btnsaveeditsClick(Sender: TObject);

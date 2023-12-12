@@ -32,7 +32,8 @@ uses
   frm_Reset_Password_U in 'frm_Reset_Password_U.pas' {frmresetpassword},
   frm_Edit_Poroduct_Details_U in 'frm_Edit_Poroduct_Details_U.pas' {frmeditproductdetails},
   Logger_U in 'Logger_U.pas',
-  DM_Logger in 'DM_Logger.pas' {DataModuleLogger: TDataModule};
+  DM_Logger in 'DM_Logger.pas' {DataModuleLogger: TDataModule},
+  frm_Delete_Product_U in 'frm_Delete_Product_U.pas' {frmdeleteproduct};
 
 {$R *.res}
 
@@ -72,5 +73,6 @@ begin
   Application.CreateForm(Tfrmresetpassword, frmresetpassword);
   Application.CreateForm(Tfrmeditproductdetails, frmeditproductdetails);
   Application.CreateForm(TDataModuleLogger, DataModuleLogger);
+  Application.CreateForm(Tfrmdeleteproduct, frmdeleteproduct);
   Application.Run;
 end.

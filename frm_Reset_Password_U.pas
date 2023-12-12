@@ -98,7 +98,7 @@ procedure Tfrmresetpassword.btnhelpClick(Sender: TObject);
  PDFFilename:String;
 begin
   //here we will shell execute the pdf to open
-  PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Delete_Service_Vendor.pdf'; //replace this with the help file
+  PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Reset_Password.pdf'; //replace this with the help file
   ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
   //
 end;

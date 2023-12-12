@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls , frm_Stock_Settings_U,frm_add_products_U,
-  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,frm_Edit_Poroduct_Details_U,DM_Products;
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,frm_Edit_Poroduct_Details_U,DM_Products,frm_Delete_Product_U;
 
 type
   Tfrmstockmanagement = class(TForm)
@@ -157,7 +157,8 @@ end;
 
 procedure Tfrmstockmanagement.RemoveProducts1Click(Sender: TObject);
 begin
-//here we are going to add a form to remove products from the listing
+ frmdeleteproduct.ShowModal;
+ //here we are going to add a form to remove products from the listing
 end;
 
 procedure Tfrmstockmanagement.Reports2Click(Sender: TObject);
