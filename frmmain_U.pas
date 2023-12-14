@@ -9,7 +9,7 @@ uses
   Vcl.StdCtrls ,frmregister_U,frmremoveuser_U,frm_Bookings_U,fm_Help_Widget_U,
   frm_Vendors_Service_U,DM_Vendors,DM_Order,frm_Report_Bug_U,Winapi.ShellAPI,
   frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U,frm_Delete_Service_Vendor,DM_Products,
-  frm_Reset_Password_U;
+  frm_Reset_Password_U , frm_edit_Product_Vendors_U,frm_Delete_Product_Vendor_U;
 
 type
   Tfrmmain = class(TForm)
@@ -176,7 +176,7 @@ end;
 
 procedure Tfrmmain.AddVendor2Click(Sender: TObject);
 begin
- //
+ frmeditproductvendor.ShowModal;
 end;
 
 procedure Tfrmmain.AddVendor3Click(Sender: TObject);
@@ -697,7 +697,7 @@ end;
 
 procedure Tfrmmain.DeleteVendor1Click(Sender: TObject);
 begin
- //
+ frmdeleteproductvendor.ShowModal;
 end;
 
 procedure Tfrmmain.DeleteVendor2Click(Sender: TObject);

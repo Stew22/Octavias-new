@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.ImageList,
   Vcl.ImgList, Vcl.Mask, Vcl.ExtCtrls , frmregister_U ,frmmain_U,DM_Users ,frmsplash_U,
-  Winapi.ShellAPI;
+  Winapi.ShellAPI,DM_Logger,Logger_U;
 
 type
   Tfrmlogin = class(TForm)
@@ -95,6 +95,7 @@ begin
       frmmain.EditMyDetails2.Enabled:=True;
       frmmain.AddUser1.Enabled:=True;
       frmmain.Bookings1.Enabled:=True; // this will be for the future
+      TDataAccess.WriteToAccessDB(cbbuser.Text + ' Has Logged In ');
      end else
      if tblusers.FieldByName('Premissions').AsString = 'Orderer' then
      begin
@@ -105,6 +106,9 @@ begin
       frmmain.AddUser1.Enabled:=False;
       frmmain.Bookings1.Enabled:=False; // this will be for the future
       frmmain.ShowModal;
+      //
+      //here we write to the log
+      TDataAccess.WriteToAccessDB(cbbuser.Text + ' Has Logged In ');
       //here we will capture the Orderer that has logged in
      end else
      begin

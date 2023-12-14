@@ -1,0 +1,57 @@
+unit frm_edit_Product_Vendors_U;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList, Vcl.Menus,
+  Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  Tfrmeditproductvendor = class(TForm)
+    mm1: TMainMenu;
+    File1: TMenuItem;
+    File2: TMenuItem;
+    Cancel1: TMenuItem;
+    Cancel2: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    Help1: TMenuItem;
+    il1: TImageList;
+    pnl1: TPanel;
+    lbl1: TLabel;
+    btnhelp: TButton;
+    pnl2: TPanel;
+    lbl2: TLabel;
+    lbl3: TLabel;
+    lbl4: TLabel;
+    lbl5: TLabel;
+    lbl6: TLabel;
+    lbl7: TLabel;
+    lbl8: TLabel;
+    edtvname: TEdit;
+    edtvemail: TEdit;
+    edtvaddress: TEdit;
+    edtvcode: TEdit;
+    edtvcontactname: TEdit;
+    edtvcontactphone: TEdit;
+    cbbvendortype: TComboBox;
+    pnl3: TPanel;
+    btneditvendor: TButton;
+    btncancel: TButton;
+    btnclear: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmeditproductvendor: Tfrmeditproductvendor;
+
+implementation
+
+{$R *.dfm}
+
+end.

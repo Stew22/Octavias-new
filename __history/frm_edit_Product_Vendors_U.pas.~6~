@@ -1,0 +1,129 @@
+unit frm_edit_Product_Vendors_U;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList, Vcl.Menus,
+  Vcl.StdCtrls, Vcl.ExtCtrls,DM_Vendors;
+
+type
+  Tfrmeditproductvendor = class(TForm)
+    mm1: TMainMenu;
+    File1: TMenuItem;
+    File2: TMenuItem;
+    Cancel1: TMenuItem;
+    Cancel2: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    Help1: TMenuItem;
+    il1: TImageList;
+    pnl1: TPanel;
+    lbl1: TLabel;
+    btnhelp: TButton;
+    pnl2: TPanel;
+    lbl2: TLabel;
+    lbl3: TLabel;
+    lbl4: TLabel;
+    lbl5: TLabel;
+    lbl6: TLabel;
+    lbl7: TLabel;
+    lbl8: TLabel;
+    edtvemail: TEdit;
+    edtvaddress: TEdit;
+    edtvcontactname: TEdit;
+    edtvcontactphone: TEdit;
+    cbbvendortype: TComboBox;
+    pnl3: TPanel;
+    btneditvendor: TButton;
+    btncancel: TButton;
+    btnclear: TButton;
+    cbbevpname: TComboBox;
+    cbbevpcode: TComboBox;
+    procedure FormActivate(Sender: TObject);
+    procedure btnclearClick(Sender: TObject);
+    procedure btncancelClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnhelpClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmeditproductvendor: Tfrmeditproductvendor;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tfrmeditproductvendor.btncancelClick(Sender: TObject);
+begin
+ //here we will clear all edits and close form
+ cbbevpname.Clear;
+ edtvemail.Clear;
+ edtvaddress.Clear;
+ cbbevpcode.Clear;
+ edtvcontactname.Clear;
+ edtvcontactphone.Clear;
+ cbbvendortype.Clear;
+ //
+ frmeditproductvendor.Close;
+end;
+
+procedure Tfrmeditproductvendor.btnclearClick(Sender: TObject);
+begin
+ cbbevpname.Clear;
+ edtvemail.Clear;
+ edtvaddress.Clear;
+ cbbevpcode.Clear;
+ edtvcontactname.Clear;
+ edtvcontactphone.Clear;
+ cbbvendortype.Clear;
+end;
+
+procedure Tfrmeditproductvendor.btnhelpClick(Sender: TObject);
+begin
+// here we will open the help file for this form
+end;
+
+procedure Tfrmeditproductvendor.FormActivate(Sender: TObject);
+begin
+  with Datamodulevendor do
+  begin
+    if not convendor.Connected then
+    begin
+      // Connect to the database
+      convendor.ConnectionString := 'Provider=Microsoft.ACE.OLEDB.12.0;' +
+        'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\Vendor_Database.accdb' +
+        ';Mode=ReadWrite;Persist Security Info=False';
+      //
+      tblvendor.TableName := 'tblvendors';
+      convendor.Connected := True;
+      tblvendor.Active := True;
+      tblvendor.First;
+      // Populate user fields or any other necessary initializations
+    end;
+  end;
+end;
+
+procedure Tfrmeditproductvendor.FormShow(Sender: TObject);
+begin
+ with Datamodulevendor do
+ begin
+  if tblvendor.Active = True then
+  begin
+   //here we will populate the combo boxes of vname , and vendor code
+   //then once the user has selected them we can then copy all the data to
+   //fill in all the other fields
+   //
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Vendors Database , Please Contact Your Software Developer');
+  end;
+ end;
+end;
+
+end.
