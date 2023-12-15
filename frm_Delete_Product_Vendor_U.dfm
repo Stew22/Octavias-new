@@ -14,6 +14,7 @@ object frmdeleteproductvendor: Tfrmdeleteproductvendor
   Font.Style = []
   Menu = mm1
   Position = poScreenCenter
+  OnShow = FormShow
   TextHeight = 15
   object pnl1: TPanel
     Left = 0
@@ -39,12 +40,83 @@ object frmdeleteproductvendor: Tfrmdeleteproductvendor
     Height = 137
     BevelInner = bvLowered
     TabOrder = 1
+    object lbl2: TLabel
+      Left = 16
+      Top = 19
+      Width = 126
+      Height = 15
+      Caption = 'Product Vendor Name : '
+    end
+    object lbl3: TLabel
+      Left = 16
+      Top = 64
+      Width = 122
+      Height = 15
+      Caption = 'Product Vendor Code : '
+    end
+    object cbbvedeletename: TComboBox
+      Left = 148
+      Top = 16
+      Width = 429
+      Height = 23
+      TabOrder = 0
+      TextHint = '--- Product Vendor Name ---'
+    end
+    object cbbvdeletecode: TComboBox
+      Left = 148
+      Top = 62
+      Width = 429
+      Height = 23
+      TabOrder = 1
+      TextHint = '--- Product Vendor Code ---'
+    end
+    object pnl3: TPanel
+      Left = 16
+      Top = 91
+      Width = 561
+      Height = 41
+      BevelInner = bvLowered
+      TabOrder = 2
+      object btn1: TButton
+        Left = 16
+        Top = 8
+        Width = 153
+        Height = 25
+        Caption = 'Delete Product Vendor'
+        ImageIndex = 0
+        Images = il1
+        TabOrder = 0
+        OnClick = btn1Click
+      end
+      object btncancel: TButton
+        Left = 264
+        Top = 8
+        Width = 75
+        Height = 25
+        Caption = 'Cancel'
+        ImageIndex = 1
+        Images = il1
+        TabOrder = 1
+        OnClick = btncancelClick
+      end
+      object btnexit: TButton
+        Left = 464
+        Top = 8
+        Width = 75
+        Height = 25
+        Caption = 'Exit'
+        ImageIndex = 2
+        Images = il1
+        TabOrder = 2
+        OnClick = btnexitClick
+      end
+    end
   end
   object il1: TImageList
     Left = 448
     Top = 16
     Bitmap = {
-      494C010103000800040010001000FFFFFFFFFF00FFFFFFFFFFFFFFFF424D3600
+      494C010103000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000535353005353
       5300535353005353530053535300535353005353530053535300535353005353
@@ -180,7 +252,8 @@ object frmdeleteproductvendor: Tfrmdeleteproductvendor
       DA5B8FF17FDF0000DA5BC7E37FDF0000DA5BE3C77FD70000DA5BF18F7FD30000
       DA5BF81F7FD90000DA5BFC3F70000000DA5BFC3F70000000DA5BF81F7FD90000
       DA5BF18F7FD30000DBDBE3C77FD70000DFFBC7E37FDF000000008FF17FDF0000
-      F7EF9FF97FDF0000F00FFFFF001F0000}
+      F7EF9FF97FDF0000F00FFFFF001F000000000000000000000000000000000000
+      000000000000}
   end
   object mm1: TMainMenu
     Left = 504
