@@ -245,6 +245,10 @@
             <Form>frmpriceupdatesingleitem</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="frm_Edit_My_Details_U.pas">
+            <Form>frmeditmydetails</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txaPackage"/>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txvpck"/>
         <BuildConfiguration Include="Base">
