@@ -42,6 +42,10 @@ type
     procedure btnexitClick(Sender: TObject);
     procedure btndeleteClick(Sender: TObject);
     procedure btnhelpClick(Sender: TObject);
+    procedure File2Click(Sender: TObject);
+    procedure Cancel1Click(Sender: TObject);
+    procedure Cancel2Click(Sender: TObject);
+    procedure Help1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -155,6 +159,16 @@ begin
   //
 end;
 
+procedure Tfrmdeleteproduct.Cancel1Click(Sender: TObject);
+begin
+btnancel.Click;
+end;
+
+procedure Tfrmdeleteproduct.Cancel2Click(Sender: TObject);
+begin
+btnexit.Click;
+end;
+
 procedure Tfrmdeleteproduct.cbbitemcodeChange(Sender: TObject);
 begin
  with DataModuleProducts do
@@ -202,6 +216,11 @@ begin
  begin
   btndelete.Enabled:=False;
  end;
+end;
+
+procedure Tfrmdeleteproduct.File2Click(Sender: TObject);
+begin
+ btndelete.Click;
 end;
 
 procedure Tfrmdeleteproduct.FormActivate(Sender: TObject);
@@ -255,6 +274,11 @@ begin
      end;
    end;
  end;
+end;
+
+procedure Tfrmdeleteproduct.Help1Click(Sender: TObject);
+begin
+ btnhelp.Click;
 end;
 
 end.

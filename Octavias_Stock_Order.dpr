@@ -35,7 +35,8 @@ uses
   DM_Logger in 'DM_Logger.pas' {DataModuleLogger: TDataModule},
   frm_Delete_Product_U in 'frm_Delete_Product_U.pas' {frmdeleteproduct},
   frm_edit_Product_Vendors_U in 'frm_edit_Product_Vendors_U.pas' {frmeditproductvendor},
-  frm_Delete_Product_Vendor_U in 'frm_Delete_Product_Vendor_U.pas' {frmdeleteproductvendor};
+  frm_Delete_Product_Vendor_U in 'frm_Delete_Product_Vendor_U.pas' {frmdeleteproductvendor},
+  Frm_Price_Update_Single_Item_U in 'Frm_Price_Update_Single_Item_U.pas' {frmpriceupdatesingleitem};
 
 {$R *.res}
 
@@ -78,5 +79,6 @@ begin
   Application.CreateForm(Tfrmdeleteproduct, frmdeleteproduct);
   Application.CreateForm(Tfrmeditproductvendor, frmeditproductvendor);
   Application.CreateForm(Tfrmdeleteproductvendor, frmdeleteproductvendor);
+  Application.CreateForm(Tfrmpriceupdatesingleitem, frmpriceupdatesingleitem);
   Application.Run;
 end.

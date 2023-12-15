@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.ImageList, Vcl.ImgList,
-  Vcl.StdCtrls, Vcl.ExtCtrls,DM_Vendors , DM_Order , DM_Products;
+  Vcl.StdCtrls, Vcl.ExtCtrls,DM_Vendors , DM_Order , DM_Products,Winapi.ShellAPI;
 
 type
   Tfrmdeleteproductvendor = class(TForm)
@@ -27,13 +27,19 @@ type
     lbl2: TLabel;
     lbl3: TLabel;
     pnl3: TPanel;
-    btn1: TButton;
+    btndeletevendor: TButton;
     btncancel: TButton;
     btnexit: TButton;
+    btnhelp: TButton;
     procedure btncancelClick(Sender: TObject);
     procedure btnexitClick(Sender: TObject);
-    procedure btn1Click(Sender: TObject);
+    procedure btndeletevendorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btnhelpClick(Sender: TObject);
+    procedure Help1Click(Sender: TObject);
+    procedure File2Click(Sender: TObject);
+    procedure Cancel1Click(Sender: TObject);
+    procedure Cancel2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,7 +53,7 @@ implementation
 
 {$R *.dfm}
 
-procedure Tfrmdeleteproductvendor.btn1Click(Sender: TObject);
+procedure Tfrmdeleteproductvendor.btndeletevendorClick(Sender: TObject);
 begin
  with Datamodulevendor do
  begin
@@ -111,15 +117,15 @@ begin
       tblvendor.Filtered:=False;
       tblvendor.Filter:='Vendor_Number = ' + QuotedStr(cbbvdeletecode.Text);
       tblvendor.Filtered:=True;
-     //now we have filtered
-     //now we delete from the vendors database and delete all the products associated with the vendor
-          //here we will filter by name
-     tblvendor.Filtered:=False;
-     tblvendor.Filter:='Vendor_Number = ' + QuotedStr(cbbvedeletename.Text);
-     tblvendor.Filtered:=True;
-     //now we have filtered
-     //now we delete from the vendors database and delete all the products associated with the vendor
-     //
+      //now we have filtered
+      //now we delete from the vendors database and delete all the products associated with the vendor
+      //here we will filter by name
+      tblvendor.Filtered:=False;
+      tblvendor.Filter:='Vendor_Number = ' + QuotedStr(cbbvedeletename.Text);
+      tblvendor.Filtered:=True;
+      //now we have filtered
+      //now we delete from the vendors database and delete all the products associated with the vendor
+      //
       if (tblvendor.Filtered = True) and (tblvendor.FieldByName('Vendor_Number').AsString = cbbvedeletename.Text) then
       begin
        //here we will delete the vendor then all the products from the products database and the orders database
@@ -185,6 +191,31 @@ begin
  frmdeleteproductvendor.Close;
 end;
 
+procedure Tfrmdeleteproductvendor.btnhelpClick(Sender: TObject);
+ var
+ PDFFilename:String;
+begin
+  //here we will shell execute the pdf to open
+  PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Delete_Product_Vendor.pdf'; //replace this with the help file
+  ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+  //
+end;
+
+procedure Tfrmdeleteproductvendor.Cancel1Click(Sender: TObject);
+begin
+ btncancel.Click;
+end;
+
+procedure Tfrmdeleteproductvendor.Cancel2Click(Sender: TObject);
+begin
+ btnexit.Click;
+end;
+
+procedure Tfrmdeleteproductvendor.File2Click(Sender: TObject);
+begin
+ btndeletevendor.Click;
+end;
+
 procedure Tfrmdeleteproductvendor.FormShow(Sender: TObject);
 var
 VnameTemp,VcodeTemp : string;
@@ -224,6 +255,11 @@ begin
    end;
   end;
  end;
+end;
+
+procedure Tfrmdeleteproductvendor.Help1Click(Sender: TObject);
+begin
+ btnhelp.Click;
 end;
 
 end.

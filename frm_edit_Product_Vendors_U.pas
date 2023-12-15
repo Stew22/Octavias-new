@@ -50,6 +50,9 @@ type
     procedure Cancel2Click(Sender: TObject);
     procedure btneditvendorClick(Sender: TObject);
     procedure Help1Click(Sender: TObject);
+    procedure cbbevpnameChange(Sender: TObject);
+    procedure cbbevpcodeChange(Sender: TObject);
+    procedure File2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -79,10 +82,10 @@ end;
 
 procedure Tfrmeditproductvendor.btnclearClick(Sender: TObject);
 begin
- cbbevpname.Clear;
+ cbbevpname.Text:='';
  edtvemail.Clear;
  edtvaddress.Clear;
- cbbevpcode.Clear;
+ cbbevpcode.Text:='';
  edtvcontactname.Clear;
  edtvcontactphone.Clear;
  cbbvendortype.Clear;
@@ -90,9 +93,36 @@ end;
 
 procedure Tfrmeditproductvendor.btneditvendorClick(Sender: TObject);
 begin
- //once all the edits have been made , check that no fields
- //except the vendor code are empty
- //then we can publish the changes
+ with Datamodulevendor do
+ begin
+   if tblvendor.Active = True then
+   begin
+    if (cbbevpname.Text <> '') or (edtvemail.Text <> '') or (edtvaddress.Text <> '')
+    or (edtvcontactname.Text <> '') or (edtvcontactphone.Text <> '') or (cbbvendortype.Text <> '') then
+    begin
+     if (tblvendor.Filtered = True) and (tblvendor.FieldByName('Vendor_Name').AsString = cbbevpname.Text) then
+     begin
+      tblvendor.Edit;
+      //
+      tblvendor['Vendor_Code']:=cbbevpcode.Text;
+      tblvendor['Vendor_Email']:=edtvemail.Text;
+      tblvendor['Vendor_Contact_Name']:=edtvcontactname.Text;
+      tblvendor['Vendor_Contact_Number']:=edtvcontactphone.Text;
+      tblvendor['Vendor_Address']:=edtvaddress.Text;
+      //tblvendor['']:=''; // here we will need to check if want to mofiy the vendor service type
+      tblvendor.Post;
+      //
+      ShowMessage('The Edits Have Been Saved Successfully !');
+     end else
+     begin
+      ShowMessage('Please Make Sure You Have Selected A Vendor !');
+     end;
+    end else
+    begin
+     ShowMessage('You Can Not Leave One Or More Of The Fields Blank , Please Try Again');
+    end;
+   end;
+ end;
 end;
 
 procedure Tfrmeditproductvendor.btnhelpClick(Sender: TObject);
@@ -100,7 +130,7 @@ procedure Tfrmeditproductvendor.btnhelpClick(Sender: TObject);
  PDFFilename:String;
 begin
   //here we will shell execute the pdf to open
-  PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Delete_Product.pdf'; //replace this with the help file
+  PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Edit_Product_Vendor.pdf'; //replace this with the help file
   ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
   //
 end;
@@ -112,15 +142,80 @@ end;
 
 procedure Tfrmeditproductvendor.Cancel2Click(Sender: TObject);
 begin
-  cbbevpname.Clear;
+ cbbevpname.Text := '';
  edtvemail.Clear;
  edtvaddress.Clear;
- cbbevpcode.Clear;
+ cbbevpcode.Text:='';
  edtvcontactname.Clear;
  edtvcontactphone.Clear;
  cbbvendortype.Clear;
  //close the form
  frmeditproductvendor.Close;
+end;
+
+procedure Tfrmeditproductvendor.cbbevpcodeChange(Sender: TObject);
+begin
+ //here we will automatically populate all the other fields
+ with Datamodulevendor do
+ begin
+  if tblvendor.Active = True then
+  begin
+   tblvendor.Filtered:=False;
+   tblvendor.Filter:='Vendor_Code = ' + QuotedStr(cbbevpcode.Text);
+   tblvendor.Filtered:=True;
+   //
+   if cbbevpcode.Text <> '' then
+   begin
+    btneditvendor.Enabled:=True;
+   end else
+   begin
+    btneditvendor.Enabled:=False;
+   end;
+   //
+   cbbevpname.Text :=tblvendor.FieldByName('Vendor_Name').AsString;
+   edtvcontactname.Text:=tblvendor.FieldByName('Vendor_Contact_Name').AsString;
+   edtvcontactphone.Text:=tblvendor.FieldByName('Vendor_Contact_Number').AsString;
+   edtvemail.Text:=tblvendor.FieldByName('Vendor_Email').AsString;
+   edtvaddress.Text:=tblvendor.FieldByName('Vendor_Address').AsString;
+   cbbvendortype.Text:=tblvendor.FieldByName('Vendor_Type').AsString;
+   //
+  end;
+ end;
+end;
+
+procedure Tfrmeditproductvendor.cbbevpnameChange(Sender: TObject);
+begin
+ //here we will automatically populate all the other fields
+ with Datamodulevendor do
+ begin
+  if tblvendor.Active = True then
+  begin
+   tblvendor.Filtered:=False;
+   tblvendor.Filter:='Vendor_Name = ' + QuotedStr(cbbevpname.Text);
+   tblvendor.Filtered:=True;
+   //
+   if cbbevpname.Text <> '' then
+   begin
+    btneditvendor.Enabled:=True;
+   end else
+   begin
+    btneditvendor.Enabled:=False;
+   end;
+   //
+   cbbevpcode.Text :=tblvendor.FieldByName('Vendor_Code').AsString;
+   edtvcontactname.Text:=tblvendor.FieldByName('Vendor_Contact_Name').AsString;
+   edtvcontactphone.Text:=tblvendor.FieldByName('Vendor_Contact_Number').AsString;
+   edtvemail.Text:=tblvendor.FieldByName('Vendor_Email').AsString;
+   edtvaddress.Text:=tblvendor.FieldByName('Vendor_Address').AsString;
+   cbbvendortype.Text:=tblvendor.FieldByName('Vendor_Type').AsString;
+   //
+  end;
+ end;
+end;
+
+procedure Tfrmeditproductvendor.File2Click(Sender: TObject);
+begin
+ btneditvendor.Click;
 end;
 
 procedure Tfrmeditproductvendor.FormActivate(Sender: TObject);
@@ -144,6 +239,8 @@ begin
 end;
 
 procedure Tfrmeditproductvendor.FormShow(Sender: TObject);
+ var
+  VnameTemp,VcodeTemp:string;
 begin
  with Datamodulevendor do
  begin
@@ -153,6 +250,36 @@ begin
    //then once the user has selected them we can then copy all the data to
    //fill in all the other fields
    //
+   tblvendor.Filtered:=False;
+   tblvendor.Filter:='';
+   //
+   tblvendor.First;
+   //
+   while not tblvendor.Eof do
+   begin
+    VnameTemp:=tblvendor.FieldByName('Vendor_Name').AsString;
+    VcodeTemp:=tblvendor.FieldByName('Vendor_Code').AsString;
+    //
+    if (cbbevpname.Items.IndexOf(VnameTemp) = -1) and (tblvendor.FieldByName('Is_Service').AsString = 'False') then
+    begin
+     cbbevpname.Items.Add(VnameTemp);
+     tblvendor.Next;
+    end else
+    begin
+     //then it is a duplicate and we will move to the next record
+     tblvendor.Next;
+    end;
+    //
+    if (cbbevpcode.Items.IndexOf(VcodeTemp) = -1) and (tblvendor.FieldByName('Is_Service').AsString = 'False')  then
+    begin
+     cbbevpcode.Items.Add(VcodeTemp);
+     tblvendor.Next;
+    end else
+    begin
+     //then it is a duplicate and we will move to the next record
+     tblvendor.Next;
+    end;
+   end;
   end else
   begin
    ShowMessage('There Was An Error Connecting To The Vendors Database , Please Contact Your Software Developer');

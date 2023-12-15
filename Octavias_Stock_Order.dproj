@@ -241,6 +241,10 @@
             <Form>frmdeleteproductvendor</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Frm_Price_Update_Single_Item_U.pas">
+            <Form>frmpriceupdatesingleitem</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txaPackage"/>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txvpck"/>
         <BuildConfiguration Include="Base">
