@@ -911,7 +911,7 @@ const
   ScaleFactor = 0.8; // Adjust this value to set the percentage of the screen size
 begin
   // Set the form size to a percentage of the screen size
-  Width := Round(Screen.Width * 0.59);
+  Width := Round(Screen.Width * 0.8);
   Height := Round(Screen.Height * ScaleFactor);
 
   // Center the form on the screen

@@ -2,10 +2,9 @@ object frmmain: Tfrmmain
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
   Caption = 'Order stock'
-  ClientHeight = 748
-  ClientWidth = 1078
+  ClientHeight = 731
+  ClientWidth = 1062
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,8 +19,8 @@ object frmmain: Tfrmmain
   OnShow = FormShow
   TextHeight = 13
   object pnl1: TPanel
-    Left = 8
-    Top = 8
+    Left = 0
+    Top = 0
     Width = 1062
     Height = 41
     BevelInner = bvLowered
@@ -48,8 +47,8 @@ object frmmain: Tfrmmain
     end
   end
   object dbgrd1: TDBGrid
-    Left = 8
-    Top = 106
+    Left = 0
+    Top = 98
     Width = 881
     Height = 633
     DataSource = Datamoduleorder.dsorder
@@ -63,8 +62,8 @@ object frmmain: Tfrmmain
     OnDrawColumnCell = dbgrd1DrawColumnCell
   end
   object pnl2: TPanel
-    Left = 8
-    Top = 55
+    Left = 0
+    Top = 47
     Width = 1062
     Height = 45
     BevelInner = bvLowered
@@ -150,8 +149,8 @@ object frmmain: Tfrmmain
     end
   end
   object pnl4: TPanel
-    Left = 895
-    Top = 99
+    Left = 887
+    Top = 91
     Width = 175
     Height = 174
     BevelInner = bvLowered
@@ -194,8 +193,8 @@ object frmmain: Tfrmmain
     end
   end
   object btnviewsuggestedorder: TButton
-    Left = 903
-    Top = 138
+    Left = 895
+    Top = 130
     Width = 153
     Height = 25
     Caption = 'Suggested Order'
