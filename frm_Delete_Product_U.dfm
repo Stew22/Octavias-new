@@ -2,8 +2,8 @@ object frmdeleteproduct: Tfrmdeleteproduct
   Left = 0
   Top = 0
   Caption = 'Delete Product From Catalogue'
-  ClientHeight = 200
-  ClientWidth = 651
+  ClientHeight = 204
+  ClientWidth = 661
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,7 +17,7 @@ object frmdeleteproduct: Tfrmdeleteproduct
   OnShow = FormShow
   TextHeight = 15
   object pnl1: TPanel
-    Left = 0
+    Left = 4
     Top = 8
     Width = 649
     Height = 41
@@ -45,8 +45,8 @@ object frmdeleteproduct: Tfrmdeleteproduct
     end
   end
   object pnl2: TPanel
-    Left = 0
-    Top = 64
+    Left = 4
+    Top = 67
     Width = 500
     Height = 129
     BevelInner = bvLowered
@@ -100,8 +100,8 @@ object frmdeleteproduct: Tfrmdeleteproduct
     end
   end
   object pnl3: TPanel
-    Left = 506
-    Top = 64
+    Left = 510
+    Top = 67
     Width = 143
     Height = 129
     TabOrder = 2
@@ -149,29 +149,33 @@ object frmdeleteproduct: Tfrmdeleteproduct
       end
       object File2: TMenuItem
         Caption = 'Delete Product'
+        OnClick = File2Click
       end
       object N2: TMenuItem
         Caption = '-'
       end
       object Cancel1: TMenuItem
         Caption = 'Cancel'
+        OnClick = Cancel1Click
       end
       object N1: TMenuItem
         Caption = '-'
       end
       object Cancel2: TMenuItem
         Caption = 'Exit'
+        OnClick = Cancel2Click
       end
     end
     object Help1: TMenuItem
       Caption = 'Help'
+      OnClick = Help1Click
     end
   end
   object il1: TImageList
     Left = 552
     Top = 16
     Bitmap = {
-      494C010105000800040010001000FFFFFFFFFF00FFFFFFFFFFFFFFFF424D3600
+      494C010105000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000000000FF000000FF000000FF0000
       00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
@@ -439,6 +443,7 @@ object frmdeleteproduct: Tfrmdeleteproduct
       F00FDA5B0FF17FDFE247DA5B87E37FDFCE73DA5BC3C77FD7CE73DA5BE18F7FD3
       9E79DA5BF01F7FD99E79DA5BF83F70009E39DA5BFC3F70009999DA5BF81F7FD9
       C993DA5BF10F7FD3CC33DBDBE3877FD7E247DFFBC7C37FDFF00F00008FE17FDF
-      FC7FF7EF1FF07FDFFFFFF00F3FF8001F}
+      FC7FF7EF1FF07FDFFFFFF00F3FF8001F00000000000000000000000000000000
+      000000000000}
   end
 end

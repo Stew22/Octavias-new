@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls , frm_Stock_Settings_U,frm_add_products_U,
-  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,frm_Edit_Poroduct_Details_U,DM_Products,frm_Delete_Product_U;
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,frm_Edit_Poroduct_Details_U,DM_Products,frm_Delete_Product_U,
+  Frm_Price_Update_Single_Item_U;
 
 type
   Tfrmstockmanagement = class(TForm)
@@ -39,6 +40,13 @@ type
     N11: TMenuItem;
     N12: TMenuItem;
     N13: TMenuItem;
+    PricingUpdate1: TMenuItem;
+    N14: TMenuItem;
+    SingleProduct1: TMenuItem;
+    SingleProduct2: TMenuItem;
+    N15: TMenuItem;
+    N16: TMenuItem;
+    N17: TMenuItem;
     procedure Settings1Click(Sender: TObject);
     procedure Exit1Click(Sender: TObject);
     procedure UpdateList1Click(Sender: TObject);
@@ -53,6 +61,7 @@ type
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SingleProduct1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -169,6 +178,11 @@ end;
 procedure Tfrmstockmanagement.Settings1Click(Sender: TObject);
 begin
  frmstocksettings.ShowModal;  //shows the form
+end;
+
+procedure Tfrmstockmanagement.SingleProduct1Click(Sender: TObject);
+begin
+ frmpriceupdatesingleitem.ShowModal;
 end;
 
 procedure Tfrmstockmanagement.StockDaysCover1Click(Sender: TObject);

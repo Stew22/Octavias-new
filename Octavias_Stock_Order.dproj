@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win64</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
         <MainSource>Octavias_Stock_Order.dpr</MainSource>
@@ -239,6 +239,14 @@
         </DCCReference>
         <DCCReference Include="frm_Delete_Product_Vendor_U.pas">
             <Form>frmdeleteproductvendor</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Frm_Price_Update_Single_Item_U.pas">
+            <Form>frmpriceupdatesingleitem</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="frm_Edit_My_Details_U.pas">
+            <Form>frmeditmydetails</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txaPackage"/>

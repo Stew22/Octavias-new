@@ -4,8 +4,8 @@ object frmeditproductvendor: Tfrmeditproductvendor
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Edit Product Vendor Details'
-  ClientHeight = 314
-  ClientWidth = 372
+  ClientHeight = 324
+  ClientWidth = 392
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,11 +13,12 @@ object frmeditproductvendor: Tfrmeditproductvendor
   Font.Name = 'Segoe UI'
   Font.Style = []
   Menu = mm1
+  Position = poScreenCenter
   OnActivate = FormActivate
   OnShow = FormShow
   TextHeight = 15
   object pnl1: TPanel
-    Left = -4
+    Left = 7
     Top = 8
     Width = 377
     Height = 41
@@ -42,7 +43,7 @@ object frmeditproductvendor: Tfrmeditproductvendor
     end
   end
   object pnl2: TPanel
-    Left = -5
+    Left = 7
     Top = 55
     Width = 377
     Height = 214
@@ -150,6 +151,7 @@ object frmeditproductvendor: Tfrmeditproductvendor
       Height = 23
       TabOrder = 5
       TextHint = '--- Product Vendor Name ---'
+      OnChange = cbbevpnameChange
     end
     object cbbevpcode: TComboBox
       Left = 134
@@ -158,10 +160,11 @@ object frmeditproductvendor: Tfrmeditproductvendor
       Height = 23
       TabOrder = 6
       TextHint = '--- Product Vendor Code ---'
+      OnChange = cbbevpcodeChange
     end
   end
   object pnl3: TPanel
-    Left = -5
+    Left = 7
     Top = 275
     Width = 377
     Height = 38
@@ -173,6 +176,7 @@ object frmeditproductvendor: Tfrmeditproductvendor
       Width = 89
       Height = 25
       Caption = 'Save Edits'
+      Enabled = False
       ImageIndex = 0
       Images = il1
       TabOrder = 0
@@ -210,6 +214,7 @@ object frmeditproductvendor: Tfrmeditproductvendor
       end
       object File2: TMenuItem
         Caption = 'Save Edits'
+        OnClick = File2Click
       end
       object N2: TMenuItem
         Caption = '-'
