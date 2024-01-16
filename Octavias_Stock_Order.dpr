@@ -37,7 +37,9 @@ uses
   frm_edit_Product_Vendors_U in 'frm_edit_Product_Vendors_U.pas' {frmeditproductvendor},
   frm_Delete_Product_Vendor_U in 'frm_Delete_Product_Vendor_U.pas' {frmdeleteproductvendor},
   Frm_Price_Update_Single_Item_U in 'Frm_Price_Update_Single_Item_U.pas' {frmpriceupdatesingleitem},
-  frm_Edit_My_Details_U in 'frm_Edit_My_Details_U.pas' {frmeditmydetails};
+  frm_Edit_My_Details_U in 'frm_Edit_My_Details_U.pas' {frmeditmydetails},
+  frm_Spa_Menu_U in 'frm_Spa_Menu_U.pas' {frmspamenu},
+  DM_Spa_Menu in 'DM_Spa_Menu.pas' {DataModuleSpaMenu: TDataModule};
 
 {$R *.res}
 
@@ -82,5 +84,7 @@ begin
   Application.CreateForm(Tfrmdeleteproductvendor, frmdeleteproductvendor);
   Application.CreateForm(Tfrmpriceupdatesingleitem, frmpriceupdatesingleitem);
   Application.CreateForm(Tfrmeditmydetails, frmeditmydetails);
+  Application.CreateForm(Tfrmspamenu, frmspamenu);
+  Application.CreateForm(TDataModuleSpaMenu, DataModuleSpaMenu);
   Application.Run;
 end.

@@ -9,7 +9,8 @@ uses
   Vcl.StdCtrls ,frmregister_U,frmremoveuser_U,frm_Bookings_U,fm_Help_Widget_U,
   frm_Vendors_Service_U,DM_Vendors,DM_Order,frm_Report_Bug_U,Winapi.ShellAPI,
   frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U,frm_Delete_Service_Vendor,DM_Products,
-  frm_Reset_Password_U , frm_edit_Product_Vendors_U,frm_Delete_Product_Vendor_U;
+  frm_Reset_Password_U , frm_edit_Product_Vendors_U,frm_Delete_Product_Vendor_U,
+  DM_Spa_Menu,frm_Spa_Menu_U;
 
 type
   Tfrmmain = class(TForm)
@@ -111,6 +112,10 @@ type
     lblorderproducts: TLabel;
     btnviewsuggestedorder: TButton;
     btnupdatetotals: TButton;
+    SpaMenu1: TMenuItem;
+    SpaMenu2: TMenuItem;
+    N42: TMenuItem;
+    N43: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -150,6 +155,7 @@ type
     procedure btngenerateorderClick(Sender: TObject);
     procedure dbgrd1ColEnter(Sender: TObject);
     procedure btnupdatetotalsClick(Sender: TObject);
+    procedure SpaMenu2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1034,6 +1040,11 @@ end;
 procedure Tfrmmain.SetInterval2Click(Sender: TObject);
 begin
  //here we will store the automatic backup of the databases in the day hour and minutes intevals
+end;
+
+procedure Tfrmmain.SpaMenu2Click(Sender: TObject);
+begin
+ frmspamenu.ShowModal;
 end;
 
 procedure Tfrmmain.StockManagment1Click(Sender: TObject);

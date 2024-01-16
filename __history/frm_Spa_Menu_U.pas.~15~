@@ -1,0 +1,123 @@
+unit frm_Spa_Menu_U;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,DM_Spa_Menu, Vcl.StdCtrls,
+  System.ImageList, Vcl.ImgList, Vcl.ExtCtrls, Vcl.ComCtrls;
+
+type
+  Tfrmspamenu = class(TForm)
+    mm1: TMainMenu;
+    File1: TMenuItem;
+    File2: TMenuItem;
+    Help1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    pnl1: TPanel;
+    pnl2: TPanel;
+    il1: TImageList;
+    cbbtreatment: TComboBox;
+    lbl1: TLabel;
+    redtoutput: TRichEdit;
+    procedure File2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure cbbtreatmentChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmspamenu: Tfrmspamenu;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tfrmspamenu.cbbtreatmentChange(Sender: TObject);
+begin
+ // here we will apply a filter to the database to get the various products
+ //and there qty's as well as the price for the treatment
+ //
+ redtoutput.Clear;
+ //
+ with DataModuleSpaMenu do
+ begin
+   if tblspamenu.Active = True then
+   begin
+    //here we will work with the dataset
+    tblspamenu.Filtered:=False;
+    tblspamenu.Filter:='';
+    //
+    tblspamenu.Filter := 'Treatment_Name = ' + QuotedStr(cbbtreatment.Text);
+    tblspamenu.Filtered:=True;
+    //
+    //
+    if tblspamenu.RecordCount = 0 then
+    begin
+     //we can not find the record
+     ShowMessage('The Treatment You Are Looking For Can Not Be Found , Please Try Again !');
+     tblspamenu.Filtered:=False;
+     tblspamenu.Filter:='';
+    end else
+    begin
+     //record has been found and we can extract the data and display it
+     //
+
+    end;
+   end else
+   begin
+   ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer !');
+   end;
+ end;
+end;
+
+procedure Tfrmspamenu.File2Click(Sender: TObject);
+begin
+ //clear and close
+ frmspamenu.Close;
+end;
+
+procedure Tfrmspamenu.FormActivate(Sender: TObject);
+begin
+ // here we are going to connect the database
+ with DataModuleSpaMenu do
+ begin
+   if tblspamenu.Active = False then
+   begin
+    //here we are going to connect the database
+   end;
+ end;
+end;
+
+procedure Tfrmspamenu.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ redtoutput.Clear;
+end;
+
+procedure Tfrmspamenu.FormShow(Sender: TObject);
+begin
+ with DataModuleSpaMenu do
+ begin
+   if tblspamenu.Active = True then
+   begin
+    //here we will work with the dataset
+    //
+    //here we will write code to empty then populate the combobox with treatments
+    cbbtreatment.Clear;
+    //
+
+   end else
+   begin
+    //here we will raise an error , since we will be connecting on the activate procedure
+    ShowMessage('There Was An Error Connecting To The Databased , Please Contact Your Software Developer !');
+   end;
+ end;
+end;
+
+end.

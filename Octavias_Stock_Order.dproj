@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
         <MainSource>Octavias_Stock_Order.dpr</MainSource>
@@ -248,6 +248,15 @@
         <DCCReference Include="frm_Edit_My_Details_U.pas">
             <Form>frmeditmydetails</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="frm_Spa_Menu_U.pas">
+            <Form>frmspamenu</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="DM_Spa_Menu.pas">
+            <Form>DataModuleSpaMenu</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txaPackage"/>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txvpck"/>
