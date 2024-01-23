@@ -15,7 +15,6 @@ object frmmain: Tfrmmain
   Position = poScreenCenter
   OnActivate = FormActivate
   OnCreate = FormCreate
-  OnPaint = FormPaint
   OnShow = FormShow
   TextHeight = 13
   object pnl1: TPanel
@@ -375,6 +374,35 @@ object frmmain: Tfrmmain
         OnClick = SpaMenu2Click
       end
       object N43: TMenuItem
+        Caption = '-'
+      end
+      object ManageTreatments1: TMenuItem
+        Caption = 'Manage Treatments'
+        object N48: TMenuItem
+          Caption = '-'
+        end
+        object AddTreatment1: TMenuItem
+          Caption = 'Add Treatment'
+          OnClick = AddTreatment1Click
+        end
+        object N47: TMenuItem
+          Caption = '-'
+        end
+        object AddTreatment2: TMenuItem
+          Caption = 'Edit Treatment'
+          OnClick = AddTreatment2Click
+        end
+        object N46: TMenuItem
+          Caption = '-'
+        end
+        object RemoveTreatment1: TMenuItem
+          Caption = 'Remove Treatment'
+        end
+        object N45: TMenuItem
+          Caption = '-'
+        end
+      end
+      object N44: TMenuItem
         Caption = '-'
       end
     end

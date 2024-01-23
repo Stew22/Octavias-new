@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.ImageList,
   Vcl.ImgList, Vcl.Mask, Vcl.ExtCtrls , frmregister_U ,frmmain_U,DM_Users ,frmsplash_U,
-  Winapi.ShellAPI,DM_Logger,Logger_U;
+  Winapi.ShellAPI,DM_Logger,Logger_U,frm_Spa_Menu_U;
 
 type
   Tfrmlogin = class(TForm)
@@ -20,11 +20,13 @@ type
     btnregister: TButton;
     lbl3: TLabel;
     btnhelplogin: TButton;
+    btnviewspamenu: TButton;
     procedure btnloginClick(Sender: TObject);
     procedure btnregisterClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnhelploginClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btnviewspamenuClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -54,8 +56,6 @@ begin
 end;
 
 procedure Tfrmlogin.btnloginClick(Sender: TObject);
- var
- i:Integer;
 begin
  //here we will make sure that there is a user that has been selected from
  //the use database and make sure that there password matches
@@ -95,6 +95,7 @@ begin
       frmmain.EditMyDetails2.Enabled:=True;
       frmmain.AddUser1.Enabled:=True;
       frmmain.Bookings1.Enabled:=True; // this will be for the future
+      frmmain.ManageTreatments1.Enabled:=True;
       TDataAccess.WriteToAccessDB(cbbuser.Text + ' Has Logged In ');
      end else
      if tblusers.FieldByName('Premissions').AsString = 'Orderer' then
@@ -105,6 +106,8 @@ begin
       frmmain.EditMyDetails2.Enabled:=False;
       frmmain.AddUser1.Enabled:=False;
       frmmain.Bookings1.Enabled:=False; // this will be for the future
+      frmmain.ManageTreatments1.Enabled:=False;
+      //
       frmmain.ShowModal;
       //
       //here we write to the log
@@ -138,12 +141,21 @@ begin
  frmadduser.ShowModal;
 end;
 
+procedure Tfrmlogin.btnviewspamenuClick(Sender: TObject);
+begin
+ frmspamenu.Show; // see if we might need to make this showmodal ?
+ //when we lanuch this form since the user is not logged in we will need to disable
+ //the abillity for the user to make any changes or add or delete any of the
+ //treatments , they should only be able to view
+end;
+
 procedure Tfrmlogin.FormShow(Sender: TObject);
 var
  I:Integer;
 begin
  //here we will connect the data base
  //then make sure that it is connected
+ //
  with DataModuleUsers do
  begin
    if conusers.Connected = True then

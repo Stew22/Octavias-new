@@ -2,8 +2,8 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2023/10/18 15:56:51.000.596,=C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2023/10/18 16:03:52.000.048,C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frmlogin_U.pas</Transaction>
     <Transaction>2023/10/18 16:03:52.000.048,C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frmlogin_U.dfm</Transaction>
+    <Transaction>2023/10/18 16:03:52.000.048,C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frmlogin_U.pas</Transaction>
     <Transaction>2023/10/18 16:04:05.000.687,C:\Users\User\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Order.dproj</Transaction>
     <Transaction>2023/10/19 11:07:37.000.343,=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.pas</Transaction>
     <Transaction>2023/10/19 11:12:22.000.877,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frmregister_U.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.dfm</Transaction>
@@ -12,25 +12,25 @@
     <Transaction>2023/10/19 15:28:05.000.873,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frmmain_U.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.dfm</Transaction>
     <Transaction>2023/10/19 15:28:05.000.873,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frmmain_U.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.pas</Transaction>
     <Transaction>2023/10/19 15:45:50.000.482,=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.pas</Transaction>
-    <Transaction>2023/10/19 15:52:13.000.646,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frm_Vendors_U.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.dfm</Transaction>
     <Transaction>2023/10/19 15:52:13.000.646,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frm_Vendors_U.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.pas</Transaction>
+    <Transaction>2023/10/19 15:52:13.000.646,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frm_Vendors_U.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.dfm</Transaction>
     <Transaction>2023/10/20 11:12:42.000.888,=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.pas</Transaction>
     <Transaction>2023/10/20 11:13:07.000.400,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\ENADC_U.pas</Transaction>
     <Transaction>2023/10/20 11:49:37.000.107,=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.pas</Transaction>
     <Transaction>2023/10/20 11:52:15.000.089,=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit2.pas</Transaction>
-    <Transaction>2023/10/20 12:04:09.000.636,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit2.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frm_Stock_Settings_U.dfm</Transaction>
     <Transaction>2023/10/20 12:04:09.000.636,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit2.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frm_Stock_Settings_U.pas</Transaction>
+    <Transaction>2023/10/20 12:04:09.000.636,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit2.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frm_Stock_Settings_U.dfm</Transaction>
     <Transaction>2023/10/20 12:04:29.000.502,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frm_Stock_managment_U.dfm</Transaction>
     <Transaction>2023/10/20 12:04:29.000.502,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\frm_Stock_managment_U.pas</Transaction>
     <Transaction>2023/10/20 15:19:48.000.188,=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.pas</Transaction>
-    <Transaction>2023/10/20 15:21:03.000.869,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\DM_Users.dfm</Transaction>
     <Transaction>2023/10/20 15:21:03.000.869,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\DM_Users.pas</Transaction>
+    <Transaction>2023/10/20 15:21:03.000.869,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit1.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\DM_Users.dfm</Transaction>
     <Transaction>2023/10/20 15:31:54.000.202,=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit2.pas</Transaction>
-    <Transaction>2023/10/20 15:34:42.000.798,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit2.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\DM_Stock.dfm</Transaction>
     <Transaction>2023/10/20 15:34:42.000.798,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit2.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\DM_Stock.pas</Transaction>
+    <Transaction>2023/10/20 15:34:42.000.798,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit2.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\DM_Stock.dfm</Transaction>
     <Transaction>2023/10/20 15:34:54.000.661,=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit3.pas</Transaction>
-    <Transaction>2023/10/20 15:50:26.000.285,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit3.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\DM_Order.dfm</Transaction>
     <Transaction>2023/10/20 15:50:26.000.285,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit3.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\DM_Order.pas</Transaction>
+    <Transaction>2023/10/20 15:50:26.000.285,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Unit3.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\DM_Order.dfm</Transaction>
     <Transaction>2023/10/21 07:16:52.000.879,=F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\Unit1.pas</Transaction>
     <Transaction>2023/10/21 07:20:59.000.304,F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\Unit1.pas=F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\frmremoveuser_U.pas</Transaction>
     <Transaction>2023/10/21 07:20:59.000.304,F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\Unit1.dfm=F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\frmremoveuser_U.dfm</Transaction>
@@ -39,13 +39,13 @@
     <Transaction>2023/10/21 11:47:44.000.630,F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\Unit1.pas=F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\frmsplash_U.pas</Transaction>
     <Transaction>2023/10/21 11:47:44.000.630,F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\Unit1.dfm=F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\frmsplash_U.dfm</Transaction>
     <Transaction>2023/10/27 04:48:24.000.946,=F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\Unit1.pas</Transaction>
-    <Transaction>2023/10/27 04:50:48.000.516,F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\frm_Bookings_U.pas=F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\Unit1.pas</Transaction>
     <Transaction>2023/10/27 04:50:48.000.516,F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\frm_Bookings_U.dfm=F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\Unit1.dfm</Transaction>
+    <Transaction>2023/10/27 04:50:48.000.516,F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\frm_Bookings_U.pas=F:\Lime Light Work Coding\Octavias Stock Orderer\Octavias_Stock_Orderer\Unit1.pas</Transaction>
     <Transaction>2023/10/31 15:39:44.000.844,=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\Unit1.pas</Transaction>
-    <Transaction>2023/10/31 15:40:19.000.794,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\Unit1.dfm</Transaction>
     <Transaction>2023/10/31 15:40:19.000.794,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\Unit1.pas</Transaction>
-    <Transaction>2023/10/31 15:40:36.000.366,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm_add_products.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm.pas</Transaction>
+    <Transaction>2023/10/31 15:40:19.000.794,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\Unit1.dfm</Transaction>
     <Transaction>2023/10/31 15:40:36.000.366,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm_add_products.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm.dfm</Transaction>
+    <Transaction>2023/10/31 15:40:36.000.366,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm_add_products.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm.pas</Transaction>
     <Transaction>2023/10/31 15:40:53.000.474,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm_add_products_U.pas=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm_add_products.pas</Transaction>
     <Transaction>2023/10/31 15:40:53.000.474,C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm_add_products_U.dfm=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\frm_add_products.dfm</Transaction>
     <Transaction>2023/10/31 16:20:37.000.333,=C:\Users\User\Desktop\Files\Programs\Stock_Order_Octavias\Octavias_Stock_Orderer\Unit1.pas</Transaction>
@@ -79,10 +79,10 @@
     <Transaction>2023/11/22 12:01:32.000.591,C:\Users\User\Desktop\Files\Programs\Octavias-new\Unit1.dfm=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_edit_Vendors_U.dfm</Transaction>
     <Transaction>2023/11/22 12:01:32.000.591,C:\Users\User\Desktop\Files\Programs\Octavias-new\Unit1.pas=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_edit_Vendors_U.pas</Transaction>
     <Transaction>2023/11/24 04:40:46.000.479,=C:\Users\User\Desktop\Files\Programs\Octavias-new\Unit1.pas</Transaction>
-    <Transaction>2023/11/24 04:45:23.000.391,C:\Users\User\Desktop\Files\Programs\Octavias-new\Unit1.pas=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_Delete_.pas</Transaction>
     <Transaction>2023/11/24 04:45:23.000.391,C:\Users\User\Desktop\Files\Programs\Octavias-new\Unit1.dfm=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_Delete_.dfm</Transaction>
-    <Transaction>2023/11/24 04:45:35.000.013,C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_Delete_.dfm=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_Delete_Service_Vendor.dfm</Transaction>
+    <Transaction>2023/11/24 04:45:23.000.391,C:\Users\User\Desktop\Files\Programs\Octavias-new\Unit1.pas=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_Delete_.pas</Transaction>
     <Transaction>2023/11/24 04:45:35.000.013,C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_Delete_.pas=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_Delete_Service_Vendor.pas</Transaction>
+    <Transaction>2023/11/24 04:45:35.000.013,C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_Delete_.dfm=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_Delete_Service_Vendor.dfm</Transaction>
     <Transaction>2023/11/24 10:44:46.000.035,=C:\Users\User\Desktop\Files\Programs\Octavias-new\Unit1.pas</Transaction>
     <Transaction>2023/11/24 10:45:37.000.055,C:\Users\User\Desktop\Files\Programs\Octavias-new\Unit1.pas=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_View_Vendors_U.pas</Transaction>
     <Transaction>2023/11/24 10:45:37.000.055,C:\Users\User\Desktop\Files\Programs\Octavias-new\Unit1.dfm=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_View_Vendors_U.dfm</Transaction>
@@ -90,8 +90,8 @@
     <Transaction>2023/11/27 08:26:22.000.902,C:\Users\User\Desktop\Files\Programs\Octavias-new\Unit1.dfm=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_Reset_Password_U.dfm</Transaction>
     <Transaction>2023/11/27 08:26:22.000.902,C:\Users\User\Desktop\Files\Programs\Octavias-new\Unit1.pas=C:\Users\User\Desktop\Files\Programs\Octavias-new\frm_Reset_Password_U.pas</Transaction>
     <Transaction>2023/11/29 07:57:37.000.513,=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.pas</Transaction>
-    <Transaction>2023/11/29 08:05:02.000.857,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.pas=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\frm_Edit_Poroduct_Details_U.pas</Transaction>
     <Transaction>2023/11/29 08:05:02.000.857,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.dfm=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\frm_Edit_Poroduct_Details_U.dfm</Transaction>
+    <Transaction>2023/11/29 08:05:02.000.857,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.pas=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\frm_Edit_Poroduct_Details_U.pas</Transaction>
     <Transaction>2023/11/29 15:33:13.000.517,=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.pas</Transaction>
     <Transaction>2023/11/29 15:33:24.000.307,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Logger_U.pas=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.pas</Transaction>
     <Transaction>2023/12/09 06:29:34.000.959,=F:\Coding\Octavias_New\Octavias-new\Unit1.pas</Transaction>
@@ -107,17 +107,23 @@
     <Transaction>2023/12/14 05:25:41.000.201,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\frm_Delete_Product_Vendor_U.dfm=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.dfm</Transaction>
     <Transaction>2023/12/14 05:25:41.000.201,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\frm_Delete_Product_Vendor_U.pas=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.pas</Transaction>
     <Transaction>2023/12/15 06:51:06.000.996,=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.pas</Transaction>
-    <Transaction>2023/12/15 06:51:52.000.986,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Frm_Price_Update_Single_Item_U.pas=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.pas</Transaction>
     <Transaction>2023/12/15 06:51:52.000.986,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Frm_Price_Update_Single_Item_U.dfm=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.dfm</Transaction>
+    <Transaction>2023/12/15 06:51:52.000.986,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Frm_Price_Update_Single_Item_U.pas=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.pas</Transaction>
     <Transaction>2023/12/15 07:32:34.000.773,=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.pas</Transaction>
-    <Transaction>2023/12/15 07:33:19.000.154,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.dfm=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\frm_Edit_My_Details_U.dfm</Transaction>
     <Transaction>2023/12/15 07:33:19.000.154,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.pas=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\frm_Edit_My_Details_U.pas</Transaction>
+    <Transaction>2023/12/15 07:33:19.000.154,C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\Unit1.dfm=C:\Users\Domonique\Desktop\Files\Programs\Octavias-new\frm_Edit_My_Details_U.dfm</Transaction>
     <Transaction>2024/01/11 13:29:24.000.467,=F:\Coding\Octavias_New\Octavias-new\Unit1.pas</Transaction>
     <Transaction>2024/01/11 13:30:44.000.430,F:\Coding\Octavias_New\Octavias-new\frm_Spa_Menu_U.pas=F:\Coding\Octavias_New\Octavias-new\Unit1.pas</Transaction>
     <Transaction>2024/01/11 13:30:44.000.430,F:\Coding\Octavias_New\Octavias-new\frm_Spa_Menu_U.dfm=F:\Coding\Octavias_New\Octavias-new\Unit1.dfm</Transaction>
     <Transaction>2024/01/11 13:30:59.000.082,=F:\Coding\Octavias_New\Octavias-new\Unit1.pas</Transaction>
-    <Transaction>2024/01/11 13:31:49.000.204,F:\Coding\Octavias_New\Octavias-new\DM_Spa_Menu.dfm=F:\Coding\Octavias_New\Octavias-new\Unit1.dfm</Transaction>
     <Transaction>2024/01/11 13:31:49.000.204,F:\Coding\Octavias_New\Octavias-new\DM_Spa_Menu.pas=F:\Coding\Octavias_New\Octavias-new\Unit1.pas</Transaction>
+    <Transaction>2024/01/11 13:31:49.000.204,F:\Coding\Octavias_New\Octavias-new\DM_Spa_Menu.dfm=F:\Coding\Octavias_New\Octavias-new\Unit1.dfm</Transaction>
+    <Transaction>2024/01/17 06:10:39.000.589,=F:\Coding\Octavias_New\Octavias-new\Unit1.pas</Transaction>
+    <Transaction>2024/01/17 06:11:53.000.383,F:\Coding\Octavias_New\Octavias-new\Unit1.pas=F:\Coding\Octavias_New\Octavias-new\frm_Add_Treatment_U.pas</Transaction>
+    <Transaction>2024/01/17 06:11:53.000.383,F:\Coding\Octavias_New\Octavias-new\Unit1.dfm=F:\Coding\Octavias_New\Octavias-new\frm_Add_Treatment_U.dfm</Transaction>
+    <Transaction>2024/01/18 13:51:28.000.799,=F:\Coding\Octavias_New\Octavias-new\Unit1.pas</Transaction>
+    <Transaction>2024/01/18 14:01:00.000.139,F:\Coding\Octavias_New\Octavias-new\frm_Edit_treatment_U.dfm=F:\Coding\Octavias_New\Octavias-new\Unit1.dfm</Transaction>
+    <Transaction>2024/01/18 14:01:00.000.139,F:\Coding\Octavias_New\Octavias-new\frm_Edit_treatment_U.pas=F:\Coding\Octavias_New\Octavias-new\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="ModelSupport_Octavias_Stock_Order"/>
@@ -191,5 +197,9 @@
     <File Path="frm_Spa_Menu_U.dfm"/>
     <File Path="DM_Spa_Menu.pas"/>
     <File Path="DM_Spa_Menu.dfm"/>
+    <File Path="frm_Add_Treatment_U.pas"/>
+    <File Path="frm_Add_Treatment_U.dfm"/>
+    <File Path="frm_Edit_treatment_U.pas"/>
+    <File Path="frm_Edit_treatment_U.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

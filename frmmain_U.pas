@@ -10,7 +10,7 @@ uses
   frm_Vendors_Service_U,DM_Vendors,DM_Order,frm_Report_Bug_U,Winapi.ShellAPI,
   frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U,frm_Delete_Service_Vendor,DM_Products,
   frm_Reset_Password_U , frm_edit_Product_Vendors_U,frm_Delete_Product_Vendor_U,
-  DM_Spa_Menu,frm_Spa_Menu_U;
+  DM_Spa_Menu,frm_Spa_Menu_U,frm_Add_Treatment_U,frm_Edit_treatment_U;
 
 type
   Tfrmmain = class(TForm)
@@ -116,6 +116,15 @@ type
     SpaMenu2: TMenuItem;
     N42: TMenuItem;
     N43: TMenuItem;
+    ManageTreatments1: TMenuItem;
+    N44: TMenuItem;
+    AddTreatment1: TMenuItem;
+    AddTreatment2: TMenuItem;
+    RemoveTreatment1: TMenuItem;
+    N45: TMenuItem;
+    N46: TMenuItem;
+    N47: TMenuItem;
+    N48: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -140,7 +149,6 @@ type
     procedure cbbsubcatagoriesChange(Sender: TObject);
     procedure PlaceOrder1Click(Sender: TObject);
     procedure cbbvendorChange(Sender: TObject);
-    procedure FormPaint(Sender: TObject);
     procedure AddVendor4Click(Sender: TObject);
     procedure DeleteVendor2Click(Sender: TObject);
     procedure DatabaseManagment2Click(Sender: TObject);
@@ -156,6 +164,8 @@ type
     procedure dbgrd1ColEnter(Sender: TObject);
     procedure btnupdatetotalsClick(Sender: TObject);
     procedure SpaMenu2Click(Sender: TObject);
+    procedure AddTreatment1Click(Sender: TObject);
+    procedure AddTreatment2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -169,6 +179,17 @@ implementation
 
 {$R *.dfm}
 
+procedure Tfrmmain.AddTreatment1Click(Sender: TObject);
+begin
+ frmaddtreatment.ShowModal;
+end;
+
+procedure Tfrmmain.AddTreatment2Click(Sender: TObject);
+begin
+ // here we will open the form to edit treatment details
+ frmedittreatment.ShowModal;
+end;
+
 procedure Tfrmmain.AddUser1Click(Sender: TObject);
 begin
  //here we will show the use registration form
@@ -177,7 +198,7 @@ end;
 
 procedure Tfrmmain.AddVendor1Click(Sender: TObject);
 begin
- frmvendors.ShowModal; //show rthe add product vendor form
+ frmvendors.ShowModal; //show the add product vendor form
 end;
 
 procedure Tfrmmain.AddVendor2Click(Sender: TObject);
@@ -770,7 +791,7 @@ end;
 
 procedure Tfrmmain.FormActivate(Sender: TObject);
 var
-I,J:Integer;
+J:Integer;
 VName_Temp :string;
 begin
  cbbvendor.Clear;
@@ -925,17 +946,7 @@ begin
   Top := (Screen.Height - Height) div 2;
 end;
 
-procedure Tfrmmain.FormPaint(Sender: TObject);
-var
-  Rect: TRect;
-  DestRect: TRect;
-begin
-
-end;
-
 procedure Tfrmmain.FormShow(Sender: TObject);
-var
-  I: Integer;
 begin
   with Datamoduleorder do
   begin

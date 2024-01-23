@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,DM_Spa_Menu, Vcl.StdCtrls,
-  System.ImageList, Vcl.ImgList, Vcl.ExtCtrls, Vcl.ComCtrls;
+  System.ImageList, Vcl.ImgList, Vcl.ExtCtrls, Vcl.ComCtrls , frm_Add_Treatment_U,
+  Winapi.ShellAPI;
 
 type
   Tfrmspamenu = class(TForm)
@@ -13,7 +14,6 @@ type
     File1: TMenuItem;
     File2: TMenuItem;
     Help1: TMenuItem;
-    N1: TMenuItem;
     N2: TMenuItem;
     pnl1: TPanel;
     pnl2: TPanel;
@@ -21,10 +21,16 @@ type
     cbbtreatment: TComboBox;
     lbl1: TLabel;
     redtoutput: TRichEdit;
+    N7: TMenuItem;
+    lbl2: TLabel;
+    btnhelp: TButton;
     procedure File2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cbbtreatmentChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure AddTreatment1Click(Sender: TObject);
+    procedure Help1Click(Sender: TObject);
+    procedure btnhelpClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,6 +43,21 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure Tfrmspamenu.AddTreatment1Click(Sender: TObject);
+begin
+ frmaddtreatment.ShowModal;
+end;
+
+procedure Tfrmspamenu.btnhelpClick(Sender: TObject);
+var
+PDFFilename:String;
+begin
+ //here we will shell execute the pdf to open
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_View_Treatment.pdf'; //replace this with the help file
+ ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+ //
+end;
 
 procedure Tfrmspamenu.cbbtreatmentChange(Sender: TObject);
 begin
@@ -67,13 +88,47 @@ begin
     begin
      //record has been found and we can extract the data and display it
      //
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
      redtoutput.Lines.Add('Name Of Treatment : ' + tblspamenu.FieldByName('Treatment_Name').AsString);
      redtoutput.Lines.Add('--------------------------------------');
+     redtoutput.SelAttributes.Style:=[];
      redtoutput.Lines.Add('Products To Be Used : ');
      redtoutput.Lines.Add('--------------------------------------');
-     redtoutput.Lines.Add(tblspamenu.FieldByName('Product1').AsString);
      //before we show the products , we will need to check the columns and see if the value is nil
-
+     //
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     //
+     if tblspamenu.FieldByName('Product1').AsString <> '' then
+     begin
+      redtoutput.Lines.Add(tblspamenu.FieldByName('Product1').AsString);
+     end;
+     if tblspamenu.FieldByName('Product2').AsString <> '' then
+     begin
+      redtoutput.Lines.Add(tblspamenu.FieldByName('Product2').AsString);
+     end;
+     if tblspamenu.FieldByName('Product3').AsString <> '' then
+     begin
+      redtoutput.Lines.Add(tblspamenu.FieldByName('Product3').AsString);
+     end;
+     if tblspamenu.FieldByName('Product4').AsString <> '' then
+     begin
+      redtoutput.Lines.Add(tblspamenu.FieldByName('Product4').AsString);
+     end;
+     if tblspamenu.FieldByName('Product5').AsString <> '' then
+     begin
+      redtoutput.Lines.Add(tblspamenu.FieldByName('Product5').AsString);
+     end;
+     //
+     redtoutput.SelAttributes.Color:=clBlack;
+     redtoutput.SelAttributes.Style:=[];
+     redtoutput.Lines.Add('--------------------------------------');
+     redtoutput.SelAttributes.Color:=clRed;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     redtoutput.Lines.Add('Price Of Treatment : R ' + tblspamenu.FieldByName('Price').AsString);
+     redtoutput.SelAttributes.Color:=clBlack;
+     redtoutput.SelAttributes.Style:=[];
+     redtoutput.Lines.Add('--------------------------------------');
     end;
    end else
    begin
@@ -119,6 +174,10 @@ begin
    end;
  end;
  //
+ redtoutput.Clear;
+ redtoutput.Lines.Add('        Please Use The Above Dropdown To Select A Treatment And Get Information Regarding This Treatment');
+ redtoutput.SetFocus;
+ //
  with DataModuleSpaMenu do
  begin
    if tblspamenu.Active = True then
@@ -157,6 +216,10 @@ begin
     ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer !');
    end;
  end;
+end;
+procedure Tfrmspamenu.Help1Click(Sender: TObject);
+begin
+ btnhelp.Click;
 end;
 
 end.

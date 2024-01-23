@@ -39,7 +39,9 @@ uses
   Frm_Price_Update_Single_Item_U in 'Frm_Price_Update_Single_Item_U.pas' {frmpriceupdatesingleitem},
   frm_Edit_My_Details_U in 'frm_Edit_My_Details_U.pas' {frmeditmydetails},
   frm_Spa_Menu_U in 'frm_Spa_Menu_U.pas' {frmspamenu},
-  DM_Spa_Menu in 'DM_Spa_Menu.pas' {DataModuleSpaMenu: TDataModule};
+  DM_Spa_Menu in 'DM_Spa_Menu.pas' {DataModuleSpaMenu: TDataModule},
+  frm_Add_Treatment_U in 'frm_Add_Treatment_U.pas' {frmaddtreatment},
+  frm_Edit_treatment_U in 'frm_Edit_treatment_U.pas' {frmedittreatment};
 
 {$R *.res}
 
@@ -86,5 +88,7 @@ begin
   Application.CreateForm(Tfrmeditmydetails, frmeditmydetails);
   Application.CreateForm(Tfrmspamenu, frmspamenu);
   Application.CreateForm(TDataModuleSpaMenu, DataModuleSpaMenu);
+  Application.CreateForm(Tfrmaddtreatment, frmaddtreatment);
+  Application.CreateForm(Tfrmedittreatment, frmedittreatment);
   Application.Run;
 end.
