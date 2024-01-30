@@ -240,8 +240,6 @@ begin
   btnaddtreatment.Enabled:=False;
   edtp5.Clear;
  end;
- //
-
 end;
 
 procedure Tfrmaddtreatment.edtaddctreatmentChange(Sender: TObject);

@@ -199,8 +199,8 @@ object frmvendors: Tfrmvendors
     end
   end
   object il1: TImageList
-    Left = 264
-    Top = 8
+    Left = 272
+    Top = 16
     Bitmap = {
       494C010106000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020

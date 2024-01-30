@@ -308,15 +308,13 @@ begin
       tblorder.First; // Move to the first record
       SumOrdered := 0; // Initialize the sum to zero
       SumPrice := 0.00;
-
+      //
       while not tblorder.Eof do
       begin
         // Accumulate the 'Qty' values
         SumOrdered := SumOrdered + StrToInt(tblorder.FieldByName('Qty').AsString);
-
         // Get the 'Price' string
         PriceStr := tblorder.FieldByName('Price').AsString;
-
         // Use TryStrToFloat to handle conversion and check if it succeeds
         if TryStrToFloat(StringReplace(PriceStr, '.', FormatSettings.DecimalSeparator, []),
           SumPrice) then
@@ -330,13 +328,10 @@ begin
           ShowMessage('Invalid floating-point number for Price: ' + PriceStr);
           Exit; // Exit the loop and update labels
         end;
-
         tblorder.Next; // Move to the next record
       end;
-
       // Update the label with the total
       lblorderproducts.Caption := 'Products Ordered: ' + IntToStr(SumOrdered);
-
       // Update the label with the formatted total cost
       lbltotals.Caption := 'Total Cost : ' + FloatToStr(SumPrice);
     end
@@ -615,7 +610,7 @@ begin
   cbbtertiarycatagory.Clear;
  end;
  //apply the new filter
-  //here we are going to add in the filter per vendorname
+ //here we are going to add in the filter per vendor name
  with Datamoduleorder do
  begin
   if tblorder.active then
@@ -773,7 +768,7 @@ begin
      //
       if tblorder.FieldByName('Vendor_Name').AsString = '' then
       begin
-       ShowMessage('Oops ! , We Couldnt Find What Your Looking For , Please Try A Diffrent Seacrh Term');
+       ShowMessage('Oops ! , We Couldnt Find What Your Looking For , Please Try A Diffrent Search Term');
        tblorder.Filtered:=False;
       end;
     end

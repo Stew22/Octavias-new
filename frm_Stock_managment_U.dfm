@@ -96,13 +96,18 @@ object frmstockmanagement: Tfrmstockmanagement
           end
           object SingleProduct1: TMenuItem
             Caption = 'Single Product'
+            Enabled = False
             OnClick = SingleProduct1Click
           end
-          object N16: TMenuItem
+          object N18: TMenuItem
             Caption = '-'
           end
           object SingleProduct2: TMenuItem
             Caption = 'Bulk Update'
+            Enabled = False
+          end
+          object N16: TMenuItem
+            Caption = '-'
           end
           object N17: TMenuItem
             Caption = '-'

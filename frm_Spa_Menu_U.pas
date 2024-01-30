@@ -101,23 +101,41 @@ begin
      //
      if tblspamenu.FieldByName('Product1').AsString <> '' then
      begin
-      redtoutput.Lines.Add(tblspamenu.FieldByName('Product1').AsString);
+      redtoutput.Lines.Add('Product 1 : ' + tblspamenu.FieldByName('Product1').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
      end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
      if tblspamenu.FieldByName('Product2').AsString <> '' then
      begin
-      redtoutput.Lines.Add(tblspamenu.FieldByName('Product2').AsString);
+      redtoutput.Lines.Add('Product 2 : ' + tblspamenu.FieldByName('Product2').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
      end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
      if tblspamenu.FieldByName('Product3').AsString <> '' then
      begin
-      redtoutput.Lines.Add(tblspamenu.FieldByName('Product3').AsString);
+      redtoutput.Lines.Add('Product 3 : ' + tblspamenu.FieldByName('Product3').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
      end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
      if tblspamenu.FieldByName('Product4').AsString <> '' then
      begin
-      redtoutput.Lines.Add(tblspamenu.FieldByName('Product4').AsString);
+      redtoutput.Lines.Add('Product 4 : ' + tblspamenu.FieldByName('Product4').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
      end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
      if tblspamenu.FieldByName('Product5').AsString <> '' then
      begin
-      redtoutput.Lines.Add(tblspamenu.FieldByName('Product5').AsString);
+      redtoutput.Lines.Add('Product 5 : ' + tblspamenu.FieldByName('Product5').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     if tblspamenu.FieldByName('Product6').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 6 : ' + tblspamenu.FieldByName('Product6').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
      end;
      //
      redtoutput.SelAttributes.Color:=clBlack;
@@ -125,7 +143,7 @@ begin
      redtoutput.Lines.Add('--------------------------------------');
      redtoutput.SelAttributes.Color:=clRed;
      redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
-     redtoutput.Lines.Add('Price Of Treatment : R ' + tblspamenu.FieldByName('Price').AsString);
+     redtoutput.Lines.Add('Price Of Treatment : ' + tblspamenu.FieldByName('Price').AsString);
      redtoutput.SelAttributes.Color:=clBlack;
      redtoutput.SelAttributes.Style:=[];
      redtoutput.Lines.Add('--------------------------------------');

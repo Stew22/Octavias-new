@@ -47,6 +47,7 @@ type
     N15: TMenuItem;
     N16: TMenuItem;
     N17: TMenuItem;
+    N18: TMenuItem;
     procedure Settings1Click(Sender: TObject);
     procedure Exit1Click(Sender: TObject);
     procedure UpdateList1Click(Sender: TObject);

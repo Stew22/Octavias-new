@@ -89,6 +89,7 @@ begin
         tblvendor['Vendor_Contact_Number'] := edtvcontactphone.Text;
         tblvendor['Vendor_Address'] := edtvaddress.Text;
         tblvendor['Vendor_Type'] := cbbvendortype.Text;
+        tblvendor['Is_Service'] := 'False';
         //
         tblvendor.Post;
         ShowMessage('Product Vendor Has Been Added Successfully!');
