@@ -129,6 +129,7 @@ begin
    end else
    begin
     //connection has failed and we try and reconnect it before doing anything
+    ShowMessage('There Was An Error Connecting Connecting To The Spa Menu , Please Contact Your Software Developer');
     //or we can just raise an error
    end;
   end;

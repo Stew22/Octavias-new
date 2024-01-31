@@ -132,10 +132,12 @@ begin
       redtoutput.Lines.Add('Product 5 : ' + tblspamenu.FieldByName('Product5').AsString);
       redtoutput.Lines.Add('--------------------------------------');
      end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
      if tblspamenu.FieldByName('Product6').AsString <> '' then
      begin
       redtoutput.Lines.Add('Product 6 : ' + tblspamenu.FieldByName('Product6').AsString);
-      redtoutput.Lines.Add('--------------------------------------');
+      //redtoutput.Lines.Add('--------------------------------------');
      end;
      //
      redtoutput.SelAttributes.Color:=clBlack;

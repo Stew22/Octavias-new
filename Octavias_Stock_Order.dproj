@@ -269,6 +269,10 @@
             <Form>frmedittreatment</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="frm_Delete_Treatments_U.pas">
+            <Form>frmdeletetreatment</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txaPackage"/>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txvpck"/>
         <BuildConfiguration Include="Base">
@@ -329,6 +333,12 @@
                 <DeployFile LocalName="ModelSupport_Octavias_Stock_Order\default.txvpck" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="ModelSupport_Octavias_Stock_Order\default.txvpck" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="ModelSupport_Octavias_Stock_Order\default.txvpck" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win64">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>

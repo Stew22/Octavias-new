@@ -1,0 +1,163 @@
+unit frm_Delete_Treatments_U;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Menus, Vcl.ExtCtrls,DM_Spa_Menu,
+  System.ImageList, Vcl.ImgList;
+
+type
+  Tfrmdeletetreatment = class(TForm)
+    pnl1: TPanel;
+    mm1: TMainMenu;
+    File1: TMenuItem;
+    File2: TMenuItem;
+    Cancel1: TMenuItem;
+    Cancel2: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    Help1: TMenuItem;
+    pnl2: TPanel;
+    cbbselecttreatment: TComboBox;
+    lbl1: TLabel;
+    pnl3: TPanel;
+    il1: TImageList;
+    btndeletetreatment: TButton;
+    btncancel: TButton;
+    btnexit: TButton;
+    lbl2: TLabel;
+    procedure FormShow(Sender: TObject);
+    procedure cbbselecttreatmentChange(Sender: TObject);
+    procedure btndeletetreatmentClick(Sender: TObject);
+    procedure btncancelClick(Sender: TObject);
+    procedure btnexitClick(Sender: TObject);
+    procedure Cancel2Click(Sender: TObject);
+    procedure Cancel1Click(Sender: TObject);
+    procedure File2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmdeletetreatment: Tfrmdeletetreatment;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tfrmdeletetreatment.btncancelClick(Sender: TObject);
+begin
+ cbbselecttreatment.Text :='';
+ btndeletetreatment.Enabled:=False;
+end;
+
+procedure Tfrmdeletetreatment.btndeletetreatmentClick(Sender: TObject);
+ var
+ Dresult : Integer;
+begin
+ with DataModuleSpaMenu do
+ begin
+  if tblspamenu.Active = True then
+  begin
+   if (tblspamenu.Filtered = True) and (tblspamenu.RecordCount <> 0) then
+   begin
+    //here we will delete the record
+    //first prompt the user that they are sure that they want to remove the record
+    //
+    Dresult:=MessageDlg('Are You Sure You Would Like To Remove This Treatment From The Spa Menu ?', mtConfirmation, [mbYes, mbNo], 0);
+    //
+    if Dresult = mrYes then
+    begin
+     tblspamenu.Delete;
+     tblspamenu.Post;
+     //
+     ShowMessage('Treatment Has Been Successfully Removed !');
+    end else
+    begin
+     ShowMessage('Treatment Removal Cancelled !');
+     Exit;
+    end;
+   end else
+   begin
+    ShowMessage('There Was An Error Deleting the Record , Please Try Again');
+   end;
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Spa Menu Database , Please Contact Your Software Developer');
+  end;
+ end;
+end;
+
+procedure Tfrmdeletetreatment.btnexitClick(Sender: TObject);
+begin
+ cbbselecttreatment.Clear;
+ btndeletetreatment.Enabled:=False;
+end;
+
+procedure Tfrmdeletetreatment.Cancel1Click(Sender: TObject);
+begin
+ btncancel.Click;
+end;
+
+procedure Tfrmdeletetreatment.Cancel2Click(Sender: TObject);
+begin
+ btnexit.Click;
+end;
+
+procedure Tfrmdeletetreatment.cbbselecttreatmentChange(Sender: TObject);
+begin
+ //here we will select the treatment and delete all records from the database that is linked to it
+ with DataModuleSpaMenu do
+ begin
+   if tblspamenu.Active = True then
+   begin
+    tblspamenu.Filtered:=False;
+    tblspamenu.Filter:='Treatment_Name = ' + QuotedStr(cbbselecttreatment.Text);
+    tblspamenu.Filtered:=True;
+    //
+    if tblspamenu.RecordCount <> 0 then
+    begin
+     //we have found the record now we can enable the delete record button
+     //
+     btndeletetreatment.Enabled:=True;
+    end else
+    begin
+     ShowMessage('The Treatment You Are Looking For Can Not Be Found ! , Please Try Again');
+     btndeletetreatment.Enabled:=False;
+    end;
+   end else
+   begin
+    ShowMessage('There Was An Error Connecting To The Spa Menu Database , Please Contact Your Software Developer');
+   end;
+ end;
+end;
+
+procedure Tfrmdeletetreatment.File2Click(Sender: TObject);
+begin
+ btndeletetreatment.Click;
+end;
+
+procedure Tfrmdeletetreatment.FormShow(Sender: TObject);
+begin
+ btndeletetreatment.Enabled:=False;
+ //here we are going to populate the combobox with treatment names from the database
+ //
+ with DataModuleSpaMenu do
+ begin
+  if tblspamenu.Active = True then
+  begin
+   // Work with the data
+   //
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Spa Menu Database , Please Contact Your Software Developer');
+  end;
+ end;
+end;
+
+end.

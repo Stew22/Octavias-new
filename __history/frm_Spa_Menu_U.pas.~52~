@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,DM_Spa_Menu, Vcl.StdCtrls,
-  System.ImageList, Vcl.ImgList, Vcl.ExtCtrls, Vcl.ComCtrls , frm_Add_Treatment_U;
+  System.ImageList, Vcl.ImgList, Vcl.ExtCtrls, Vcl.ComCtrls , frm_Add_Treatment_U,
+  Winapi.ShellAPI;
 
 type
   Tfrmspamenu = class(TForm)
@@ -13,7 +14,6 @@ type
     File1: TMenuItem;
     File2: TMenuItem;
     Help1: TMenuItem;
-    N1: TMenuItem;
     N2: TMenuItem;
     pnl1: TPanel;
     pnl2: TPanel;
@@ -21,21 +21,16 @@ type
     cbbtreatment: TComboBox;
     lbl1: TLabel;
     redtoutput: TRichEdit;
-    Managetratments1: TMenuItem;
-    AddTreatment1: TMenuItem;
-    AddTreatment2: TMenuItem;
-    DeleteTreatment1: TMenuItem;
-    N3: TMenuItem;
-    N4: TMenuItem;
-    N5: TMenuItem;
-    N6: TMenuItem;
     N7: TMenuItem;
     lbl2: TLabel;
+    btnhelp: TButton;
     procedure File2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cbbtreatmentChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure AddTreatment1Click(Sender: TObject);
+    procedure Help1Click(Sender: TObject);
+    procedure btnhelpClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,6 +47,16 @@ implementation
 procedure Tfrmspamenu.AddTreatment1Click(Sender: TObject);
 begin
  frmaddtreatment.ShowModal;
+end;
+
+procedure Tfrmspamenu.btnhelpClick(Sender: TObject);
+var
+PDFFilename:String;
+begin
+ //here we will shell execute the pdf to open
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_View_Treatment.pdf'; //replace this with the help file
+ ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+ //
 end;
 
 procedure Tfrmspamenu.cbbtreatmentChange(Sender: TObject);
@@ -96,23 +101,41 @@ begin
      //
      if tblspamenu.FieldByName('Product1').AsString <> '' then
      begin
-      redtoutput.Lines.Add(tblspamenu.FieldByName('Product1').AsString);
+      redtoutput.Lines.Add('Product 1 : ' + tblspamenu.FieldByName('Product1').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
      end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
      if tblspamenu.FieldByName('Product2').AsString <> '' then
      begin
-      redtoutput.Lines.Add(tblspamenu.FieldByName('Product2').AsString);
+      redtoutput.Lines.Add('Product 2 : ' + tblspamenu.FieldByName('Product2').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
      end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
      if tblspamenu.FieldByName('Product3').AsString <> '' then
      begin
-      redtoutput.Lines.Add(tblspamenu.FieldByName('Product3').AsString);
+      redtoutput.Lines.Add('Product 3 : ' + tblspamenu.FieldByName('Product3').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
      end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
      if tblspamenu.FieldByName('Product4').AsString <> '' then
      begin
-      redtoutput.Lines.Add(tblspamenu.FieldByName('Product4').AsString);
+      redtoutput.Lines.Add('Product 4 : ' + tblspamenu.FieldByName('Product4').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
      end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
      if tblspamenu.FieldByName('Product5').AsString <> '' then
      begin
-      redtoutput.Lines.Add(tblspamenu.FieldByName('Product5').AsString);
+      redtoutput.Lines.Add('Product 5 : ' + tblspamenu.FieldByName('Product5').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     if tblspamenu.FieldByName('Product6').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 6 : ' + tblspamenu.FieldByName('Product6').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
      end;
      //
      redtoutput.SelAttributes.Color:=clBlack;
@@ -120,7 +143,7 @@ begin
      redtoutput.Lines.Add('--------------------------------------');
      redtoutput.SelAttributes.Color:=clRed;
      redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
-     redtoutput.Lines.Add('Price Of Treatment : R ' + tblspamenu.FieldByName('Price').AsString);
+     redtoutput.Lines.Add('Price Of Treatment : ' + tblspamenu.FieldByName('Price').AsString);
      redtoutput.SelAttributes.Color:=clBlack;
      redtoutput.SelAttributes.Style:=[];
      redtoutput.Lines.Add('--------------------------------------');
@@ -212,4 +235,9 @@ begin
    end;
  end;
 end;
+procedure Tfrmspamenu.Help1Click(Sender: TObject);
+begin
+ btnhelp.Click;
+end;
+
 end.
