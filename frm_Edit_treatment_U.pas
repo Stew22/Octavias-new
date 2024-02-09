@@ -39,6 +39,11 @@ type
     edtep4: TEdit;
     edtep5: TEdit;
     chklst1: TCheckListBox;
+    edtep6: TEdit;
+    edtep7: TEdit;
+    edtep8: TEdit;
+    edtep9: TEdit;
+    edtep10: TEdit;
     procedure File2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnexitClick(Sender: TObject);
@@ -68,24 +73,42 @@ begin
  //clear all items then leave the form open
  cbbEtreatment.Text := '';
  medteprice.Clear;
+ //
  edtep1.Clear;
  edtep2.Clear;
  edtep3.Clear;
  edtep4.Clear;
  edtep5.Clear;
+ edtep6.Clear;
+ edtep7.Clear;
+ edtep8.Clear;
+ edtep9.Clear;
+ edtep10.Clear;
+ //
  chklst1.Checked[0]:=False;
  chklst1.Checked[1]:=False;
  chklst1.Checked[2]:=False;
  chklst1.Checked[3]:=False;
  chklst1.Checked[4]:=False;
  chklst1.Checked[5]:=False;
+ chklst1.Checked[6]:=False;
+ chklst1.Checked[7]:=False;
+ chklst1.Checked[8]:=False;
+ chklst1.Checked[9]:=False;
+ //
  btnsavedits.Enabled:=False;
  medteprice.Enabled:=False;
+ //
  edtep1.Enabled:=False;
  edtep2.Enabled:=False;
  edtep3.Enabled:=False;
  edtep4.Enabled:=False;
  edtep5.Enabled:=False;
+ edtep6.Enabled:=False;
+ edtep7.Enabled:=False;
+ edtep8.Enabled:=False;
+ edtep9.Enabled:=False;
+ edtep10.Enabled:=False;
 end;
 
 procedure Tfrmedittreatment.btnexitClick(Sender: TObject);
@@ -155,9 +178,35 @@ begin
  begin
   Ep5:=edtep5.Text;
  end else
+ //
  if (edtep5.Enabled = True) and (edtep5.Text = '') then
  begin
   ShowMessage('Please Ensure You Have Entered Valid Detials For Product 5');
+ end else
+ //
+ if (edtep6.Enabled = True) and (edtep6.Text = '')  then
+ begin
+  ShowMessage('Please Ensure You Have Entered Valid Detials For Product 6');
+ end else
+ //
+ if (edtep7.Enabled = True) and (edtep7.Text = '') then
+ begin
+  ShowMessage('Please Ensure You Have Entered Valid Detials For Product 7');
+ end else
+ //
+ if (edtep8.Enabled = True) and (edtep8.Text = '') then
+ begin
+  ShowMessage('Please Ensure You Have Entered Valid Detials For Product 8');
+ end else
+ //
+ if (edtep9.Enabled = True) and (edtep9.Text = '') then
+ begin
+  ShowMessage('Please Ensure You Have Entered Valid Detials For Product 9');
+ end else
+ //
+ if (edtep10.Enabled = True) and (edtep10.Text = '') then
+ begin
+  ShowMessage('Please Ensure You Have Entered Valid Detials For Product 10');
  end;
  //
  with DataModuleSpaMenu do
@@ -172,6 +221,11 @@ begin
     tblspamenu.FieldByName('Product3').AsString := edtep3.Text;
     tblspamenu.FieldByName('Product4').AsString := edtep4.Text;
     tblspamenu.FieldByName('Product5').AsString := edtep5.Text;
+    tblspamenu.FieldByName('Product6').AsString := edtep5.Text;
+    tblspamenu.FieldByName('Product7').AsString := edtep5.Text;
+    tblspamenu.FieldByName('Product8').AsString := edtep5.Text;
+    tblspamenu.FieldByName('Product9').AsString := edtep5.Text;
+    tblspamenu.FieldByName('Product10').AsString := edtep5.Text;
     tblspamenu.Post;
    finally
     ShowMessage('The Changes For Treatment : ' + cbbEtreatment.Text + ' Has Been Saved Correctly !');
@@ -281,6 +335,61 @@ begin
        chklst1.Checked[5]:=False;
        edtep5.Enabled:=False;
       end;
+      if tblspamenu.FieldByName('Product6').AsString <> '' then
+      begin
+       chklst1.Checked[6]:=True;
+       edtep6.Enabled:=True;
+       //
+       edtep6.Text:=tblspamenu.FieldByName('Product6').AsString;
+      end else
+      begin
+       chklst1.Checked[6]:=False;
+       edtep6.Enabled:=False;
+      end;
+      if tblspamenu.FieldByName('Product7').AsString <> '' then
+      begin
+       chklst1.Checked[7]:=True;
+       edtep7.Enabled:=True;
+       //
+       edtep7.Text:=tblspamenu.FieldByName('Product7').AsString;
+      end else
+      begin
+       chklst1.Checked[7]:=False;
+       edtep7.Enabled:=False;
+      end;
+      if tblspamenu.FieldByName('Product8').AsString <> '' then
+      begin
+       chklst1.Checked[8]:=True;
+       edtep8.Enabled:=True;
+       //
+       edtep8.Text:=tblspamenu.FieldByName('Product8').AsString;
+      end else
+      begin
+       chklst1.Checked[8]:=False;
+       edtep8.Enabled:=False;
+      end;
+      if tblspamenu.FieldByName('Product9').AsString <> '' then
+      begin
+       chklst1.Checked[9]:=True;
+       edtep9.Enabled:=True;
+       //
+       edtep9.Text:=tblspamenu.FieldByName('Product9').AsString;
+      end else
+      begin
+       chklst1.Checked[9]:=False;
+       edtep9.Enabled:=False;
+      end;
+      if tblspamenu.FieldByName('Product10').AsString <> '' then
+      begin
+       chklst1.Checked[10]:=True;
+       edtep10.Enabled:=True;
+       //
+       edtep10.Text:=tblspamenu.FieldByName('Product10').AsString;
+      end else
+      begin
+       chklst1.Checked[10]:=False;
+       edtep10.Enabled:=False;
+      end;
       tblspamenu.Next;
      end;
     end else
@@ -351,6 +460,46 @@ begin
  begin
   edtep5.Enabled:=False;
  end;
+ //
+ if chklst1.Checked[6] = True then
+ begin
+  edtep6.Enabled:=True;
+ end else
+ begin
+  edtep6.Enabled:=False;
+ end;
+ //
+ if chklst1.Checked[7] = True then
+ begin
+  edtep7.Enabled:=True;
+ end else
+ begin
+  edtep7.Enabled:=False;
+ end;
+ //
+ if chklst1.Checked[8] = True then
+ begin
+  edtep8.Enabled:=True;
+ end else
+ begin
+  edtep8.Enabled:=False;
+ end;
+ //
+ if chklst1.Checked[9] = True then
+ begin
+  edtep9.Enabled:=True;
+ end else
+ begin
+  edtep9.Enabled:=False;
+ end;
+ //
+ if chklst1.Checked[10] = True then
+ begin
+  edtep10.Enabled:=True;
+ end else
+ begin
+  edtep10.Enabled:=False;
+ end;
 end;
 
 procedure Tfrmedittreatment.Exot1Click(Sender: TObject);
@@ -384,7 +533,9 @@ begin
     //
     conspamenu.Connected:=True;
     tblspamenu.Active:=True;
-    tblspamenu.First; //here we go to the first value
+    tblspamenu.First;
+    //
+    //here we go to the first value
     //
    end;
  end;
@@ -436,12 +587,21 @@ begin
  chklst1.Checked[3]:=False;
  chklst1.Checked[4]:=False;
  chklst1.Checked[5]:=False;
+ chklst1.Checked[6]:=False;
+ chklst1.Checked[7]:=False;
+ chklst1.Checked[8]:=False;
+ chklst1.Checked[9]:=False;
  //
  edtep1.Enabled:=False;
  edtep2.Enabled:=False;
  edtep3.Enabled:=False;
  edtep4.Enabled:=False;
  edtep5.Enabled:=False;
+ edtep6.Enabled:=False;
+ edtep7.Enabled:=False;
+ edtep8.Enabled:=False;
+ edtep9.Enabled:=False;
+ edtep10.Enabled:=False;
  medteprice.Enabled:=False;
  //
  edtep1.Clear;
@@ -449,6 +609,12 @@ begin
  edtep3.Clear;
  edtep4.Clear;
  edtep5.Clear;
+ edtep5.Clear;
+ edtep6.Clear;
+ edtep7.Clear;
+ edtep8.Clear;
+ edtep9.Clear;
+ edtep10.Clear;
  medteprice.Clear;
  //
  btnsavedits.Enabled:=False;

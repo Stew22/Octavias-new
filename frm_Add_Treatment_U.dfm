@@ -3,7 +3,7 @@ object frmaddtreatment: Tfrmaddtreatment
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Life Day Spa Treatment Menu --- Add A Treatment To The Menu'
-  ClientHeight = 353
+  ClientHeight = 500
   ClientWidth = 624
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -45,7 +45,7 @@ object frmaddtreatment: Tfrmaddtreatment
     Left = 0
     Top = 72
     Width = 616
-    Height = 273
+    Height = 417
     BevelInner = bvLowered
     TabOrder = 1
     object lbl1: TLabel
@@ -115,7 +115,7 @@ object frmaddtreatment: Tfrmaddtreatment
       Left = 8
       Top = 103
       Width = 409
-      Height = 162
+      Height = 306
       BevelInner = bvLowered
       TabOrder = 2
       object edtp1: TEdit
@@ -167,7 +167,7 @@ object frmaddtreatment: Tfrmaddtreatment
         Left = 8
         Top = 8
         Width = 97
-        Height = 145
+        Height = 289
         AutoComplete = False
         CheckBoxPadding = 13
         ItemHeight = 28
@@ -176,9 +176,59 @@ object frmaddtreatment: Tfrmaddtreatment
           'Product 2 '
           'Product 3 '
           'Product 4 '
-          'Product 5')
+          'Product 5'
+          'Product 6'
+          'Product 7'
+          'Product 8'
+          'Product 9'
+          'Product 10')
         TabOrder = 5
         OnClickCheck = chklst1ClickCheck
+      end
+      object edtp6: TEdit
+        Left = 111
+        Top = 153
+        Width = 290
+        Height = 23
+        TabOrder = 6
+        TextHint = '--- Product 6 Name & ml'#39's To Use ---'
+        OnChange = edtp6Change
+      end
+      object edtp7: TEdit
+        Left = 111
+        Top = 182
+        Width = 290
+        Height = 23
+        TabOrder = 7
+        TextHint = '--- Product 7 Name & ml'#39's To Use ---'
+        OnChange = edtp7Change
+      end
+      object edtp8: TEdit
+        Left = 111
+        Top = 211
+        Width = 290
+        Height = 23
+        TabOrder = 8
+        TextHint = '--- Product 8 Name & ml'#39's To Use ---'
+        OnChange = edtp8Change
+      end
+      object edtp9: TEdit
+        Left = 111
+        Top = 240
+        Width = 290
+        Height = 23
+        TabOrder = 9
+        TextHint = '--- Product 9 Name & ml'#39's To Use ---'
+        OnChange = edtp9Change
+      end
+      object edtp10: TEdit
+        Left = 111
+        Top = 269
+        Width = 290
+        Height = 23
+        TabOrder = 10
+        TextHint = '--- Product 10 Name & ml'#39's To Use ---'
+        OnChange = edtp10Change
       end
     end
     object medtprice: TMaskEdit

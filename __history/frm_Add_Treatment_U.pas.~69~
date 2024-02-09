@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.ImageList,
-  Vcl.ImgList, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.CheckLst, Vcl.Mask,DM_Spa_Menu;
+  Vcl.ImgList, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.CheckLst, Vcl.Mask,DM_Spa_Menu,
+  Winapi.ShellAPI;
 
 type
   Tfrmaddtreatment = class(TForm)
@@ -38,6 +39,12 @@ type
     chklst1: TCheckListBox;
     lbl3: TLabel;
     medtprice: TMaskEdit;
+    btnhelp: TButton;
+    edtp6: TEdit;
+    edtp7: TEdit;
+    edtp8: TEdit;
+    edtp9: TEdit;
+    edtp10: TEdit;
     procedure chklst1ClickCheck(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edtp1Change(Sender: TObject);
@@ -54,6 +61,13 @@ type
     procedure medtpriceChange(Sender: TObject);
     procedure medtpriceExit(Sender: TObject);
     procedure btnaddtreatmentClick(Sender: TObject);
+    procedure Help1Click(Sender: TObject);
+    procedure btnhelpClick(Sender: TObject);
+    procedure edtp6Change(Sender: TObject);
+    procedure edtp7Change(Sender: TObject);
+    procedure edtp8Change(Sender: TObject);
+    procedure edtp9Change(Sender: TObject);
+    procedure edtp10Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -94,6 +108,11 @@ begin
       tblspamenu['Product3']:=edtp3.Text;
       tblspamenu['Product4']:=edtp4.Text;
       tblspamenu['Product5']:=edtp5.Text;
+      tblspamenu['Product6']:=edtp6.Text;
+      tblspamenu['Product7']:=edtp7.Text;
+      tblspamenu['Product8']:=edtp8.Text;
+      tblspamenu['Product9']:=edtp9.Text;
+      tblspamenu['Product510']:=edtp10.Text;
       //
       tblspamenu.Post; //posts the data to the database
      finally
@@ -106,6 +125,11 @@ begin
       chklst1.Checked[2]:=False;
       chklst1.Checked[3]:=False;
       chklst1.Checked[4]:=False;
+      chklst1.Checked[5]:=False;
+      chklst1.Checked[6]:=False;
+      chklst1.Checked[7]:=False;
+      chklst1.Checked[8]:=False;
+      chklst1.Checked[9]:=False;
       //
       edtaddtname.Clear;
       medtprice.Clear;
@@ -115,6 +139,11 @@ begin
       edtp3.Clear;
       edtp4.Clear;
       edtp5.Clear;
+      edtp6.Clear;
+      edtp7.Clear;
+      edtp8.Clear;
+      edtp9.Clear;
+      edtp10.Clear;
       //
       btnaddtreatment.Enabled:=False;
       //
@@ -123,6 +152,11 @@ begin
       edtp3.Enabled:=False;
       edtp4.Enabled:=False;
       edtp5.Enabled:=False;
+      edtp6.Enabled:=False;
+      edtp7.Enabled:=False;
+      edtp8.Enabled:=False;
+      edtp9.Enabled:=False;
+      edtp10.Enabled:=False;
      end;
     end else
     begin
@@ -143,6 +177,11 @@ begin
  chklst1.Checked[2]:=False;
  chklst1.Checked[3]:=False;
  chklst1.Checked[4]:=False;
+ chklst1.Checked[5]:=False;
+ chklst1.Checked[6]:=False;
+ chklst1.Checked[7]:=False;
+ chklst1.Checked[8]:=False;
+ chklst1.Checked[9]:=False;
  //
  edtaddtname.Clear;
  medtprice.Clear;
@@ -152,6 +191,11 @@ begin
  edtp3.Clear;
  edtp4.Clear;
  edtp5.Clear;
+ edtp6.Clear;
+ edtp7.Clear;
+ edtp8.Clear;
+ edtp9.Clear;
+ edtp10.Clear;
  //
  btnaddtreatment.Enabled:=False;
  //
@@ -160,12 +204,27 @@ begin
  edtp3.Enabled:=False;
  edtp4.Enabled:=False;
  edtp5.Enabled:=False;
+ edtp6.Enabled:=False;
+ edtp7.Enabled:=False;
+ edtp8.Enabled:=False;
+ edtp9.Enabled:=False;
+ edtp10.Enabled:=False;
 end;
 
 procedure Tfrmaddtreatment.btnexitClick(Sender: TObject);
 begin
  btncancel.Click;
  frmaddtreatment.Close;
+end;
+
+procedure Tfrmaddtreatment.btnhelpClick(Sender: TObject);
+var
+PDFFilename:String;
+begin
+ //here we will shell execute the pdf to open
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Add_Treatment.pdf'; //replace this with the help file
+ ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+ //
 end;
 
 procedure Tfrmaddtreatment.Cancel1Click(Sender: TObject);
@@ -226,8 +285,51 @@ begin
   btnaddtreatment.Enabled:=False;
   edtp5.Clear;
  end;
- //
-
+ if chklst1.Checked[5] = True then
+ begin
+  edtp6.Enabled:=True;
+ end else
+ begin
+  edtp6.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  edtp6.Clear;
+ end;
+ if chklst1.Checked[6] = True then
+ begin
+  edtp7.Enabled:=True;
+ end else
+ begin
+  edtp7.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  edtp7.Clear;
+ end;
+ if chklst1.Checked[7] = True then
+ begin
+  edtp8.Enabled:=True;
+ end else
+ begin
+  edtp8.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  edtp8.Clear;
+ end;
+ if chklst1.Checked[8] = True then
+ begin
+  edtp9.Enabled:=True;
+ end else
+ begin
+  edtp9.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  edtp9.Clear;
+ end;
+ if chklst1.Checked[9] = True then
+ begin
+  edtp10.Enabled:=True;
+ end else
+ begin
+  edtp10.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  edtp10.Clear;
+ end;
 end;
 
 procedure Tfrmaddtreatment.edtaddctreatmentChange(Sender: TObject);
@@ -252,6 +354,21 @@ begin
   begin
    ShowMessage('Please Enter A Valid Price');
   end;
+end;
+
+procedure Tfrmaddtreatment.edtp10Change(Sender: TObject);
+begin
+ //here we are going to add in the error checking to enable the button
+ if (edtaddtname.Text <> '') or (medtprice.Text <> '') then
+ begin
+  if chklst1.Checked[9] = True then
+  begin
+   if edtp10.Text <> '' then
+   begin
+    btnaddtreatment.Enabled:=True;
+   end;
+  end;
+ end;
 end;
 
 procedure Tfrmaddtreatment.edtp1Change(Sender: TObject);
@@ -329,6 +446,66 @@ begin
  end;
 end;
 
+procedure Tfrmaddtreatment.edtp6Change(Sender: TObject);
+begin
+  //here we are going to add in the error checking to enable the button
+ if (edtaddtname.Text <> '') or (medtprice.Text <> '') then
+ begin
+  if chklst1.Checked[6] = True then
+  begin
+   if edtp7.Text <> '' then
+   begin
+    btnaddtreatment.Enabled:=True;
+   end;
+  end;
+ end;
+end;
+
+procedure Tfrmaddtreatment.edtp7Change(Sender: TObject);
+begin
+ //here we are going to add in the error checking to enable the button
+ if (edtaddtname.Text <> '') or (medtprice.Text <> '') then
+ begin
+  if chklst1.Checked[7] = True then
+  begin
+   if edtp8.Text <> '' then
+   begin
+    btnaddtreatment.Enabled:=True;
+   end;
+  end;
+ end;
+end;
+
+procedure Tfrmaddtreatment.edtp8Change(Sender: TObject);
+begin
+ //here we are going to add in the error checking to enable the button
+ if (edtaddtname.Text <> '') or (medtprice.Text <> '') then
+ begin
+  if chklst1.Checked[8] = True then
+  begin
+   if edtp9.Text <> '' then
+   begin
+    btnaddtreatment.Enabled:=True;
+   end;
+  end;
+ end;
+end;
+
+procedure Tfrmaddtreatment.edtp9Change(Sender: TObject);
+begin
+ //here we are going to add in the error checking to enable the button
+ if (edtaddtname.Text <> '') or (medtprice.Text <> '') then
+ begin
+  if chklst1.Checked[9] = True then
+  begin
+   if edtp10.Text <> '' then
+   begin
+    btnaddtreatment.Enabled:=True;
+   end;
+  end;
+ end;
+end;
+
 procedure Tfrmaddtreatment.File2Click(Sender: TObject);
 begin
  btnaddtreatment.Click;
@@ -364,9 +541,19 @@ begin
  edtp3.Enabled:=False;
  edtp4.Enabled:=False;
  edtp5.Enabled:=False;
+ edtp6.Enabled:=False;
+ edtp7.Enabled:=False;
+ edtp8.Enabled:=False;
+ edtp9.Enabled:=False;
+ edtp10.Enabled:=False;
  //
  btnaddtreatment.Enabled:=False;
  //
+end;
+
+procedure Tfrmaddtreatment.Help1Click(Sender: TObject);
+begin
+ btnhelp.Click;
 end;
 
 procedure Tfrmaddtreatment.medtpriceChange(Sender: TObject);

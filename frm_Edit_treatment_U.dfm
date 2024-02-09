@@ -3,7 +3,7 @@ object frmedittreatment: Tfrmedittreatment
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Life Day Spa  - Edit Treatment Details'
-  ClientHeight = 322
+  ClientHeight = 486
   ClientWidth = 624
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -69,7 +69,7 @@ object frmedittreatment: Tfrmedittreatment
     Left = 0
     Top = 119
     Width = 616
-    Height = 197
+    Height = 359
     BevelInner = bvLowered
     TabOrder = 2
     object pnl4: TPanel
@@ -124,7 +124,7 @@ object frmedittreatment: Tfrmedittreatment
     end
     object edtep1: TEdit
       Left = 152
-      Top = 42
+      Top = 41
       Width = 273
       Height = 23
       TabOrder = 2
@@ -132,7 +132,7 @@ object frmedittreatment: Tfrmedittreatment
     end
     object edtep2: TEdit
       Left = 152
-      Top = 72
+      Top = 73
       Width = 273
       Height = 23
       TabOrder = 3
@@ -148,7 +148,7 @@ object frmedittreatment: Tfrmedittreatment
     end
     object edtep4: TEdit
       Left = 152
-      Top = 134
+      Top = 135
       Width = 273
       Height = 23
       TabOrder = 5
@@ -156,7 +156,7 @@ object frmedittreatment: Tfrmedittreatment
     end
     object edtep5: TEdit
       Left = 152
-      Top = 163
+      Top = 165
       Width = 273
       Height = 23
       TabOrder = 6
@@ -164,9 +164,9 @@ object frmedittreatment: Tfrmedittreatment
     end
     object chklst1: TCheckListBox
       Left = 8
-      Top = 8
+      Top = 12
       Width = 121
-      Height = 177
+      Height = 341
       CheckBoxPadding = 15
       ItemHeight = 30
       Items.Strings = (
@@ -175,9 +175,54 @@ object frmedittreatment: Tfrmedittreatment
         'Product 2'
         'Product 3'
         'Product 4'
-        'Product 5')
+        'Product 5'
+        'Product 6'
+        'Product 7'
+        'Product 8'
+        'Product 9'
+        'Product 10')
       TabOrder = 7
       OnClickCheck = chklst1ClickCheck
+    end
+    object edtep6: TEdit
+      Left = 152
+      Top = 196
+      Width = 273
+      Height = 23
+      TabOrder = 8
+      TextHint = '--- Edit Product 6 & The ml'#39's To Be Used ---'
+    end
+    object edtep7: TEdit
+      Left = 152
+      Top = 227
+      Width = 273
+      Height = 23
+      TabOrder = 9
+      TextHint = '--- Edit Product 7 & The ml'#39's To Be Used ---'
+    end
+    object edtep8: TEdit
+      Left = 152
+      Top = 257
+      Width = 273
+      Height = 23
+      TabOrder = 10
+      TextHint = '--- Edit Product 8 & The ml'#39's To Be Used ---'
+    end
+    object edtep9: TEdit
+      Left = 152
+      Top = 287
+      Width = 273
+      Height = 23
+      TabOrder = 11
+      TextHint = '--- Edit Product 9 & The ml'#39's To Be Used ---'
+    end
+    object edtep10: TEdit
+      Left = 152
+      Top = 318
+      Width = 273
+      Height = 23
+      TabOrder = 12
+      TextHint = '--- Edit Product 10 & The ml'#39's To Be Used ---'
     end
   end
   object il1: TImageList

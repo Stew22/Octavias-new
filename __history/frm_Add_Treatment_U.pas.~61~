@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.ImageList,
-  Vcl.ImgList, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.CheckLst, Vcl.Mask,DM_Spa_Menu;
+  Vcl.ImgList, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.CheckLst, Vcl.Mask,DM_Spa_Menu,
+  Winapi.ShellAPI;
 
 type
   Tfrmaddtreatment = class(TForm)
@@ -239,8 +240,6 @@ begin
   btnaddtreatment.Enabled:=False;
   edtp5.Clear;
  end;
- //
-
 end;
 
 procedure Tfrmaddtreatment.edtaddctreatmentChange(Sender: TObject);

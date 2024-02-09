@@ -1,8 +1,9 @@
 object frmedittreatment: Tfrmedittreatment
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Life Day Spa  - Edit Treatment Details'
-  ClientHeight = 320
+  ClientHeight = 486
   ClientWidth = 624
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +12,7 @@ object frmedittreatment: Tfrmedittreatment
   Font.Name = 'Segoe UI'
   Font.Style = []
   Menu = mm1
+  Position = poScreenCenter
   OnShow = FormShow
   TextHeight = 15
   object pnl1: TPanel
@@ -36,6 +38,7 @@ object frmedittreatment: Tfrmedittreatment
       ImageIndex = 3
       Images = il1
       TabOrder = 0
+      OnClick = btnhelpClick
     end
   end
   object pnl2: TPanel
@@ -59,13 +62,14 @@ object frmedittreatment: Tfrmedittreatment
       Height = 23
       TabOrder = 0
       TextHint = '--- Please Select A Treatment You Would Like To Edit ---'
+      OnChange = cbbEtreatmentChange
     end
   end
   object pnl3: TPanel
     Left = 0
     Top = 119
     Width = 616
-    Height = 193
+    Height = 359
     BevelInner = bvLowered
     TabOrder = 2
     object pnl4: TPanel
@@ -160,9 +164,9 @@ object frmedittreatment: Tfrmedittreatment
     end
     object chklst1: TCheckListBox
       Left = 8
-      Top = 8
+      Top = 12
       Width = 121
-      Height = 177
+      Height = 341
       CheckBoxPadding = 15
       ItemHeight = 30
       Items.Strings = (
@@ -171,15 +175,61 @@ object frmedittreatment: Tfrmedittreatment
         'Product 2'
         'Product 3'
         'Product 4'
-        'Product 5')
+        'Product 5'
+        'Product 6'
+        'Product 7'
+        'Product 8'
+        'Product 9'
+        'Product 10')
       TabOrder = 7
+      OnClickCheck = chklst1ClickCheck
+    end
+    object edtep6: TEdit
+      Left = 152
+      Top = 195
+      Width = 273
+      Height = 23
+      TabOrder = 8
+      TextHint = '--- Edit Product 6 & The ml'#39's To Be Used ---'
+    end
+    object edtep7: TEdit
+      Left = 152
+      Top = 227
+      Width = 273
+      Height = 23
+      TabOrder = 9
+      TextHint = '--- Edit Product 7 & The ml'#39's To Be Used ---'
+    end
+    object edtep8: TEdit
+      Left = 152
+      Top = 257
+      Width = 273
+      Height = 23
+      TabOrder = 10
+      TextHint = '--- Edit Product 8 & The ml'#39's To Be Used ---'
+    end
+    object edtep9: TEdit
+      Left = 152
+      Top = 287
+      Width = 273
+      Height = 23
+      TabOrder = 11
+      TextHint = '--- Edit Product 9 & The ml'#39's To Be Used ---'
+    end
+    object edtep10: TEdit
+      Left = 152
+      Top = 318
+      Width = 273
+      Height = 23
+      TabOrder = 12
+      TextHint = '--- Edit Product 10 & The ml'#39's To Be Used ---'
     end
   end
   object il1: TImageList
     Left = 456
     Top = 16
     Bitmap = {
-      494C010104000800040010001000FFFFFFFFFF00FFFFFFFFFFFFFFFF424D3600
+      494C010104000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -447,7 +497,8 @@ object frmedittreatment: Tfrmedittreatment
       8FF17FE77FDFF00FC7E37FE77FDFE247E3C77FE77FD7CE73F18F7FE77FD3CE73
       F81F7FE77FD99E79FC3F7E6770009E79FC3F7E3F70009E39F81F7F1F7FD99999
       F18F7F8F7FD3C993E3C77FC77FD7CC33C7E37FE37FDFE2478FF17FF17FDFF00F
-      1FF800387FDFFC7FBFFDFFFC001FFFFF}
+      1FF800387FDFFC7FBFFDFFFC001FFFFF00000000000000000000000000000000
+      000000000000}
   end
   object mm1: TMainMenu
     Left = 408

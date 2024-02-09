@@ -3,7 +3,7 @@ object frmaddtreatment: Tfrmaddtreatment
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Life Day Spa Treatment Menu --- Add A Treatment To The Menu'
-  ClientHeight = 353
+  ClientHeight = 500
   ClientWidth = 624
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -29,12 +29,23 @@ object frmaddtreatment: Tfrmaddtreatment
       Height = 15
       Caption = 'Use The Following Form To Add  Products To The Spa Menu '
     end
+    object btnhelp: TButton
+      Left = 584
+      Top = 7
+      Width = 25
+      Height = 25
+      ImageAlignment = iaCenter
+      ImageIndex = 3
+      Images = il1
+      TabOrder = 0
+      OnClick = btnhelpClick
+    end
   end
   object pnl2: TPanel
     Left = 0
     Top = 72
     Width = 616
-    Height = 273
+    Height = 417
     BevelInner = bvLowered
     TabOrder = 1
     object lbl1: TLabel
@@ -75,6 +86,7 @@ object frmaddtreatment: Tfrmaddtreatment
         ImageIndex = 0
         Images = il1
         TabOrder = 0
+        OnClick = btnaddtreatmentClick
       end
       object btncancel: TButton
         Left = 8
@@ -96,13 +108,14 @@ object frmaddtreatment: Tfrmaddtreatment
         ImageIndex = 2
         Images = il1
         TabOrder = 2
+        OnClick = btnexitClick
       end
     end
     object pnl4: TPanel
       Left = 8
       Top = 103
       Width = 409
-      Height = 162
+      Height = 306
       BevelInner = bvLowered
       TabOrder = 2
       object edtp1: TEdit
@@ -154,7 +167,7 @@ object frmaddtreatment: Tfrmaddtreatment
         Left = 8
         Top = 8
         Width = 97
-        Height = 145
+        Height = 289
         AutoComplete = False
         CheckBoxPadding = 13
         ItemHeight = 28
@@ -163,23 +176,76 @@ object frmaddtreatment: Tfrmaddtreatment
           'Product 2 '
           'Product 3 '
           'Product 4 '
-          'Product 5')
+          'Product 5'
+          'Product 6'
+          'Product 7'
+          'Product 8'
+          'Product 9'
+          'Product 10')
         TabOrder = 5
         OnClickCheck = chklst1ClickCheck
       end
+      object edtp6: TEdit
+        Left = 111
+        Top = 153
+        Width = 290
+        Height = 23
+        TabOrder = 6
+        TextHint = '--- Product 6 Name & ml'#39's To Use ---'
+        OnChange = edtp5Change
+      end
+      object edtp7: TEdit
+        Left = 111
+        Top = 182
+        Width = 290
+        Height = 23
+        TabOrder = 7
+        TextHint = '--- Product 7 Name & ml'#39's To Use ---'
+        OnChange = edtp5Change
+      end
+      object edtp8: TEdit
+        Left = 111
+        Top = 211
+        Width = 290
+        Height = 23
+        TabOrder = 8
+        TextHint = '--- Product 8 Name & ml'#39's To Use ---'
+        OnChange = edtp5Change
+      end
+      object edtp9: TEdit
+        Left = 111
+        Top = 240
+        Width = 290
+        Height = 23
+        TabOrder = 9
+        TextHint = '--- Product 9 Name & ml'#39's To Use ---'
+        OnChange = edtp5Change
+      end
+      object edtp10: TEdit
+        Left = 111
+        Top = 269
+        Width = 290
+        Height = 23
+        TabOrder = 10
+        TextHint = '--- Product 10 Name & ml'#39's To Use ---'
+        OnChange = edtp5Change
+      end
     end
-    object edtaddctreatment: TEdit
-      Left = 119
+    object medtprice: TMaskEdit
+      Left = 120
       Top = 56
-      Width = 298
+      Width = 291
       Height = 23
       TabOrder = 3
-      TextHint = '--- Cost Of Treatment ---'
+      Text = ''
+      TextHint = '--- Price Of Treatment ---'
+      OnChange = medtpriceChange
+      OnExit = medtpriceExit
     end
   end
   object mm1: TMainMenu
-    Left = 488
-    Top = 16
+    Left = 512
+    Top = 240
     object File1: TMenuItem
       Caption = 'File'
       object N4: TMenuItem
@@ -187,12 +253,14 @@ object frmaddtreatment: Tfrmaddtreatment
       end
       object File2: TMenuItem
         Caption = 'Add Treatment'
+        OnClick = File2Click
       end
       object N3: TMenuItem
         Caption = '-'
       end
       object Cancel1: TMenuItem
         Caption = 'Cancel'
+        OnClick = Cancel1Click
       end
       object N2: TMenuItem
         Caption = '-'
@@ -207,13 +275,14 @@ object frmaddtreatment: Tfrmaddtreatment
     end
     object Help1: TMenuItem
       Caption = 'Help'
+      OnClick = Help1Click
     end
   end
   object il1: TImageList
-    Left = 544
-    Top = 24
+    Left = 560
+    Top = 240
     Bitmap = {
-      494C010104000800040010001000FFFFFFFFFF00FFFFFFFFFFFFFFFF424D3600
+      494C010104000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -481,6 +550,7 @@ object frmaddtreatment: Tfrmaddtreatment
       E7E78FF17FDFF00FF18FC7E37FDFE247FC3FE3C77FD7CE73F81FF18F7FD3CE73
       F18FF81F7FD99E79F24FFC3F70009E79E5A7FC3F70009E39E087F81F7FD99999
       E107F18F7FD3C993E007E3C77FD7CC33E007C7E37FDFE247F00F8FF17FDFF00F
-      F81F1FF87FDFFC7FFC3FBFFD001FFFFF}
+      F81F1FF87FDFFC7FFC3FBFFD001FFFFF00000000000000000000000000000000
+      000000000000}
   end
 end
