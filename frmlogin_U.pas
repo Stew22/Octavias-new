@@ -96,7 +96,7 @@ begin
       frmmain.AddUser1.Enabled:=True;
       frmmain.Bookings1.Enabled:=True; // this will be for the future
       frmmain.ManageTreatments1.Enabled:=True;
-      TDataAccess.WriteToAccessDB(cbbuser.Text + ' Has Logged In ');
+      TDataAccess.WriteToAccessDB(cbbuser.Text + ' Has Logged In As An Admin');
      end else
      if tblusers.FieldByName('Premissions').AsString = 'Orderer' then
      begin
@@ -111,7 +111,7 @@ begin
       frmmain.ShowModal;
       //
       //here we write to the log
-      TDataAccess.WriteToAccessDB(cbbuser.Text + ' Has Logged In ');
+      TDataAccess.WriteToAccessDB(cbbuser.Text + ' Has Logged In As An Orderer ');
       //here we will capture the Orderer that has logged in
      end else
      begin
@@ -140,6 +140,7 @@ procedure Tfrmlogin.btnregisterClick(Sender: TObject);
 begin
  //here we will open the register a user form
  frmadduser.ShowModal;
+ TDataAccess.WriteToAccessDB('Register A User Button Has Been Clicked');
 end;
 
 procedure Tfrmlogin.btnviewspamenuClick(Sender: TObject);
@@ -148,6 +149,7 @@ begin
  //when we lanuch this form since the user is not logged in we will need to disable
  //the abillity for the user to make any changes or add or delete any of the
  //treatments , they should only be able to view
+ TDataAccess.WriteToAccessDB('Spa Menu Has Been Opened');
 end;
 
 procedure Tfrmlogin.FormShow(Sender: TObject);
@@ -184,6 +186,7 @@ begin
       end;
    end;
  end;
+ TDataAccess.WriteToAccessDB('Life Day Spa Stock Mate Application Has Been Opened');
 end;
 
 end.

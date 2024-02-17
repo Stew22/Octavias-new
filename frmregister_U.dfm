@@ -14,6 +14,7 @@ object frmadduser: Tfrmadduser
   Font.Style = []
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 13
   object pnl1: TPanel
@@ -117,6 +118,7 @@ object frmadduser: Tfrmadduser
       Width = 209
       Height = 21
       TabOrder = 0
+      OnChange = edtunameChange
     end
     object edtuemail: TEdit
       Left = 112
@@ -124,6 +126,7 @@ object frmadduser: Tfrmadduser
       Width = 209
       Height = 21
       TabOrder = 1
+      OnChange = edtuemailChange
     end
     object edtname: TEdit
       Left = 112
@@ -131,6 +134,7 @@ object frmadduser: Tfrmadduser
       Width = 209
       Height = 21
       TabOrder = 2
+      OnChange = edtnameChange
     end
     object edtsurname: TEdit
       Left = 112
@@ -138,6 +142,7 @@ object frmadduser: Tfrmadduser
       Width = 209
       Height = 21
       TabOrder = 3
+      OnChange = edtsurnameChange
     end
     object edtcell: TEdit
       Left = 113
@@ -145,6 +150,7 @@ object frmadduser: Tfrmadduser
       Width = 209
       Height = 21
       TabOrder = 4
+      OnChange = edtcellChange
     end
     object edtstore: TEdit
       Left = 112
@@ -152,6 +158,7 @@ object frmadduser: Tfrmadduser
       Width = 209
       Height = 21
       TabOrder = 5
+      OnChange = edtstoreChange
     end
     object edtpassword: TEdit
       Left = 112
@@ -159,6 +166,7 @@ object frmadduser: Tfrmadduser
       Width = 209
       Height = 21
       TabOrder = 6
+      OnChange = edtpasswordChange
     end
     object edtcpassword: TEdit
       Left = 113
@@ -174,6 +182,7 @@ object frmadduser: Tfrmadduser
       Width = 208
       Height = 21
       TabOrder = 8
+      OnChange = edtvendoraddressChange
     end
   end
   object pnl3: TPanel
@@ -197,6 +206,7 @@ object frmadduser: Tfrmadduser
       Height = 21
       TabOrder = 0
       TextHint = 'Select User Permissions Level'
+      OnChange = cbbuserpremChange
     end
   end
   object pnl4: TPanel

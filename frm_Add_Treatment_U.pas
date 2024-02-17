@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.ImageList,
   Vcl.ImgList, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.CheckLst, Vcl.Mask,DM_Spa_Menu,
-  Winapi.ShellAPI;
+  Winapi.ShellAPI,DM_Logger,Logger_U;
 
 type
   Tfrmaddtreatment = class(TForm)
@@ -68,6 +68,7 @@ type
     procedure edtp8Change(Sender: TObject);
     procedure edtp9Change(Sender: TObject);
     procedure edtp10Change(Sender: TObject);
+    procedure edtaddtnameChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -209,11 +210,14 @@ begin
  edtp8.Enabled:=False;
  edtp9.Enabled:=False;
  edtp10.Enabled:=False;
+ //
+ TDataAccess.WriteToAccessDB('Has Clicked Cancel Button On Add A Treatment To Spa Menu');
 end;
 
 procedure Tfrmaddtreatment.btnexitClick(Sender: TObject);
 begin
  btncancel.Click;
+ TDataAccess.WriteToAccessDB('Has Closed The Add Treatment Form');
  frmaddtreatment.Close;
 end;
 
@@ -225,6 +229,7 @@ begin
  PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Add_Treatment.pdf'; //replace this with the help file
  ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
  //
+ TDataAccess.WriteToAccessDB('Has Opened The User Manual');
 end;
 
 procedure Tfrmaddtreatment.Cancel1Click(Sender: TObject);
@@ -355,6 +360,12 @@ begin
   begin
    ShowMessage('Please Enter A Valid Price');
   end;
+end;
+
+procedure Tfrmaddtreatment.edtaddtnameChange(Sender: TObject);
+begin
+//
+ TDataAccess.WriteToAccessDB('Has Selected A Treatment From The Dropdown For Editing');
 end;
 
 procedure Tfrmaddtreatment.edtp10Change(Sender: TObject);
@@ -532,6 +543,7 @@ begin
     tblspamenu.Active:=True;
     tblspamenu.First; //here we go to the first value
     //
+    TDataAccess.WriteToAccessDB('Add Spa Treatment Form Has Been Opened');
    end;
  end;
  //here we will disable the edit fields until the user has selected how many products
@@ -560,6 +572,7 @@ end;
 procedure Tfrmaddtreatment.medtpriceChange(Sender: TObject);
 begin
  medtprice.EditMask:='99999.00;1;';
+ TDataAccess.WriteToAccessDB('Has Edited The Price');
 end;
 
 procedure Tfrmaddtreatment.medtpriceExit(Sender: TObject);

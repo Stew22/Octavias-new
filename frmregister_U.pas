@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.ImageList,
-  Vcl.ImgList, Vcl.ExtCtrls,DM_Users,Winapi.ShellAPI;
+  Vcl.ImgList, Vcl.ExtCtrls,DM_Users,Winapi.ShellAPI,DM_Logger,Logger_U;
 
 type
   Tfrmadduser = class(TForm)
@@ -44,6 +44,16 @@ type
     procedure edtcpasswordChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnhelpClick(Sender: TObject);
+    procedure edtunameChange(Sender: TObject);
+    procedure edtuemailChange(Sender: TObject);
+    procedure edtpasswordChange(Sender: TObject);
+    procedure edtstoreChange(Sender: TObject);
+    procedure edtnameChange(Sender: TObject);
+    procedure edtsurnameChange(Sender: TObject);
+    procedure edtcellChange(Sender: TObject);
+    procedure edtvendoraddressChange(Sender: TObject);
+    procedure cbbuserpremChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -94,6 +104,7 @@ begin
           tblusers['User_Address'] := edtvendoraddress.Text;
           tblusers.Post;
           ShowMessage('User With Admin Rights Has Been Added Successfully!');
+          TDataAccess.WriteToAccessDB('User Has Been Registered As An Admin Successfully');
         end;
         edtname.Clear;
         edtcell.Clear;
@@ -147,6 +158,7 @@ begin
           tblusers['User_Address'] := edtvendoraddress.Text;
           tblusers.Post;
           ShowMessage('User With Ordering Rights Added Successfully!');
+          TDataAccess.WriteToAccessDB('User Has Been Registered Succesfully As An Orderer');
         end
         else
         begin
@@ -177,6 +189,7 @@ begin
  cbbuserprem.Clear;
  edtvendoraddress.Clear;
  cbbuserprem.Text := '';
+ TDataAccess.WriteToAccessDB('User Has Canceled Registration Process');
 end;
 
 procedure Tfrmadduser.btnhelpClick(Sender: TObject);
@@ -186,6 +199,17 @@ begin
  //here we will shell execute the pdf to open
  PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_User_Registration.pdf'; //replace this with the help file
  ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
+ TDataAccess.WriteToAccessDB('User Has Opened The User Manual');
+end;
+
+procedure Tfrmadduser.cbbuserpremChange(Sender: TObject);
+begin
+TDataAccess.WriteToAccessDB('User Rights Has Been Selected');
+end;
+
+procedure Tfrmadduser.edtcellChange(Sender: TObject);
+begin
+TDataAccess.WriteToAccessDB('Cell Number Has Been Added');
 end;
 
 procedure Tfrmadduser.edtcpasswordChange(Sender: TObject);
@@ -193,17 +217,53 @@ begin
  if edtpassword.Text = edtcpassword.Text then
  begin
   btnaduser.Enabled:=True;
+  TDataAccess.WriteToAccessDB('Passwords Are Matching');
  end else
  begin
   btnaduser.Enabled:=False;
+  TDataAccess.WriteToAccessDB('User Has Failed To Confirm Password');
  end;
+end;
+
+procedure Tfrmadduser.edtnameChange(Sender: TObject);
+begin
+TDataAccess.WriteToAccessDB('Name Has Been Added');
+end;
+
+procedure Tfrmadduser.edtpasswordChange(Sender: TObject);
+begin
+TDataAccess.WriteToAccessDB('Password Has Been Added');
+end;
+
+procedure Tfrmadduser.edtstoreChange(Sender: TObject);
+begin
+TDataAccess.WriteToAccessDB('Store Name Has Been Added');
+end;
+
+procedure Tfrmadduser.edtsurnameChange(Sender: TObject);
+begin
+TDataAccess.WriteToAccessDB('Surname Has Been Added');
+end;
+
+procedure Tfrmadduser.edtuemailChange(Sender: TObject);
+begin
+ TDataAccess.WriteToAccessDB('Email Has Been Added');
+end;
+
+procedure Tfrmadduser.edtunameChange(Sender: TObject);
+begin
+ TDataAccess.WriteToAccessDB('Username Has Been Added');
+end;
+
+procedure Tfrmadduser.edtvendoraddressChange(Sender: TObject);
+begin
+TDataAccess.WriteToAccessDB('User Address Has Been Added');
 end;
 
 procedure Tfrmadduser.FormActivate(Sender: TObject);
  var
  i:Integer;
 begin
-
  //here we have set only 2 account types
  //the admin account can add and remove users
  //the admin can also place orders
@@ -228,6 +288,15 @@ begin
    //here we can do nothing since it is already connected
   end;
  end;
+ TDataAccess.WriteToAccessDB('User Has Opened Registration Page');
+end;
+
+procedure Tfrmadduser.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ TDataAccess.WriteToAccessDB('User Registration Form Has Been Closed');
+ //here we will refresh the combobox to reflect the new users that have just
+ //registered
+
 end;
 
 procedure Tfrmadduser.FormCreate(Sender: TObject);

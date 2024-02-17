@@ -69,6 +69,7 @@ object frmaddtreatment: Tfrmaddtreatment
       Height = 23
       TabOrder = 0
       TextHint = '--- Treatment Name ---'
+      OnChange = edtaddtnameChange
     end
     object pnl3: TPanel
       Left = 472
