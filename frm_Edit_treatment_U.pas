@@ -504,6 +504,18 @@ end;
 
 procedure Tfrmedittreatment.Exot1Click(Sender: TObject);
 begin
+ with DataModuleSpaMenu do
+ begin
+   if tblspamenu.Active = True then
+   begin
+    cbbEtreatment.Clear;
+    tblspamenu.Filtered:=False;
+    tblspamenu.Filter:='';
+   end else
+   begin
+    ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer !');
+   end;
+ end;
  btncancel.Click;
  btnexit.Click;
 end;
@@ -521,7 +533,16 @@ begin
  begin
    if conspamenu.Connected = True then
    begin
-    //conspamenu.Connected:=False; //disconnect a previous session
+    conspamenu.Connected:=False; //disconnect a previous session
+    conspamenu.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;' +
+    'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\DB_Spa_Menu.accdb' +
+    ';Mode=ReadWrite;Persist Security Info=False';
+    //
+    tblspamenu.TableName:='tbltreatmentmenu';
+    //
+    conspamenu.Connected:=True;
+    tblspamenu.Active:=True;
+    tblspamenu.First;
    end else
    begin
     //here we will connect the database

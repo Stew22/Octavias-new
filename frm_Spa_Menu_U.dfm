@@ -3,8 +3,8 @@ object frmspamenu: Tfrmspamenu
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Life Day Spa Menu'
-  ClientHeight = 281
-  ClientWidth = 624
+  ClientHeight = 433
+  ClientWidth = 619
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -70,7 +70,7 @@ object frmspamenu: Tfrmspamenu
     Left = 8
     Top = 111
     Width = 608
-    Height = 162
+    Height = 314
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -12

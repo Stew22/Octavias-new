@@ -125,6 +125,25 @@ type
     N46: TMenuItem;
     N47: TMenuItem;
     N48: TMenuItem;
+    DuplicateFiner1: TMenuItem;
+    FindDuplicateVendors1: TMenuItem;
+    FindDuplicateVendors2: TMenuItem;
+    N49: TMenuItem;
+    N50: TMenuItem;
+    N51: TMenuItem;
+    FindDuplicateUsers1: TMenuItem;
+    N52: TMenuItem;
+    FindItemsWithNoRPP1: TMenuItem;
+    N53: TMenuItem;
+    FindItemPricingErrors1: TMenuItem;
+    N54: TMenuItem;
+    FindVendorsWithIncompleteData1: TMenuItem;
+    N55: TMenuItem;
+    FindProductsWithIncompleteInformation1: TMenuItem;
+    FindProductsWithIncompleteInformation2: TMenuItem;
+    N56: TMenuItem;
+    N57: TMenuItem;
+    N58: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -296,6 +315,7 @@ var
   SumOrdered: Integer;
   SumPrice: Double;
   PriceStr: string;
+  PriceValue: Double; // Declare variable for the result of TryStrToFloat
 begin
   // Dynamically determine the decimal separator used by the system
   FormatSettings.DecimalSeparator := '.'; // Set a default value
@@ -308,19 +328,19 @@ begin
       tblorder.First; // Move to the first record
       SumOrdered := 0; // Initialize the sum to zero
       SumPrice := 0.00;
-      //
+      tblorder.First;
       while not tblorder.Eof do
       begin
         // Accumulate the 'Qty' values
-        SumOrdered := SumOrdered + StrToInt(tblorder.FieldByName('Qty').AsString);
+        SumOrdered := SumOrdered + StrToIntDef(tblorder.FieldByName('Qty').AsString, 0);
+
         // Get the 'Price' string
         PriceStr := tblorder.FieldByName('Price').AsString;
         // Use TryStrToFloat to handle conversion and check if it succeeds
-        if TryStrToFloat(StringReplace(PriceStr, '.', FormatSettings.DecimalSeparator, []),
-          SumPrice) then
+        if TryStrToFloat(StringReplace(PriceStr, '.', FormatSettings.DecimalSeparator, []), PriceValue) then
         begin
           // Accumulate the 'Price' values
-          SumPrice := SumPrice + (StrToFloat(PriceStr) * StrToInt(tblorder.FieldByName('Qty').AsString));
+          SumPrice := SumPrice + (PriceValue * StrToIntDef(tblorder.FieldByName('Qty').AsString, 0));
         end
         else
         begin
@@ -330,8 +350,10 @@ begin
         end;
         tblorder.Next; // Move to the next record
       end;
+
       // Update the label with the total
       lblorderproducts.Caption := 'Products Ordered: ' + IntToStr(SumOrdered);
+
       // Update the label with the formatted total cost
       lbltotals.Caption := 'Total Cost : ' + FloatToStr(SumPrice);
     end
@@ -341,6 +363,7 @@ begin
     end;
   end;
 end;
+
 procedure Tfrmmain.cbbcatogoriesChange(Sender: TObject);
 begin
  //here we will check if the main catagory has been chnaged , then we

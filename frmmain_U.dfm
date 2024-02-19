@@ -72,6 +72,7 @@ object frmmain: Tfrmmain
       Top = 14
       Width = 145
       Height = 21
+      Sorted = True
       TabOrder = 0
       TextHint = 'Vendor'#39's'
       OnChange = cbbvendorChange
@@ -81,6 +82,7 @@ object frmmain: Tfrmmain
       Top = 14
       Width = 145
       Height = 21
+      Sorted = True
       TabOrder = 1
       TextHint = 'Main Categories'
       OnChange = cbbcatogoriesChange
@@ -124,6 +126,7 @@ object frmmain: Tfrmmain
       Top = 14
       Width = 145
       Height = 21
+      Sorted = True
       TabOrder = 3
       TextHint = 'Sub Categories'
       OnChange = cbbsubcatagoriesChange
@@ -142,6 +145,7 @@ object frmmain: Tfrmmain
       Top = 41
       Width = 145
       Height = 21
+      Sorted = True
       TabOrder = 5
       TextHint = '-- Tertiary Categories --'
       OnChange = cbbtertiarycatagoryChange
@@ -467,6 +471,63 @@ object frmmain: Tfrmmain
         end
       end
       object N41: TMenuItem
+        Caption = '-'
+      end
+      object DuplicateFiner1: TMenuItem
+        Caption = 'Database Duplicate Finder'
+        object N49: TMenuItem
+          Caption = '-'
+        end
+        object FindDuplicateVendors1: TMenuItem
+          Caption = 'Find Duplicate Vendors'
+        end
+        object N50: TMenuItem
+          Caption = '-'
+        end
+        object FindDuplicateVendors2: TMenuItem
+          Caption = 'Find Duplicate Products'
+        end
+        object N51: TMenuItem
+          Caption = '-'
+        end
+        object FindDuplicateUsers1: TMenuItem
+          Caption = 'Find Duplicate Users'
+        end
+        object N52: TMenuItem
+          Caption = '-'
+        end
+        object FindItemsWithNoRPP1: TMenuItem
+          Caption = 'Find Items With No RPP'
+        end
+        object N53: TMenuItem
+          Caption = '-'
+        end
+        object FindItemPricingErrors1: TMenuItem
+          Caption = 'Find Item Pricing Errors'
+        end
+        object N54: TMenuItem
+          Caption = '-'
+        end
+        object FindVendorsWithIncompleteData1: TMenuItem
+          Caption = 'Find Vendors With Incomplete Information'
+        end
+        object N55: TMenuItem
+          Caption = '-'
+        end
+        object FindProductsWithIncompleteInformation1: TMenuItem
+          Caption = 'Find Products With Incomplete Information'
+        end
+        object N56: TMenuItem
+          Caption = '-'
+        end
+        object FindProductsWithIncompleteInformation2: TMenuItem
+          Caption = 'Find Users With Incomplete Information'
+        end
+        object N57: TMenuItem
+          Caption = '-'
+        end
+      end
+      object N58: TMenuItem
         Caption = '-'
       end
     end

@@ -49,8 +49,8 @@ object frmstockmanagement: Tfrmstockmanagement
     OnDrawColumnCell = dbgrdproductsDrawColumnCell
   end
   object mm1: TMainMenu
-    Left = 384
-    Top = 376
+    Left = 480
+    Top = 8
     object File1: TMenuItem
       Caption = 'File'
       object N4: TMenuItem
