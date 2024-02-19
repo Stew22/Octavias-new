@@ -316,6 +316,7 @@ var
   SumPrice: Double;
   PriceStr: string;
   PriceValue: Double; // Declare variable for the result of TryStrToFloat
+  I:Integer;
 begin
   // Dynamically determine the decimal separator used by the system
   FormatSettings.DecimalSeparator := '.'; // Set a default value
@@ -328,28 +329,30 @@ begin
       tblorder.First; // Move to the first record
       SumOrdered := 0; // Initialize the sum to zero
       SumPrice := 0.00;
-      tblorder.First;
-      while not tblorder.Eof do
-      begin
-        // Accumulate the 'Qty' values
-        SumOrdered := SumOrdered + StrToIntDef(tblorder.FieldByName('Qty').AsString, 0);
-
-        // Get the 'Price' string
-        PriceStr := tblorder.FieldByName('Price').AsString;
-        // Use TryStrToFloat to handle conversion and check if it succeeds
-        if TryStrToFloat(StringReplace(PriceStr, '.', FormatSettings.DecimalSeparator, []), PriceValue) then
+      //tblorder.First;
+      //
+      for i := 0 to tblorder.RecordCount - 1 do
         begin
+         // Accumulate the 'Qty' values
+         SumOrdered := SumOrdered + StrToIntDef(tblorder.FieldByName('Qty').AsString, 0);
+
+         // Get the 'Price' string
+         PriceStr := tblorder.FieldByName('Price').AsString;
+         // Use TryStrToFloat to handle conversion and check if it succeeds
+         if TryStrToFloat(StringReplace(PriceStr, '.', FormatSettings.DecimalSeparator, []), PriceValue) then
+         begin
           // Accumulate the 'Price' values
           SumPrice := SumPrice + (PriceValue * StrToIntDef(tblorder.FieldByName('Qty').AsString, 0));
-        end
-        else
-        begin
+         end
+         else
+         begin
           // Handle the case where conversion fails
-          ShowMessage('Invalid floating-point number for Price: ' + PriceStr);
-          Exit; // Exit the loop and update labels
+          tblorder.Next;
+          //ShowMessage('Invalid floating-point number for Price: ' + PriceStr);
+          //Exit; // Exit the loop and update labels
+         end;
+         tblorder.Next; // Move to the next record
         end;
-        tblorder.Next; // Move to the next record
-      end;
 
       // Update the label with the total
       lblorderproducts.Caption := 'Products Ordered: ' + IntToStr(SumOrdered);
