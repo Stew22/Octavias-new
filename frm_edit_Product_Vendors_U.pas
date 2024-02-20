@@ -41,6 +41,8 @@ type
     btnclear: TButton;
     cbbevpname: TComboBox;
     cbbevpcode: TComboBox;
+    edtcontactemail2: TEdit;
+    lbl9: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure btnclearClick(Sender: TObject);
     procedure btncancelClick(Sender: TObject);
@@ -83,12 +85,13 @@ end;
 procedure Tfrmeditproductvendor.btnclearClick(Sender: TObject);
 begin
  cbbevpname.Text:='';
- edtvemail.Clear;
- edtvaddress.Clear;
+ edtvemail.Text:='';
+ edtvaddress.Text:='';
+ edtcontactemail2.Text:='';
  cbbevpcode.Text:='';
- edtvcontactname.Clear;
- edtvcontactphone.Clear;
- cbbvendortype.Clear;
+ edtvcontactname.Text:='';
+ edtvcontactphone.Text:='';
+ cbbvendortype.Text:='';
 end;
 
 procedure Tfrmeditproductvendor.btneditvendorClick(Sender: TObject);
@@ -106,6 +109,7 @@ begin
       //
       tblvendor['Vendor_Code']:=cbbevpcode.Text;
       tblvendor['Vendor_Email']:=edtvemail.Text;
+      tblvendor['Vendor_Email2']:=edtcontactemail2.Text;
       tblvendor['Vendor_Contact_Name']:=edtvcontactname.Text;
       tblvendor['Vendor_Contact_Number']:=edtvcontactphone.Text;
       tblvendor['Vendor_Address']:=edtvaddress.Text;
@@ -142,13 +146,7 @@ end;
 
 procedure Tfrmeditproductvendor.Cancel2Click(Sender: TObject);
 begin
- cbbevpname.Text := '';
- edtvemail.Clear;
- edtvaddress.Clear;
- cbbevpcode.Text:='';
- edtvcontactname.Clear;
- edtvcontactphone.Clear;
- cbbvendortype.Clear;
+ btnclear.Click;
  //close the form
  frmeditproductvendor.Close;
 end;
@@ -176,6 +174,7 @@ begin
    edtvcontactname.Text:=tblvendor.FieldByName('Vendor_Contact_Name').AsString;
    edtvcontactphone.Text:=tblvendor.FieldByName('Vendor_Contact_Number').AsString;
    edtvemail.Text:=tblvendor.FieldByName('Vendor_Email').AsString;
+   edtcontactemail2.Text:=tblvendor.FieldByName('Vendor_Email2').AsString;
    edtvaddress.Text:=tblvendor.FieldByName('Vendor_Address').AsString;
    cbbvendortype.Text:=tblvendor.FieldByName('Vendor_Type').AsString;
    //
@@ -206,6 +205,7 @@ begin
    edtvcontactname.Text:=tblvendor.FieldByName('Vendor_Contact_Name').AsString;
    edtvcontactphone.Text:=tblvendor.FieldByName('Vendor_Contact_Number').AsString;
    edtvemail.Text:=tblvendor.FieldByName('Vendor_Email').AsString;
+   edtcontactemail2.Text:=tblvendor.FieldByName('Vendor_Email2').AsString;
    edtvaddress.Text:=tblvendor.FieldByName('Vendor_Address').AsString;
    cbbvendortype.Text:=tblvendor.FieldByName('Vendor_Type').AsString;
    //

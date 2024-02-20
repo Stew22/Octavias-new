@@ -4,7 +4,7 @@ object frmeditproductvendor: Tfrmeditproductvendor
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Edit Product Vendor Details'
-  ClientHeight = 324
+  ClientHeight = 345
   ClientWidth = 392
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -46,7 +46,7 @@ object frmeditproductvendor: Tfrmeditproductvendor
     Left = 7
     Top = 55
     Width = 377
-    Height = 214
+    Height = 246
     BevelInner = bvLowered
     TabOrder = 1
     object lbl2: TLabel
@@ -86,68 +86,76 @@ object frmeditproductvendor: Tfrmeditproductvendor
     end
     object lbl7: TLabel
       Left = 5
-      Top = 163
+      Top = 193
       Width = 94
       Height = 15
       Caption = 'Vendor Address  : '
     end
     object lbl8: TLabel
       Left = 6
-      Top = 187
+      Top = 219
       Width = 116
       Height = 15
       Caption = 'Vendor Service Type  : '
     end
+    object lbl9: TLabel
+      Left = 5
+      Top = 165
+      Width = 132
+      Height = 15
+      Caption = 'Vendor Contact Email 2 : '
+    end
     object edtvemail: TEdit
-      Left = 134
+      Left = 144
       Top = 128
-      Width = 235
+      Width = 225
       Height = 23
       TabOrder = 0
       TextHint = '-- Product Vendor Contact Email --'
     end
     object edtvaddress: TEdit
-      Left = 134
-      Top = 157
-      Width = 235
+      Left = 144
+      Top = 189
+      Width = 225
       Height = 23
       TabOrder = 1
       TextHint = '-- Product Vendor Address --'
     end
     object edtvcontactname: TEdit
-      Left = 134
+      Left = 144
       Top = 70
-      Width = 235
+      Width = 225
       Height = 23
       TabOrder = 2
       TextHint = '-- Product Vendor Contact Name --'
     end
     object edtvcontactphone: TEdit
-      Left = 134
+      Left = 144
       Top = 99
-      Width = 235
+      Width = 225
       Height = 23
       TabOrder = 3
       TextHint = '-- Product Vendor Contact Number --'
     end
     object cbbvendortype: TComboBox
-      Left = 134
-      Top = 184
-      Width = 235
+      Left = 144
+      Top = 216
+      Width = 225
       Height = 23
+      Sorted = True
       TabOrder = 4
       TextHint = '-- Select A Vendor Type --'
       Items.Strings = (
-        'Consumables'
-        'Profesional'
-        'Retail'
         'Cleaning '
-        'Packaging')
+        'Consumables'
+        'Packaging'
+        'Profesional'
+        'Retail')
     end
     object cbbevpname: TComboBox
-      Left = 134
+      Left = 144
       Top = 15
-      Width = 235
+      Width = 225
       Height = 23
       Sorted = True
       TabOrder = 5
@@ -155,19 +163,27 @@ object frmeditproductvendor: Tfrmeditproductvendor
       OnChange = cbbevpnameChange
     end
     object cbbevpcode: TComboBox
-      Left = 134
+      Left = 144
       Top = 42
-      Width = 235
+      Width = 225
       Height = 23
       Sorted = True
       TabOrder = 6
       TextHint = '--- Product Vendor Code ---'
       OnChange = cbbevpcodeChange
     end
+    object edtcontactemail2: TEdit
+      Left = 144
+      Top = 160
+      Width = 225
+      Height = 23
+      TabOrder = 7
+      TextHint = '-- Product Vendor Contact Email 2 --'
+    end
   end
   object pnl3: TPanel
     Left = 7
-    Top = 275
+    Top = 307
     Width = 377
     Height = 38
     BevelInner = bvLowered

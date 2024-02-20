@@ -39,6 +39,10 @@ type
     lblVendor7: TLabel;
     cbbevname: TComboBox;
     cbbevcode: TComboBox;
+    edtsvendoremail2: TEdit;
+    lblVendor8: TLabel;
+    N3: TMenuItem;
+    Cancel1: TMenuItem;
     procedure btnhelpClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnclearfieldsClick(Sender: TObject);
@@ -47,6 +51,8 @@ type
     procedure Exit1Click(Sender: TObject);
     procedure btnsaveClick(Sender: TObject);
     procedure DeleteVendor1Click(Sender: TObject);
+    procedure Cancel1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,11 +75,12 @@ end;
 procedure Tfrmeditservicevendor.btnclearfieldsClick(Sender: TObject);
 begin
 //here we will clear all the fields
- cbbevname.Clear;
+ cbbevname.Text:='';
  cbbevcode.Clear;
  edtevcname.Clear;
  edtevaddress.Clear;
  edtevemail.Clear;
+ edtsvendoremail2.Clear;
  edtevcnum.Clear;
  edtedtervicetype.Clear;
 end;
@@ -111,6 +118,7 @@ begin
        tblvendor['Vendor_Code']:=cbbevcode.Text;
        tblvendor['Vendor_Contact_Number']:=edtevcnum.Text;
        tblvendor['Vendor_Email']:=edtevemail.Text;
+       tblvendor['Vendor_Email2']:=edtsvendoremail2.Text;
        tblvendor['Vendor_Address']:=edtevaddress.Text;
        tblvendor['Vendor_Type']:=edtedtervicetype.Text;
        tblvendor['Vendor_Contact_Name']:=edtevcname.Text;
@@ -125,12 +133,18 @@ begin
        edtevcname.Enabled:=False;
        edtevcnum.Enabled:=False;
        edtevemail.Enabled:=False;
+       edtsvendoremail2.Enabled:=False;
        edtevaddress.Enabled:=False;
        edtedtervicetype.Enabled:=False;
       end;
      end;
    end;
  end;
+end;
+
+procedure Tfrmeditservicevendor.Cancel1Click(Sender: TObject);
+begin
+ btncancel.Click;
 end;
 
 procedure Tfrmeditservicevendor.cbbevnameChange(Sender: TObject);
@@ -156,6 +170,7 @@ begin
     edtevcnum.Text:=tblvendor.FieldByName('Vendor_Contact_Number').AsString;
     edtevcname.Text:=tblvendor.FieldByName('Vendor_Contact_Name').AsString;
     edtevemail.Text:=tblvendor.FieldByName('Vendor_Email').AsString;
+    edtsvendoremail2.Text:=tblvendor.FieldByName('Vendor_Email2').AsString;
     edtevaddress.Text:=tblvendor.FieldByName('Vendor_Address').AsString;
     edtedtervicetype.Text:=tblvendor.FieldByName('Vendor_Type').AsString;
     //now we allow the use to make there changes
@@ -171,6 +186,7 @@ begin
      edtevcname.Enabled:=True;
      edtevcnum.Enabled:=True;
      edtevemail.Enabled:=True;
+     edtsvendoremail2.Enabled:=True;
      edtevaddress.Enabled:=True;
      edtedtervicetype.Enabled:=True;
      //
@@ -243,4 +259,18 @@ begin
      ShowMessage('The dataset is not active or closed.');
     end;
   end;
+procedure Tfrmeditservicevendor.FormShow(Sender: TObject);
+begin
+ with Datamodulevendor do
+ begin
+   if tblvendor.Active = True then
+   begin
+    //here we will re populate the vendor combobox
+   end else
+   begin
+
+   end;
+ end;
+end;
+
 end.

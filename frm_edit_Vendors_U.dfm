@@ -4,7 +4,7 @@ object frmeditservicevendor: Tfrmeditservicevendor
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Edit Service Vendor Details'
-  ClientHeight = 300
+  ClientHeight = 332
   ClientWidth = 569
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,6 +15,7 @@ object frmeditservicevendor: Tfrmeditservicevendor
   Menu = mm1
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnShow = FormShow
   TextHeight = 13
   object pnl1: TPanel
     Left = 8
@@ -48,7 +49,7 @@ object frmeditservicevendor: Tfrmeditservicevendor
     Left = 8
     Top = 63
     Width = 425
-    Height = 226
+    Height = 261
     BevelInner = bvLowered
     TabOrder = 1
     object lblVendor: TLabel
@@ -81,24 +82,31 @@ object frmeditservicevendor: Tfrmeditservicevendor
     end
     object lblVendor4: TLabel
       Left = 16
-      Top = 136
+      Top = 140
       Width = 71
       Height = 13
       Caption = 'Vendor Email : '
     end
     object lblVendor5: TLabel
       Left = 16
-      Top = 168
+      Top = 200
       Width = 125
       Height = 13
       Caption = 'Vendor Contact Number : '
     end
     object lblVendor6: TLabel
       Left = 16
-      Top = 199
+      Top = 231
       Width = 109
       Height = 13
       Caption = 'Vendor Service Type : '
+    end
+    object lblVendor8: TLabel
+      Left = 16
+      Top = 172
+      Width = 80
+      Height = 13
+      Caption = 'Vendor Email 2 : '
     end
     object edtevcname: TEdit
       Left = 147
@@ -126,7 +134,7 @@ object frmeditservicevendor: Tfrmeditservicevendor
     end
     object edtevcnum: TEdit
       Left = 147
-      Top = 165
+      Top = 197
       Width = 254
       Height = 21
       TabOrder = 3
@@ -134,7 +142,7 @@ object frmeditservicevendor: Tfrmeditservicevendor
     end
     object edtedtervicetype: TEdit
       Left = 147
-      Top = 195
+      Top = 227
       Width = 254
       Height = 21
       TabOrder = 4
@@ -158,6 +166,14 @@ object frmeditservicevendor: Tfrmeditservicevendor
       Sorted = True
       TabOrder = 6
       TextHint = '-- Vendor Code --'
+    end
+    object edtsvendoremail2: TEdit
+      Left = 147
+      Top = 167
+      Width = 254
+      Height = 21
+      TabOrder = 7
+      TextHint = '-- Service Vendor Email 2 --'
     end
   end
   object pnl3: TPanel
@@ -202,6 +218,13 @@ object frmeditservicevendor: Tfrmeditservicevendor
     Top = 200
     object File1: TMenuItem
       Caption = 'File'
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object Cancel1: TMenuItem
+        Caption = 'Cancel'
+        OnClick = Cancel1Click
+      end
       object N1: TMenuItem
         Caption = '-'
       end

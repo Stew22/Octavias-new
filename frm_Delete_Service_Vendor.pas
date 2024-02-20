@@ -165,6 +165,7 @@ end;
 
 procedure Tfrmdeleteservicevendor.DeleteVendor2Click(Sender: TObject);
 begin
+ Cancel1.Click;
  frmdeleteservicevendor.Close;
 end;
 
