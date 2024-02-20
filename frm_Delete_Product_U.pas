@@ -98,7 +98,10 @@ begin
         //
         ShowMessage('The Product Has Been Succesfully Deleted !');
         //clear the filters
-
+        tblorder.Filtered:=False;
+        tblorder.Filter:='';
+        tblproducts.Filtered:=False;
+        tblproducts.Filter:='';
        end else
        begin
         ShowMessage('There Was An Error Finding The Product ! , Please Try Again');
@@ -146,6 +149,30 @@ begin
  cbbproducts.Text:='';
  cbbvendor.Text:='';
  btndelete.Enabled:=False;
+ //
+ with DataModuleProducts do
+ begin
+  if tblproducts.Active = True then
+  begin
+   tblproducts.Filtered:=False;
+   tblproducts.Filter:='';
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Product Items Database , Please Contact Your Software Developer');
+  end;
+ end;
+ with Datamoduleorder do
+ begin
+  if tblorder.Active = True then
+  begin
+   tblorder.Filtered:=False;
+   tblorder.Filter:='';
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Order Items Database , Please Contact Your Software Developer');
+  end;
+ end;
+ //
  frmdeleteproduct.Close;
 end;
 
@@ -232,11 +259,7 @@ end;
 procedure Tfrmdeleteproduct.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
- cbbitemcode.Text := '';
- cbbvendor.Text:='';
- cbbproducts.Text:='';
- //
-
+ btnexit.Click;
 end;
 
 procedure Tfrmdeleteproduct.FormShow(Sender: TObject);

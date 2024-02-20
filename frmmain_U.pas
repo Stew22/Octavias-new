@@ -10,7 +10,7 @@ uses
   frm_Vendors_Service_U,DM_Vendors,DM_Order,frm_Report_Bug_U,Winapi.ShellAPI,
   frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U,frm_Delete_Service_Vendor,DM_Products,
   frm_Reset_Password_U , frm_edit_Product_Vendors_U,frm_Delete_Product_Vendor_U,
-  DM_Spa_Menu,frm_Spa_Menu_U,frm_Add_Treatment_U,frm_Edit_treatment_U;
+  DM_Spa_Menu,frm_Spa_Menu_U,frm_Add_Treatment_U,frm_Edit_treatment_U,frm_Delete_Treatments_U;
 
 type
   Tfrmmain = class(TForm)
@@ -185,6 +185,7 @@ type
     procedure SpaMenu2Click(Sender: TObject);
     procedure AddTreatment1Click(Sender: TObject);
     procedure AddTreatment2Click(Sender: TObject);
+    procedure RemoveTreatment1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -815,7 +816,7 @@ var
 J:Integer;
 VName_Temp :string;
 begin
- cbbvendor.Clear;
+ //cbbvendor.Clear;
  cbbcatogories.Clear;
  cbbcatogories.Clear;
  //here we will populate the vendors from the vendor list database
@@ -850,7 +851,7 @@ begin
  begin
    if conorder.Connected = True then
    begin
-    conorder.Connected:=False; //disconnect a previous session
+    //conorder.Connected:=False; //disconnect a previous session
    end else
    begin
     //here we will connect the database
@@ -888,7 +889,7 @@ begin
  begin
    if convendor.Connected = True then
    begin
-    convendor.Connected:=False; //disconnect a previous session
+    //convendor.Connected:=False; //disconnect a previous session
    end else
    begin
     //here we will connect the database
@@ -947,7 +948,6 @@ begin
       conorder.Connected := True;
       tblorder.Active := True;
       tblorder.First;
-      // Populate user fields or any other necessary initializations
     end;
   end;
   for J := 0 to dbgrd1.Columns.Count - 1 do
@@ -968,6 +968,8 @@ begin
 end;
 
 procedure Tfrmmain.FormShow(Sender: TObject);
+var
+VName_Temp:string;
 begin
   with Datamoduleorder do
   begin
@@ -982,13 +984,11 @@ begin
       conorder.Connected := True;
       tblorder.Active := True;
       tblorder.First;
-      // Populate user fields or any other necessary initializations
     end;
-
+    //
     if tblorder.Active then
     begin
       tblorder.First; // Move to the first record
-
       while not tblorder.Eof do
       begin
        if tblorder.FieldByName('Qty').AsString <> '0' then
@@ -1004,15 +1004,30 @@ begin
       end;
       //
       tblorder.Refresh; // Refresh the dataset to reflect the changes
+      //
+     while not tblorder.Eof do
+     begin
+      //here we will need to extract vendor names then check if any duplicates
+      VName_Temp:= tblorder.FieldByName('Vendor_Name').AsString;
+      //
+      if cbbvendor.Items.IndexOf(VName_Temp) = -1 then
+      begin
+       cbbvendor.Items.Add(VName_Temp);
+       tblorder.Next;
+      end else
+      begin
+       //then it is a duplicate and we will move to the next record
+       tblorder.Next;
+      end;
+      //
+     end;
     end
     else
     begin
-      ShowMessage('There Was An Error Connecting To The Database, Please Contact Your Software Developer');
+      ShowMessage('11111There Was An Error Connecting To The Database, Please Contact Your Software Developer');
     end;
   end;
 end;
-
-
 
 procedure Tfrmmain.PlaceOrder1Click(Sender: TObject);
 begin
@@ -1050,6 +1065,11 @@ begin
    end;
   end;
  end;
+end;
+
+procedure Tfrmmain.RemoveTreatment1Click(Sender: TObject);
+begin
+ frmdeletetreatment.ShowModal;
 end;
 
 procedure Tfrmmain.ReportABug1Click(Sender: TObject);
@@ -1097,6 +1117,5 @@ begin
  //here we will shell execute the pdf to open
  PDFFileName := 'C:\Path\To\YourPDFFile.pdf'; //replace this with the help file
  ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
-
 end;
 end.

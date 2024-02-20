@@ -32,11 +32,13 @@ type
     btncancel: TButton;
     btnhelp: TButton;
     btnclear: TButton;
+    lbl9: TLabel;
+    edtVcontactemail2: TEdit;
     procedure btnaddvendorClick(Sender: TObject);
     procedure btncancelClick(Sender: TObject);
     procedure btnhelpClick(Sender: TObject);
     procedure btnclearClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -85,6 +87,7 @@ begin
         tblvendor['Vendor_Name'] := edtvname.Text;
         tblvendor['Vendor_Code'] := edtvcode.Text;
         tblvendor['Vendor_Email'] := edtvemail.Text;
+        tblvendor['Vendor_Email2'] := edtVcontactemail2.Text;
         tblvendor['Vendor_Contact_Name'] := edtvcontactname.Text;
         tblvendor['Vendor_Contact_Number'] := edtvcontactphone.Text;
         tblvendor['Vendor_Address'] := edtvaddress.Text;
@@ -95,7 +98,7 @@ begin
         ShowMessage('Product Vendor Has Been Added Successfully!');
       end
       else
-      ShowMessage('The dataset is not active or closed.');
+      ShowMessage('There Was An Error Adding A New Vendor To The Database , Please Contact Your Software Developer');
     end;
   end;
 end;
@@ -103,26 +106,28 @@ end;
 procedure Tfrmvendors.btncancelClick(Sender: TObject);
 begin
  //here we will clear all edits and close form
- edtvname.Clear;
- edtvemail.Clear;
- edtvaddress.Clear;
- edtvcode.Clear;
- edtvcontactname.Clear;
- edtvcontactphone.Clear;
- cbbvendortype.Clear;
+ edtvname.Text:='';
+ edtvemail.Text:='';
+ edtVcontactemail2.Text:='';
+ edtvaddress.Text:='';
+ edtvcode.Text:='';
+ edtvcontactname.Text:='';
+ edtvcontactphone.Text:='';
+ cbbvendortype.Text:='';
  //
  frmvendors.Close;
 end;
 
 procedure Tfrmvendors.btnclearClick(Sender: TObject);
 begin
- edtvname.Clear;
- edtvemail.Clear;
- edtvaddress.Clear;
- edtvcode.Clear;
- edtvcontactname.Clear;
- edtvcontactphone.Clear;
- cbbvendortype.Clear;
+ edtvname.Text:='';
+ edtvemail.Text:='';
+ edtvaddress.Text:='';
+ edtvcode.Text:='';
+ edtvcontactname.Text:='';
+ edtvcontactphone.Text:='';
+ cbbvendortype.Text:='';
+ edtVcontactemail2.Text:='';
 end;
 
 procedure Tfrmvendors.btnhelpClick(Sender: TObject);
@@ -135,7 +140,7 @@ begin
  //
 end;
 
-procedure Tfrmvendors.FormActivate(Sender: TObject);
+procedure Tfrmvendors.FormShow(Sender: TObject);
 begin
   with Datamodulevendor do
   begin
@@ -150,7 +155,6 @@ begin
       convendor.Connected := True;
       tblvendor.Active := True;
       tblvendor.First;
-      // Populate user fields or any other necessary initializations
     end;
   end;
 end;

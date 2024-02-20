@@ -221,11 +221,12 @@ begin
     tblspamenu.FieldByName('Product3').AsString := edtep3.Text;
     tblspamenu.FieldByName('Product4').AsString := edtep4.Text;
     tblspamenu.FieldByName('Product5').AsString := edtep5.Text;
-    tblspamenu.FieldByName('Product6').AsString := edtep5.Text;
-    tblspamenu.FieldByName('Product7').AsString := edtep5.Text;
-    tblspamenu.FieldByName('Product8').AsString := edtep5.Text;
-    tblspamenu.FieldByName('Product9').AsString := edtep5.Text;
-    tblspamenu.FieldByName('Product10').AsString := edtep5.Text;
+    tblspamenu.FieldByName('Product6').AsString := edtep6.Text;
+    tblspamenu.FieldByName('Product7').AsString := edtep7.Text;
+    tblspamenu.FieldByName('Product8').AsString := edtep8.Text;
+    tblspamenu.FieldByName('Product9').AsString := edtep9.Text;
+    tblspamenu.FieldByName('Product10').AsString := edtep10.Text;
+    //
     tblspamenu.Post;
    finally
     ShowMessage('The Changes For Treatment : ' + cbbEtreatment.Text + ' Has Been Saved Correctly !');

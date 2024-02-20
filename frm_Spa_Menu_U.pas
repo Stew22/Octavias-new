@@ -137,6 +137,34 @@ begin
      if tblspamenu.FieldByName('Product6').AsString <> '' then
      begin
       redtoutput.Lines.Add('Product 6 : ' + tblspamenu.FieldByName('Product6').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product7').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 7 : ' + tblspamenu.FieldByName('Product7').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product8').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 8 : ' + tblspamenu.FieldByName('Product8').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product9').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 9 : ' + tblspamenu.FieldByName('Product9').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product10').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 10 : ' + tblspamenu.FieldByName('Product10').AsString);
       //redtoutput.Lines.Add('--------------------------------------');
      end;
      //
@@ -152,7 +180,7 @@ begin
     end;
    end else
    begin
-   ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer !');
+    ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer !');
    end;
  end;
 end;
@@ -160,6 +188,17 @@ end;
 procedure Tfrmspamenu.File2Click(Sender: TObject);
 begin
  //clear and close
+ with DataModuleSpaMenu do
+ begin
+   if tblspamenu.Active = True then
+   begin
+    tblspamenu.Filtered:=False;
+    tblspamenu.Filter:='';
+   end else
+   begin
+    ShowMessage('There Was An Error Connecting To The Database , Please Contact Your Software Developer !');
+   end;
+ end;
  frmspamenu.Close;
 end;
 

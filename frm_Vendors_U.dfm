@@ -2,7 +2,7 @@ object frmvendors: Tfrmvendors
   Left = 0
   Top = 0
   Caption = 'Add A Product Vendor'
-  ClientHeight = 323
+  ClientHeight = 353
   ClientWidth = 394
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,7 +11,7 @@ object frmvendors: Tfrmvendors
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
-  OnActivate = FormActivate
+  OnShow = FormShow
   TextHeight = 13
   object pnl1: TPanel
     Left = 8
@@ -42,7 +42,7 @@ object frmvendors: Tfrmvendors
     Left = 8
     Top = 55
     Width = 377
-    Height = 214
+    Height = 250
     BevelInner = bvLowered
     TabOrder = 1
     object lbl2: TLabel
@@ -82,20 +82,27 @@ object frmvendors: Tfrmvendors
     end
     object lbl7: TLabel
       Left = 5
-      Top = 163
+      Top = 195
       Width = 89
       Height = 13
       Caption = 'Vendor Address  : '
     end
     object lbl8: TLabel
       Left = 6
-      Top = 187
+      Top = 222
       Width = 112
       Height = 13
       Caption = 'Vendor Service Type  : '
     end
+    object lbl9: TLabel
+      Left = 5
+      Top = 165
+      Width = 121
+      Height = 13
+      Caption = 'Vendor Contact Email 2 : '
+    end
     object edtvname: TEdit
-      Left = 134
+      Left = 135
       Top = 15
       Width = 235
       Height = 21
@@ -103,23 +110,23 @@ object frmvendors: Tfrmvendors
       TextHint = '-- Vendor Name --'
     end
     object edtvemail: TEdit
-      Left = 134
-      Top = 128
+      Left = 135
+      Top = 129
       Width = 235
       Height = 21
       TabOrder = 1
       TextHint = '-- Vendor Contact Email --'
     end
     object edtvaddress: TEdit
-      Left = 134
-      Top = 157
+      Left = 135
+      Top = 190
       Width = 235
       Height = 21
       TabOrder = 2
       TextHint = '-- Vendor Address --'
     end
     object edtvcode: TEdit
-      Left = 134
+      Left = 135
       Top = 42
       Width = 235
       Height = 21
@@ -127,7 +134,7 @@ object frmvendors: Tfrmvendors
       TextHint = '-- Vendor Code --'
     end
     object edtvcontactname: TEdit
-      Left = 134
+      Left = 135
       Top = 70
       Width = 235
       Height = 21
@@ -135,7 +142,7 @@ object frmvendors: Tfrmvendors
       TextHint = '-- Vendor Contact Name --'
     end
     object edtvcontactphone: TEdit
-      Left = 134
+      Left = 135
       Top = 99
       Width = 235
       Height = 21
@@ -143,9 +150,9 @@ object frmvendors: Tfrmvendors
       TextHint = '--Vendor Contact Number --'
     end
     object cbbvendortype: TComboBox
-      Left = 134
-      Top = 184
-      Width = 235
+      Left = 136
+      Top = 219
+      Width = 234
       Height = 21
       TabOrder = 6
       TextHint = '-- Select A Vendor Type --'
@@ -156,10 +163,18 @@ object frmvendors: Tfrmvendors
         'Cleaning '
         'Packaging')
     end
+    object edtVcontactemail2: TEdit
+      Left = 135
+      Top = 160
+      Width = 235
+      Height = 21
+      TabOrder = 7
+      TextHint = '-- Vendor Contact Email Alternative --'
+    end
   end
   object pnl3: TPanel
     Left = 8
-    Top = 275
+    Top = 311
     Width = 377
     Height = 38
     BevelInner = bvLowered
@@ -187,7 +202,7 @@ object frmvendors: Tfrmvendors
       OnClick = btncancelClick
     end
     object btnclear: TButton
-      Left = 144
+      Left = 136
       Top = 8
       Width = 89
       Height = 25

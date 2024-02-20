@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Menus, Vcl.ExtCtrls,DM_Spa_Menu,
-  System.ImageList, Vcl.ImgList;
+  System.ImageList, Vcl.ImgList,Winapi.ShellAPI;
 
 type
   Tfrmdeletetreatment = class(TForm)
@@ -29,6 +29,7 @@ type
     btncancel: TButton;
     btnexit: TButton;
     lbl2: TLabel;
+    btnhelp: TButton;
     procedure FormShow(Sender: TObject);
     procedure cbbselecttreatmentChange(Sender: TObject);
     procedure btndeletetreatmentClick(Sender: TObject);
@@ -37,6 +38,8 @@ type
     procedure Cancel2Click(Sender: TObject);
     procedure Cancel1Click(Sender: TObject);
     procedure File2Click(Sender: TObject);
+    procedure Help1Click(Sender: TObject);
+    procedure btnhelpClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -77,6 +80,8 @@ begin
      tblspamenu.Post;
      //
      ShowMessage('Treatment Has Been Successfully Removed !');
+     //
+     cbbselecttreatment.Text:='';
     end else
     begin
      ShowMessage('Treatment Removal Cancelled !');
@@ -97,6 +102,27 @@ procedure Tfrmdeletetreatment.btnexitClick(Sender: TObject);
 begin
  cbbselecttreatment.Clear;
  btndeletetreatment.Enabled:=False;
+ //
+ with DataModuleSpaMenu do
+ begin
+  if tblspamenu.Active = True then
+  begin
+   tblspamenu.Filtered:=False;
+   tblspamenu.Filter:='';
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Spa Menu Database , Please Contact Your Software Developer');
+  end;
+ end;
+end;
+
+procedure Tfrmdeletetreatment.btnhelpClick(Sender: TObject);
+var
+ PDFFilename:String;
+begin
+ //here we will shell execute the pdf to open
+ PDFFileName := ExtractFileDir(Application.ExeName) + '\Bin\M_Delete_Treatment.pdf'; //replace this with the help file
+ ShellExecute(0, 'open', PChar(PDFFileName), nil, nil, SW_SHOWNORMAL);
 end;
 
 procedure Tfrmdeletetreatment.Cancel1Click(Sender: TObject);
@@ -149,15 +175,28 @@ begin
  //
  with DataModuleSpaMenu do
  begin
-  if tblspamenu.Active = True then
-  begin
-   // Work with the data
-   //
-  end else
-  begin
-   ShowMessage('There Was An Error Connecting To The Spa Menu Database , Please Contact Your Software Developer');
-  end;
+   if conspamenu.Connected = False then
+   begin
+    conspamenu.Connected:=False; //disconnect a previous session
+    conspamenu.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;' +
+    'Data Source=' + ExtractFilePath(Application.ExeName) + '\Bin\DB_Spa_Menu.accdb' +
+    ';Mode=ReadWrite;Persist Security Info=False';
+    //
+    tblspamenu.TableName:='tbltreatmentmenu';
+    //
+    conspamenu.Connected:=True;
+    tblspamenu.Active:=True;
+    tblspamenu.First;
+   end else
+   begin
+    //here we will populate the combobox
+   end;
  end;
+end;
+
+procedure Tfrmdeletetreatment.Help1Click(Sender: TObject);
+begin
+ btnhelp.Click;
 end;
 
 end.

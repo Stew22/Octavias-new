@@ -43,14 +43,21 @@ type
     lbl8: TLabel;
     btnhrlp: TButton;
     Exit1: TMenuItem;
+    lbl9: TLabel;
+    edtcontactemail2: TEdit;
+    N5: TMenuItem;
+    Cancel1: TMenuItem;
     procedure btncancelClick(Sender: TObject);
     procedure btnaddvendorClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure Help1Click(Sender: TObject);
     procedure btnhrlpClick(Sender: TObject);
     procedure DeleteVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
     procedure Exit1Click(Sender: TObject);
+    procedure btnclearClick(Sender: TObject);
+    procedure AddVendor1Click(Sender: TObject);
+    procedure Cancel1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,6 +70,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure Tfrmaddservice.AddVendor1Click(Sender: TObject);
+begin
+btnaddvendor.Click;
+end;
 
 procedure Tfrmaddservice.AddVendor2Click(Sender: TObject);
 begin
@@ -88,7 +100,6 @@ begin
       if tblvendor.Active then
       begin
         tblvendor.First; // Move to the first record
-
         // Check for existing vendors
         while not tblvendor.Eof do
         begin
@@ -106,6 +117,7 @@ begin
         tblvendor['Vendor_Name'] := edtvcname.Text;
         tblvendor['Vendor_Code'] := edtvscode.Text;
         tblvendor['Vendor_Email'] := edtvsemail.Text;
+        tblvendor['Vendor_Email2'] := edtcontactemail2.Text;
         tblvendor['Vendor_Contact_Name'] := edtvcname.Text;
         tblvendor['Vendor_Contact_Number'] := edtvsphone.Text;
         tblvendor['Vendor_Address'] := edtvsaddress.Text;
@@ -116,7 +128,7 @@ begin
         ShowMessage('Product Vendor Has Been Added Successfully!');
       end
       else
-      ShowMessage('The dataset is not active or closed.');
+      ShowMessage('There Was An Error Adding A New Service Vendor To The Database , Please Cintact Your Software Developer');
     end;
   end;
 end;
@@ -124,20 +136,39 @@ end;
 procedure Tfrmaddservice.btncancelClick(Sender: TObject);
 begin
  //here we will clear all forms and exit the form
- edtvendorname.Clear;
- edtvscode.Clear;
- edtvendorname.Clear;
- edtvsaddress.Clear;
- edtvsemail.Clear;
- edtvsphone.Clear;
- cbbvservicet.Clear;
+ edtvendorname.Text:='';
+ edtvscode.Text:='';
+ edtvendorname.Text:='';
+ edtvsaddress.Text:='';
+ edtvsemail.Text:='';
+ edtvsphone.Text:='';
+ cbbvservicet.Text:='';
+ edtcontactemail2.Text:='';
  //
  frmaddservice.Close;
+end;
+
+procedure Tfrmaddservice.btnclearClick(Sender: TObject);
+begin
+ //here we will clear all fields
+ edtvendorname.Text:='';
+ edtvscode.Text:='';
+ edtvendorname.Text:='';
+ edtvsaddress.Text:='';
+ edtvsemail.Text:='';
+ edtvsphone.Text:='';
+ cbbvservicet.Text:='';
+ edtcontactemail2.Text:='';
 end;
 
 procedure Tfrmaddservice.btnhrlpClick(Sender: TObject);
 begin
  Help1.Click; // to avoid duplcaiting the code
+end;
+
+procedure Tfrmaddservice.Cancel1Click(Sender: TObject);
+begin
+ btncancel.Click;
 end;
 
 procedure Tfrmaddservice.DeleteVendor1Click(Sender: TObject);
@@ -152,7 +183,7 @@ begin
  frmaddservice.Close;
 end;
 
-procedure Tfrmaddservice.FormActivate(Sender: TObject);
+procedure Tfrmaddservice.FormShow(Sender: TObject);
 begin
   with Datamodulevendor do
   begin
@@ -167,7 +198,6 @@ begin
       convendor.Connected := True;
       tblvendor.Active := True;
       tblvendor.First;
-      // Populate user fields or any other necessary initializations
     end;
   end;
 end;

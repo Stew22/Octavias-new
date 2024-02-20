@@ -62,6 +62,7 @@ object frmdeleteservicevendor: Tfrmdeleteservicevendor
       Width = 260
       Height = 21
       AutoDropDown = True
+      Sorted = True
       TabOrder = 0
       TextHint = '-- Service Vendor Name --'
     end

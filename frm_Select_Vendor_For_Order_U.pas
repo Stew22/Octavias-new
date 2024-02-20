@@ -47,7 +47,7 @@ var
   I: Integer;
   Fname, CSVFileName: string;
   TStrings: TStringList;
-  Vemail:string;
+  Vemail,Vemail2:string;
   //
   MailTo, MailCC, MailSubject, MailBody: string;
 begin
@@ -103,6 +103,7 @@ begin
                begin
                 //
                 Vemail:=tblvendor.FieldByName('Vendor_Email').AsString;
+                Vemail2:=tblvendor.FieldByName('Vendor_Email2').AsString;
                 //
                 //now we will execute the shellexecute to generate the email
                 //
@@ -112,6 +113,10 @@ begin
                 end else
                 begin
                  MailTo := Vemail;
+                 if Vemail2 <> '' then
+                 begin
+                  MailTo := MailTo + ';' + Vemail2; //check if we need the ;
+                 end;
                 end;
                 //
                 MailCC := 'aarti@octavias.co.za';
@@ -182,7 +187,7 @@ procedure Tfrmselectvendorfororder.btnplaceorderClick(Sender: TObject);
 Var
  i,j,k:Integer;
  TStrings:TStringList;
- CSVFileName,Vmail: string;
+ CSVFileName,Vmail,Vmail2: string;
  //
  MailTo, MailCC, MailSubject, MailBody: string;
 begin
@@ -222,7 +227,8 @@ begin
           //
           //now we extract the email
           //
-          Vmail:=tblvendor.FieldByName('Vendor_Email').AsString;
+          Vmail:=tblvendor.FieldByName('Vendor_Email').AsString; //here we need to check if we have 2 emails and send to both
+          Vmail2:=tblvendor.FieldByName('Vendor_Email_2').AsString;
           //
           //now we will execute the shellexecute to generate the email
           //
@@ -232,6 +238,10 @@ begin
           end else
           begin
            MailTo := Vmail;
+           if Vmail2 <> '' then
+           begin
+            MailTo:=MailTo + ';' + Vmail2;  //check this
+           end;
           end;
           //
           MailCC := 'aarti@octavias.co.za';
@@ -239,7 +249,7 @@ begin
           //
             MailBody := 'Good day' + sLineBreak + sLineBreak +
                     'Please see attached order sheet.' + sLineBreak + sLineBreak +
-                    'I look forward to your response :)' + sLineBreak + sLineBreak +
+                    'I look forward to your response.' + sLineBreak + sLineBreak +
                     'Kind Regards';
             //here we will need to cc in aarti
             // Using ShellExecute to open the default email client with pre-filled values

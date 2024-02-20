@@ -145,6 +145,7 @@ object frmeditservicevendor: Tfrmeditservicevendor
       Top = 13
       Width = 254
       Height = 21
+      Sorted = True
       TabOrder = 5
       TextHint = '-- Vendor Name --'
       OnChange = cbbevnameChange
@@ -154,6 +155,7 @@ object frmeditservicevendor: Tfrmeditservicevendor
       Top = 45
       Width = 254
       Height = 21
+      Sorted = True
       TabOrder = 6
       TextHint = '-- Vendor Code --'
     end

@@ -149,6 +149,7 @@ object frmeditproductvendor: Tfrmeditproductvendor
       Top = 15
       Width = 235
       Height = 23
+      Sorted = True
       TabOrder = 5
       TextHint = '--- Product Vendor Name ---'
       OnChange = cbbevpnameChange
@@ -158,6 +159,7 @@ object frmeditproductvendor: Tfrmeditproductvendor
       Top = 42
       Width = 235
       Height = 23
+      Sorted = True
       TabOrder = 6
       TextHint = '--- Product Vendor Code ---'
       OnChange = cbbevpcodeChange

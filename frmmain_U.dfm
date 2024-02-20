@@ -401,6 +401,7 @@ object frmmain: Tfrmmain
         end
         object RemoveTreatment1: TMenuItem
           Caption = 'Remove Treatment'
+          OnClick = RemoveTreatment1Click
         end
         object N45: TMenuItem
           Caption = '-'

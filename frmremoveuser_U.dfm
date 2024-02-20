@@ -12,10 +12,8 @@ object frmremoveuser: Tfrmremoveuser
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  OldCreateOrder = True
   Position = poScreenCenter
   OnActivate = FormActivate
-  PixelsPerInch = 96
   TextHeight = 15
   object pnl1: TPanel
     Left = 8
@@ -46,6 +44,7 @@ object frmremoveuser: Tfrmremoveuser
       Top = 8
       Width = 209
       Height = 23
+      Sorted = True
       TabOrder = 0
       TextHint = 'Select A Username'
       OnChange = cbbunameChange
@@ -55,6 +54,7 @@ object frmremoveuser: Tfrmremoveuser
       Top = 37
       Width = 209
       Height = 23
+      Sorted = True
       TabOrder = 1
       TextHint = 'Select A Name'
       OnChange = cbbnameChange
@@ -64,6 +64,7 @@ object frmremoveuser: Tfrmremoveuser
       Top = 66
       Width = 209
       Height = 23
+      Sorted = True
       TabOrder = 2
       TextHint = 'Select A Surname'
     end
@@ -72,6 +73,7 @@ object frmremoveuser: Tfrmremoveuser
       Top = 95
       Width = 209
       Height = 23
+      Sorted = True
       TabOrder = 3
       TextHint = 'Select An Email Address'
     end

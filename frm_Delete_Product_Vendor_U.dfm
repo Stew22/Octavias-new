@@ -70,6 +70,7 @@ object frmdeleteproductvendor: Tfrmdeleteproductvendor
       Top = 16
       Width = 429
       Height = 23
+      Sorted = True
       TabOrder = 0
       TextHint = '--- Product Vendor Name ---'
     end
@@ -78,6 +79,7 @@ object frmdeleteproductvendor: Tfrmdeleteproductvendor
       Top = 62
       Width = 429
       Height = 23
+      Sorted = True
       TabOrder = 1
       TextHint = '--- Product Vendor Code ---'
     end

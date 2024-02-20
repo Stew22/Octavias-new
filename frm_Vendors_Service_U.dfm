@@ -2,7 +2,7 @@ object frmaddservice: Tfrmaddservice
   Left = 0
   Top = 0
   Caption = 'Add A Service Vendor'
-  ClientHeight = 304
+  ClientHeight = 328
   ClientWidth = 345
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,7 +12,7 @@ object frmaddservice: Tfrmaddservice
   Font.Style = []
   Menu = mm1
   Position = poScreenCenter
-  OnActivate = FormActivate
+  OnShow = FormShow
   TextHeight = 13
   object pnl1: TPanel
     Left = 8
@@ -44,7 +44,7 @@ object frmaddservice: Tfrmaddservice
     Left = 8
     Top = 47
     Width = 329
-    Height = 249
+    Height = 273
     BevelInner = bvLowered
     TabOrder = 1
     object lbl1: TLabel
@@ -83,18 +83,25 @@ object frmaddservice: Tfrmaddservice
       Caption = 'Vendor Contact Email  : '
     end
     object lbl6: TLabel
-      Left = 8
-      Top = 151
+      Left = 7
+      Top = 183
       Width = 109
       Height = 13
       Caption = 'Vendor Service Type : '
     end
     object lbl7: TLabel
-      Left = 8
-      Top = 179
+      Left = 7
+      Top = 211
       Width = 122
       Height = 13
       Caption = 'Vendor Contact Number :'
+    end
+    object lbl9: TLabel
+      Left = 8
+      Top = 155
+      Width = 121
+      Height = 13
+      Caption = 'Vendor Contact Email 2 : '
     end
     object edtvendorname: TEdit
       Left = 130
@@ -137,22 +144,23 @@ object frmaddservice: Tfrmaddservice
       TextHint = '-- Contact Email --'
     end
     object cbbvservicet: TComboBox
-      Left = 130
-      Top = 148
+      Left = 129
+      Top = 180
       Width = 191
       Height = 21
+      Sorted = True
       TabOrder = 5
       TextHint = '-- Select A Service --'
       Items.Strings = (
-        'Consumables'
-        'Profesional'
-        'Retail'
         'Cleaning '
-        'Packaging')
+        'Consumables'
+        'Packaging'
+        'Profesional'
+        'Retail')
     end
     object edtvsphone: TEdit
-      Left = 130
-      Top = 175
+      Left = 129
+      Top = 207
       Width = 191
       Height = 21
       TabOrder = 6
@@ -160,7 +168,7 @@ object frmaddservice: Tfrmaddservice
     end
     object btnaddvendor: TButton
       Left = 8
-      Top = 216
+      Top = 240
       Width = 89
       Height = 25
       Caption = 'Add Service'
@@ -171,17 +179,18 @@ object frmaddservice: Tfrmaddservice
     end
     object btnclear: TButton
       Left = 122
-      Top = 216
+      Top = 240
       Width = 89
       Height = 25
       Caption = 'Clear'
       ImageIndex = 0
       Images = il1
       TabOrder = 8
+      OnClick = btnclearClick
     end
     object btncancel: TButton
       Left = 232
-      Top = 216
+      Top = 240
       Width = 89
       Height = 25
       Caption = 'Cancel'
@@ -189,6 +198,14 @@ object frmaddservice: Tfrmaddservice
       Images = il1
       TabOrder = 9
       OnClick = btncancelClick
+    end
+    object edtcontactemail2: TEdit
+      Left = 129
+      Top = 151
+      Width = 191
+      Height = 21
+      TabOrder = 10
+      TextHint = '-- Contact Email Alternative --'
     end
   end
   object il1: TImageList
@@ -476,20 +493,28 @@ object frmaddservice: Tfrmaddservice
       end
       object AddVendor1: TMenuItem
         Caption = 'Add Vendor'
+        OnClick = AddVendor1Click
       end
-      object N3: TMenuItem
+      object N5: TMenuItem
         Caption = '-'
       end
       object AddVendor2: TMenuItem
         Caption = 'Edit Vendor'
         OnClick = AddVendor2Click
       end
-      object N1: TMenuItem
+      object N3: TMenuItem
         Caption = '-'
       end
       object DeleteVendor1: TMenuItem
         Caption = 'Delete Vendor'
         OnClick = DeleteVendor1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Cancel1: TMenuItem
+        Caption = 'Cancel'
+        OnClick = Cancel1Click
       end
       object N2: TMenuItem
         Caption = '-'

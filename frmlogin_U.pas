@@ -97,6 +97,8 @@ begin
       frmmain.Bookings1.Enabled:=True; // this will be for the future
       frmmain.ManageTreatments1.Enabled:=True;
       TDataAccess.WriteToAccessDB(cbbuser.Text + ' Has Logged In As An Admin');
+      cbbuser.Text:='';
+      medtpword.Clear;
      end else
      if tblusers.FieldByName('Premissions').AsString = 'Orderer' then
      begin
@@ -112,6 +114,9 @@ begin
       //
       //here we write to the log
       TDataAccess.WriteToAccessDB(cbbuser.Text + ' Has Logged In As An Orderer ');
+      //
+      cbbuser.Text:='';
+      medtpword.Clear;
       //here we will capture the Orderer that has logged in
      end else
      begin
