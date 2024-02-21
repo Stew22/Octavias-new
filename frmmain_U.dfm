@@ -161,9 +161,9 @@ object frmmain: Tfrmmain
     object lbltotals: TLabel
       Left = 8
       Top = 144
-      Width = 59
+      Width = 77
       Height = 13
-      Caption = 'Total Cost : '
+      Caption = 'Total Cost (R) : '
     end
     object lblorderproducts: TLabel
       Left = 8
@@ -481,50 +481,65 @@ object frmmain: Tfrmmain
         end
         object FindDuplicateVendors1: TMenuItem
           Caption = 'Find Duplicate Vendors'
+          Enabled = False
         end
         object N50: TMenuItem
           Caption = '-'
         end
         object FindDuplicateVendors2: TMenuItem
           Caption = 'Find Duplicate Products'
+          Enabled = False
         end
         object N51: TMenuItem
           Caption = '-'
         end
         object FindDuplicateUsers1: TMenuItem
           Caption = 'Find Duplicate Users'
+          Enabled = False
         end
         object N52: TMenuItem
           Caption = '-'
         end
         object FindItemsWithNoRPP1: TMenuItem
           Caption = 'Find Items With No RPP'
+          Enabled = False
         end
         object N53: TMenuItem
           Caption = '-'
         end
         object FindItemPricingErrors1: TMenuItem
           Caption = 'Find Item Pricing Errors'
+          Enabled = False
         end
         object N54: TMenuItem
           Caption = '-'
         end
         object FindVendorsWithIncompleteData1: TMenuItem
           Caption = 'Find Vendors With Incomplete Information'
+          Enabled = False
         end
         object N55: TMenuItem
           Caption = '-'
         end
         object FindProductsWithIncompleteInformation1: TMenuItem
           Caption = 'Find Products With Incomplete Information'
+          Enabled = False
         end
         object N56: TMenuItem
           Caption = '-'
         end
         object FindProductsWithIncompleteInformation2: TMenuItem
           Caption = 'Find Users With Incomplete Information'
+          Enabled = False
         end
         object N57: TMenuItem
+          Caption = '-'
+        end
+        object FindUnpopulatedCategories1: TMenuItem
+          Caption = 'Find Unpopulated Categories'
+          Enabled = False
+        end
+        object N59: TMenuItem
           Caption = '-'
         end
       end

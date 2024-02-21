@@ -165,6 +165,41 @@ begin
      if tblspamenu.FieldByName('Product10').AsString <> '' then
      begin
       redtoutput.Lines.Add('Product 10 : ' + tblspamenu.FieldByName('Product10').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product11').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 11 : ' + tblspamenu.FieldByName('Product11').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product12').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 12 : ' + tblspamenu.FieldByName('Product12').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product13').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 13 : ' + tblspamenu.FieldByName('Product13').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product14').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 14 : ' + tblspamenu.FieldByName('Product14').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product15').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 15 : ' + tblspamenu.FieldByName('Product15').AsString);
       //redtoutput.Lines.Add('--------------------------------------');
      end;
      //
@@ -204,6 +239,17 @@ end;
 
 procedure Tfrmspamenu.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+ with DataModuleSpaMenu do
+ begin
+   if tblspamenu.Active = True then
+   begin
+    tblspamenu.Filtered:=False;
+    tblspamenu.Filter:='';
+   end else
+   begin
+    ShowMessage('There Was An Error Connecting To The Spa Menu Database , Please Contact Your Software Developer !');
+   end;
+ end;
  redtoutput.Clear;
 end;
 

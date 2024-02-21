@@ -144,6 +144,8 @@ type
     N56: TMenuItem;
     N57: TMenuItem;
     N58: TMenuItem;
+    FindUnpopulatedCategories1: TMenuItem;
+    N59: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);

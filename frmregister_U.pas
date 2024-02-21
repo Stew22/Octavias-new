@@ -38,6 +38,7 @@ type
     lbl10: TLabel;
     Label1: TLabel;
     btnhelp: TButton;
+    btnclose: TButton;
     procedure FormActivate(Sender: TObject);
     procedure btncancellClick(Sender: TObject);
     procedure btnaduserClick(Sender: TObject);
@@ -54,6 +55,7 @@ type
     procedure edtvendoraddressChange(Sender: TObject);
     procedure cbbuserpremChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btncloseClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -159,6 +161,20 @@ begin
           tblusers.Post;
           ShowMessage('User With Ordering Rights Added Successfully!');
           TDataAccess.WriteToAccessDB('User Has Been Registered Succesfully As An Orderer');
+          // clear te registration form
+          edtuname.Clear;
+          edtuemail.Clear;
+          edtname.Clear;
+          edtsurname.Clear;
+          edtcell.Clear;
+          edtstore.Clear;
+          edtpassword.Clear;
+          edtcpassword.Clear;
+          frmadduser.Close;
+          cbbuserprem.Clear;
+          edtvendoraddress.Clear;
+          cbbuserprem.Text := '';
+          //
         end
         else
         begin
@@ -190,6 +206,12 @@ begin
  edtvendoraddress.Clear;
  cbbuserprem.Text := '';
  TDataAccess.WriteToAccessDB('User Has Canceled Registration Process');
+end;
+
+procedure Tfrmadduser.btncloseClick(Sender: TObject);
+begin
+ btncancell.Click;
+ frmadduser.Close;
 end;
 
 procedure Tfrmadduser.btnhelpClick(Sender: TObject);
