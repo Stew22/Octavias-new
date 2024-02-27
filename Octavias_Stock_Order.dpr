@@ -42,7 +42,8 @@ uses
   DM_Spa_Menu in 'DM_Spa_Menu.pas' {DataModuleSpaMenu: TDataModule},
   frm_Add_Treatment_U in 'frm_Add_Treatment_U.pas' {frmaddtreatment},
   frm_Edit_treatment_U in 'frm_Edit_treatment_U.pas' {frmedittreatment},
-  frm_Delete_Treatments_U in 'frm_Delete_Treatments_U.pas' {frmdeletetreatment};
+  frm_Delete_Treatments_U in 'frm_Delete_Treatments_U.pas' {frmdeletetreatment},
+  frm_Bulk_Pricing_Update_U in 'frm_Bulk_Pricing_Update_U.pas' {frmblkpricingupdate};
 
 {$R *.res}
 
@@ -92,5 +93,6 @@ begin
   Application.CreateForm(Tfrmaddtreatment, frmaddtreatment);
   Application.CreateForm(Tfrmedittreatment, frmedittreatment);
   Application.CreateForm(Tfrmdeletetreatment, frmdeletetreatment);
+  Application.CreateForm(Tfrmblkpricingupdate, frmblkpricingupdate);
   Application.Run;
 end.

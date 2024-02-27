@@ -185,10 +185,10 @@ begin
     //now we loop through the users and populate the users field
     //
     for I := 0 to tblusers.RecordCount -1 do
-      begin
-       cbbuser.Items.Add(tblusers.FieldByName('Username').AsString);
-       tblusers.Next;
-      end;
+     begin
+      cbbuser.Items.Add(tblusers.FieldByName('Username').AsString);
+      tblusers.Next;
+     end;
    end;
  end;
  TDataAccess.WriteToAccessDB('Life Day Spa Stock Mate Application Has Been Opened');

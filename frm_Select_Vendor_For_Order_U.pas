@@ -185,9 +185,11 @@ end;
 
 procedure Tfrmselectvendorfororder.btnplaceorderClick(Sender: TObject);
 Var
- i,j,k:Integer;
+ i,j,k,TempValue,TempQty:Integer;
  TStrings:TStringList;
  CSVFileName,Vmail,Vmail2: string;
+ //
+ SubtotalValue,TempPrice : Double;
  //
  MailTo, MailCC, MailSubject, MailBody: string;
 begin
@@ -210,8 +212,16 @@ begin
          //
          TStrings.Add(tblorder.FieldByName('Vendor_Name').AsString + ',' + tblorder.FieldByName('Item_Number').AsString + ',' + tblorder.FieldByName('Item Discription').AsString + ',' + tblorder.FieldByName('Price').AsString + ',' + tblorder.FieldByName('Qty').AsString + ',');
          //
+         //
+         //TempPrice:=StrToFloat(tblorder.FieldByName('Price').AsString);
+         //TempQty:=StrToInt(tblorder.FieldByName('Qty').AsString);
+         //
+         //SubtotalValue:= TempPrice * TempQty;
+         //
          tblorder.Next;
+         //here we need to add in the subtotal for the order as the last line
        end;
+       //TStrings.Add('Subtotal : ' + FloatToStr(SubtotalValue));
        TStrings.SaveToFile(CSVFileName);
        ShowMessage('File Has Been Exported Successfully !');
        //here we are going to then pull the email from the vendors database and then generate the email

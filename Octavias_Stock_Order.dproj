@@ -273,6 +273,10 @@
             <Form>frmdeletetreatment</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="frm_Bulk_Pricing_Update_U.pas">
+            <Form>frmblkpricingupdate</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txaPackage"/>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txvpck"/>
         <BuildConfiguration Include="Base">

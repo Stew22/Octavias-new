@@ -146,6 +146,9 @@ type
     N58: TMenuItem;
     FindUnpopulatedCategories1: TMenuItem;
     N59: TMenuItem;
+    ResetMyUsername1: TMenuItem;
+    N60: TMenuItem;
+    InvoiceManager1: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);

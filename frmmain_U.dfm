@@ -3,7 +3,7 @@ object frmmain: Tfrmmain
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Order stock'
-  ClientHeight = 731
+  ClientHeight = 730
   ClientWidth = 1062
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -356,6 +356,13 @@ object frmmain: Tfrmmain
         object N31: TMenuItem
           Caption = '-'
         end
+        object ResetMyUsername1: TMenuItem
+          Caption = 'Reset My Username'
+          Enabled = False
+        end
+        object N60: TMenuItem
+          Caption = '-'
+        end
       end
       object N5: TMenuItem
         Caption = '-'
@@ -546,6 +553,9 @@ object frmmain: Tfrmmain
       object N58: TMenuItem
         Caption = '-'
       end
+    end
+    object InvoiceManager1: TMenuItem
+      Caption = 'Invoice Manager'
     end
     object Support1: TMenuItem
       Caption = 'Help'

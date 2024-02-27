@@ -96,7 +96,6 @@ object frmstockmanagement: Tfrmstockmanagement
           end
           object SingleProduct1: TMenuItem
             Caption = 'Single Product'
-            Enabled = False
             OnClick = SingleProduct1Click
           end
           object N18: TMenuItem
@@ -104,7 +103,6 @@ object frmstockmanagement: Tfrmstockmanagement
           end
           object SingleProduct2: TMenuItem
             Caption = 'Bulk Update'
-            Enabled = False
           end
           object N16: TMenuItem
             Caption = '-'

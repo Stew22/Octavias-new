@@ -3,7 +3,7 @@ object frmmain: Tfrmmain
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Order stock'
-  ClientHeight = 731
+  ClientHeight = 730
   ClientWidth = 1062
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,7 +15,6 @@ object frmmain: Tfrmmain
   Position = poScreenCenter
   OnActivate = FormActivate
   OnCreate = FormCreate
-  OnPaint = FormPaint
   OnShow = FormShow
   TextHeight = 13
   object pnl1: TPanel
@@ -73,6 +72,7 @@ object frmmain: Tfrmmain
       Top = 14
       Width = 145
       Height = 21
+      Sorted = True
       TabOrder = 0
       TextHint = 'Vendor'#39's'
       OnChange = cbbvendorChange
@@ -82,6 +82,7 @@ object frmmain: Tfrmmain
       Top = 14
       Width = 145
       Height = 21
+      Sorted = True
       TabOrder = 1
       TextHint = 'Main Categories'
       OnChange = cbbcatogoriesChange
@@ -125,6 +126,7 @@ object frmmain: Tfrmmain
       Top = 14
       Width = 145
       Height = 21
+      Sorted = True
       TabOrder = 3
       TextHint = 'Sub Categories'
       OnChange = cbbsubcatagoriesChange
@@ -143,6 +145,7 @@ object frmmain: Tfrmmain
       Top = 41
       Width = 145
       Height = 21
+      Sorted = True
       TabOrder = 5
       TextHint = '-- Tertiary Categories --'
       OnChange = cbbtertiarycatagoryChange
@@ -158,9 +161,9 @@ object frmmain: Tfrmmain
     object lbltotals: TLabel
       Left = 8
       Top = 144
-      Width = 59
+      Width = 77
       Height = 13
-      Caption = 'Total Cost : '
+      Caption = 'Total Cost (R) : '
     end
     object lblorderproducts: TLabel
       Left = 8
@@ -353,6 +356,13 @@ object frmmain: Tfrmmain
         object N31: TMenuItem
           Caption = '-'
         end
+        object ResetMyUsername1: TMenuItem
+          Caption = 'Reset My Username'
+          Enabled = False
+        end
+        object N60: TMenuItem
+          Caption = '-'
+        end
       end
       object N5: TMenuItem
         Caption = '-'
@@ -398,6 +408,7 @@ object frmmain: Tfrmmain
         end
         object RemoveTreatment1: TMenuItem
           Caption = 'Remove Treatment'
+          OnClick = RemoveTreatment1Click
         end
         object N45: TMenuItem
           Caption = '-'
@@ -470,6 +481,81 @@ object frmmain: Tfrmmain
       object N41: TMenuItem
         Caption = '-'
       end
+      object DuplicateFiner1: TMenuItem
+        Caption = 'Database Duplicate Finder'
+        object N49: TMenuItem
+          Caption = '-'
+        end
+        object FindDuplicateVendors1: TMenuItem
+          Caption = 'Find Duplicate Vendors'
+          Enabled = False
+        end
+        object N50: TMenuItem
+          Caption = '-'
+        end
+        object FindDuplicateVendors2: TMenuItem
+          Caption = 'Find Duplicate Products'
+          Enabled = False
+        end
+        object N51: TMenuItem
+          Caption = '-'
+        end
+        object FindDuplicateUsers1: TMenuItem
+          Caption = 'Find Duplicate Users'
+          Enabled = False
+        end
+        object N52: TMenuItem
+          Caption = '-'
+        end
+        object FindItemsWithNoRPP1: TMenuItem
+          Caption = 'Find Items With No RPP'
+          Enabled = False
+        end
+        object N53: TMenuItem
+          Caption = '-'
+        end
+        object FindItemPricingErrors1: TMenuItem
+          Caption = 'Find Item Pricing Errors'
+          Enabled = False
+        end
+        object N54: TMenuItem
+          Caption = '-'
+        end
+        object FindVendorsWithIncompleteData1: TMenuItem
+          Caption = 'Find Vendors With Incomplete Information'
+          Enabled = False
+        end
+        object N55: TMenuItem
+          Caption = '-'
+        end
+        object FindProductsWithIncompleteInformation1: TMenuItem
+          Caption = 'Find Products With Incomplete Information'
+          Enabled = False
+        end
+        object N56: TMenuItem
+          Caption = '-'
+        end
+        object FindProductsWithIncompleteInformation2: TMenuItem
+          Caption = 'Find Users With Incomplete Information'
+          Enabled = False
+        end
+        object N57: TMenuItem
+          Caption = '-'
+        end
+        object FindUnpopulatedCategories1: TMenuItem
+          Caption = 'Find Unpopulated Categories'
+          Enabled = False
+        end
+        object N59: TMenuItem
+          Caption = '-'
+        end
+      end
+      object N58: TMenuItem
+        Caption = '-'
+      end
+    end
+    object InvoiceManager1: TMenuItem
+      Caption = 'Invoice Manager'
     end
     object Support1: TMenuItem
       Caption = 'Help'
