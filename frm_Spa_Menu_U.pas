@@ -212,6 +212,15 @@ begin
      redtoutput.SelAttributes.Color:=clBlack;
      redtoutput.SelAttributes.Style:=[];
      redtoutput.Lines.Add('--------------------------------------');
+     //here we are going to add the cost of a treatment
+     //we will be taking the cost of the product (INC VAT) / by the number of ml
+     //we might need to adjust how we are adding and editing the treatments to
+     //make sure the user enters the value in the correct format
+     //we then know how much each ML costs
+     //we then X the number of ml used of each product by the cost
+     //then present the user with the amount it costs for the treatment
+     //
+     //
     end;
    end else
    begin

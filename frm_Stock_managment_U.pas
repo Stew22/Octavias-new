@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls , frm_Stock_Settings_U,frm_add_products_U,
   Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,frm_Edit_Poroduct_Details_U,DM_Products,frm_Delete_Product_U,
-  Frm_Price_Update_Single_Item_U;
+  Frm_Price_Update_Single_Item_U , frm_Bulk_Pricing_Update_U;
 
 type
   Tfrmstockmanagement = class(TForm)
@@ -63,6 +63,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SingleProduct1Click(Sender: TObject);
+    procedure SingleProduct2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -184,6 +185,11 @@ end;
 procedure Tfrmstockmanagement.SingleProduct1Click(Sender: TObject);
 begin
  frmpriceupdatesingleitem.ShowModal;
+end;
+
+procedure Tfrmstockmanagement.SingleProduct2Click(Sender: TObject);
+begin
+ frmblkpricingupdate.ShowModal;
 end;
 
 procedure Tfrmstockmanagement.StockDaysCover1Click(Sender: TObject);

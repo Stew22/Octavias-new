@@ -103,6 +103,7 @@ object frmstockmanagement: Tfrmstockmanagement
           end
           object SingleProduct2: TMenuItem
             Caption = 'Bulk Update'
+            OnClick = SingleProduct2Click
           end
           object N16: TMenuItem
             Caption = '-'

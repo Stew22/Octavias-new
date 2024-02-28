@@ -1,10 +1,12 @@
 object frmedittreatment: Tfrmedittreatment
   Left = 0
   Top = 0
+  VertScrollBar.Increment = 69
+  VertScrollBar.Visible = False
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Life Day Spa  - Edit Treatment Details'
-  ClientHeight = 486
-  ClientWidth = 624
+  ClientHeight = 579
+  ClientWidth = 625
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -66,164 +68,276 @@ object frmedittreatment: Tfrmedittreatment
       OnChange = cbbEtreatmentChange
     end
   end
-  object pnl3: TPanel
+  object scrlbx1: TScrollBox
     Left = 0
     Top = 119
-    Width = 616
-    Height = 359
-    BevelInner = bvLowered
+    Width = 620
+    Height = 452
+    HorzScrollBar.Range = 595
+    HorzScrollBar.Visible = False
+    VertScrollBar.ButtonSize = 10
+    VertScrollBar.Range = 950
+    VertScrollBar.Smooth = True
+    VertScrollBar.Style = ssFlat
+    AutoScroll = False
     TabOrder = 2
-    object pnl4: TPanel
-      Left = 464
-      Top = 8
-      Width = 145
-      Height = 177
+    UseWheelForScrolling = True
+    object pnl3: TPanel
+      Left = -21
+      Top = -19
+      Width = 616
+      Height = 658
       BevelInner = bvLowered
       TabOrder = 0
-      object btnsavedits: TButton
-        Left = 16
-        Top = 9
-        Width = 121
-        Height = 25
-        Caption = 'Save Edits'
-        ImageIndex = 1
-        Images = il1
+      object lbl3: TLabel
+        Left = 473
+        Top = 624
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object pnl4: TPanel
+        Left = 456
+        Top = 27
+        Width = 145
+        Height = 177
+        BevelInner = bvLowered
         TabOrder = 0
-        OnClick = btnsaveditsClick
+        object btnsavedits: TButton
+          Left = 16
+          Top = 9
+          Width = 121
+          Height = 25
+          Caption = 'Save Edits'
+          ImageIndex = 1
+          Images = il1
+          TabOrder = 0
+          OnClick = btnsaveditsClick
+        end
+        object btncancel: TButton
+          Left = 16
+          Top = 80
+          Width = 121
+          Height = 25
+          Caption = 'Cancel'
+          ImageIndex = 0
+          Images = il1
+          TabOrder = 1
+          OnClick = btncancelClick
+        end
+        object btnexit: TButton
+          Left = 16
+          Top = 144
+          Width = 121
+          Height = 25
+          Caption = 'Exit'
+          ImageIndex = 2
+          Images = il1
+          TabOrder = 2
+          OnClick = btnexitClick
+        end
       end
-      object btncancel: TButton
-        Left = 16
-        Top = 80
-        Width = 121
-        Height = 25
-        Caption = 'Cancel'
-        ImageIndex = 0
-        Images = il1
+      object medteprice: TMaskEdit
+        Left = 152
+        Top = 12
+        Width = 273
+        Height = 23
         TabOrder = 1
-        OnClick = btncancelClick
+        Text = ''
+        TextHint = '--- Edit Treatment Pricing ---'
       end
-      object btnexit: TButton
-        Left = 16
-        Top = 144
-        Width = 121
-        Height = 25
-        Caption = 'Exit'
-        ImageIndex = 2
-        Images = il1
+      object edtep1: TEdit
+        Left = 152
+        Top = 41
+        Width = 273
+        Height = 23
         TabOrder = 2
-        OnClick = btnexitClick
+        TextHint = '--- Edit Product 1 & The ml'#39's To Be Used ---'
       end
-    end
-    object medteprice: TMaskEdit
-      Left = 152
-      Top = 12
-      Width = 273
-      Height = 23
-      TabOrder = 1
-      Text = ''
-      TextHint = '--- Edit Treatment Pricing ---'
-    end
-    object edtep1: TEdit
-      Left = 152
-      Top = 41
-      Width = 273
-      Height = 23
-      TabOrder = 2
-      TextHint = '--- Edit Product 1 & The ml'#39's To Be Used ---'
-    end
-    object edtep2: TEdit
-      Left = 152
-      Top = 73
-      Width = 273
-      Height = 23
-      TabOrder = 3
-      TextHint = '--- Edit Product 2 & The ml'#39's To Be Used ---'
-    end
-    object edtep3: TEdit
-      Left = 152
-      Top = 105
-      Width = 273
-      Height = 23
-      TabOrder = 4
-      TextHint = '--- Edit Product 3 & The ml'#39's To Be Used ---'
-    end
-    object edtep4: TEdit
-      Left = 152
-      Top = 135
-      Width = 273
-      Height = 23
-      TabOrder = 5
-      TextHint = '--- Edit Product 4 & The ml'#39's To Be Used ---'
-    end
-    object edtep5: TEdit
-      Left = 152
-      Top = 165
-      Width = 273
-      Height = 23
-      TabOrder = 6
-      TextHint = '--- Edit Product 5 & The ml'#39's To Be Used ---'
-    end
-    object chklst1: TCheckListBox
-      Left = 8
-      Top = 12
-      Width = 121
-      Height = 341
-      CheckBoxPadding = 15
-      ItemHeight = 30
-      Items.Strings = (
-        'Price'
-        'Product 1'
-        'Product 2'
-        'Product 3'
-        'Product 4'
-        'Product 5'
-        'Product 6'
-        'Product 7'
-        'Product 8'
-        'Product 9'
-        'Product 10')
-      TabOrder = 7
-      OnClickCheck = chklst1ClickCheck
-    end
-    object edtep6: TEdit
-      Left = 152
-      Top = 196
-      Width = 273
-      Height = 23
-      TabOrder = 8
-      TextHint = '--- Edit Product 6 & The ml'#39's To Be Used ---'
-    end
-    object edtep7: TEdit
-      Left = 152
-      Top = 227
-      Width = 273
-      Height = 23
-      TabOrder = 9
-      TextHint = '--- Edit Product 7 & The ml'#39's To Be Used ---'
-    end
-    object edtep8: TEdit
-      Left = 152
-      Top = 257
-      Width = 273
-      Height = 23
-      TabOrder = 10
-      TextHint = '--- Edit Product 8 & The ml'#39's To Be Used ---'
-    end
-    object edtep9: TEdit
-      Left = 152
-      Top = 287
-      Width = 273
-      Height = 23
-      TabOrder = 11
-      TextHint = '--- Edit Product 9 & The ml'#39's To Be Used ---'
-    end
-    object edtep10: TEdit
-      Left = 152
-      Top = 318
-      Width = 273
-      Height = 23
-      TabOrder = 12
-      TextHint = '--- Edit Product 10 & The ml'#39's To Be Used ---'
+      object edtep2: TEdit
+        Left = 152
+        Top = 73
+        Width = 273
+        Height = 23
+        TabOrder = 3
+        TextHint = '--- Edit Product 2 & The ml'#39's To Be Used ---'
+      end
+      object edtep3: TEdit
+        Left = 152
+        Top = 105
+        Width = 273
+        Height = 23
+        TabOrder = 4
+        TextHint = '--- Edit Product 3 & The ml'#39's To Be Used ---'
+      end
+      object edtep4: TEdit
+        Left = 152
+        Top = 135
+        Width = 273
+        Height = 23
+        TabOrder = 5
+        TextHint = '--- Edit Product 4 & The ml'#39's To Be Used ---'
+      end
+      object edtep5: TEdit
+        Left = 152
+        Top = 165
+        Width = 273
+        Height = 23
+        TabOrder = 6
+        TextHint = '--- Edit Product 5 & The ml'#39's To Be Used ---'
+      end
+      object chklst1: TCheckListBox
+        Left = 15
+        Top = 17
+        Width = 121
+        Height = 637
+        CheckBoxPadding = 15
+        ItemHeight = 30
+        Items.Strings = (
+          'Price'
+          'Product 1'
+          'Product 2'
+          'Product 3'
+          'Product 4'
+          'Product 5'
+          'Product 6'
+          'Product 7'
+          'Product 8'
+          'Product 9'
+          'Product 10'
+          'Product 11'
+          'Product 12'
+          'Product 13'
+          'Product 14'
+          'Product 15'
+          'Product 16'
+          'Product 17'
+          'Product 18'
+          'Product 19'
+          'Product 20')
+        TabOrder = 7
+        OnClickCheck = chklst1ClickCheck
+      end
+      object edtep6: TEdit
+        Left = 152
+        Top = 196
+        Width = 273
+        Height = 23
+        TabOrder = 8
+        TextHint = '--- Edit Product 6 & The ml'#39's To Be Used ---'
+      end
+      object edtep7: TEdit
+        Left = 152
+        Top = 227
+        Width = 273
+        Height = 23
+        TabOrder = 9
+        TextHint = '--- Edit Product 7 & The ml'#39's To Be Used ---'
+      end
+      object edtep8: TEdit
+        Left = 152
+        Top = 257
+        Width = 273
+        Height = 23
+        TabOrder = 10
+        TextHint = '--- Edit Product 8 & The ml'#39's To Be Used ---'
+      end
+      object edtep9: TEdit
+        Left = 152
+        Top = 287
+        Width = 273
+        Height = 23
+        TabOrder = 11
+        TextHint = '--- Edit Product 9 & The ml'#39's To Be Used ---'
+      end
+      object edtep10: TEdit
+        Left = 152
+        Top = 318
+        Width = 273
+        Height = 23
+        TabOrder = 12
+        TextHint = '--- Edit Product 10 & The ml'#39's To Be Used ---'
+      end
+      object cbbproduct11: TComboBox
+        Left = 152
+        Top = 347
+        Width = 273
+        Height = 23
+        TabOrder = 13
+      end
+      object cbbproduct12: TComboBox
+        Left = 152
+        Top = 378
+        Width = 273
+        Height = 23
+        TabOrder = 14
+      end
+      object cbbproduct13: TComboBox
+        Left = 152
+        Top = 407
+        Width = 273
+        Height = 23
+        TabOrder = 15
+      end
+      object cbbproduct14: TComboBox
+        Left = 152
+        Top = 438
+        Width = 273
+        Height = 23
+        TabOrder = 16
+      end
+      object cbbproduct15: TComboBox
+        Left = 152
+        Top = 467
+        Width = 273
+        Height = 23
+        TabOrder = 17
+      end
+      object cbbproduct16: TComboBox
+        Left = 152
+        Top = 498
+        Width = 273
+        Height = 23
+        TabOrder = 18
+      end
+      object cbbproduct17: TComboBox
+        Left = 152
+        Top = 527
+        Width = 273
+        Height = 23
+        TabOrder = 19
+      end
+      object cbbprocut18: TComboBox
+        Left = 152
+        Top = 557
+        Width = 273
+        Height = 23
+        TabOrder = 20
+      end
+      object cbbproduct19: TComboBox
+        Left = 152
+        Top = 587
+        Width = 273
+        Height = 23
+        TabOrder = 21
+      end
+      object cbbprocut20: TComboBox
+        Left = 152
+        Top = 618
+        Width = 273
+        Height = 23
+        TabOrder = 22
+      end
+      object medtmlp20: TMaskEdit
+        Left = 440
+        Top = 618
+        Width = 27
+        Height = 23
+        EditMask = '9999;1;'
+        MaxLength = 4
+        TabOrder = 23
+        Text = '    '
+      end
     end
   end
   object il1: TImageList
