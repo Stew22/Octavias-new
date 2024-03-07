@@ -51,12 +51,16 @@ type
     lbl12: TLabel;
     edtrrp: TEdit;
     lbl13: TLabel;
-    edtleadtimedays: TEdit;
     N4: TMenuItem;
     N5: TMenuItem;
     N6: TMenuItem;
     AddProduct2: TMenuItem;
     N7: TMenuItem;
+    edtunitsize: TEdit;
+    lbl14: TLabel;
+    edtcostingperunit: TEdit;
+    lbl15: TLabel;
+    cbbleadtime: TComboBox;
     procedure Exit1Click(Sender: TObject);
     procedure btnclearClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -66,10 +70,14 @@ type
     procedure btnhelpClick(Sender: TObject);
     procedure File2Click(Sender: TObject);
     procedure ClearFields1Click(Sender: TObject);
-    procedure edtbpriceChange(Sender: TObject);
     procedure edtdefqtyChange(Sender: TObject);
     procedure AddProduct2Click(Sender: TObject);
     procedure btncancelClick(Sender: TObject);
+    procedure edtunitsizeChange(Sender: TObject);
+    procedure edtunitsizeEnter(Sender: TObject);
+    procedure edtpriceincExit(Sender: TObject);
+    procedure edtbpriceExit(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -103,7 +111,7 @@ begin
    if (edtpcode.Text = '') or (edtpdisc.Text ='') or (edtbprice.Text = '') or
     (edtpriceinc.Text = '') or (edtrrp.Text = '') or (edtdefqty.Text  = '') or
     (edtminorder.Text = '') or (cbbvendor.Text = '') or (cbbmaincat.Text = '')
-    or (cbbseccat.Text = '') or (edtleadtimedays.Text = '')then
+    or (cbbseccat.Text = '') or (cbbleadtime.Text = '')then
    begin
     // above we are checking to make sure that all the relevant fields have the data in them // we will just need to check how we are going to check for the tertiary cat
     ShowMessage('One Or More Of The Fields Have Been Left Empty ! , Please Try Again !');
@@ -125,7 +133,7 @@ begin
     tblproducts['Main_Category']:=cbbmaincat.Text;
     tblproducts['Secondary_Category']:=cbbseccat.Text;
     tblproducts['Tertiary_Category']:=cbbtercat.Text;
-    tblproducts['Lead_Time_Days']:=edtleadtimedays.Text;
+    tblproducts['Lead_Time_Days']:=cbbleadtime.Text;
     //
     //post the data to the database now
     tblproducts.Post;
@@ -169,14 +177,17 @@ procedure Tfrmaddproducts.btnclearClick(Sender: TObject);
 begin
  edtpcode.Clear;
  edtpdisc.Clear;
- edtbprice.Text := '0';
+ edtbprice.Text := '';
+ edtpriceinc.Text:='';
  edtdefqty.Clear;
  cbbtercat.Text:='';
  cbbmaincat.Text:='';
  cbbseccat.Text:='';
- edtleadtimedays.Clear;
+ cbbleadtime.Text :='';
  edtrrp.Clear;
  cbbvendor.Text:='';
+ edtunitsize.Clear;
+ edtcostingperunit.Clear;
  //we need to add in the rest of the fields
  btnaddproduct.Enabled:=False;
 end;
@@ -443,19 +454,66 @@ begin
  btnclear.Click; // so we dont have to duplicate the code
 end;
 
-procedure Tfrmaddproducts.edtbpriceChange(Sender: TObject);
-Var
-CalcValue : Double;
+procedure Tfrmaddproducts.edtbpriceExit(Sender: TObject);
+var
+  TempCostInclVat: Double;
 begin
- CalcValue := StrToFloat(edtbprice.Text) + (StrToFloat(edtbprice.Text) * 0.15);
- //here we will show the value to the user
- edtpriceinc.Text :=FloatToStr(CalcValue);
+  if TryStrToFloat(edtbprice.Text, TempCostInclVat) then
+  begin
+    TempCostInclVat := TempCostInclVat + TempCostInclVat * 0.15;
+    edtpriceinc.Text := FloatToStr(TempCostInclVat);
+  end
+  else
+  begin
+    // Handle the case where the input is not a valid float
+    edtpriceinc.Text := ''; // or display an error message
+  end;
 end;
 
 procedure Tfrmaddproducts.edtdefqtyChange(Sender: TObject);
 begin
  //set the other field as a reference
  edtminorder.Text:= edtdefqty.Text;
+end;
+
+procedure Tfrmaddproducts.edtpriceincExit(Sender: TObject);
+var
+  TempCostExcludingVat: Double;
+begin
+  if TryStrToFloat(edtpriceinc.Text, TempCostExcludingVat) then
+  begin
+    TempCostExcludingVat := TempCostExcludingVat - TempCostExcludingVat * 0.15;
+    edtbprice.Text := FloatToStr(TempCostExcludingVat);
+  end
+  else
+  begin
+    // Handle the case where the input is not a valid float
+    edtpriceinc.Text := ''; // or display an error message
+  end;
+end;
+
+procedure Tfrmaddproducts.edtunitsizeChange(Sender: TObject);
+ Var
+ TempPricePErUnit  : Double;
+begin
+ TempPricePErUnit:= 0.00;
+ // here we will code in a formula to work out cost per unit and round to 2 decimal places
+ //
+ if (edtpriceinc.Text <> '') And (edtunitsize.Text <> '') then
+ begin
+  //here we can then perform the calculation
+  try
+   TempPricePErUnit := StrToFloat(edtpriceinc.Text) / StrToFloat(edtunitsize.Text);
+  finally
+   edtcostingperunit.Text :=FloatToStr(TempPricePErUnit); //make it a dropdown ?
+  end;
+ end;
+end;
+
+procedure Tfrmaddproducts.edtunitsizeEnter(Sender: TObject);
+begin
+ edtunitsize.Hint:='Use The Following Entry Box To Enter The Unit Size , Eg : 100mls , 1000ml , 1000g , 100g , 1 Pair Etc , Just The Number Is Required Else And Error Will Be Raised';
+ edtunitsize.ShowHint:=True;
 end;
 
 procedure Tfrmaddproducts.Exit1Click(Sender: TObject);
@@ -527,6 +585,13 @@ begin
    ShowMessage('An Error Has Occured Trying To Connect To The Databas , Please Contact Your Software Developer');
   end;
  end;
+end;
+
+procedure Tfrmaddproducts.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ //here we will need to clear all fields
+ edtpriceinc.Clear;
+ edtbprice.clear;
 end;
 
 end.

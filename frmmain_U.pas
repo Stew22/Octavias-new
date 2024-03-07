@@ -253,6 +253,16 @@ end;
 
 procedure Tfrmmain.btngenerateorderClick(Sender: TObject);
 begin
+ with Datamoduleorder do
+ begin
+  if tblorder.Active = True then
+  begin
+   tblorder.DisableControls;
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To the Orders Database , Please Contact Your Software Provider');
+  end;
+ end;
  frmselectvendorfororder.ShowModal; // shows the order
 end;
 
@@ -964,12 +974,12 @@ const
   ScaleFactor = 0.8; // Adjust this value to set the percentage of the screen size
 begin
   // Set the form size to a percentage of the screen size
-  Width := Round(Screen.Width * 0.8);
-  Height := Round(Screen.Height * ScaleFactor);
+ // Width := Round(Screen.Width * 0.8);
+ // Height := Round(Screen.Height * ScaleFactor);
 
   // Center the form on the screen
-  Left := (Screen.Width - Width) div 2;
-  Top := (Screen.Height - Height) div 2;
+  //Left := (Screen.Width - Width) div 2;
+  //Top := (Screen.Height - Height) div 2;
 end;
 
 procedure Tfrmmain.FormShow(Sender: TObject);
@@ -994,6 +1004,7 @@ begin
     if tblorder.Active then
     begin
       tblorder.First; // Move to the first record
+      tblorder.EnableControls;
       while not tblorder.Eof do
       begin
        if tblorder.FieldByName('Qty').AsString <> '0' then

@@ -4,7 +4,7 @@ object frmaddproducts: Tfrmaddproducts
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Add New Products'
-  ClientHeight = 485
+  ClientHeight = 555
   ClientWidth = 651
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,6 +15,7 @@ object frmaddproducts: Tfrmaddproducts
   Menu = mm1
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnClose = FormClose
   TextHeight = 13
   object pnl1: TPanel
     Left = 8
@@ -46,7 +47,7 @@ object frmaddproducts: Tfrmaddproducts
     Left = 8
     Top = 55
     Width = 449
-    Height = 418
+    Height = 490
     BevelInner = bvLowered
     TabOrder = 1
     object lbl1: TLabel
@@ -128,10 +129,24 @@ object frmaddproducts: Tfrmaddproducts
     end
     object lbl13: TLabel
       Left = 8
-      Top = 387
+      Top = 392
       Width = 88
       Height = 13
       Caption = 'Lead Time Days  : '
+    end
+    object lbl14: TLabel
+      Left = 8
+      Top = 424
+      Width = 148
+      Height = 13
+      Caption = 'Unit Size (ML , G , Single Etc) : '
+    end
+    object lbl15: TLabel
+      Left = 8
+      Top = 459
+      Width = 72
+      Height = 13
+      Caption = 'Unit Cost (R) : '
     end
     object edtpcode: TEdit
       Left = 196
@@ -156,20 +171,21 @@ object frmaddproducts: Tfrmaddproducts
       Height = 21
       TabOrder = 2
       TextHint = '-- Most Recent Costing Excluding Vat -- '
-      OnChange = edtbpriceChange
+      OnExit = edtbpriceExit
     end
     object cbbvendor: TComboBox
       Left = 196
       Top = 10
       Width = 237
       Height = 21
+      Sorted = True
       TabOrder = 3
       TextHint = '-- Select Vendor --'
     end
     object edtdefqty: TEdit
-      Left = 194
+      Left = 196
       Top = 205
-      Width = 239
+      Width = 237
       Height = 21
       TabOrder = 4
       TextHint = '-- Default Order Qty --'
@@ -202,12 +218,13 @@ object frmaddproducts: Tfrmaddproducts
       TextHint = '-- Select Tertiary Category --'
     end
     object edtpriceinc: TEdit
-      Left = 194
+      Left = 196
       Top = 138
-      Width = 239
+      Width = 237
       Height = 21
       TabOrder = 8
       TextHint = '-- Price Costing Including Vat --'
+      OnExit = edtpriceincExit
     end
     object edtminorder: TEdit
       Left = 196
@@ -225,13 +242,49 @@ object frmaddproducts: Tfrmaddproducts
       TabOrder = 10
       TextHint = '-- Recommended Retail Price -- '
     end
-    object edtleadtimedays: TEdit
+    object edtunitsize: TEdit
       Left = 196
-      Top = 385
+      Top = 420
       Width = 237
       Height = 21
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 11
-      TextHint = '-- Lead Time Days --'
+      TextHint = '--- Unit Size In Ml'#39's , Units Or Grams ---'
+      OnChange = edtunitsizeChange
+      OnEnter = edtunitsizeEnter
+    end
+    object edtcostingperunit: TEdit
+      Left = 196
+      Top = 456
+      Width = 237
+      Height = 21
+      TabOrder = 12
+      TextHint = '--- Costing Per Unit Of Item ---'
+    end
+    object cbbleadtime: TComboBox
+      Left = 196
+      Top = 388
+      Width = 237
+      Height = 21
+      TabOrder = 13
+      TextHint = '--- Lead Time Days ---'
+      Items.Strings = (
+        '1-2 Days'
+        '3-4 Days'
+        '5-6 Days'
+        '7-8 Days '
+        '9-10 Days '
+        '11-12 Days '
+        '13-14 Days'
+        '15-16 Days '
+        '17-18 Days '
+        '19-20 Days '
+        '21-22 Days '
+        '23-24 Days '
+        '25-26 Days'
+        '27-28 Days '
+        '29-30 Days ')
     end
   end
   object pnl3: TPanel

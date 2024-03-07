@@ -4,7 +4,7 @@ object frmstockmanagement: Tfrmstockmanagement
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Stock Managment '
-  ClientHeight = 800
+  ClientHeight = 618
   ClientWidth = 1107
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -39,7 +39,7 @@ object frmstockmanagement: Tfrmstockmanagement
     Left = 8
     Top = 71
     Width = 1091
-    Height = 721
+    Height = 538
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

@@ -5,7 +5,7 @@ object frmedittreatment: Tfrmedittreatment
   VertScrollBar.Visible = False
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Life Day Spa  - Edit Treatment Details'
-  ClientHeight = 579
+  ClientHeight = 433
   ClientWidth = 625
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -72,11 +72,11 @@ object frmedittreatment: Tfrmedittreatment
     Left = 0
     Top = 119
     Width = 620
-    Height = 452
+    Height = 306
     HorzScrollBar.Range = 595
     HorzScrollBar.Visible = False
     VertScrollBar.ButtonSize = 10
-    VertScrollBar.Range = 950
+    VertScrollBar.Range = 627
     VertScrollBar.Smooth = True
     VertScrollBar.Style = ssFlat
     AutoScroll = False
@@ -90,23 +90,156 @@ object frmedittreatment: Tfrmedittreatment
       BevelInner = bvLowered
       TabOrder = 0
       object lbl3: TLabel
-        Left = 473
-        Top = 624
+        Left = 479
+        Top = 626
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl4: TLabel
+        Left = 479
+        Top = 595
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl5: TLabel
+        Left = 479
+        Top = 566
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl6: TLabel
+        Left = 479
+        Top = 537
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl7: TLabel
+        Left = 479
+        Top = 504
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl8: TLabel
+        Left = 479
+        Top = 476
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl9: TLabel
+        Left = 479
+        Top = 447
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl10: TLabel
+        Left = 479
+        Top = 415
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl11: TLabel
+        Left = 479
+        Top = 386
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl12: TLabel
+        Left = 479
+        Top = 356
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl13: TLabel
+        Left = 479
+        Top = 327
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl14: TLabel
+        Left = 479
+        Top = 298
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl15: TLabel
+        Left = 479
+        Top = 269
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl16: TLabel
+        Left = 479
+        Top = 236
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl17: TLabel
+        Left = 479
+        Top = 208
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl18: TLabel
+        Left = 479
+        Top = 175
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl19: TLabel
+        Left = 479
+        Top = 146
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl20: TLabel
+        Left = 479
+        Top = 116
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl21: TLabel
+        Left = 479
+        Top = 88
+        Width = 25
+        Height = 15
+        Caption = 'ML'#39's'
+      end
+      object lbl22: TLabel
+        Left = 479
+        Top = 58
         Width = 25
         Height = 15
         Caption = 'ML'#39's'
       end
       object pnl4: TPanel
-        Left = 456
-        Top = 27
-        Width = 145
-        Height = 177
+        Left = 507
+        Top = 29
+        Width = 104
+        Height = 110
         BevelInner = bvLowered
         TabOrder = 0
         object btnsavedits: TButton
           Left = 16
-          Top = 9
-          Width = 121
+          Top = 13
+          Width = 73
           Height = 25
           Caption = 'Save Edits'
           ImageIndex = 1
@@ -116,8 +249,8 @@ object frmedittreatment: Tfrmedittreatment
         end
         object btncancel: TButton
           Left = 16
-          Top = 80
-          Width = 121
+          Top = 44
+          Width = 73
           Height = 25
           Caption = 'Cancel'
           ImageIndex = 0
@@ -127,8 +260,8 @@ object frmedittreatment: Tfrmedittreatment
         end
         object btnexit: TButton
           Left = 16
-          Top = 144
-          Width = 121
+          Top = 75
+          Width = 73
           Height = 25
           Caption = 'Exit'
           ImageIndex = 2
@@ -139,52 +272,12 @@ object frmedittreatment: Tfrmedittreatment
       end
       object medteprice: TMaskEdit
         Left = 152
-        Top = 12
+        Top = 21
         Width = 273
         Height = 23
         TabOrder = 1
         Text = ''
         TextHint = '--- Edit Treatment Pricing ---'
-      end
-      object edtep1: TEdit
-        Left = 152
-        Top = 41
-        Width = 273
-        Height = 23
-        TabOrder = 2
-        TextHint = '--- Edit Product 1 & The ml'#39's To Be Used ---'
-      end
-      object edtep2: TEdit
-        Left = 152
-        Top = 73
-        Width = 273
-        Height = 23
-        TabOrder = 3
-        TextHint = '--- Edit Product 2 & The ml'#39's To Be Used ---'
-      end
-      object edtep3: TEdit
-        Left = 152
-        Top = 105
-        Width = 273
-        Height = 23
-        TabOrder = 4
-        TextHint = '--- Edit Product 3 & The ml'#39's To Be Used ---'
-      end
-      object edtep4: TEdit
-        Left = 152
-        Top = 135
-        Width = 273
-        Height = 23
-        TabOrder = 5
-        TextHint = '--- Edit Product 4 & The ml'#39's To Be Used ---'
-      end
-      object edtep5: TEdit
-        Left = 152
-        Top = 165
-        Width = 273
-        Height = 23
-        TabOrder = 6
-        TextHint = '--- Edit Product 5 & The ml'#39's To Be Used ---'
       end
       object chklst1: TCheckListBox
         Left = 15
@@ -215,128 +308,330 @@ object frmedittreatment: Tfrmedittreatment
           'Product 18'
           'Product 19'
           'Product 20')
-        TabOrder = 7
+        TabOrder = 2
         OnClickCheck = chklst1ClickCheck
-      end
-      object edtep6: TEdit
-        Left = 152
-        Top = 196
-        Width = 273
-        Height = 23
-        TabOrder = 8
-        TextHint = '--- Edit Product 6 & The ml'#39's To Be Used ---'
-      end
-      object edtep7: TEdit
-        Left = 152
-        Top = 227
-        Width = 273
-        Height = 23
-        TabOrder = 9
-        TextHint = '--- Edit Product 7 & The ml'#39's To Be Used ---'
-      end
-      object edtep8: TEdit
-        Left = 152
-        Top = 257
-        Width = 273
-        Height = 23
-        TabOrder = 10
-        TextHint = '--- Edit Product 8 & The ml'#39's To Be Used ---'
-      end
-      object edtep9: TEdit
-        Left = 152
-        Top = 287
-        Width = 273
-        Height = 23
-        TabOrder = 11
-        TextHint = '--- Edit Product 9 & The ml'#39's To Be Used ---'
-      end
-      object edtep10: TEdit
-        Left = 152
-        Top = 318
-        Width = 273
-        Height = 23
-        TabOrder = 12
-        TextHint = '--- Edit Product 10 & The ml'#39's To Be Used ---'
       end
       object cbbproduct11: TComboBox
         Left = 152
-        Top = 347
+        Top = 351
         Width = 273
         Height = 23
-        TabOrder = 13
+        TabOrder = 3
+        TextHint = '-- Edit Product 11 --'
       end
       object cbbproduct12: TComboBox
         Left = 152
-        Top = 378
+        Top = 381
         Width = 273
         Height = 23
-        TabOrder = 14
+        TabOrder = 4
+        TextHint = '-- Edit Product 12 --'
       end
       object cbbproduct13: TComboBox
         Left = 152
-        Top = 407
+        Top = 411
         Width = 273
         Height = 23
-        TabOrder = 15
+        TabOrder = 5
+        TextHint = '-- Edit Product 13 --'
       end
       object cbbproduct14: TComboBox
         Left = 152
-        Top = 438
+        Top = 441
         Width = 273
         Height = 23
-        TabOrder = 16
+        TabOrder = 6
+        TextHint = '-- Edit Product 14 --'
       end
       object cbbproduct15: TComboBox
         Left = 152
-        Top = 467
+        Top = 471
         Width = 273
         Height = 23
-        TabOrder = 17
+        TabOrder = 7
+        TextHint = '-- Edit Product 15 --'
       end
       object cbbproduct16: TComboBox
         Left = 152
-        Top = 498
+        Top = 501
         Width = 273
         Height = 23
-        TabOrder = 18
+        TabOrder = 8
+        TextHint = '-- Edit Product 16 --'
       end
       object cbbproduct17: TComboBox
         Left = 152
-        Top = 527
+        Top = 532
         Width = 273
         Height = 23
-        TabOrder = 19
+        TabOrder = 9
+        TextHint = '-- Edit Product 17 --'
       end
       object cbbprocut18: TComboBox
         Left = 152
-        Top = 557
+        Top = 562
         Width = 273
         Height = 23
-        TabOrder = 20
+        TabOrder = 10
+        TextHint = '-- Edit Product 18 --'
       end
       object cbbproduct19: TComboBox
         Left = 152
-        Top = 587
+        Top = 592
         Width = 273
         Height = 23
-        TabOrder = 21
+        TabOrder = 11
+        TextHint = '-- Edit Product 19 --'
       end
       object cbbprocut20: TComboBox
         Left = 152
-        Top = 618
+        Top = 622
         Width = 273
         Height = 23
-        TabOrder = 22
+        TabOrder = 12
+        TextHint = '-- Edit Product 20 --'
       end
       object medtmlp20: TMaskEdit
         Left = 440
-        Top = 618
-        Width = 27
+        Top = 622
+        Width = 33
         Height = 23
         EditMask = '9999;1;'
         MaxLength = 4
-        TabOrder = 23
+        TabOrder = 13
         Text = '    '
+      end
+      object medtp19ml: TMaskEdit
+        Left = 440
+        Top = 591
+        Width = 33
+        Height = 23
+        TabOrder = 14
+        Text = ''
+      end
+      object medtp18ml: TMaskEdit
+        Left = 440
+        Top = 562
+        Width = 33
+        Height = 23
+        TabOrder = 15
+        Text = ''
+      end
+      object medtp17ml: TMaskEdit
+        Left = 440
+        Top = 533
+        Width = 33
+        Height = 23
+        TabOrder = 16
+        Text = ''
+      end
+      object medtp16ml: TMaskEdit
+        Left = 440
+        Top = 501
+        Width = 33
+        Height = 23
+        TabOrder = 17
+        Text = ''
+      end
+      object medtp15mls: TMaskEdit
+        Left = 440
+        Top = 472
+        Width = 33
+        Height = 23
+        TabOrder = 18
+        Text = ''
+      end
+      object medtp14ml: TMaskEdit
+        Left = 440
+        Top = 443
+        Width = 33
+        Height = 23
+        TabOrder = 19
+        Text = ''
+      end
+      object medtp13ml: TMaskEdit
+        Left = 440
+        Top = 411
+        Width = 33
+        Height = 23
+        TabOrder = 20
+        Text = ''
+      end
+      object medtp12ml: TMaskEdit
+        Left = 440
+        Top = 381
+        Width = 33
+        Height = 23
+        TabOrder = 21
+        Text = ''
+      end
+      object medtp11ml: TMaskEdit
+        Left = 440
+        Top = 351
+        Width = 33
+        Height = 23
+        TabOrder = 22
+        Text = ''
+      end
+      object cbbproduct10: TComboBox
+        Left = 152
+        Top = 322
+        Width = 273
+        Height = 23
+        TabOrder = 23
+        TextHint = '-- Edit Product 10 --'
+      end
+      object cbbproduct9: TComboBox
+        Left = 152
+        Top = 293
+        Width = 273
+        Height = 23
+        TabOrder = 24
+        TextHint = '-- Edit Product 9 --'
+      end
+      object cbbproduct8: TComboBox
+        Left = 152
+        Top = 262
+        Width = 273
+        Height = 23
+        TabOrder = 25
+        TextHint = '-- Edit Product 8 --'
+      end
+      object medtp10ml: TMaskEdit
+        Left = 440
+        Top = 322
+        Width = 33
+        Height = 23
+        TabOrder = 26
+        Text = ''
+      end
+      object medtp9ml: TMaskEdit
+        Left = 440
+        Top = 293
+        Width = 33
+        Height = 23
+        TabOrder = 27
+        Text = ''
+      end
+      object medtp8ml: TMaskEdit
+        Left = 440
+        Top = 264
+        Width = 33
+        Height = 23
+        TabOrder = 28
+        Text = ''
+      end
+      object cbbproduct7: TComboBox
+        Left = 152
+        Top = 232
+        Width = 273
+        Height = 23
+        TabOrder = 29
+        TextHint = '-- Edit Product 7 --'
+      end
+      object cbbproduct6: TComboBox
+        Left = 152
+        Top = 202
+        Width = 273
+        Height = 23
+        TabOrder = 30
+        TextHint = '-- Edit Product 6 --'
+      end
+      object cbbproduct5: TComboBox
+        Left = 152
+        Top = 172
+        Width = 273
+        Height = 23
+        TabOrder = 31
+        TextHint = '-- Edit Product 5 --'
+      end
+      object cbbproduct4: TComboBox
+        Left = 152
+        Top = 141
+        Width = 273
+        Height = 23
+        TabOrder = 32
+        TextHint = '-- Edit Product 4 --'
+      end
+      object cbbproduct3: TComboBox
+        Left = 152
+        Top = 111
+        Width = 273
+        Height = 23
+        TabOrder = 33
+        TextHint = '-- Edit Product 3 --'
+      end
+      object cbbproduct2: TComboBox
+        Left = 152
+        Top = 82
+        Width = 273
+        Height = 23
+        TabOrder = 34
+        TextHint = '-- Edit Product 2 --'
+      end
+      object cbbproduct1: TComboBox
+        Left = 152
+        Top = 52
+        Width = 273
+        Height = 23
+        TabOrder = 35
+        TextHint = '-- Edit Product 1 --'
+      end
+      object medtp7ml: TMaskEdit
+        Left = 440
+        Top = 232
+        Width = 33
+        Height = 23
+        TabOrder = 36
+        Text = ''
+      end
+      object medtp6ml: TMaskEdit
+        Left = 440
+        Top = 203
+        Width = 33
+        Height = 23
+        TabOrder = 37
+        Text = ''
+      end
+      object medtp5ml: TMaskEdit
+        Left = 440
+        Top = 172
+        Width = 33
+        Height = 23
+        TabOrder = 38
+        Text = ''
+      end
+      object medtp4ml: TMaskEdit
+        Left = 440
+        Top = 142
+        Width = 33
+        Height = 23
+        TabOrder = 39
+        Text = ''
+      end
+      object medtp3ml: TMaskEdit
+        Left = 440
+        Top = 112
+        Width = 33
+        Height = 23
+        TabOrder = 40
+        Text = ''
+      end
+      object medtp2ml: TMaskEdit
+        Left = 440
+        Top = 83
+        Width = 33
+        Height = 23
+        TabOrder = 41
+        Text = ''
+      end
+      object medtp1ml: TMaskEdit
+        Left = 440
+        Top = 53
+        Width = 33
+        Height = 23
+        TabOrder = 42
+        Text = ''
       end
     end
   end

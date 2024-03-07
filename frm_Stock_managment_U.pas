@@ -120,12 +120,12 @@ const
   ScaleFactor = 0.8; // Adjust this value to set the percentage of the screen size
 begin
   // Set the form size to a percentage of the screen size
-  Width := Round(Screen.Width * ScaleFactor);
-  Height := Round(Screen.Height * ScaleFactor);
+  //Width := Round(Screen.Width * ScaleFactor);
+  //Height := Round(Screen.Height * ScaleFactor);
 
   // Center the form on the screen
-  Left := (Screen.Width - Width) div 2;
-  Top := (Screen.Height - Height) div 2;
+  //Left := (Screen.Width - Width) div 2;
+  //Top := (Screen.Height - Height) div 2;
 end;
 
 procedure Tfrmstockmanagement.FormShow(Sender: TObject);

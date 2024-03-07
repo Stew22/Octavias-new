@@ -14,6 +14,7 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
   Font.Style = []
   Menu = mm1
   Position = poScreenCenter
+  OnShow = FormShow
   TextHeight = 15
   object pnl1: TPanel
     Left = 8
@@ -22,6 +23,15 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
     Height = 41
     BevelInner = bvLowered
     TabOrder = 0
+    object lbl5: TLabel
+      Left = 123
+      Top = 13
+      Width = 414
+      Height = 15
+      Caption = 
+        'Please Use The Following Form To Select A Vendor To Do A Bulk Pr' +
+        'icing Update'
+    end
   end
   object pnl2: TPanel
     Left = 8
@@ -42,8 +52,10 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
       Top = 15
       Width = 529
       Height = 23
+      Sorted = True
       TabOrder = 0
       TextHint = '--- Select Vendor ---'
+      OnChange = cbbvendorselectChange
     end
   end
   object pnl3: TPanel
@@ -54,14 +66,14 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
     BevelInner = bvLowered
     TabOrder = 2
     object lbl2: TLabel
-      Left = 127
+      Left = 131
       Top = 38
       Width = 18
       Height = 15
       Caption = '-->'
     end
     object lbl4: TLabel
-      Left = 283
+      Left = 290
       Top = 38
       Width = 18
       Height = 15
@@ -83,16 +95,19 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
       ImageIndex = 3
       Images = il1
       TabOrder = 0
+      OnClick = btngenerateexportClick
     end
     object btncheckimport: TButton
-      Left = 152
+      Left = 158
       Top = 32
       Width = 121
       Height = 25
       Caption = 'Import And Check'
+      Enabled = False
       ImageIndex = 4
       Images = il1
       TabOrder = 1
+      OnClick = btncheckimportClick
     end
     object btncancel: TButton
       Left = 472
@@ -121,6 +136,7 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
     Width = 121
     Height = 25
     Caption = 'Update Pricing'
+    Enabled = False
     ImageIndex = 1
     Images = il1
     TabOrder = 3
@@ -133,8 +149,8 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
     TabOrder = 4
   end
   object mm1: TMainMenu
-    Left = 560
-    Top = 16
+    Left = 520
+    Top = 96
     object File1: TMenuItem
       Caption = 'File'
       object N1: TMenuItem
@@ -181,8 +197,8 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
     end
   end
   object il1: TImageList
-    Left = 504
-    Top = 16
+    Left = 480
+    Top = 96
     Bitmap = {
       494C010109001800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
@@ -586,5 +602,9 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
       DC3BE4F6C03BB3C9CE73F3C2DC3BBFE1E7E7F9C2DC3BB001F18FF002C0038783
       FC3FE07EFFFFC00FFFFFFF00FFFFF03F00000000000000000000000000000000
       000000000000}
+  end
+  object dlgSave1: TSaveDialog
+    Left = 432
+    Top = 96
   end
 end

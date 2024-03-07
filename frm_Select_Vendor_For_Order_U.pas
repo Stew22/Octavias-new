@@ -51,7 +51,7 @@ var
   //
   MailTo, MailCC, MailSubject, MailBody: string;
 begin
-  if InputBox('Place Batch Order', 'Are You Sure You Want To Generate A Batch Order : ', 'Yes/No') = 'Yes' then
+  if MessageDlg('Do You Want To Place A Batch Order ?', TMsgDlgType.mtConfirmation, mbYesNo ,0) = mrYes then
   begin
     // Generate a batch Order
     with Datamoduleorder do
@@ -64,6 +64,8 @@ begin
           //
           try
             TStrings := TStringList.Create;
+            //
+            tblorder.DisableControls;
             //
             for I := 0 to cbbvendor.Items.Count - 1 do
             begin
@@ -103,7 +105,7 @@ begin
                begin
                 //
                 Vemail:=tblvendor.FieldByName('Vendor_Email').AsString;
-                Vemail2:=tblvendor.FieldByName('Vendor_Email2').AsString;
+                Vemail2:=tblvendor.FieldByName('Vendor_Email_2').AsString;
                 //
                 //now we will execute the shellexecute to generate the email
                 //
@@ -146,6 +148,7 @@ begin
           //
           ShowMessage('Batch Orders Saved Successfully!');
           //should we prompt the user to open the where they save it
+          tblorder.EnableControls;
         end
         else
         begin
@@ -160,7 +163,7 @@ begin
   end
   else
   begin
-    ShowMessage('Batch Save Has Been Cancelled!');
+    ShowMessage('Batch Order Process Has Been Cancelled!');
   end;
 end;
 
@@ -345,8 +348,15 @@ procedure Tfrmselectvendorfororder.FormClose(Sender: TObject;
 begin
  with Datamoduleorder do
  begin
+  if tblorder.Active = True then
+  begin
    tblorder.Filtered:=False;
    tblorder.Filter:='';
+   tblorder.EnableControls;
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Order Database , Please Contact Your Software Developer !');
+  end;
  end;
 end;
 
@@ -360,6 +370,7 @@ begin
   begin
    tblorder.First;
    //
+   tblorder.DisableControls; //to prevent user from seeing the iteration of the loop
    while not tblorder.Eof do
    begin
     if tblorder.FieldByName('Qty').AsString > '0' then
@@ -381,6 +392,7 @@ begin
       //do nothing
       tblorder.Next;
      end;
+     tblorder.EnableControls;
    end;
   end else
   begin

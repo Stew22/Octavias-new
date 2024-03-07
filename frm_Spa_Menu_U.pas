@@ -200,12 +200,59 @@ begin
      if tblspamenu.FieldByName('Product15').AsString <> '' then
      begin
       redtoutput.Lines.Add('Product 15 : ' + tblspamenu.FieldByName('Product15').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     //
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product16').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 16 : ' + tblspamenu.FieldByName('Product16').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     //
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product17').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 17 : ' + tblspamenu.FieldByName('Product17').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     //
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product18').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 18 : ' + tblspamenu.FieldByName('Product18').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     //
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product19').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 19 : ' + tblspamenu.FieldByName('Product19').AsString);
+      redtoutput.Lines.Add('--------------------------------------');
+     end;
+     //
+     redtoutput.SelAttributes.Color:=clBlue;
+     redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
+     if tblspamenu.FieldByName('Product20').AsString <> '' then
+     begin
+      redtoutput.Lines.Add('Product 20 : ' + tblspamenu.FieldByName('Product20').AsString);
       //redtoutput.Lines.Add('--------------------------------------');
      end;
      //
      redtoutput.SelAttributes.Color:=clBlack;
      redtoutput.SelAttributes.Style:=[];
      redtoutput.Lines.Add('--------------------------------------');
+     //here we will need to work out the cost of the product
+     // we can manually work it out for the time being and fetch it and sum it all up
+     //but when doing pricing updates i will force the user to update the cost per ml or unit
+     //we also need to add the option for sizing and make it a mandatory field when adding products to the database
+     //
+     //also vendors willl still need to be a dropdown to prevent users from entering it random stuff
+     //
      redtoutput.SelAttributes.Color:=clRed;
      redtoutput.SelAttributes.Style:=[TFontStyle.fsBold];
      redtoutput.Lines.Add('Price Of Treatment : ' + tblspamenu.FieldByName('Price').AsString);

@@ -3,8 +3,8 @@ object frmmain: Tfrmmain
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Order stock'
-  ClientHeight = 730
-  ClientWidth = 1062
+  ClientHeight = 650
+  ClientWidth = 1068
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -49,7 +49,7 @@ object frmmain: Tfrmmain
     Left = 0
     Top = 98
     Width = 881
-    Height = 633
+    Height = 543
     DataSource = Datamoduleorder.dsorder
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
