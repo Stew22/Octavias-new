@@ -44,7 +44,7 @@ implementation
 
 procedure Tfrmselectvendorfororder.btnbtachorderClick(Sender: TObject);
 var
-  I: Integer;
+  I,J: Integer;
   Fname, CSVFileName: string;
   TStrings: TStringList;
   Vemail,Vemail2:string;
@@ -69,13 +69,13 @@ begin
             //
             for I := 0 to cbbvendor.Items.Count - 1 do
             begin
+              tblorder.First;
               tblorder.Filtered := False;
               tblorder.Filter := 'Vendor_Name = ' + QuotedStr(cbbvendor.Items[I]);
               tblorder.Filtered := True;
               //
               CSVFileName := Fname + cbbvendor.Items[I] + '.csv'; // Add .csv extension
               //
-              tblorder.First;
               TStrings.Add('Vendor_Name,Item_Number,Item_Description,Price,Qty'); // Headers
               //
               while not tblorder.Eof do
@@ -371,6 +371,7 @@ begin
    tblorder.First;
    //
    tblorder.DisableControls; //to prevent user from seeing the iteration of the loop
+   //
    while not tblorder.Eof do
    begin
     if tblorder.FieldByName('Qty').AsString > '0' then

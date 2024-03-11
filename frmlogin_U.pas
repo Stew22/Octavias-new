@@ -23,12 +23,16 @@ type
     btnviewspamenu: TButton;
     procedure btnloginClick(Sender: TObject);
     procedure btnregisterClick(Sender: TObject);
-    procedure btn1Click(Sender: TObject);
     procedure btnhelploginClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnviewspamenuClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure medtpwordKeyPress(Sender: TObject; var Key: Char);
+    procedure btn1Click(Sender: TObject);
   private
     { Private declarations }
+    OriginalText: string;
+    LoginPWordOrg:string;
   public
     { Public declarations }
   end;
@@ -42,7 +46,7 @@ implementation
 
 procedure Tfrmlogin.btn1Click(Sender: TObject);
 begin
- frmsplash.Show;
+ ShowMessage(OriginalText);
 end;
 
 procedure Tfrmlogin.btnhelploginClick(Sender: TObject);
@@ -82,7 +86,7 @@ begin
     tblusers.Filter:='Username =' + QuotedStr(cbbuser.Text);
     tblusers.Filtered:=True;
     //
-    if (medtpword.Text = tblusers.FieldByName('Password').AsString) and
+    if (OriginalText = tblusers.FieldByName('Password').AsString) and
     (cbbuser.Text = tblusers.FieldByName('Username').AsString) then  //we are checking the user name and password match
     begin
      if tblusers.FieldByName('Premissions').AsString = 'Admin' then
@@ -157,6 +161,12 @@ begin
  TDataAccess.WriteToAccessDB('Spa Menu Has Been Opened');
 end;
 
+procedure Tfrmlogin.FormCreate(Sender: TObject);
+begin
+
+  //medtpword.Text := '****';
+end;
+
 procedure Tfrmlogin.FormShow(Sender: TObject);
 var
  I:Integer;
@@ -192,6 +202,33 @@ begin
    end;
  end;
  TDataAccess.WriteToAccessDB('Life Day Spa Stock Mate Application Has Been Opened');
+end;
+
+procedure Tfrmlogin.medtpwordKeyPress(Sender: TObject; var Key: Char);
+begin
+  // Handle backspace
+  if Key = #8 then
+  begin
+    if Length(OriginalText) > 0 then
+    begin
+      // Remove the last character from the original text
+      Delete(OriginalText, Length(OriginalText), 1);
+
+      // Update the displayed text with asterisks
+      medtpword.Text := StringOfChar('*', Length(OriginalText));
+    end;
+  end
+  else
+  begin
+    // Store the original text
+    OriginalText := OriginalText + Key;
+
+    // Display '*' instead of the actual character
+    medtpword.Text := StringOfChar('*', Length(OriginalText));
+  end;
+
+  // Set Key to #0 to prevent the original character from being displayed
+  Key := #0;
 end;
 
 end.

@@ -258,6 +258,9 @@ begin
   if tblorder.Active = True then
   begin
    tblorder.DisableControls;
+   //disable the filter for the orders
+   tblorder.Filtered:=False;
+   tblorder.Filter:='';       //this should correct the batch order
   end else
   begin
    ShowMessage('There Was An Error Connecting To the Orders Database , Please Contact Your Software Provider');

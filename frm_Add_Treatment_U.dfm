@@ -3,8 +3,8 @@ object frmaddtreatment: Tfrmaddtreatment
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Life Day Spa Treatment Menu --- Add A Treatment To The Menu'
-  ClientHeight = 500
-  ClientWidth = 624
+  ClientHeight = 752
+  ClientWidth = 623
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -42,10 +42,10 @@ object frmaddtreatment: Tfrmaddtreatment
     end
   end
   object pnl2: TPanel
-    Left = 0
+    Left = -1
     Top = 72
     Width = 616
-    Height = 417
+    Height = 672
     BevelInner = bvLowered
     TabOrder = 1
     object lbl1: TLabel
@@ -112,136 +112,205 @@ object frmaddtreatment: Tfrmaddtreatment
         OnClick = btnexitClick
       end
     end
-    object pnl4: TPanel
-      Left = 8
-      Top = 103
-      Width = 409
-      Height = 306
-      BevelInner = bvLowered
-      TabOrder = 2
-      object edtp1: TEdit
-        Left = 111
-        Top = 8
-        Width = 290
-        Height = 23
-        TabOrder = 0
-        TextHint = '--- Product 1 Name & ml'#39's To Use ---'
-        OnChange = edtp1Change
-      end
-      object edtp2: TEdit
-        Left = 111
-        Top = 37
-        Width = 290
-        Height = 23
-        TabOrder = 1
-        TextHint = '--- Product 2 Name & ml'#39's To Use ---'
-        OnChange = edtp2Change
-      end
-      object edtp3: TEdit
-        Left = 111
-        Top = 66
-        Width = 290
-        Height = 23
-        TabOrder = 2
-        TextHint = '--- Product 3 Name & ml'#39's To Use ---'
-        OnChange = edtp3Change
-      end
-      object edtp4: TEdit
-        Left = 111
-        Top = 95
-        Width = 290
-        Height = 23
-        TabOrder = 3
-        TextHint = '--- Product 4 Name & ml'#39's To Use ---'
-        OnChange = edtp4Change
-      end
-      object edtp5: TEdit
-        Left = 111
-        Top = 124
-        Width = 290
-        Height = 23
-        TabOrder = 4
-        TextHint = '--- Product 5 Name & ml'#39's To Use ---'
-        OnChange = edtp5Change
-      end
-      object chklst1: TCheckListBox
-        Left = 8
-        Top = 8
-        Width = 97
-        Height = 289
-        AutoComplete = False
-        CheckBoxPadding = 13
-        ItemHeight = 28
-        Items.Strings = (
-          'Product 1 '
-          'Product 2 '
-          'Product 3 '
-          'Product 4 '
-          'Product 5'
-          'Product 6'
-          'Product 7'
-          'Product 8'
-          'Product 9'
-          'Product 10')
-        TabOrder = 5
-        OnClickCheck = chklst1ClickCheck
-      end
-      object edtp6: TEdit
-        Left = 111
-        Top = 153
-        Width = 290
-        Height = 23
-        TabOrder = 6
-        TextHint = '--- Product 6 Name & ml'#39's To Use ---'
-        OnChange = edtp6Change
-      end
-      object edtp7: TEdit
-        Left = 111
-        Top = 182
-        Width = 290
-        Height = 23
-        TabOrder = 7
-        TextHint = '--- Product 7 Name & ml'#39's To Use ---'
-        OnChange = edtp7Change
-      end
-      object edtp8: TEdit
-        Left = 111
-        Top = 211
-        Width = 290
-        Height = 23
-        TabOrder = 8
-        TextHint = '--- Product 8 Name & ml'#39's To Use ---'
-        OnChange = edtp8Change
-      end
-      object edtp9: TEdit
-        Left = 111
-        Top = 240
-        Width = 290
-        Height = 23
-        TabOrder = 9
-        TextHint = '--- Product 9 Name & ml'#39's To Use ---'
-        OnChange = edtp9Change
-      end
-      object edtp10: TEdit
-        Left = 111
-        Top = 269
-        Width = 290
-        Height = 23
-        TabOrder = 10
-        TextHint = '--- Product 10 Name & ml'#39's To Use ---'
-        OnChange = edtp10Change
-      end
-    end
     object medtprice: TMaskEdit
       Left = 120
       Top = 56
       Width = 291
       Height = 23
-      TabOrder = 3
+      TabOrder = 2
       Text = ''
       TextHint = '--- Price Of Treatment ---'
       OnChange = medtpriceChange
       OnExit = medtpriceExit
+    end
+    object scrlbx1: TScrollBox
+      Left = 8
+      Top = 85
+      Width = 441
+      Height = 580
+      VertScrollBar.Style = ssFlat
+      TabOrder = 3
+      UseWheelForScrolling = True
+      object pnl4: TPanel
+        Left = 11
+        Top = -3
+        Width = 409
+        Height = 576
+        BevelInner = bvLowered
+        TabOrder = 0
+        object chklst1: TCheckListBox
+          Left = 8
+          Top = 1
+          Width = 97
+          Height = 568
+          AutoComplete = False
+          CheckBoxPadding = 13
+          ItemHeight = 28
+          Items.Strings = (
+            'Product 1 '
+            'Product 2 '
+            'Product 3 '
+            'Product 4 '
+            'Product 5'
+            'Product 6'
+            'Product 7'
+            'Product 8'
+            'Product 9'
+            'Product 10'
+            'Product 11'
+            'Product 12'
+            'Product 13'
+            'Product 14'
+            'Product 15'
+            'Product 16'
+            'Product 17'
+            'Product 18'
+            'Product 19'
+            'Product 20')
+          TabOrder = 0
+          OnClickCheck = chklst1ClickCheck
+        end
+        object cbbaproduct11: TComboBox
+          Left = 111
+          Top = 285
+          Width = 290
+          Height = 23
+          TabOrder = 1
+        end
+        object cbbaproduct12: TComboBox
+          Left = 111
+          Top = 314
+          Width = 290
+          Height = 23
+          TabOrder = 2
+        end
+        object cbbaproduct13: TComboBox
+          Left = 111
+          Top = 341
+          Width = 290
+          Height = 23
+          TabOrder = 3
+        end
+        object cbbaddproduct14: TComboBox
+          Left = 111
+          Top = 370
+          Width = 290
+          Height = 23
+          TabOrder = 4
+        end
+        object cbbaproduct15: TComboBox
+          Left = 111
+          Top = 398
+          Width = 290
+          Height = 23
+          TabOrder = 5
+        end
+        object cbbaproduct16: TComboBox
+          Left = 111
+          Top = 426
+          Width = 290
+          Height = 23
+          TabOrder = 6
+        end
+        object cbbaproduct17: TComboBox
+          Left = 111
+          Top = 454
+          Width = 290
+          Height = 23
+          TabOrder = 7
+        end
+        object cbbaproduct18: TComboBox
+          Left = 111
+          Top = 482
+          Width = 290
+          Height = 23
+          TabOrder = 8
+        end
+        object cbbaproduct19: TComboBox
+          Left = 111
+          Top = 510
+          Width = 290
+          Height = 23
+          TabOrder = 9
+        end
+        object cbbaproduct10: TComboBox
+          Left = 111
+          Top = 258
+          Width = 290
+          Height = 23
+          TabOrder = 10
+        end
+        object cbbaddproduct20: TComboBox
+          Left = 111
+          Top = 539
+          Width = 290
+          Height = 23
+          TabOrder = 11
+        end
+        object cbbaproduct9: TComboBox
+          Left = 111
+          Top = 230
+          Width = 289
+          Height = 23
+          TabOrder = 12
+        end
+        object cbbaproduct8: TComboBox
+          Left = 112
+          Top = 201
+          Width = 289
+          Height = 23
+          TabOrder = 13
+        end
+        object cbbaproduct7: TComboBox
+          Left = 111
+          Top = 173
+          Width = 290
+          Height = 23
+          TabOrder = 14
+        end
+        object cbbaproduct6: TComboBox
+          Left = 111
+          Top = 146
+          Width = 290
+          Height = 23
+          TabOrder = 15
+        end
+        object cbbaproduct5: TComboBox
+          Left = 111
+          Top = 119
+          Width = 290
+          Height = 23
+          TabOrder = 16
+        end
+        object cbbaddproduct4: TComboBox
+          Left = 111
+          Top = 90
+          Width = 290
+          Height = 23
+          TabOrder = 17
+        end
+        object cbbaproduct3: TComboBox
+          Left = 111
+          Top = 63
+          Width = 290
+          Height = 23
+          TabOrder = 18
+        end
+        object cbbaproduct2: TComboBox
+          Left = 111
+          Top = 34
+          Width = 290
+          Height = 23
+          TabOrder = 19
+        end
+        object cbbaproduct1: TComboBox
+          Left = 111
+          Top = 5
+          Width = 290
+          Height = 23
+          TabOrder = 20
+        end
+      end
     end
   end
   object mm1: TMainMenu

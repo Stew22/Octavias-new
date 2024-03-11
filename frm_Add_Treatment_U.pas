@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.ImageList,
   Vcl.ImgList, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.CheckLst, Vcl.Mask,DM_Spa_Menu,
-  Winapi.ShellAPI,DM_Logger,Logger_U;
+  Winapi.ShellAPI,DM_Logger,Logger_U,DM_Products,DM_Order;
 
 type
   Tfrmaddtreatment = class(TForm)
@@ -31,20 +31,31 @@ type
     btnaddtreatment: TButton;
     btncancel: TButton;
     btnexit: TButton;
-    edtp1: TEdit;
-    edtp2: TEdit;
-    edtp3: TEdit;
-    edtp4: TEdit;
-    edtp5: TEdit;
     chklst1: TCheckListBox;
     lbl3: TLabel;
     medtprice: TMaskEdit;
     btnhelp: TButton;
-    edtp6: TEdit;
-    edtp7: TEdit;
-    edtp8: TEdit;
-    edtp9: TEdit;
-    edtp10: TEdit;
+    scrlbx1: TScrollBox;
+    cbbaproduct11: TComboBox;
+    cbbaproduct12: TComboBox;
+    cbbaproduct13: TComboBox;
+    cbbaddproduct14: TComboBox;
+    cbbaproduct15: TComboBox;
+    cbbaproduct16: TComboBox;
+    cbbaproduct17: TComboBox;
+    cbbaproduct18: TComboBox;
+    cbbaproduct19: TComboBox;
+    cbbaproduct10: TComboBox;
+    cbbaddproduct20: TComboBox;
+    cbbaproduct9: TComboBox;
+    cbbaproduct8: TComboBox;
+    cbbaproduct7: TComboBox;
+    cbbaproduct6: TComboBox;
+    cbbaproduct5: TComboBox;
+    cbbaddproduct4: TComboBox;
+    cbbaproduct3: TComboBox;
+    cbbaproduct2: TComboBox;
+    cbbaproduct1: TComboBox;
     procedure chklst1ClickCheck(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edtp1Change(Sender: TObject);
@@ -104,16 +115,27 @@ begin
       tblspamenu['Price']:=CorrectedPricingFormat;
       //now we will need to check which of the edit fields have been enabled to write the data
       //
-      tblspamenu['Product1']:=edtp1.Text;
-      tblspamenu['Product2']:=edtp2.Text;
-      tblspamenu['Product3']:=edtp3.Text;
-      tblspamenu['Product4']:=edtp4.Text;
-      tblspamenu['Product5']:=edtp5.Text;
-      tblspamenu['Product6']:=edtp6.Text;
-      tblspamenu['Product7']:=edtp7.Text;
-      tblspamenu['Product8']:=edtp8.Text;
-      tblspamenu['Product9']:=edtp9.Text;
-      tblspamenu['Product10']:=edtp10.Text;
+      tblspamenu['Product1']:=cbbaproduct1.Text;
+      tblspamenu['Product2']:=cbbaproduct2.Text;
+      tblspamenu['Product3']:=cbbaproduct3.Text;
+      tblspamenu['Product4']:=cbbaddproduct4.Text;
+      tblspamenu['Product5']:=cbbaproduct5.Text;
+      tblspamenu['Product6']:=cbbaproduct6.Text;
+      tblspamenu['Product7']:=cbbaproduct7.Text;
+      tblspamenu['Product8']:=cbbaproduct8.Text;
+      tblspamenu['Product9']:=cbbaproduct9.Text;
+      tblspamenu['Product10']:=cbbaproduct10.Text;
+      tblspamenu['Product11']:=cbbaproduct11.Text;
+      tblspamenu['Product12']:=cbbaproduct12.Text;
+      tblspamenu['Product13']:=cbbaproduct13.Text;
+      tblspamenu['Product14']:=cbbaddproduct14.Text;
+      tblspamenu['Product15']:=cbbaproduct15.Text;
+      tblspamenu['Product16']:=cbbaproduct16.Text;
+      tblspamenu['Product17']:=cbbaproduct17.Text;
+      tblspamenu['Product18']:=cbbaproduct18.Text;
+      tblspamenu['Product19']:=cbbaproduct19.Text;
+      tblspamenu['Product20']:=cbbaddproduct20.Text;
+      //now we need to add in the ml's
       //
       tblspamenu.Post; //posts the data to the database
      finally
@@ -135,29 +157,49 @@ begin
       edtaddtname.Clear;
       medtprice.Clear;
       //
-      edtp1.Clear;
-      edtp2.Clear;
-      edtp3.Clear;
-      edtp4.Clear;
-      edtp5.Clear;
-      edtp6.Clear;
-      edtp7.Clear;
-      edtp8.Clear;
-      edtp9.Clear;
-      edtp10.Clear;
+      cbbaproduct1.Text:='';
+      cbbaproduct2.Text:='';
+      cbbaproduct3.Text:='';
+      cbbaddproduct4.Text:='';
+      cbbaproduct5.Text:='';
+      cbbaproduct6.Text:='';
+      cbbaproduct7.Text:='';
+      cbbaproduct8.Text:='';
+      cbbaproduct9.Text:='';
+      cbbaproduct10.Text:='';
+      cbbaproduct11.Text:='';
+      cbbaproduct12.Text:='';
+      cbbaproduct13.Text:='';
+      cbbaddproduct14.Text:='';
+      cbbaproduct15.Text:='';
+      cbbaproduct16.Text:='';
+      cbbaproduct17.Text:='';
+      cbbaproduct18.Text:='';
+      cbbaproduct19.Text:='';
+      cbbaddproduct20.Text:='';
       //
       btnaddtreatment.Enabled:=False;
       //
-      edtp1.Enabled:=False;
-      edtp2.Enabled:=False;
-      edtp3.Enabled:=False;
-      edtp4.Enabled:=False;
-      edtp5.Enabled:=False;
-      edtp6.Enabled:=False;
-      edtp7.Enabled:=False;
-      edtp8.Enabled:=False;
-      edtp9.Enabled:=False;
-      edtp10.Enabled:=False;
+      cbbaproduct1.Enabled:=False;
+      cbbaproduct2.Enabled:=False;
+      cbbaproduct3.Enabled:=False;
+      cbbaddproduct4.Enabled:=False;
+      cbbaproduct5.Enabled:=False;
+      cbbaproduct6.Enabled:=False;
+      cbbaproduct7.Enabled:=False;
+      cbbaproduct8.Enabled:=False;
+      cbbaproduct9.Enabled:=False;
+      cbbaproduct10.Enabled:=False;
+      cbbaproduct11.Enabled:=False;
+      cbbaproduct12.Enabled:=False;
+      cbbaproduct13.Enabled:=False;
+      cbbaddproduct14.Enabled:=False;
+      cbbaproduct15.Enabled:=False;
+      cbbaproduct16.Enabled:=False;
+      cbbaproduct17.Enabled:=False;
+      cbbaproduct18.Enabled:=False;
+      cbbaproduct19.Enabled:=False;
+      cbbaddproduct20.Enabled:=False;
      end;
     end else
     begin
@@ -183,33 +225,63 @@ begin
  chklst1.Checked[7]:=False;
  chklst1.Checked[8]:=False;
  chklst1.Checked[9]:=False;
+ chklst1.Checked[10]:=False;
+ chklst1.Checked[11]:=False;
+ chklst1.Checked[12]:=False;
+ chklst1.Checked[13]:=False;
+ chklst1.Checked[14]:=False;
+ chklst1.Checked[15]:=False;
+ chklst1.Checked[16]:=False;
+ chklst1.Checked[17]:=False;
+ chklst1.Checked[18]:=False;
+ chklst1.Checked[19]:=False;
  //
  edtaddtname.Clear;
  medtprice.Clear;
  //
- edtp1.Clear;
- edtp2.Clear;
- edtp3.Clear;
- edtp4.Clear;
- edtp5.Clear;
- edtp6.Clear;
- edtp7.Clear;
- edtp8.Clear;
- edtp9.Clear;
- edtp10.Clear;
+ cbbaproduct1.Text:='';
+ cbbaproduct2.Text:='';
+ cbbaproduct3.Text:='';
+ cbbaddproduct4.Text:='';
+ cbbaproduct5.Text:='';
+ cbbaproduct6.Text:='';
+ cbbaproduct7.Text:='';
+ cbbaproduct8.Text:='';
+ cbbaproduct9.Text:='';
+ cbbaproduct10.Text:='';
+ cbbaproduct11.Text:='';
+ cbbaproduct12.Text:='';
+ cbbaproduct13.Text:='';
+ cbbaddproduct14.Text:='';
+ cbbaproduct15.Text:='';
+ cbbaproduct16.Text:='';
+ cbbaproduct17.Text:='';
+ cbbaproduct18.Text:='';
+ cbbaproduct19.Text:='';
+ cbbaddproduct20.Text:='';
  //
  btnaddtreatment.Enabled:=False;
  //
- edtp1.Enabled:=False;
- edtp2.Enabled:=False;
- edtp3.Enabled:=False;
- edtp4.Enabled:=False;
- edtp5.Enabled:=False;
- edtp6.Enabled:=False;
- edtp7.Enabled:=False;
- edtp8.Enabled:=False;
- edtp9.Enabled:=False;
- edtp10.Enabled:=False;
+ cbbaproduct1.Enabled:=False;
+ cbbaproduct2.Enabled:=False;
+ cbbaproduct3.Enabled:=False;
+ cbbaddproduct4.Enabled:=False;
+ cbbaproduct5.Enabled:=False;
+ cbbaproduct6.Enabled:=False;
+ cbbaproduct7.Enabled:=False;
+ cbbaproduct8.Enabled:=False;
+ cbbaproduct9.Enabled:=False;
+ cbbaproduct10.Enabled:=False;
+ cbbaproduct11.Enabled:=False;
+ cbbaproduct12.Enabled:=False;
+ cbbaproduct13.Enabled:=False;
+ cbbaddproduct14.Enabled:=False;
+ cbbaproduct15.Enabled:=False;
+ cbbaproduct16.Enabled:=False;
+ cbbaproduct17.Enabled:=False;
+ cbbaproduct18.Enabled:=False;
+ cbbaproduct19.Enabled:=False;
+ cbbaddproduct20.Enabled:=False;
  //
  TDataAccess.WriteToAccessDB('Has Clicked Cancel Button On Add A Treatment To Spa Menu');
 end;
@@ -247,93 +319,183 @@ procedure Tfrmaddtreatment.chklst1ClickCheck(Sender: TObject);
 begin
  if chklst1.Checked[0] = True then
  begin
-  edtp1.Enabled:=True;
+  cbbaproduct1.Enabled:=True;
  end else
  begin
-  edtp1.Enabled:=False;
+  cbbaproduct1.Enabled:=False;
   btnaddtreatment.Enabled:=False;
-  edtp1.Clear;
+  cbbaproduct1.Text:='';
  end;
  if chklst1.Checked[1] = True then
  begin
-  edtp2.Enabled:=True;
+  cbbaproduct2.Enabled:=True;
  end else
  begin
-  edtp2.Enabled:=False;
+  cbbaproduct2.Enabled:=False;
   btnaddtreatment.Enabled:=False;
-  edtp2.Clear;
+  cbbaproduct2.Text:='';
  end;
  if chklst1.Checked[2] = True then
  begin
-  edtp3.Enabled:=True;
+  cbbaproduct3.Enabled:=True;
  end else
  begin
-  edtp3.Enabled:=False;
+  cbbaproduct3.Enabled:=False;
   btnaddtreatment.Enabled:=False;
-  edtp3.Clear;
+  cbbaproduct3.Text:='';
  end;
  if chklst1.Checked[3] = True then
  begin
-  edtp4.Enabled:=True;
+  cbbaddproduct4.Enabled:=True;
  end else
  begin
-  edtp4.Enabled:=False;
+  cbbaddproduct4.Enabled:=False;
   btnaddtreatment.Enabled:=False;
-  edtp4.Clear;
+  cbbaddproduct4.Text:='';
  end;
  if chklst1.Checked[4] = True then
  begin
-  edtp5.Enabled:=True;
+  cbbaproduct5.Enabled:=True;
  end else
  begin
-  edtp5.Enabled:=False;
+  cbbaproduct5.Enabled:=False;
   btnaddtreatment.Enabled:=False;
-  edtp5.Clear;
+  cbbaproduct5.Text:='';
  end;
  if chklst1.Checked[5] = True then
  begin
-  edtp6.Enabled:=True;
+  cbbaproduct6.Enabled:=True;
  end else
  begin
-  edtp6.Enabled:=False;
+  cbbaproduct6.Enabled:=False;
   btnaddtreatment.Enabled:=False;
-  edtp6.Clear;
+  cbbaproduct6.Text:='';
  end;
  if chklst1.Checked[6] = True then
  begin
-  edtp7.Enabled:=True;
+  cbbaproduct7.Enabled:=True;
  end else
  begin
-  edtp7.Enabled:=False;
+  cbbaproduct7.Enabled:=False;
   btnaddtreatment.Enabled:=False;
-  edtp7.Clear;
+  cbbaproduct7.Text:='';
  end;
  if chklst1.Checked[7] = True then
  begin
-  edtp8.Enabled:=True;
+  cbbaproduct8.Enabled:=True;
  end else
  begin
-  edtp8.Enabled:=False;
+  cbbaproduct8.Enabled:=False;
   btnaddtreatment.Enabled:=False;
-  edtp8.Clear;
+  cbbaproduct8.Text:='';
  end;
  if chklst1.Checked[8] = True then
  begin
-  edtp9.Enabled:=True;
+  cbbaproduct9.Enabled:=True;
  end else
  begin
-  edtp9.Enabled:=False;
+  cbbaproduct9.Enabled:=False;
   btnaddtreatment.Enabled:=False;
-  edtp9.Clear;
+  cbbaproduct9.Text:='';
  end;
  if chklst1.Checked[9] = True then
  begin
-  edtp10.Enabled:=True;
+  cbbaproduct10.Enabled:=True;
  end else
  begin
-  edtp10.Enabled:=False;
+  cbbaproduct10.Enabled:=False;
   btnaddtreatment.Enabled:=False;
-  edtp10.Clear;
+  cbbaproduct10.Text:='';
+ end;
+  if chklst1.Checked[10] = True then
+ begin
+  cbbaproduct11.Enabled:=True;
+ end else
+ begin
+  cbbaproduct11.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  cbbaproduct11.Text:='';
+ end;
+  if chklst1.Checked[11] = True then
+ begin
+  cbbaproduct12.Enabled:=True;
+ end else
+ begin
+  cbbaproduct12.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  cbbaproduct12.Text:='';
+ end;
+  if chklst1.Checked[12] = True then
+ begin
+  cbbaproduct13.Enabled:=True;
+ end else
+ begin
+  cbbaproduct13.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  cbbaproduct13.Text:='';
+ end;
+  if chklst1.Checked[13] = True then
+ begin
+  cbbaddproduct14.Enabled:=True;
+ end else
+ begin
+  cbbaddproduct14.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  cbbaddproduct14.Text:='';
+ end;
+  if chklst1.Checked[14] = True then
+ begin
+  cbbaproduct15.Enabled:=True;
+ end else
+ begin
+  cbbaproduct15.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  cbbaproduct15.Text:='';
+ end;
+  if chklst1.Checked[15] = True then
+ begin
+  cbbaproduct16.Enabled:=True;
+ end else
+ begin
+  cbbaproduct16.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  cbbaproduct16.Text:='';
+ end;
+  if chklst1.Checked[16] = True then
+ begin
+  cbbaproduct17.Enabled:=True;
+ end else
+ begin
+  cbbaproduct17.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  cbbaproduct17.Text:='';
+ end;
+  if chklst1.Checked[17] = True then
+ begin
+  cbbaproduct18.Enabled:=True;
+ end else
+ begin
+  cbbaproduct18.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  cbbaproduct18.Text:='';
+ end;
+  if chklst1.Checked[18] = True then
+ begin
+  cbbaproduct19.Enabled:=True;
+ end else
+ begin
+  cbbaproduct19.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  cbbaproduct19.Text:='';
+ end;
+  if chklst1.Checked[19] = True then
+ begin
+  cbbaddproduct20.Enabled:=True;
+ end else
+ begin
+  cbbaddproduct20.Enabled:=False;
+  btnaddtreatment.Enabled:=False;
+  cbbaddproduct20.Text:='';
  end;
 end;
 
@@ -375,7 +537,7 @@ begin
  begin
   if chklst1.Checked[9] = True then
   begin
-   if edtp10.Text <> '' then
+   if cbbaproduct10.Text <> '' then
    begin
     btnaddtreatment.Enabled:=True;
    end;
@@ -390,7 +552,7 @@ begin
  begin
   if chklst1.Checked[0] = True then
   begin
-   if edtp1.Text <> '' then
+   if cbbaproduct1.Text <> '' then
    begin
     btnaddtreatment.Enabled:=True;
    end;
@@ -405,7 +567,7 @@ begin
  begin
   if chklst1.Checked[1] = True then
   begin
-   if edtp2.Text <> '' then
+   if cbbaproduct2.Text <> '' then
    begin
     btnaddtreatment.Enabled:=True;
    end;
@@ -420,7 +582,7 @@ begin
  begin
   if chklst1.Checked[2] = True then
   begin
-   if edtp3.Text <> '' then
+   if cbbaproduct3.Text <> '' then
    begin
     btnaddtreatment.Enabled:=True;
    end;
@@ -435,7 +597,7 @@ begin
  begin
   if chklst1.Checked[3] = True then
   begin
-   if edtp4.Text <> '' then
+   if cbbaddproduct4.Text <> '' then
    begin
     btnaddtreatment.Enabled:=True;
    end;
@@ -450,7 +612,7 @@ begin
  begin
   if chklst1.Checked[4] = True then
   begin
-   if edtp5.Text <> '' then
+   if cbbaproduct5.Text <> '' then
    begin
     btnaddtreatment.Enabled:=True;
    end;
@@ -465,7 +627,7 @@ begin
  begin
   if chklst1.Checked[6] = True then
   begin
-   if edtp7.Text <> '' then
+   if cbbaproduct7.Text <> '' then
    begin
     btnaddtreatment.Enabled:=True;
    end;
@@ -480,7 +642,7 @@ begin
  begin
   if chklst1.Checked[7] = True then
   begin
-   if edtp8.Text <> '' then
+   if cbbaproduct8.Text <> '' then
    begin
     btnaddtreatment.Enabled:=True;
    end;
@@ -495,7 +657,7 @@ begin
  begin
   if chklst1.Checked[8] = True then
   begin
-   if edtp9.Text <> '' then
+   if cbbaproduct9.Text <> '' then
    begin
     btnaddtreatment.Enabled:=True;
    end;
@@ -510,7 +672,7 @@ begin
  begin
   if chklst1.Checked[9] = True then
   begin
-   if edtp10.Text <> '' then
+   if cbbaproduct10.Text <> '' then
    begin
     btnaddtreatment.Enabled:=True;
    end;
@@ -524,6 +686,8 @@ begin
 end;
 
 procedure Tfrmaddtreatment.FormShow(Sender: TObject);
+ var
+ Tproducts:TStrings;
 begin
  with DataModuleSpaMenu do
  begin
@@ -549,19 +713,80 @@ begin
  //here we will disable the edit fields until the user has selected how many products
  //are to be used in each treatment
  //
- edtp1.Enabled:=False;
- edtp2.Enabled:=False;
- edtp3.Enabled:=False;
- edtp4.Enabled:=False;
- edtp5.Enabled:=False;
- edtp6.Enabled:=False;
- edtp7.Enabled:=False;
- edtp8.Enabled:=False;
- edtp9.Enabled:=False;
- edtp10.Enabled:=False;
+ cbbaproduct1.Enabled:=False;
+ cbbaproduct2.Enabled:=False;
+ cbbaproduct3.Enabled:=False;
+ cbbaddproduct4.Enabled:=False;
+ cbbaproduct5.Enabled:=False;
+ cbbaproduct6.Enabled:=False;
+ cbbaproduct7.Enabled:=False;
+ cbbaproduct8.Enabled:=False;
+ cbbaproduct9.Enabled:=False;
+ cbbaproduct10.Enabled:=False;
+ cbbaproduct11.Enabled:=False;
+ cbbaproduct12.Enabled:=False;
+ cbbaproduct13.Enabled:=False;
+ cbbaddproduct14.Enabled:=False;
+ cbbaproduct15.Enabled:=False;
+ cbbaproduct16.Enabled:=False;
+ cbbaproduct17.Enabled:=False;
+ cbbaproduct18.Enabled:=False;
+ cbbaproduct19.Enabled:=False;
+ cbbaddproduct20.Enabled:=False;
  //
  btnaddtreatment.Enabled:=False;
  //
+   with Datamoduleorder do    //make sure this is connected ?
+   begin
+     if tblorder.Active = True then
+     begin
+      tblorder.First;
+      tblorder.DisableControls;
+      //
+      Tproducts:=TStringList.Create;
+      //
+      while not tblorder.Eof do
+      begin
+       if Tproducts.IndexOf(tblorder.FieldByName('Item Discription').AsString) = -1 then
+        begin
+         //add to the stringlist
+         Tproducts.Add(tblorder.FieldByName('Item Discription').AsString);
+         tblorder.Next;
+        end else
+        begin
+         //record already exists , then we just move to the next record
+         tblorder.Next;
+        end;
+      end;
+      tblorder.EnableControls;
+      //assign all the comboboxes
+      cbbaproduct1.Items.Assign(Tproducts);
+      cbbaproduct2.Items.Assign(Tproducts);
+      cbbaproduct3.Items.Assign(Tproducts);
+      cbbaddproduct4.Items.Assign(Tproducts);
+      cbbaproduct5.Items.Assign(Tproducts);
+      cbbaproduct6.Items.Assign(Tproducts);
+      cbbaproduct7.Items.Assign(Tproducts);
+      cbbaproduct8.Items.Assign(Tproducts);
+      cbbaproduct9.Items.Assign(Tproducts);
+      cbbaproduct10.Items.Assign(Tproducts);
+      cbbaproduct11.Items.Assign(Tproducts);
+      cbbaproduct12.Items.Assign(Tproducts);
+      cbbaproduct13.Items.Assign(Tproducts);
+      cbbaddproduct14.Items.Assign(Tproducts);
+      cbbaproduct15.Items.Assign(Tproducts);
+      cbbaproduct16.Items.Assign(Tproducts);
+      cbbaproduct17.Items.Assign(Tproducts);
+      cbbaproduct18.Items.Assign(Tproducts);
+      cbbaproduct19.Items.Assign(Tproducts);
+      cbbaddproduct20.Items.Assign(Tproducts);
+      //maybe put in a try loop
+      tproducts.Free;
+     end else
+     begin
+      ShowMessage('There Was An Error Connecting To The Orders Database , Please Contact Your Software Developer');
+     end;
+    end;
 end;
 
 procedure Tfrmaddtreatment.Help1Click(Sender: TObject);

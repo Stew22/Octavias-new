@@ -13,6 +13,7 @@ object frmlogin: Tfrmlogin
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
+  OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 13
   object lbl1: TLabel
@@ -77,6 +78,7 @@ object frmlogin: Tfrmlogin
     TabOrder = 2
     Text = ''
     TextHint = '-- Enter Your Password --'
+    OnKeyPress = medtpwordKeyPress
   end
   object btnlogin: TButton
     Left = 8
