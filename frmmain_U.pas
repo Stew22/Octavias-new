@@ -46,7 +46,7 @@ type
     UserManagment1: TMenuItem;
     N7: TMenuItem;
     EditMyDetails1: TMenuItem;
-    EditMyDetails2: TMenuItem;
+    RemoveUser1: TMenuItem;
     N8: TMenuItem;
     N9: TMenuItem;
     AddUser1: TMenuItem;
@@ -159,7 +159,7 @@ type
     procedure cbbcatogoriesChange(Sender: TObject);
     procedure AddUser1Click(Sender: TObject);
     procedure EditMyDetails1Click(Sender: TObject);
-    procedure EditMyDetails2Click(Sender: TObject);
+    procedure RemoveUser1Click(Sender: TObject);
     procedure Bookings1Click(Sender: TObject);
     procedure Support2Click(Sender: TObject);
     procedure ReportABug1Click(Sender: TObject);
@@ -352,6 +352,7 @@ begin
       //
       for i := 0 to tblorder.RecordCount - 1 do
         begin
+         tblorder.DisableControls;
          // Accumulate the 'Qty' values
          SumOrdered := SumOrdered + StrToIntDef(tblorder.FieldByName('Qty').AsString, 0);
 
@@ -371,7 +372,9 @@ begin
           //Exit; // Exit the loop and update labels
          end;
          tblorder.Next; // Move to the next record
+         tblorder.EnableControls;
         end;
+        //
 
       // Update the label with the total
       lblorderproducts.Caption := 'Products Ordered: ' + IntToStr(SumOrdered);
@@ -776,9 +779,11 @@ procedure Tfrmmain.EditMyDetails1Click(Sender: TObject);
 begin
  //here we will make  new form and allow the user to update there details
  //also making sure to log the chnages
+
+
 end;
 
-procedure Tfrmmain.EditMyDetails2Click(Sender: TObject);
+procedure Tfrmmain.RemoveUser1Click(Sender: TObject);
 begin
  //here only the admin will be aable to remove user
  //after providing the admin username and password
@@ -790,6 +795,7 @@ procedure Tfrmmain.edtsearchChange(Sender: TObject);
 begin
   with Datamoduleorder do
   begin
+  tblorder.EnableControls;
     if conorder.Connected then
     begin
      if edtsearch.Text <> '' then

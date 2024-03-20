@@ -3,7 +3,7 @@ object frmaddtreatment: Tfrmaddtreatment
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Life Day Spa Treatment Menu --- Add A Treatment To The Menu'
-  ClientHeight = 752
+  ClientHeight = 458
   ClientWidth = 623
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -45,7 +45,7 @@ object frmaddtreatment: Tfrmaddtreatment
     Left = -1
     Top = 72
     Width = 616
-    Height = 672
+    Height = 385
     BevelInner = bvLowered
     TabOrder = 1
     object lbl1: TLabel
@@ -72,8 +72,8 @@ object frmaddtreatment: Tfrmaddtreatment
       OnChange = edtaddtnameChange
     end
     object pnl3: TPanel
-      Left = 472
-      Top = 7
+      Left = 490
+      Top = 2
       Width = 120
       Height = 130
       BevelInner = bvLowered
@@ -115,7 +115,7 @@ object frmaddtreatment: Tfrmaddtreatment
     object medtprice: TMaskEdit
       Left = 120
       Top = 56
-      Width = 291
+      Width = 297
       Height = 23
       TabOrder = 2
       Text = ''
@@ -126,14 +126,14 @@ object frmaddtreatment: Tfrmaddtreatment
     object scrlbx1: TScrollBox
       Left = 8
       Top = 85
-      Width = 441
-      Height = 580
+      Width = 453
+      Height = 292
       VertScrollBar.Style = ssFlat
       TabOrder = 3
       UseWheelForScrolling = True
       object pnl4: TPanel
         Left = 11
-        Top = -3
+        Top = 0
         Width = 409
         Height = 576
         BevelInner = bvLowered

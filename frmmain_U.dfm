@@ -342,9 +342,9 @@ object frmmain: Tfrmmain
         object N8: TMenuItem
           Caption = '-'
         end
-        object EditMyDetails2: TMenuItem
+        object RemoveUser1: TMenuItem
           Caption = 'Remove User'
-          OnClick = EditMyDetails2Click
+          OnClick = RemoveUser1Click
         end
         object N30: TMenuItem
           Caption = '-'

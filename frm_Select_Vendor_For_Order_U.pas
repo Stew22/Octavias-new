@@ -74,6 +74,7 @@ begin
               tblorder.Filter := 'Vendor_Name = ' + QuotedStr(cbbvendor.Items[I]);
               tblorder.Filtered := True;
               //
+              //
               CSVFileName := Fname + cbbvendor.Items[I] + '.csv'; // Add .csv extension
               //
               TStrings.Add('Vendor_Name,Item_Number,Item_Description,Price,Qty'); // Headers
@@ -103,6 +104,13 @@ begin
               begin
                if tblvendor.Active = True then
                begin
+                //here we need to filter the vendor and get the email
+                //before we shell execute
+                //make sure to have it in the loop as above
+                //
+                tblvendor.Filtered:=False;
+                tblvendor.Filter:='Vendor_Name = ' + QuotedStr(cbbvendor.Items[I]);
+                tblvendor.Filtered:=True;
                 //
                 Vemail:=tblvendor.FieldByName('Vendor_Email').AsString;
                 Vemail2:=tblvendor.FieldByName('Vendor_Email_2').AsString;
@@ -140,6 +148,8 @@ begin
                   SW_SHOWNORMAL
                 );
                end;
+               tblvendor.Filtered:=False;
+               tblvendor.Filter:='';
               end;
             end;
           finally
@@ -333,7 +343,7 @@ begin
  dlgSave1.InitialDir := ExtractFileDir(Application.ExeName);
  dlgSave1.Filter:='CSV Files (*.csv)|*.csv|All Files (*.*)|*.*';  //here we will only allow text , csv and excell , maybe pdf
  //
- if cbbvendor.Text = '' then
+ if (cbbvendor.Items.Count = 0) or (cbbvendor.Text = '') then
  begin
   btnplaceorder.Enabled:=False;
  end else
@@ -374,6 +384,7 @@ begin
    //
    while not tblorder.Eof do
    begin
+    tblorder.DisableControls;
     if tblorder.FieldByName('Qty').AsString > '0' then
      begin
        //here we will add it to the vendor list

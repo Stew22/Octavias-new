@@ -113,7 +113,7 @@ begin
         //
         while not tblproducts.Eof do
         begin
-         // we have no EOF delphi is a bithc :)
+         // here loop through all productfs of that vendor
         end;
        end;
       end;

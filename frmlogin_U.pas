@@ -35,6 +35,7 @@ type
     LoginPWordOrg:string;
   public
     { Public declarations }
+    LUser:string;
   end;
 
 var
@@ -93,10 +94,11 @@ begin
      begin
       // we leave all the menu items enabled
       //Admin
+      //why when Luser:=cbbuser.Text;
       frmmain.ShowModal;
       frmmain.Vendors1.Enabled:=True;
       frmmain.StockManagment1.Enabled:=True;
-      frmmain.EditMyDetails2.Enabled:=True;
+      frmmain.RemoveUser1.Enabled:=True;
       frmmain.AddUser1.Enabled:=True;
       frmmain.Bookings1.Enabled:=True; // this will be for the future
       frmmain.ManageTreatments1.Enabled:=True;
@@ -109,10 +111,12 @@ begin
       //here we will disable certain menu items as per the premissions granted
       frmmain.Vendors1.Enabled:=False;
       frmmain.StockManagment1.Enabled:=False;
-      frmmain.EditMyDetails2.Enabled:=False;
+      frmmain.RemoveUser1.Enabled:=False;
       frmmain.AddUser1.Enabled:=False;
       frmmain.Bookings1.Enabled:=False; // this will be for the future
       frmmain.ManageTreatments1.Enabled:=False;
+      //
+      //Luser:=cbbuser.Text;
       //
       frmmain.ShowModal;
       //
