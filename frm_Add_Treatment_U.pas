@@ -80,6 +80,26 @@ type
     procedure edtp9Change(Sender: TObject);
     procedure edtp10Change(Sender: TObject);
     procedure edtaddtnameChange(Sender: TObject);
+    procedure cbbaproduct1Change(Sender: TObject);
+    procedure cbbaproduct2Change(Sender: TObject);
+    procedure cbbaproduct3Change(Sender: TObject);
+    procedure cbbaddproduct4Change(Sender: TObject);
+    procedure cbbaproduct5Change(Sender: TObject);
+    procedure cbbaproduct6Change(Sender: TObject);
+    procedure cbbaproduct7Change(Sender: TObject);
+    procedure cbbaproduct8Change(Sender: TObject);
+    procedure cbbaproduct9Change(Sender: TObject);
+    procedure cbbaproduct10Change(Sender: TObject);
+    procedure cbbaproduct11Change(Sender: TObject);
+    procedure cbbaproduct12Change(Sender: TObject);
+    procedure cbbaproduct13Change(Sender: TObject);
+    procedure cbbaddproduct14Change(Sender: TObject);
+    procedure cbbaproduct15Change(Sender: TObject);
+    procedure cbbaproduct16Change(Sender: TObject);
+    procedure cbbaproduct17Change(Sender: TObject);
+    procedure cbbaproduct18Change(Sender: TObject);
+    procedure cbbaproduct19Change(Sender: TObject);
+    procedure cbbaddproduct20Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -315,6 +335,266 @@ begin
  frmaddtreatment.Close;
 end;
 
+procedure Tfrmaddtreatment.cbbaddproduct14Change(Sender: TObject);
+begin
+ if (chklst1.Checked[13] = True) and (cbbaddproduct14.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaddproduct20Change(Sender: TObject);
+begin
+ if (chklst1.Checked[19] = True) and (cbbaddproduct20.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaddproduct4Change(Sender: TObject);
+begin
+ if (chklst1.Checked[3] = True) and (cbbaddproduct4.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct10Change(Sender: TObject);
+begin
+ if (chklst1.Checked[9] = True) and (cbbaproduct10.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct11Change(Sender: TObject);
+begin
+ if (chklst1.Checked[10] = True) and (cbbaproduct11.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct12Change(Sender: TObject);
+begin
+ if (chklst1.Checked[11] = True) and (cbbaproduct12.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct13Change(Sender: TObject);
+begin
+ if (chklst1.Checked[12] = True) and (cbbaproduct13.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct15Change(Sender: TObject);
+begin
+ if (chklst1.Checked[14] = True) and (cbbaproduct15.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct16Change(Sender: TObject);
+begin
+ if (chklst1.Checked[15] = True) and (cbbaproduct16.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct17Change(Sender: TObject);
+begin
+ if (chklst1.Checked[16] = True) and (cbbaproduct17.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct18Change(Sender: TObject);
+begin
+ if (chklst1.Checked[17] = True) and (cbbaproduct18.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct19Change(Sender: TObject);
+begin
+ if (chklst1.Checked[18] = True) and (cbbaproduct19.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct1Change(Sender: TObject);
+begin
+ if (chklst1.Checked[0] = True) and (cbbaproduct1.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct2Change(Sender: TObject);
+begin
+ if (chklst1.Checked[1] = True) and (cbbaproduct2.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct3Change(Sender: TObject);
+begin
+ if (chklst1.Checked[2] = True) and (cbbaproduct3.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct5Change(Sender: TObject);
+begin
+ if (chklst1.Checked[4] = True) and (cbbaproduct5.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct6Change(Sender: TObject);
+begin
+ if (chklst1.Checked[5] = True) and (cbbaproduct6.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct7Change(Sender: TObject);
+begin
+ if (chklst1.Checked[6] = True) and (cbbaproduct7.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct8Change(Sender: TObject);
+begin
+ if (chklst1.Checked[7] = True) and (cbbaproduct8.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
+procedure Tfrmaddtreatment.cbbaproduct9Change(Sender: TObject);
+begin
+ if (chklst1.Checked[8] = True) and (cbbaproduct9.Text <> '') and (medtprice.Text <> '') and (edtaddtname.Text <> '') then
+ begin
+  //here we will enable the button
+  btnaddtreatment.Enabled:=True;
+ end else
+ begin
+  //keep the button disabled
+  btnaddtreatment.Enabled:=False;
+ end;
+end;
+
 procedure Tfrmaddtreatment.chklst1ClickCheck(Sender: TObject);
 begin
  if chklst1.Checked[0] = True then
@@ -526,11 +806,11 @@ end;
 
 procedure Tfrmaddtreatment.edtaddtnameChange(Sender: TObject);
 begin
-//
+ //
  TDataAccess.WriteToAccessDB('Has Selected A Treatment From The Dropdown For Editing');
 end;
 
-procedure Tfrmaddtreatment.edtp10Change(Sender: TObject);
+procedure Tfrmaddtreatment.edtp10Change(Sender: TObject);   //we can remove these?
 begin
  //here we are going to add in the error checking to enable the button
  if (edtaddtname.Text <> '') or (medtprice.Text <> '') then

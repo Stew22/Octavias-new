@@ -277,6 +277,10 @@
             <Form>frmblkpricingupdate</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="frm_Changelog_U.pas">
+            <Form>frmchangelog</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txaPackage"/>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txvpck"/>
         <BuildConfiguration Include="Base">

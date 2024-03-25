@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.StdCtrls,
-  System.ImageList, Vcl.ImgList, Vcl.Imaging.pngimage,DM_Products;
+  System.ImageList, Vcl.ImgList, Vcl.Imaging.pngimage,DM_Products, Vcl.ComCtrls;
 
 type
   Tfrmblkpricingupdate = class(TForm)
@@ -49,6 +49,9 @@ type
     procedure cbbvendorselectChange(Sender: TObject);
     procedure btngenerateexportClick(Sender: TObject);
     procedure btncheckimportClick(Sender: TObject);
+    procedure btnexitClick(Sender: TObject);
+    procedure btncancelClick(Sender: TObject);
+    procedure pnl3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,9 +65,22 @@ implementation
 
 {$R *.dfm}
 
+procedure Tfrmblkpricingupdate.btncancelClick(Sender: TObject);
+begin
+ cbbvendorselect.Text:='';
+end;
+
 procedure Tfrmblkpricingupdate.btncheckimportClick(Sender: TObject);
 begin
- //here we are going to check the format of the import
+ //here we are going to check the format of the import and ensure that it is the same
+ //as the export , if not we will raise an error to the user that the format has changed
+ //and we are going to reject the import
+end;
+
+procedure Tfrmblkpricingupdate.btnexitClick(Sender: TObject);
+begin
+ cbbvendorselect.Clear;
+ frmblkpricingupdate.Close;
 end;
 
 procedure Tfrmblkpricingupdate.btngenerateexportClick(Sender: TObject);
@@ -83,6 +99,9 @@ begin
    //
    with DataModuleProducts do
    begin
+    //
+    tblproducts.DisableControls;
+    //
     if (cbbvendorselect.Text = '') or (tblproducts.Active = False) or (tblproducts.Filtered = False) then
     begin
      //here we will display a message to the user
@@ -101,11 +120,16 @@ begin
       end else
       begin
        //work here
-       EVexport := TStrings.Create();
+       EVexport := TStringList.Create();
        //
-       //constrac the export
+       //construct the export
+       //add the headers
+       EVexport.Add('ID,Item_Number,Item_Discription,Size,Min_Order_Qty,Most_Recent_Cost_Excl_Vat,Most_Recent_Cost_Inc_Vat,RRP,Lead_Time_Days,Vendor_Name,Main_Category,Secondary_Category,Tertiary_Category,');
+       //here we will have an alternative headers just including the item number
+       //item discription , and the releveant prices
+       //EVexport.Add('ID,Item_Number,Item_Discription,Most_Recent_Cost_Excl_Vat,Most_Recent_Cost_Inc_Vat,RRP,,Vendor_Name,');
        //
-       EVexport.Add('ID,Item_Number,Item_Discription,Size,Min_Order_Qty,Most_Recent_Cost_Excl_Vat,Most_Recent_Cost_Inc_Vat,RRP,Lead_Time_Days,Vendor_Name,Main_Category,Secondary_Category,Tertiary_Category');
+       //
        with DataModuleProducts do
        begin
         //
@@ -113,7 +137,23 @@ begin
         //
         while not tblproducts.Eof do
         begin
-         // here loop through all productfs of that vendor
+         // here loop through all products of that vendor
+         // we might want to limit what we export but when it comes to importing ?
+         // safest export will be item number , item discription , vendor name , prices
+         // we can then work out the price per unit progrmically
+         EVexport.Add(',' + tblproducts.FieldByName('ID').AsString + ','
+         + tblproducts.FieldByName('Item_Number').AsString + ','
+         + tblproducts.FieldByName('Item_Discription').AsString + ','
+         + tblproducts.FieldByName('Size').AsString + ','
+         + tblproducts.FieldByName('Min_Order_Qty').AsString + ','
+         + tblproducts.FieldByName('Most_Recent_Cost_Excl_Vat').AsString + ','
+         + tblproducts.FieldByName('Most_Recent_Cost_Inc_Vat').AsString + ','
+         + tblproducts.FieldByName('Lead_Time_Days').AsString + ','
+         + tblproducts.FieldByName('Vendor_Name').AsString + ','
+         + tblproducts.FieldByName('Main_Category').AsString + ','
+         + tblproducts.FieldByName('Secondary_Category').AsString + ','
+         + tblproducts.FieldByName('Tertiary_Category').AsString + ',');
+         tblproducts.Next;
         end;
        end;
       end;
@@ -149,12 +189,21 @@ procedure Tfrmblkpricingupdate.FormShow(Sender: TObject);
 var
  Tname:TStrings;
 begin
+ //set the file type for the save dialog
+ dlgSave1.Filter:='CSV Files (*.csv)|*.csv';
+ dlgSave1.DefaultExt:='.csv';
+ dlgSave1.InitialDir:=ExtractFileDir(Application.ExeName);
  with DataModuleProducts do
  begin
    if tblproducts.Active = True then
    begin
     //here we are going to populate the combo box with a list of vendors from the
     //products database so we can update pricing
+    //
+    //here we might want to add in a progress bar as we wait for it to load all the vendors
+    //then when complete it should close the progress bar
+    //just need to see how we are going to do that
+    tblproducts.DisableControls;
     //
     cbbvendorselect.Clear;
     //
@@ -196,6 +245,24 @@ end;
 procedure Tfrmblkpricingupdate.GetTemplate2Click(Sender: TObject);
 begin
  btncheckimport.Click;
+end;
+
+procedure Tfrmblkpricingupdate.pnl3Click(Sender: TObject);
+begin
+ //once we have updated the pricing we will prompt the user to recalculate
+ //the price per unit using the price inc / size
+ //that will give us the cost per unit for the treatment costings
+ with DataModuleProducts do
+ begin
+  if tblproducts.Active = True then
+  begin
+   //here we will import the new pricing line per line and dynamically calculate the treatment costing
+   //per unit of the product
+  end else
+  begin
+   ShowMessage('There Was An Error Connecting To The Products Database , Please Contact Your Software Manufacturer');
+  end;
+ end;
 end;
 
 procedure Tfrmblkpricingupdate.UpdatePricing1Click(Sender: TObject);

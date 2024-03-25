@@ -176,6 +176,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 1
+          OnChange = cbbaproduct11Change
         end
         object cbbaproduct12: TComboBox
           Left = 111
@@ -183,6 +184,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 2
+          OnChange = cbbaproduct12Change
         end
         object cbbaproduct13: TComboBox
           Left = 111
@@ -190,6 +192,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 3
+          OnChange = cbbaproduct13Change
         end
         object cbbaddproduct14: TComboBox
           Left = 111
@@ -197,6 +200,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 4
+          OnChange = cbbaddproduct14Change
         end
         object cbbaproduct15: TComboBox
           Left = 111
@@ -204,6 +208,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 5
+          OnChange = cbbaproduct15Change
         end
         object cbbaproduct16: TComboBox
           Left = 111
@@ -211,6 +216,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 6
+          OnChange = cbbaproduct16Change
         end
         object cbbaproduct17: TComboBox
           Left = 111
@@ -218,13 +224,15 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 7
+          OnChange = cbbaproduct17Change
         end
         object cbbaproduct18: TComboBox
           Left = 111
-          Top = 482
+          Top = 483
           Width = 290
           Height = 23
           TabOrder = 8
+          OnChange = cbbaproduct18Change
         end
         object cbbaproduct19: TComboBox
           Left = 111
@@ -232,13 +240,15 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 9
+          OnChange = cbbaproduct19Change
         end
         object cbbaproduct10: TComboBox
           Left = 111
-          Top = 258
+          Top = 259
           Width = 290
           Height = 23
           TabOrder = 10
+          OnChange = cbbaproduct10Change
         end
         object cbbaddproduct20: TComboBox
           Left = 111
@@ -246,6 +256,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 11
+          OnChange = cbbaddproduct20Change
         end
         object cbbaproduct9: TComboBox
           Left = 111
@@ -253,6 +264,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 289
           Height = 23
           TabOrder = 12
+          OnChange = cbbaproduct9Change
         end
         object cbbaproduct8: TComboBox
           Left = 112
@@ -260,6 +272,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 289
           Height = 23
           TabOrder = 13
+          OnChange = cbbaproduct8Change
         end
         object cbbaproduct7: TComboBox
           Left = 111
@@ -267,6 +280,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 14
+          OnChange = cbbaproduct7Change
         end
         object cbbaproduct6: TComboBox
           Left = 111
@@ -274,6 +288,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 15
+          OnChange = cbbaproduct6Change
         end
         object cbbaproduct5: TComboBox
           Left = 111
@@ -281,6 +296,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 16
+          OnChange = cbbaproduct5Change
         end
         object cbbaddproduct4: TComboBox
           Left = 111
@@ -288,6 +304,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 17
+          OnChange = cbbaddproduct4Change
         end
         object cbbaproduct3: TComboBox
           Left = 111
@@ -295,6 +312,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 18
+          OnChange = cbbaproduct3Change
         end
         object cbbaproduct2: TComboBox
           Left = 111
@@ -302,6 +320,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 19
+          OnChange = cbbaproduct2Change
         end
         object cbbaproduct1: TComboBox
           Left = 111
@@ -309,6 +328,7 @@ object frmaddtreatment: Tfrmaddtreatment
           Width = 290
           Height = 23
           TabOrder = 20
+          OnChange = cbbaproduct1Change
         end
       end
     end

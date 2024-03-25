@@ -10,7 +10,8 @@ uses
   frm_Vendors_Service_U,DM_Vendors,DM_Order,frm_Report_Bug_U,Winapi.ShellAPI,
   frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U,frm_Delete_Service_Vendor,DM_Products,
   frm_Reset_Password_U , frm_edit_Product_Vendors_U,frm_Delete_Product_Vendor_U,
-  DM_Spa_Menu,frm_Spa_Menu_U,frm_Add_Treatment_U,frm_Edit_treatment_U,frm_Delete_Treatments_U;
+  DM_Spa_Menu,frm_Spa_Menu_U,frm_Add_Treatment_U,frm_Edit_treatment_U,frm_Delete_Treatments_U,
+  Vcl.Buttons,frm_Changelog_U;
 
 type
   Tfrmmain = class(TForm)
@@ -149,6 +150,7 @@ type
     ResetMyUsername1: TMenuItem;
     N60: TMenuItem;
     InvoiceManager1: TMenuItem;
+    btnwhatsnew: TSpeedButton;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -191,6 +193,7 @@ type
     procedure AddTreatment1Click(Sender: TObject);
     procedure AddTreatment2Click(Sender: TObject);
     procedure RemoveTreatment1Click(Sender: TObject);
+    procedure btnwhatsnewClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -387,6 +390,12 @@ begin
       ShowMessage('There Was An Error Connecting To The Orders Database, Please Contact Your Software Developer');
     end;
   end;
+end;
+
+procedure Tfrmmain.btnwhatsnewClick(Sender: TObject);
+begin
+ //here we can open a form explaining new features and changes made to the app
+ frmchangelog.ShowModal;
 end;
 
 procedure Tfrmmain.cbbcatogoriesChange(Sender: TObject);
