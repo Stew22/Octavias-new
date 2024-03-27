@@ -1,1 +1,11 @@
-test
+Going Forward All Changes Made To The Application In Terms Of Feature Updates Bug Fixes etc Shall Be Communicated Through The Following Form : 
+
+Main Form Updates : 
+ * Added new main form button to allow users to see new product features and wip items from the app directly -- Completed
+  *Added new database Tool : 
+	*Sync Items from products database to order form (to ensure all items registered can be ordered) -- WIP
+	
+Bulk pricing update : 
+ *Design of bulk pricing update form has been completed 
+  *Added Export For Pricing Per Vendor -- Completed 
+   *Importing of pricing file system logic has been implement , ensuring the user only imports a valid .csv file

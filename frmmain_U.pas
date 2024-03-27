@@ -151,6 +151,8 @@ type
     N60: TMenuItem;
     InvoiceManager1: TMenuItem;
     btnwhatsnew: TSpeedButton;
+    SyncItemsFromProductsDatabaseToOrderForm1: TMenuItem;
+    N61: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);

@@ -32,6 +32,17 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
         'Please Use The Following Form To Select A Vendor To Do A Bulk Pr' +
         'icing Update'
     end
+    object btnhelp: TButton
+      Left = 640
+      Top = 12
+      Width = 25
+      Height = 19
+      ImageAlignment = iaCenter
+      ImageIndex = 0
+      Images = il1
+      TabOrder = 0
+      OnClick = btnhelpClick
+    end
   end
   object pnl2: TPanel
     Left = 8
@@ -159,9 +170,9 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
       object N1: TMenuItem
         Caption = '-'
       end
-      object GetTemplate1: TMenuItem
-        Caption = 'Get Template'
-        OnClick = GetTemplate1Click
+      object GenerateExportForVendor1: TMenuItem
+        Caption = 'Generate Export For Vendor'
+        OnClick = GenerateExportForVendor1Click
       end
       object N3: TMenuItem
         Caption = '-'
@@ -197,6 +208,7 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
     end
     object Exit2: TMenuItem
       Caption = 'Help'
+      OnClick = Exit2Click
     end
   end
   object il1: TImageList
@@ -609,5 +621,9 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
   object dlgSave1: TSaveDialog
     Left = 432
     Top = 96
+  end
+  object dlgOpen1: TOpenDialog
+    Left = 560
+    Top = 95
   end
 end

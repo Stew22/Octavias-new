@@ -558,6 +558,13 @@ object frmmain: Tfrmmain
         object N59: TMenuItem
           Caption = '-'
         end
+        object SyncItemsFromProductsDatabaseToOrderForm1: TMenuItem
+          Caption = 'Sync Items From Products Database To Order Form '
+          Enabled = False
+        end
+        object N61: TMenuItem
+          Caption = '-'
+        end
       end
       object N58: TMenuItem
         Caption = '-'
@@ -565,6 +572,7 @@ object frmmain: Tfrmmain
     end
     object InvoiceManager1: TMenuItem
       Caption = 'Invoice Manager'
+      Enabled = False
     end
     object Support1: TMenuItem
       Caption = 'Help'

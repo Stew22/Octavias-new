@@ -11,7 +11,7 @@ uses
   frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U,frm_Delete_Service_Vendor,DM_Products,
   frm_Reset_Password_U , frm_edit_Product_Vendors_U,frm_Delete_Product_Vendor_U,
   DM_Spa_Menu,frm_Spa_Menu_U,frm_Add_Treatment_U,frm_Edit_treatment_U,frm_Delete_Treatments_U,
-  frm_Edit_My_Details_U;
+  Vcl.Buttons,frm_Changelog_U;
 
 type
   Tfrmmain = class(TForm)
@@ -47,7 +47,7 @@ type
     UserManagment1: TMenuItem;
     N7: TMenuItem;
     EditMyDetails1: TMenuItem;
-    EditMyDetails2: TMenuItem;
+    RemoveUser1: TMenuItem;
     N8: TMenuItem;
     N9: TMenuItem;
     AddUser1: TMenuItem;
@@ -150,6 +150,7 @@ type
     ResetMyUsername1: TMenuItem;
     N60: TMenuItem;
     InvoiceManager1: TMenuItem;
+    btnwhatsnew: TSpeedButton;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -160,7 +161,7 @@ type
     procedure cbbcatogoriesChange(Sender: TObject);
     procedure AddUser1Click(Sender: TObject);
     procedure EditMyDetails1Click(Sender: TObject);
-    procedure EditMyDetails2Click(Sender: TObject);
+    procedure RemoveUser1Click(Sender: TObject);
     procedure Bookings1Click(Sender: TObject);
     procedure Support2Click(Sender: TObject);
     procedure ReportABug1Click(Sender: TObject);
@@ -192,6 +193,7 @@ type
     procedure AddTreatment1Click(Sender: TObject);
     procedure AddTreatment2Click(Sender: TObject);
     procedure RemoveTreatment1Click(Sender: TObject);
+    procedure btnwhatsnewClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -388,6 +390,12 @@ begin
       ShowMessage('There Was An Error Connecting To The Orders Database, Please Contact Your Software Developer');
     end;
   end;
+end;
+
+procedure Tfrmmain.btnwhatsnewClick(Sender: TObject);
+begin
+ //here we can open a form explaining new features and changes made to the app
+ frmchangelog.ShowModal;
 end;
 
 procedure Tfrmmain.cbbcatogoriesChange(Sender: TObject);
@@ -780,11 +788,11 @@ procedure Tfrmmain.EditMyDetails1Click(Sender: TObject);
 begin
  //here we will make  new form and allow the user to update there details
  //also making sure to log the chnages
- frmeditmydetails.showmadal;
+
 
 end;
 
-procedure Tfrmmain.EditMyDetails2Click(Sender: TObject);
+procedure Tfrmmain.RemoveUser1Click(Sender: TObject);
 begin
  //here only the admin will be aable to remove user
  //after providing the admin username and password
@@ -796,6 +804,7 @@ procedure Tfrmmain.edtsearchChange(Sender: TObject);
 begin
   with Datamoduleorder do
   begin
+  tblorder.EnableControls;
     if conorder.Connected then
     begin
      if edtsearch.Text <> '' then

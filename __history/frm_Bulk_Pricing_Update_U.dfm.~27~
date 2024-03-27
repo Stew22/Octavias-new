@@ -32,6 +32,17 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
         'Please Use The Following Form To Select A Vendor To Do A Bulk Pr' +
         'icing Update'
     end
+    object btnhelp: TButton
+      Left = 640
+      Top = 12
+      Width = 25
+      Height = 19
+      ImageAlignment = iaCenter
+      ImageIndex = 0
+      Images = il1
+      TabOrder = 0
+      OnClick = btnhelpClick
+    end
   end
   object pnl2: TPanel
     Left = 8
@@ -65,6 +76,7 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
     Height = 74
     BevelInner = bvLowered
     TabOrder = 2
+    OnClick = pnl3Click
     object lbl2: TLabel
       Left = 131
       Top = 38
@@ -118,6 +130,7 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
       ImageIndex = 5
       Images = il1
       TabOrder = 2
+      OnClick = btncancelClick
     end
     object btnexit: TButton
       Left = 576
@@ -128,6 +141,7 @@ object frmblkpricingupdate: Tfrmblkpricingupdate
       ImageIndex = 6
       Images = il1
       TabOrder = 3
+      OnClick = btnexitClick
     end
   end
   object btnupdatepricing: TButton
