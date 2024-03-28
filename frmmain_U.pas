@@ -11,7 +11,8 @@ uses
   frm_Select_Vendor_For_Order_U,frm_edit_Vendors_U,frm_Delete_Service_Vendor,DM_Products,
   frm_Reset_Password_U , frm_edit_Product_Vendors_U,frm_Delete_Product_Vendor_U,
   DM_Spa_Menu,frm_Spa_Menu_U,frm_Add_Treatment_U,frm_Edit_treatment_U,frm_Delete_Treatments_U,
-  Vcl.Buttons,frm_Changelog_U;
+  Vcl.Buttons,frm_Changelog_U ,Frm_Sync_Items_Products_And_OrderForm_DB_Tools_U,
+  frm_DB_Tools_View_Results_U;
 
 type
   Tfrmmain = class(TForm)
@@ -153,6 +154,8 @@ type
     btnwhatsnew: TSpeedButton;
     SyncItemsFromProductsDatabaseToOrderForm1: TMenuItem;
     N61: TMenuItem;
+    RestoreDatabase1: TMenuItem;
+    N62: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure AddVendor1Click(Sender: TObject);
     procedure AddVendor2Click(Sender: TObject);
@@ -196,6 +199,7 @@ type
     procedure AddTreatment2Click(Sender: TObject);
     procedure RemoveTreatment1Click(Sender: TObject);
     procedure btnwhatsnewClick(Sender: TObject);
+    procedure SyncItemsFromProductsDatabaseToOrderForm1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1144,6 +1148,12 @@ procedure Tfrmmain.Support2Click(Sender: TObject);
 begin
  //here we will allow the user to request a feature
 
+end;
+
+procedure Tfrmmain.SyncItemsFromProductsDatabaseToOrderForm1Click(
+  Sender: TObject);
+begin
+ frmsyncproductsandorder.ShowModal;
 end;
 
 procedure Tfrmmain.UserManual1Click(Sender: TObject);

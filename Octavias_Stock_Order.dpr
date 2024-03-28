@@ -44,7 +44,9 @@ uses
   frm_Edit_treatment_U in 'frm_Edit_treatment_U.pas' {frmedittreatment},
   frm_Delete_Treatments_U in 'frm_Delete_Treatments_U.pas' {frmdeletetreatment},
   frm_Bulk_Pricing_Update_U in 'frm_Bulk_Pricing_Update_U.pas' {frmblkpricingupdate},
-  frm_Changelog_U in 'frm_Changelog_U.pas' {frmchangelog};
+  frm_Changelog_U in 'frm_Changelog_U.pas' {frmchangelog},
+  Frm_Sync_Items_Products_And_OrderForm_DB_Tools_U in 'Frm_Sync_Items_Products_And_OrderForm_DB_Tools_U.pas' {frmsyncproductsandorder},
+  frm_DB_Tools_View_Results_U in 'frm_DB_Tools_View_Results_U.pas' {frmViewResults};
 
 {$R *.res}
 
@@ -96,5 +98,7 @@ begin
   Application.CreateForm(Tfrmdeletetreatment, frmdeletetreatment);
   Application.CreateForm(Tfrmblkpricingupdate, frmblkpricingupdate);
   Application.CreateForm(Tfrmchangelog, frmchangelog);
+  Application.CreateForm(Tfrmsyncproductsandorder, frmsyncproductsandorder);
+  Application.CreateForm(TfrmViewResults, frmViewResults);
   Application.Run;
 end.

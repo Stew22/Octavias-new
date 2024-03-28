@@ -457,7 +457,7 @@ object frmmain: Tfrmmain
         Caption = '-'
       end
       object Backup1: TMenuItem
-        Caption = 'Backup'
+        Caption = 'Backup / Restore'
         object N36: TMenuItem
           Caption = '-'
         end
@@ -486,12 +486,19 @@ object frmmain: Tfrmmain
         object N40: TMenuItem
           Caption = '-'
         end
+        object RestoreDatabase1: TMenuItem
+          Caption = 'Restore Database'
+          Enabled = False
+        end
+        object N62: TMenuItem
+          Caption = '-'
+        end
       end
       object N41: TMenuItem
         Caption = '-'
       end
       object DuplicateFiner1: TMenuItem
-        Caption = 'Database Duplicate Finder'
+        Caption = 'Database Managment Tools'
         object N49: TMenuItem
           Caption = '-'
         end
@@ -560,7 +567,7 @@ object frmmain: Tfrmmain
         end
         object SyncItemsFromProductsDatabaseToOrderForm1: TMenuItem
           Caption = 'Sync Items From Products Database To Order Form '
-          Enabled = False
+          OnClick = SyncItemsFromProductsDatabaseToOrderForm1Click
         end
         object N61: TMenuItem
           Caption = '-'

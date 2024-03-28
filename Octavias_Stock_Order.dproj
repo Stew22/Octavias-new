@@ -281,6 +281,14 @@
             <Form>frmchangelog</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Frm_Sync_Items_Products_And_OrderForm_DB_Tools_U.pas">
+            <Form>frmsyncproductsandorder</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="frm_DB_Tools_View_Results_U.pas">
+            <Form>frmViewResults</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txaPackage"/>
         <None Include="ModelSupport_Octavias_Stock_Order\default.txvpck"/>
         <BuildConfiguration Include="Base">
